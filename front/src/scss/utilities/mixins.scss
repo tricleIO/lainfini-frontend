@@ -1,0 +1,70 @@
+
+@mixin text-bold() {
+  font-weight: 600;
+}
+
+.text-bold {
+    @include text-bold();
+}
+
+@function em($pixels, $context: 14) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+@mixin radius() {
+  border-radius: 5px;
+}
+
+@mixin super-center() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin no-type() {
+  li:before {
+    display: none;
+  }
+}
+
+.no-gutter > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+
+@mixin no-gutter {
+  padding-right:0;
+  padding-left:0;
+}
+
+@mixin trans-border-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}

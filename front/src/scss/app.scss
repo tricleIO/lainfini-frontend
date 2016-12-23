@@ -1,0 +1,39 @@
+/**
+  * project: uniportal/www-skeleton
+  * author: @matejkamenec
+  */
+
+@import "utilities/variables";
+
+/**
+  * mixins and functions
+  */
+@import "utilities/mixins";
+
+/**
+ * 3rd party libraries imports
+ **/
+@import "./importer/font-awesome";
+
+/**
+  * components
+  */
+@import "components/header/header";
+@import "components/footer/footer";
+@import "components/breadcrumb";
+
+@import "components/backtocategory";
+
+@import "components/paginator";
+
+@import "components/graphicattribute.scss";
+
+@import "components/topic";
+
+@import "components/banner/banner";
+
+@import "components/shoppingcontact";
+
+@import "components/alert";
+
+@import "components/wsw";

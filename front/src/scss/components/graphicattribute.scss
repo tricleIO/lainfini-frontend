@@ -1,0 +1,19 @@
+
+$graphicAttributes: (
+        clearance,
+        news,
+        discount
+);
+
+.graphicattribute {
+
+  span {
+
+  }
+}
+
+@each $graphicAttribute in $graphicAttributes {
+  .graphicattribute-#{$graphicAttribute} span {
+    background-color: color(graphicattribute-#{$graphicAttribute});
+  }
+}
