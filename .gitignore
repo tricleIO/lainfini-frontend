@@ -1,3 +1,5 @@
+.idea/
+bourbon/
+bower_components/
 dist/
-node_modules
-jspm_packages
+node_modules/

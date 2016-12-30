@@ -1,0 +1,41 @@
+$enable-flex: true;
+
+@import "../../../bourbon/bourbon";
+
+
+/*@import "~bootstrap/scss/mixins/_lists.scss";
+@import "~bootstrap/scss/mixins/_border-radius.scss";
+@import "~bootstrap/scss/mixins/_cards.scss";
+@import "~bootstrap/scss/mixins/_hover.scss";
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/normalize";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/card";*/
+@import "~bootstrap/scss/bootstrap-flex";
+
+
+
+
+@import "~bootstrap/scss/_type.scss";
+
+
+@import 'variables/colors';
+@import 'variables/sizes';
+
+
+@import "mixin/mixin";
+
+@import "layout/main";
+@import "layout/header";
+@import "layout/footer";
+
+@import "components/visual";
+@import "components/news";
+
+@import "ui/headings";
+@import "ui/btn";
+
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme.css";

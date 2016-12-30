@@ -1,0 +1,31 @@
+footer {
+  background: #191919;
+  padding: $_50 0;
+  .title {
+    color:$color-white;
+    padding-bottom: $_20;
+  }
+  ul {
+    padding: 0 0 $_20 $_16;
+    margin: 0;
+    li {
+      list-style-type: square;
+      a {
+        color:darken($color-white, 20%);
+        font-size: $_14;
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+  .instagram-feed {
+    .instagram-feed--wrapper {
+      @include display(flex);
+      flex-wrap: wrap;
+      img {
+        padding: 2px;
+      }
+    }
+  }
+}

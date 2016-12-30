@@ -1,0 +1,20 @@
+@mixin owf-absolute-center() {
+  position: absolute!important;
+  margin: auto!important;
+  top: -9999px!important;
+  left: -9999px!important;
+  bottom: -9999px!important;
+  right: -9999px!important;
+}
+
+@mixin btn($padding,$main-color,$hover-color,$bg) {
+  @include display(inline-block);
+  padding: $padding;
+  color: $main-color;
+  background: $bg;
+  &:hover {
+    cursor: pointer;
+    color: $hover-color;
+    background: lighten($main-color,8%);
+  }
+}

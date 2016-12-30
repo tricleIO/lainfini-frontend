@@ -1,0 +1,10 @@
+{
+  "name": "own-framework",
+  "private": false,
+  "dependencies": {
+    "bootstrap-sass": "3.3.7",
+    "select2": "~4.0.0",
+    "components-font-awesome": "~4.7.0",
+    "responsive-bootstrap-toolkit": "responsive-toolkit#^2.5.1"
+  }
+}

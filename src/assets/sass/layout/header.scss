@@ -1,0 +1,37 @@
+.navigation {
+  background: $color-black;
+  border-bottom: 2px solid lighten($color-black,20%);
+  #logo, .logo--partner {
+    @include display(inline-block);
+    vertical-align: middle;
+  }
+  .logo--partner {
+    padding-left: $_3;
+  }
+  .navigation__wrapper {
+    @include display(inline-block);
+
+    ul {
+      margin: 0;
+    }
+
+    li {
+      @include display(inline-block);
+      padding: $_27 $_15;
+      transition: background 0.3s ease;
+
+      a {
+        font-size: $_15;
+        color: $color-white;
+        text-decoration: none
+      }
+      &:hover {
+        background: lighten($color-black,14%);
+        cursor: pointer;
+      }
+    }
+
+    .active {}
+  }
+
+}

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'DIN';
+  src: url('../fonts/DIN/din1451alt_g-webfont.woff2') format('woff2'),
+  url('../fonts/DIN/din1451alt_g-webfont.woff') format('woff'),
+  url('../fonts/DIN/din1451alt_g-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+html, body {
+  font-size: $initial;
+  font-family: 'DIN';
+}
