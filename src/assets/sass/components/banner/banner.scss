@@ -1,11 +1,11 @@
-.visual {
+.banner {
   overflow: hidden;
 
-  &.visual--small {
-    .visual__wrapper, .row {
+  &.banner--small {
+    .banner__wrapper, .row {
       height: 640px;
     }
-    .visual__item__text {
+    .banner__item__text {
       h1, p {
         color: $color-black;
         &:before {
@@ -20,15 +20,15 @@
     @include align-items(center);
     height: 100vh;
   }
-  .visual__item {
+  .banner__item {
     @include position(relative);
   }
-  .visual__wrapper {
+  .banner__wrapper {
     @include position(relative);
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 74px);
   }
-  .visual__item__picture {
+  .banner__item__picture {
     @include position(absolute,0 0 0 0);
     img {
       @include owf-absolute-center();
@@ -36,7 +36,7 @@
     }
   }
   
-  .visual__item__text {
+  .banner__item__text {
     h1, p {
       color: $color-white;
       text-transform: uppercase;

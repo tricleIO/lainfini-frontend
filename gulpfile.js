@@ -10,7 +10,7 @@ var plumberOptions = {
 };
 
 var project_data = {
-        project: 'eshop-outlet'
+        project: 'tecnifibre'
     },
     templates_options = {
         batch: 'templates'
@@ -37,12 +37,13 @@ gulp.task('html', function() {
         .pipe(gulp.dest('dist/'));
 });
 
+
 gulp.task('server', function() {
     var webserver = require('gulp-webserver');
 
     return gulp.src('')
         .pipe(webserver({
-            open: 'dist/index.html',
+            open: 'dist/',
             livereload: {
                 enable: true,
                 filter: function(fileName) {
@@ -65,5 +66,18 @@ gulp.task('default', ['html'], function() {
     gulp.watch(['templates/*.html'], ['html']);
 
     gulp.watch(['dist/*.html','dist/build/**']).on('change', livereload.changed);
+
+});
+
+gulp.task('dev', ['styles', 'scripts'], function() {
+    var livereload = require('gulp-livereload');
+
+    livereload.listen();
+
+    gulp.watch('src/assets/js/**/*.js', ['scripts']);
+
+    gulp.watch(['src/assets/sass/**/*.scss'], ['styles']);
+
+    gulp.watch(['dist/build/**']).on('change', livereload.changed);
 
 });

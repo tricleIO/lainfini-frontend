@@ -1,5 +1,6 @@
 .idea/
-bourbon/
 bower_components/
-dist/
-node_modules/
+/bourbon/
+/dist/
+/node_modules/
+

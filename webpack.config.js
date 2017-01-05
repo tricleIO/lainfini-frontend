@@ -10,24 +10,23 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         webStyles: [
-            path.join(assetsDir, 'sass/styles.scss')
+            path.join(assetsDir, 'sass/app.scss')
         ],
         webPrintStyles: [
             path.join(assetsDir, 'sass/print.scss')
         ],
         webScripts: [
-            path.join(assetsDir, 'js/scripts.js')
+            path.join(assetsDir, 'js/app.js')
         ]
     },
     output: {
         path: path.join(__dirname, 'dist/build/'),
-        publicPath: '/build/',
+        publicPath: '/dist/build/',
         filename: '[name].js'
     },
     resolve: {
         root: [
-            path.join(__dirname, 'bower_components'),
-            path.join(__dirname, 'node_modules'),
+            path.join(__dirname, 'node_modules')
         ]
     },
     plugins: [
@@ -48,7 +47,7 @@ module.exports = {
             {test: /\.css$/,  loader: ExtractTextPlugin.extract('style', 'css?sourceMap')},
             {test: /\.scss$/, loader: ExtractTextPlugin.extract('css?sourceMap!postcss!' + 'sass?sourceMap')},
             {test: /\.hbs/,   loader: "handlebars-template-loader"},
-            {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules|bower_components/},
+            {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
             {test: /\.html$/, loader: 'raw!html-minify'}
         ]
     },

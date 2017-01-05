@@ -1,0 +1,30 @@
+//Bourbon mixin library
+@import "../../../bourbon/bourbon";
+
+//external libraries
+@import "importer/bootstrap";
+@import "importer/slick";
+
+//Variables for project
+@import 'variables/default';
+@import 'variables/colors';
+@import 'variables/sizes';
+
+//Own mixins
+@import "mixin/mixin";
+
+//Layout
+@import "layout/main";
+@import "layout/header";
+@import "layout/footer";
+
+//Components
+@import "components/wsw";
+
+@import "components/banner/banner";
+@import "components/news";
+
+//ui elements
+@import "ui/headings";
+@import "ui/btn";
+

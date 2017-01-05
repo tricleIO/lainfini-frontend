@@ -12,44 +12,48 @@
 <body>
 
     <header class="navigation">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-xs navigation__wrapper">
+                <div class="col-xs-2">
                     <a href="#" id="logo">
-                        <img src="../src/assets/img/logo.png" alt="">
+                        <img src="../img/logo.png" class="img-fluid" alt="">
                     </a>
-                    <nav class="navigation__wrapper">
+                </div>
+                <div class="col-xs-9 navigation__wrapper">
+                    <nav>
                         <ul>
-                            <li class="active"><a href="#">Produkty</a></li>
-                            <li><a href="#">Textil</a></li>
-                            <li><a href="#">Vyplétací stroje</a></li>
-                            <li><a href="#">Tým</a></li>
-                            <li><a href="#">Podporujeme</a></li>
-                            <li><a href="#">Prodejní místa</a></li>
-                            <li><a href="#">O nás</a></li>
-                            <li><a href="#">Kontakt</a></li>
+                            <li class="active"><a href="#">Produkty <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Textil <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Vyplétací stroje <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Tým <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Podporujeme <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Prodejní místa <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">O nás <i class="icon icon-sipka"></i></a></li>
+                            <li><a href="#">Kontakt <i class="icon icon-sipka"></i></a></li>
                         </ul>
                     </nav>
+                </div>
+                <div class="col-xs-1">
                     <a href="#" class="logo--partner">
-                        <img src="../src/assets/img/logo-partner.png" alt="">
+                        <img src="../img/logo-partner.png" class="img-fluid" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </header>
-    <section class="visual">
-        <div class="visual__wrapper visual--slide">
-            <div class="visual__item">
-                <picture class="visual__item__picture">
+    <section class="banner static">
+        <div class="banner__wrapper banner--slide">
+            <div class="banner__item">
+                <picture class="banner__item__picture">
                     <source srcset="//placehold.it/1920x1080/000" media="(min-width: 1280px)">
                     <source srcset="//placehold.it/1024x768/000" media="(min-width: 768px)">
                     <source srcset="//placehold.it/768x480/000" media="(max-width: 767px)">
                     <img src="//placehold.it/1920x1080" alt="">
                 </picture>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 text-wrapper">
-                            <div class="visual__item__text wsw headings">
+                            <div class="banner__item__text wsw headings">
                                 <h1 class="heading">Technologie Dynacore</h1>
                                 <p>
                                     Technologie Dynacore je bezkonkurenční kombinací flexibility a torzní stability. Zaručuje pocit
@@ -61,17 +65,17 @@
                     </div>
                 </div>
             </div>
-            <div class="visual__item">
-                <picture class="visual__item__picture">
+            <div class="banner__item">
+                <picture class="banner__item__picture">
                     <source srcset="//placehold.it/1920x1080" media="(min-width: 1280px)">
                     <source srcset="//placehold.it/1024x768" media="(min-width: 768px)">
                     <source srcset="//placehold.it/768x480" media="(max-width: 767px)">
                     <img src="//placehold.it/1920x1080" alt="">
                 </picture>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 text-wrapper">
-                            <div class="visual__item__text">
+                            <div class="banner__item__text">
                                 <h1>Technologie Dynacore</h1>
                                 <p>
                                     Technologie Dynacore je bezkonkurenční kombinací flexibility a torzní stability. Zaručuje pocit
@@ -86,7 +90,7 @@
         </div>
     </section>
     <section class="news">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xs headings">
                     <h2 class="heading heading--type-1">Novinky</h2>
@@ -135,19 +139,19 @@
             </div>
         </div>
     </section>
-    <section class="visual visual--small">
-        <div class="visual__wrapper visual--fade">
-            <div class="visual__item">
-                <picture class="visual__item__picture">
+    <section class="banner static banner--small">
+        <div class="banner__wrapper banner--fade">
+            <div class="banner__item">
+                <picture class="banner__item__picture">
                     <source srcset="//placehold.it/1920x1080/faf" media="(min-width: 1280px)">
                     <source srcset="//placehold.it/1024x640/000" media="(min-width: 768px)">
                     <source srcset="//placehold.it/768x480/000" media="(max-width: 767px)">
                     <img src="//placehold.it/1920x1080/fff" alt="">
                 </picture>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 text-wrapper">
-                            <div class="visual__item__text wsw headings">
+                            <div class="banner__item__text wsw headings">
                                 <h1 class="heading">Technologie PolymerCore</h1>
                                 <p>
                                     Technologie Dynacore je bezkonkurenční kombinací flexibility a torzní stability. Zaručuje pocit
@@ -159,17 +163,17 @@
                     </div>
                 </div>
             </div>
-            <div class="visual__item">
-                <picture class="visual__item__picture">
+            <div class="banner__item">
+                <picture class="banner__item__picture">
                     <source srcset="//placehold.it/1920x1080/aff" media="(min-width: 1280px)">
                     <source srcset="//placehold.it/1024x640/000" media="(min-width: 768px)">
                     <source srcset="//placehold.it/768x480/000" media="(max-width: 767px)">
                     <img src="//placehold.it/1920x1080/aff" alt="">
                 </picture>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 text-wrapper">
-                            <div class="visual__item__text wsw headings">
+                            <div class="banner__item__text wsw headings">
                                 <h1 class="heading">Technologie PolymerCore</h1>
                                 <p>
                                     Technologie Dynacore je bezkonkurenční kombinací flexibility a torzní stability. Zaručuje pocit
@@ -184,7 +188,7 @@
         </div>
     </section>
     <footer>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xs">
                     <div class="footer-nav">
@@ -198,14 +202,14 @@
                             <li><a href="#">Podporujeme</a></li>
                         </ul>
                         <a href="#" class="d-inline-block">
-                            <img src="../src/assets/img/official-racquet.png" alt="official">
+                            <img src="../img/official-racquet.png" alt="official">
                         </a>
                     </div>
                 </div>
                 <div class="col-xs">
                     <div class="facebook-feed">
                         <div class="title">Sledujte nás na Facebooku</div>
-                        <img src="../src/assets/img/fb-page-box.png" alt="">
+                        <img src="../img/fb-page-box.png" alt="">
                     </div>
                 </div>
                 <div class="col-xs">

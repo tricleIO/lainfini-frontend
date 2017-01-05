@@ -1,6 +1,9 @@
 .navigation {
   background: $color-black;
   border-bottom: 2px solid lighten($color-black,20%);
+  .row {
+    align-items: center;
+  }
   #logo, .logo--partner {
     @include display(inline-block);
     vertical-align: middle;
@@ -9,21 +12,35 @@
     padding-left: $_3;
   }
   .navigation__wrapper {
-    @include display(inline-block);
+    @include display(table-cell);
+
+    nav {
+      @include display(table-cell);
+    }
 
     ul {
       margin: 0;
+      padding: 0;
     }
 
     li {
       @include display(inline-block);
-      padding: $_27 $_15;
+      padding: $_25 $_13;
       transition: background 0.3s ease;
-
+      @include MQ($screen-ex) {
+        padding: $_25 $_10;
+      }
       a {
         font-size: $_15;
         color: $color-white;
-        text-decoration: none
+        text-decoration: none;
+        @include MQ($screen-ex) {
+          font-size: $_14;
+        }
+        i {
+          font-size: $_8;
+          color: lighten($color-black, 58%);
+        }
       }
       &:hover {
         background: lighten($color-black,14%);
