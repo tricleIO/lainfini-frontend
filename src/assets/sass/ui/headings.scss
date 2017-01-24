@@ -1,45 +1,28 @@
 .heading {
-  display:inline-block;
-  padding:20px 0;
-  color:$color-white;
-  font-weight: 700;
-  font-style: italic;
+  position: relative;
+  padding:$_15 0;
+  font-weight: $headings-font-weight - 100;
   text-transform: uppercase;
-  &.heading--type-1 {
-    font-size: $_72;
+  padding-top: $_70;
+  &__subtitle {
+    font-size: $_24;
+    font-family: $font-family-nexa-l;
+    letter-spacing: $letter-spacing-small;
+    color:$color-text;
+    padding-bottom: $_30;
   }
-
-  &.heading--type-2 {
-    position: relative;
-    font-size: $_40+$_2;
-    &:before {
-      @include position(absolute,0 -20px 0 auto);
-      background-color: $color-white;
-      content: '';
-      height: 80px;
-      width: 1px;
-      transform: rotateZ(20deg);
-    }
+  &__title {
+    font-size: $_36;
+    font-family: $font-family-nexa;
+    letter-spacing: $letter-spacing-base;
+    line-height: $line-height-base;
   }
-}
-.sub-title {
-  @include position(relative);
-  padding: 0;
-  padding-left: $_25;
-  margin-bottom: $_20;
-  font-size: $_20;
-  font-style: italic;
-  position:relative;
-  font-weight: 500;
-  text-transform: uppercase;
   &:before {
-    position:absolute;
-    content:"";
-    background:$color-white;
-    width:$_20;
-    height:$_2;
-    left:0;
-    top:$_10;
+    @include position(absolute, 0 auto auto 50%);
+    @include transform(translateX(-50%));
+    content: '';
+    width: $_100 * 1.7;
+    height: 2px;
+    background-color: $color-b;
   }
-
 }
