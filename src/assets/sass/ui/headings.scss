@@ -1,15 +1,15 @@
 .heading {
   position: relative;
-  padding:$_15 0;
+  padding-top: $_70;
+  padding-bottom: $_25;
   font-weight: $headings-font-weight - 100;
   text-transform: uppercase;
-  padding-top: $_70;
   &__subtitle {
     font-size: $_24;
     font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-small;
     color:$color-text;
-    padding-bottom: $_30;
+    padding-bottom: $_8;
     font-weight: lighter;
     line-height: $line-height-base;
   }
