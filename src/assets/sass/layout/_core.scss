@@ -1,10 +1,11 @@
 html, body {
   font-family: $font-family-base;
-  font-size: $font-size-root * .8;
+  font-size: $font-size-root * 0.7;
+  text-rendering: optimizeLegibility;
   @include media-breakpoint-up(sm) {
-    font-size: $font-size-root * .9;
+    font-size: $font-size-root * 0.8;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     font-size: $font-size-root;
   }
 }
@@ -26,5 +27,15 @@ a {
 }
 
 #page {
-  margin-top: $page_margin;
+
+  margin-top: $page_margin_mobile;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: $page_margin_tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $page_margin;
+  }
+
 }

@@ -1,6 +1,6 @@
 .arrivals {
   @include media-breakpoint-up(sm) {
-    margin-top: -$_100 * 1.30;
+    margin-top: -$_100 * 1.90;
   }
   font-family: $font-family-nexa;
   margin-bottom: $_100;
@@ -8,7 +8,9 @@
   &__item {
     background-color: lighten($color-a, 6%);
     padding: $_40;
-    box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
+    @include media-breakpoint-up(sm) {
+      box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
+    }
     img {
       max-width: $_100*5.50;
       width: 100%;
