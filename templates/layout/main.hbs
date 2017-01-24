@@ -4,9 +4,23 @@
 <html class="no-js" lang="en"><!--<![endif]-->
 {{> "layout/head"}}
 <body class="{{#if hp}}hp{{else}}sp{{/if}} preload">
-{{> "layout/header"}}
+
 <div id="body">
+    {{> "layout/header"}}
     <main id="page">
+        <input type="checkbox" id="op">
+        <div class="overlay overlay__hugeinc">
+            <label for="op"></label>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Clients</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
         {{! skládání šablon - v php jako {include file="$template"} !}}
         {{#if hp}}
             {{> "components/visual"}}
@@ -15,16 +29,16 @@
             {{> "components/designers" type="h2"}}
         {{/if}}
     </main>
-
+    {{> "layout/footer"}}
 </div>
-{{> "layout/footer"}}
-{{#each js as |url|}}
-    <script type="text/javascript" src="{{url}}"></script>
-{{/each}}
+
 
 <!--[if lt IE 10]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><![endif]-->
 <!--[if gt IE 10]><!--><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script><!--<![endif]-->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/ie.js" defer></script><![endif]-->
+{{#each js as |url|}}
+    <script type="text/javascript" src="{{url}}"></script>
+{{/each}}
 </body>
 </html>

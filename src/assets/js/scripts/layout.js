@@ -1,5 +1,13 @@
 $(document).ready(function(){
     $('body').addClass("preload");
+
+
+    $('#nav-lines').on('click',function () {
+       $(this).toggleClass("active");
+    });
+
+
+
     fn_layout_main();
 });
 
@@ -12,6 +20,6 @@ function fn_layout_main() {
             $body.removeClass("loaded");
         }, 500);
         //fn_scrollreveal();
-        //$('.ssm-nav').slideAndSwipe();
-    }, 200);
+    },200);
+
 }

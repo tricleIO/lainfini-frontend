@@ -27,8 +27,27 @@ header {
     letter-spacing: $_14/4;
   }
   i {
+    &:before {
+      font-size: $_25;
+    }
+
     @include media-breakpoint-up(sm){
       padding: 0 $_8;
     }
+    &.icon-menu {
+      &:hover {
+        cursor: pointer;
+      }
+
+    }
+    &.icon--toggle {
+      &:before {
+        color: $color-white;
+      }
+    }
+  }
+  label {
+    position: relative;
+    z-index: 9999;
   }
 }
