@@ -9,6 +9,9 @@ $primaryColor: $color-b;
   cursor: pointer;
   z-index: 9999;
   &.active {
+    position: fixed;
+    top: 32px;
+
     .rect, .cross-line {
       stroke: $color-white;
     }
