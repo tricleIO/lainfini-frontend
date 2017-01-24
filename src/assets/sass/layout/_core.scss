@@ -2,6 +2,7 @@ html, body {
   font-family: $font-family-base;
   font-size: $font-size-root * 0.7;
   text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
   @include media-breakpoint-up(sm) {
     font-size: $font-size-root * 0.8;
   }

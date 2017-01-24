@@ -5,10 +5,10 @@
         }
         transition: all .5s ease;
         border:1px solid transparent;
+        padding: $_10;
         &:hover {
             border:1px solid $color-text;
-            padding: 10px;
-            transform: scale(0.8);
+            transform: scale(0.8) translate3d( 0, 0, 0);
             cursor: pointer;
         }
 
@@ -26,6 +26,7 @@
             font-family: $font-family-open-sans;
             line-height: $line-height-base - .1;
             font-size: $font-size-sm;
+            min-height: $_46;
         }
 
         a {
