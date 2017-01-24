@@ -1,12 +1,17 @@
 .arrivals {
-  margin-top: -$_100 * 2.34;
+  margin-top: -$_100 * 1.30;
   font-family: $font-family-nexa;
   margin-bottom: $_100;
+
   &__item {
     background-color: lighten($color-a, 6%);
     padding: $_40;
     box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
+    img {
+      max-width: $_100*5.50;
+    }
   }
+
   &__title, &__author {
     color: $color_text;
     margin-bottom: $_20;
@@ -23,6 +28,7 @@
     letter-spacing: $letter-spacing-base;
     margin-bottom: $_20;
   }
+
   &__author {
     margin-top: $_55;
     letter-spacing: $letter-spacing-base;
@@ -47,4 +53,5 @@
       }
     }
   }
+
 }

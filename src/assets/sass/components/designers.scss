@@ -1,0 +1,25 @@
+.designers {
+    &__item {
+
+        &__content {
+            padding: $_30 0;
+        }
+
+        h4 {
+            font-weight: $dt-font-weight;
+            font-family: $font-family-nexa;
+        }
+
+        p {
+            margin: $_20 0;
+            font-family: $font-family-open-sans;
+            line-height: $line-height-base - .1;
+        }
+
+        a {
+            text-transform: uppercase;
+            color: $color-b;
+        }
+
+    }
+}

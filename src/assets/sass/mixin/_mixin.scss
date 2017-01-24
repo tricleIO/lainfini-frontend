@@ -18,30 +18,11 @@
   font-style: italic;
   font-weight: normal;
   transition: background-color 0.6s ease,color 0.6s ease;
-
-  .btn-triangle {
-      @include display(inline-block);
-      transition: border-left-color 0.6s ease;
-      padding-right: $_6;
-      width: 0;
-      height: 0;
-      border-top: $_6 solid transparent;
-      border-bottom: $_6 solid transparent;
-      border-left: $_8 solid $text-color;
-      &.btn-triangle--small {
-        border-top: $_5 solid transparent;
-        border-bottom: $_5 solid transparent;
-        border-left: $_5 solid $text-color;
-      }
-    }
-
+  border:2px solid $color-b;
   &:hover {
     cursor: pointer;
     color: $hover-color;
     background: lighten($text-color,8%);
-    .btn-triangle {
-      border-left-color: $bg;
-    }
   }
   &:focus {
     outline: 0;

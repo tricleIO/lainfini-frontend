@@ -5,7 +5,7 @@
 @import '~reset-css/reset.css';
 
 //@import "~animate.css/animate.css";
-@import "../../../fonts/style.scss";
+//@import "../../../fonts/style.scss";
 
 //
 // Bootstrapvariables
@@ -15,15 +15,7 @@
 //
 // Grid mixins
 //
-@import "~bootstrap/scss/mixins/clearfix";
-@import "~bootstrap/scss/mixins/breakpoints";
-@import "~bootstrap/scss/mixins/grid-framework";
-@import "~bootstrap/scss/mixins/grid";
-@import "~bootstrap/scss/mixins/text-truncate";
-@import "~bootstrap/scss/mixins/text-emphasis";
-@import "~bootstrap/scss/mixins/text-hide";
-@import "~bootstrap/scss/mixins/hover";
-@import "~bootstrap/scss/mixins/lists";
+@import "~bootstrap/scss/mixins";
 //
 // Grid utilities
 //
@@ -37,6 +29,7 @@
 //
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
 
 //------------------------End External SCSS FILES----------------------//
 
@@ -57,7 +50,11 @@
 //Components
 @import "components/visual";
 @import "components/arrivals_slider";
+@import "components/category_card";
+@import "components/designers";
 @import "components/wsw";
+
+@import "helpers";
 
 //ui elements
 @import "ui/headings";

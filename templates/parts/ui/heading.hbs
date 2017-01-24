@@ -1,4 +1,9 @@
 <div class="heading">
     <div class="heading__subtitle">{{subtitle}}</div>
     <{{type}} class="heading__title">{{title}}</{{type}}>
+    {{#if intro}}
+        <p class="heading__intro">
+            {{intro}}
+        </p>
+    {{/if}}
 </div>

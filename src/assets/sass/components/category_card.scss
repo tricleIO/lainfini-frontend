@@ -1,0 +1,42 @@
+.category-card {
+    margin-bottom: $_80;
+    line-height: $line-height-base;
+    &__contain {
+        margin-top: $_100;
+        padding-bottom: $_50;
+    }
+
+    &__item {
+        position: relative;
+        max-height: $_100*4.37;
+        margin-bottom: $_100*2;
+        margin-top: -$_60;
+        &__child {
+            @include position(absolute,35% 0 0 50%);
+            @include transform(translate(-50%,50%));
+            width: 100%;
+            text-align: center;
+            > img {
+                display: inline-block;
+            }
+        }
+
+    }
+
+    &__benefits {
+        padding: 0 $_46;
+
+        &__title {
+            font-size: $_30;
+            letter-spacing: $letter-spacing-base;
+            text-transform: uppercase;
+            font-weight: $dt-font-weight;
+            padding-bottom: $_5;
+        }
+
+        p {
+            font-size: $font-family-base;
+        }
+    }
+
+}
