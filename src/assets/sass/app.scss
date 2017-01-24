@@ -1,12 +1,47 @@
 //Bourbon mixin library
-@import "../../../bourbon/bourbon";
+@import "~bourbon/app/assets/stylesheets/bourbon";
 
 //external libraries
-@import "importer/bootstrap";
-@import "importer/slick";
+@import '~reset-css/reset.css';
+
+//@import "~animate.css/animate.css";
+@import "../../../fonts/style.scss";
+
+//
+// Bootstrapvariables
+//
+@import 'variables/default';
+
+//
+// Grid mixins
+//
+@import "~bootstrap/scss/mixins/clearfix";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~bootstrap/scss/mixins/grid-framework";
+@import "~bootstrap/scss/mixins/grid";
+@import "~bootstrap/scss/mixins/text-truncate";
+@import "~bootstrap/scss/mixins/text-emphasis";
+@import "~bootstrap/scss/mixins/text-hide";
+@import "~bootstrap/scss/mixins/hover";
+@import "~bootstrap/scss/mixins/lists";
+//
+// Grid utilities
+//
+
+@import "~bootstrap/scss/utilities/text";
+@import "~bootstrap/scss/utilities/clearfix";
+@import "~bootstrap/scss/utilities/display";
+
+//
+// Bootstrap Grid
+//
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/type";
+
+//------------------------End External SCSS FILES----------------------//
 
 //Variables for project
-@import 'variables/default';
+@import 'variables/framework';
 @import 'variables/colors';
 @import 'variables/sizes';
 
@@ -14,15 +49,15 @@
 @import "mixin/mixin";
 
 //Layout
-@import "layout/main";
+@import "layout/core";
 @import "layout/header";
+@import "layout/main";
 @import "layout/footer";
 
 //Components
+@import "components/visual";
+@import "components/arrivals_slider";
 @import "components/wsw";
-
-@import "components/banner/banner";
-@import "components/news";
 
 //ui elements
 @import "ui/headings";

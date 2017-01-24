@@ -1,0 +1,31 @@
+<section class="comp_boxes lazyload">
+    <div class="background">
+        <div class="parallax-container">
+            <picture class="image">
+                <source srcset="#" data-srcset="{{bg}}" media="{{m1920}}" />
+                <source srcset="#" data-srcset="#" media="(max-width:960px)" />
+                <img src="#" data-src="{{bg}}" alt="" class="lazyload" />
+            </picture>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            {{> "parts/ui/heading" h="2" type="1" heading=content_heading sub_heading=content_sub_heading}}
+            <div class="row">
+                {{#each items as |item|}}
+                <div class="col col-4 col-6-t" data-reveal>
+                    <a href="#" title="" class="item">
+                        <div class="item-heading">
+                            <span class="icon {{item.icon}}"></span>
+                            {{> "parts/ui/heading" h="3" type="2" heading=item.heading}}
+                        </div>
+                        <div class="item-content">
+                            <p>{{item.content}}</p>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

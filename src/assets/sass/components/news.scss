@@ -18,7 +18,12 @@
       .card-text {
         color: $color-white;
       }
-
+    &[data-reveal=revealed] {
+      -webkit-animation: .5s ease-in 0s normal backwards 1 running fadeIn;
+      animation: .5s ease-in 0s normal backwards 1 running fadeIn;
+      -webkit-transition: none!important;
+      transition: none!important
+    }
   }
 
 }

@@ -1,0 +1,24 @@
+<aside class="part_sidebar">
+    <form class="search">
+        <div class="inner">
+            <input type="text" name="search" placeholder="Hledat ..." />
+            <button class="icon icon-search"></button>
+        </div>
+    </form>
+    <nav class="nav">
+        {{#each items as |item|}}
+            <button class="title" data-sidebar-title>
+                <span class="icon {{item.icon}}"></span>
+                <i>{{item.title}}</i>
+                <span class="icon icon-chevron-down"></span>
+            </button>
+            <div class="nav_ul">
+                <ul>
+                    {{#each item.list as |item|}}
+                        <li><a href="#" title=""><i>{{item.name}}</i></a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+    </nav>
+</aside>

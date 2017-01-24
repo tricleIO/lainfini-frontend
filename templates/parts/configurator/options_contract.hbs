@@ -1,0 +1,231 @@
+<div class="part_configurator_options" data-switch-options>
+    <div class="switch-nav">
+        <a href="#" title="" class="switch-button">
+            <span class="icon icon-fill"></span>
+            <i>Vzhled</i>
+        </a>
+        <a href="#" title="" class="switch-button">
+            <span class="icon icon-text"></span>
+            <i>Potisk</i>
+        </a>
+        <a href="#" title="" class="switch-button">
+            <span class="icon icon-image"></span>
+            <i>Výšivka</i>
+        </a>
+        <a href="#" title="" class="switch-button">
+            <span class="icon icon-edit"></span>
+            <i>Další možnosti</i>
+        </a>
+    </div>
+    <div class="switch-area">
+        <div class="switch-content">
+            <div class="part_form">
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Střih"}}
+                    </div>
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Materiál"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Barva těla zepředku"}}
+                    </div>
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Barva těla zezadu"}}
+                    </div>
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Barva límce"}}
+                    </div>
+                    <div class="col col-12">
+                        {{> "parts/ui/select" label="Barva rukávů"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Náplety na rukávech" n="1"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Barva nápletů"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Proužky na rukávech" n="2"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Barva proužku nápletů"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Proužek na límci" n="3"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Barva proužku na límci"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Kapsa" n="4"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Barva kapsy"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Rozparky" n="5"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Zapínání na knoflíčky" n="6"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Počet knoflíčků"}}
+                        {{> "parts/ui/select" label="Barva konflíčků"}}
+                        {{> "parts/ui/select" label="Barva legy"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Zapínání na zip" n="7"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/select" label="Barva zipu"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Půlměsíc vzadu" n="8"}}
+                    </div>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Zadní díl delší" n="9"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+            </div>
+        </div>
+        <div class="switch-content">
+            <div class="part_form">
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/file" label="Přidat soubor s potiskem"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/input" label="Počet barev potisku"}}
+                    </div>
+                    <div class="col col-6 col-12-m">
+                        {{> "parts/ui/input" label="Šířka potisku"}}
+                    </div>
+                    <div class="col col-6 col-12-m">
+                        {{> "parts/ui/input" label="Výška potisku"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="col col-10">
+                        {{> "parts/ui/select" label="Umístění potisku"}}
+                    </div>
+                    <div class="col col-2">
+                        <div class="item">
+                            <a href="#" class="help" data-help="../img/configurator-help.png"><span class="icon icon-help"></span></a>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr /><br />
+            </div>
+        </div>
+        <div class="switch-content">
+            <div class="part_form">
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/file" label="Přidat soubor s výšivkou"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row">
+                    <div class="col col-6 col-12-m">
+                        {{> "parts/ui/input" label="Šířka výšivky"}}
+                    </div>
+                    <div class="col col-6 col-12-m">
+                        {{> "parts/ui/input" label="Výška výšivky"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="col col-10">
+                        {{> "parts/ui/select" label="Umístění výšivky"}}
+                    </div>
+                    <div class="col col-2">
+                        <div class="item">
+                            <a href="#" class="help" data-help="../img/configurator-help.png"><span class="icon icon-help"></span></a>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr /><br />
+            </div>
+        </div>
+        <div class="switch-content">
+            <div class="part_form">
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/textarea" label="Vaše dodatečné požadavky"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+                <fieldset class="row">
+                    <div class="col col-12">
+                        {{> "parts/ui/input" label="Počet ks ve velikosti S"}}
+                        {{> "parts/ui/input" label="Počet ks ve velikosti M"}}
+                        {{> "parts/ui/input" label="Počet ks ve velikosti L"}}
+                        {{> "parts/ui/input" label="Počet ks ve velikosti XL"}}
+                        {{> "parts/ui/input" label="Počet ks ve velikosti XXL"}}
+                    </div>
+                </fieldset>
+                <fieldset class="row" data-row-check>
+                    <div class="col col-12">
+                        {{> "parts/ui/checkbox" label="Specifická velikost" n="10"}}
+                    </div>
+                    <div class="col col-12 hide">
+                        {{> "parts/ui/input" label="Velikost"}}
+                        {{> "parts/ui/input" label="Počet ks"}}
+                    </div>
+                </fieldset>
+                <hr /><br />
+            </div>
+        </div>
+        <div class="switch-content active">
+            <div class="directory">
+                {{> "parts/ui/heading" h="4" type="2" heading="Hurá do toho" sub_heading="Co byste rádi udělali jako první?"}}
+                <div class="row">
+                    <div class="col">
+                        <a href="#" title="" class="btn" data-switch-directory="item-0">
+                            <span class="icon icon-fill"></span>
+                            <i>Změnit vzhled</i>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" title="" class="btn" data-switch-directory="item-1">
+                            <span class="icon icon-text"></span>
+                            <i>Změnit potisk</i>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" title="" class="btn" data-switch-directory="item-2">
+                            <span class="icon icon-image"></span>
+                            <i>Změnit výšivku</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{> "parts/configurator/chat"}}
+        </div>
+    </div>
+</div>

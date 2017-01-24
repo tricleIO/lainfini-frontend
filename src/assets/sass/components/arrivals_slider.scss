@@ -1,0 +1,50 @@
+.arrivals {
+  margin-top: -$_100 * 2.34;
+  font-family: $font-family-nexa;
+  margin-bottom: $_100;
+  &__item {
+    background-color: lighten($color-a, 6%);
+    padding: $_40;
+    box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
+  }
+  &__title, &__author {
+    color: $color_text;
+    margin-bottom: $_20;
+  }
+  &__title {
+    font-size: $_22;
+    font-family: $font-family-nexa-l;
+    letter-spacing: $letter-spacing-small;
+  }
+  &__subtitle {
+    font-size: $_36;
+    font-family: $font-family-nexa;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-base;
+    margin-bottom: $_20;
+  }
+  &__author {
+    margin-top: $_55;
+    letter-spacing: $letter-spacing-base;
+    font-family: $font-family-open-sans;
+    font-weight: $headings-font-weight - 200;
+    a {
+      color: inherit;
+    }
+  }
+  &__icons {
+    margin-top: $_20;
+    a {
+      padding: 0 $_13;
+    }
+  }
+  &__buy {
+    @include position(absolute, auto $_40 $_40 auto);
+    .icon {
+      &:before {
+        font-size: $_40;
+        color: $color-b;
+      }
+    }
+  }
+}

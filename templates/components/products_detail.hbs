@@ -1,0 +1,25 @@
+<section class="comp_products_detail">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col col-6 col-12-t">
+                    {{> "parts/ui/heading" h="1" type="2" heading=content_heading}}
+                    {{!tohle bych asi udělal jako jeden wsw a nedělil to dvě!}}
+                    {{> "parts/ui/wsw" wsw=""}}
+                    {{> "parts/ui/wsw_list"}}
+                    {{> "parts/table"}}
+                </div>
+                <div class="col col-6 col-12-t">
+                    {{> "parts/product_info"}}
+                </div>
+            </div>
+            <div class="btns text-center">
+                <a href="#" title class="btn btn-type-1 color-c">
+                    <span class="icon icon-chat"></span>
+                    <i>Chci poptat</i>
+                </a>
+            </div>
+            {{> "parts/goods"}}
+        </div>
+    </div>
+</section>

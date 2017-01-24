@@ -1,11 +1,12 @@
 .btn {
-  @include btn($_20 $_60,$color-a,$color-black,$color-white);
-  @include transition(color 0.3s ease,background 0.3s ease);
-  text-decoration: none;
-  border-radius: 0;
-  &:hover {}
-  &.btn--type-1 {
-    @include transition(color 0.3s ease,background 0.3s ease);
-    @include btn($_5 $_8,$color-white,$color-black,$color-black);
+  @include btn($_20 $_60,$color-white,$color-white,$color-a);
+  &:hover {
+    background-color: $color-white;
+    color: $color-a;
   }
+
+  &.btn--type-1 {
+    @include btn($_8 $_10,$color-white,$color-black,$color-black);
+  }
+
 }

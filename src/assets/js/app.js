@@ -7,3 +7,4 @@ require('slick-carousel');
 //local
 require('./scripts/layout');
 require('./scripts/banner');
+require('./scripts/scroll');

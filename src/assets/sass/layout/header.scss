@@ -1,54 +1,30 @@
-.navigation {
-  background: $color-black;
-  border-bottom: 2px solid lighten($color-black,20%);
-  .row {
-    align-items: center;
+header {
+  @include position(absolute, 0 0 auto 0);
+  width: 100%;
+  background-color: $color-white;
+  a {
+    text-decoration: none;
   }
-  #logo, .logo--partner {
-    @include display(inline-block);
+  .row {
+    margin:0;
+    padding: $_32 0;
+  }
+  [class^="col-"] {
+    padding: 0;
     vertical-align: middle;
   }
-  .logo--partner {
-    padding-left: $_3;
+  .logo {
+    display: block;
+    width: 100%;
+    font-size: $_24;
+    font-weight: $dt-font-weight;
+    line-height:$line-height-base;
+    text-transform: uppercase;
+    letter-spacing: $_14/4;
   }
-  .navigation__wrapper {
-    @include display(table-cell);
-
-    nav {
-      @include display(table-cell);
+  i {
+    @include media-breakpoint-up(sm){
+      padding: 0 $_8;
     }
-
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      @include display(inline-block);
-      padding: $_25 $_13;
-      transition: background 0.3s ease;
-      @include MQ($screen-ex) {
-        padding: $_25 $_10;
-      }
-      a {
-        font-size: $_15;
-        color: $color-white;
-        text-decoration: none;
-        @include MQ($screen-ex) {
-          font-size: $_14;
-        }
-        i {
-          font-size: $_8;
-          color: lighten($color-black, 58%);
-        }
-      }
-      &:hover {
-        background: lighten($color-black,14%);
-        cursor: pointer;
-      }
-    }
-
-    .active {}
   }
-
 }

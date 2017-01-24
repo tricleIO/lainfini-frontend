@@ -1,0 +1,27 @@
+.visual {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 100px);
+  line-height: $line-height-base;
+  &__heading {
+    @include position(absolute, 50% 0 auto 0);
+    @include transform(translateY(-50%));
+    color: $color-white;
+
+  }
+
+  &__title, &__subtitle {
+    font-weight: $headings-font-weight - 200;
+    text-transform: uppercase;
+    letter-spacing: .3em;
+  }
+
+  &__title {
+    font-size: $_30;
+  }
+
+  &__subtitle {
+    font-size: $_72;
+  }
+}

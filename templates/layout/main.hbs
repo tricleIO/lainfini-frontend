@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--[if lt IE 10]><html class="no-js ie" lang="en"><![endif]-->
+<!--[if gt IE 10]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+
+{{> "layout/head"}}
+<body class="{{#if hp}}hp{{else}}sp{{/if}} preload">
+<div id="body">
+    {{> "layout/header"}}
+    <main id="page">
+        {{! skládání šablon - v php jako {include file="$template"} !}}
+        {{#if hp}}
+            {{> "components/visual"}}
+            {{> "components/arrivals_slider"}}
+        {{/if}}
+    </main>
+    {{> "layout/footer"}}
+</div>
+{{#each js as |url|}}
+    <script type="text/javascript" src="{{url}}"></script>
+{{/each}}
+
+<!--[if lt IE 10]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><![endif]-->
+<!--[if gt IE 10]><!--><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script><!--<![endif]-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/ie.js" defer></script><![endif]-->
+</body>
+</html>

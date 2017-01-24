@@ -1,4 +1,4 @@
-console.log(findFactors("#000000", "#959595", "$color-black", 15));
+console.log(findFactors("#ffe0ca", "#f9efe8", "$color-black", 100));
 
 function RGBtoHSL(r, g, b) {
     r = r / 255;

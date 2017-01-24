@@ -1,0 +1,37 @@
+<section class="comp_gallery">
+    <div class="content">
+        <div class="container">
+            <div class="nav">
+                <ul>
+                    {{#each nav_items as |item|}}
+                        <li><a href="{{item.url}}" title=""><i>{{item.title}}</i></a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="gallery">
+                <div class="row">
+                    {{#each gallery_items as |item|}}
+                        <div class="col col-4 col-6-t lazyload" data-reveal>
+                            <a href="#" title="" class="item" data-dynamic-gallery='[{"src":"//placehold.it/1280x720","thumb":"//placehold.it/120x60","subHtml": "<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"}, {"src":"//placehold.it/1280x720","thumb":"//placehold.it/120x60","subHtml": "<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"}, {"src":"//placehold.it/1280x720","thumb":"//placehold.it/120x60","subHtml": "<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"}, {"src":"//placehold.it/1280x720","thumb":"//placehold.it/120x60","subHtml": "<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"}]'>
+                                <picture class="item-image">
+                                    <img src="#" data-src="{{item.img}}" alt="" class="lazyload" />
+                                </picture>
+                                <div class="item-content">
+                                    <strong class="title"><i>{{item.title}}</i></strong>
+                                    <p>{{item.text}}</p>
+                                    <button class="btn btn-type-2"><i>Detail reference</i></button>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="btns text-center">
+                    <button class="btn btn-type-1 color-c">
+                        <span class="icon icon-chevron-down"></span>
+                        <i>Další fotky</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

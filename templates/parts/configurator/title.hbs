@@ -1,0 +1,10 @@
+<a {{#unless configurator_active}}href="{{url}}"{{/unless}} class="part_configurator_title">
+    <span class="icon {{icon}}"></span>
+    <div class="title">
+        <h3 class="h">{{heading}}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+    </div>
+    {{#unless configurator_active}}
+        <span class="icon icon-chevron-right"></span>
+    {{/unless}}
+</a>

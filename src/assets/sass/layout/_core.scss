@@ -1,0 +1,23 @@
+html, body {
+  font-family: $font-family-base;
+  font-size: $font-size-root;
+}
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing:inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+[class^="col-"] {
+  display: inline-block;
+  float: none;
+}
+
+#page {
+  margin-top: $page_margin;
+}

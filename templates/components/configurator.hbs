@@ -1,0 +1,81 @@
+<section class="comp_configurator">
+   <div class="container">
+        {{#if configurator_active}}
+        {{> "parts/ui/heading" h="1" type="2" heading="Poptávka online"}}
+        <div class="text-right">
+            <a href="homepage.html" class="btn btn-type-1 color-c"><span class="icon icon-arrow-left r"></span>&nbsp;<i>Zpět na stránky</i></a>
+            <a href="configurator-summary.html" class="btn btn-type-1 color-a"><span class="icon icon-cart r"></span>&nbsp;<i>Zobrazit poptávku</i></a>
+        </div>
+        <hr />
+        {{/if}}
+       {{> "parts/configurator/title" heading=title_heading icon=title_icon}}
+       {{#if configurator_active}}
+       <form class="part_configurator_inner">
+           {{! > "parts/configurator/action" !}}
+            <div class="part_configurator_content">
+                {{#if configurator_contract}}
+                <div class="row">
+                    <div class="col col-6 col-12-t">
+                        <div class="inner">
+                            {{> "parts/configurator/options_contract"}}
+                        </div>
+                    </div>
+                    <div class="col col-6 col-12-t">
+                        <div class="inner">
+                            <div class="part_configurator_preview head">
+                                <div class="part_form">
+                                    {{> "parts/ui/select" label="Vyberte jiný typ"}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner" data-stick-element>
+                            {{> "parts/configurator/preview"}}
+                        </div>
+                    </div>
+                </div>
+                {{else if configurator_catalog}}
+                <div class="row">
+                    <div class="col col-6 col-12-t">
+                        <div class="inner">
+                            {{> "parts/configurator/options_catalog"}}
+                        </div>
+                    </div>
+                    <div class="col col-6 col-12-t">
+                        <div class="inner" data-stick-element>
+                            {{> "parts/configurator/preview"}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="inner">
+                            {{> "parts/configurator/design"}}
+                        </div>
+                    </div>
+                </div>
+                {{else if configurator_design}}
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="inner">
+                            {{> "parts/configurator/design"}}
+                        </div>
+                    </div>
+                </div>
+                {{else if configurator_help}}
+                    <div class="row">
+                        <div class="col col-12">
+                            <div class="inner help">
+                                {{> "parts/configurator/help"}}
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+           {{#unless configurator_help}}
+           {{> "parts/configurator/action"}}
+           {{/unless}}
+       </form>
+        {{> "parts/qr"}}
+       {{/if}}
+   </div>
+</section>

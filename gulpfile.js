@@ -10,7 +10,7 @@ var plumberOptions = {
 };
 
 var project_data = {
-        project: 'tecnifibre'
+        project: 'laifini'
     },
     templates_options = {
         batch: 'templates'
@@ -29,8 +29,11 @@ gulp.task('html', function() {
         collapseInlineTagWhitespace: false
     };
 
-    return gulp.src(['templates/*.html'])
+    return gulp.src(['templates/*.{hbs, html}'])
         .pipe(plumber(plumberOptions))
+        .pipe(data(function() {
+            return require('./templates/_core/theme/'+ project_data.project +'.json')
+        }))
         .pipe(gulpif('*.hbs', handlebars(data,templates_options)))
         .pipe(rename({ extname: '.html' }))
         .pipe(htmlmin(opts))
@@ -63,21 +66,24 @@ gulp.task('default', ['html'], function() {
 
     livereload.listen();
 
-    gulp.watch(['templates/*.html'], ['html']);
+    gulp.watch(['templates/**/*.{hbs, html}'], ['html']);
 
-    gulp.watch(['dist/*.html','dist/build/**']).on('change', livereload.changed);
+    gulp.watch(['dist/*.html']).on('change', livereload.changed);
 
 });
 
-gulp.task('dev', ['styles', 'scripts'], function() {
+gulp.task('dev', ['html'], function() {
     var livereload = require('gulp-livereload');
 
     livereload.listen();
 
     gulp.watch('src/assets/js/**/*.js', ['scripts']);
 
-    gulp.watch(['src/assets/sass/**/*.scss'], ['styles']);
+    gulp.watch(['src/assets/sass/**/*.scss']);
+
+    gulp.watch(['templates/**/*.{hbs, html}'], ['html']);
 
     gulp.watch(['dist/build/**']).on('change', livereload.changed);
+    gulp.watch(['dist/**']).on('change', livereload.changed);
 
 });

@@ -4,6 +4,7 @@
   &.banner--small {
     .banner__wrapper, .row {
       height: 640px;
+      margin-bottom: 0;
     }
     .banner__item__text {
       h1, p {
@@ -40,19 +41,6 @@
     h1, p {
       color: $color-white;
       text-transform: uppercase;
-    }
-    p {
-      @include position(relative);
-      padding-left: $_25;
-      font-size: $_20;
-      font-style: italic;
-      &:before {
-        @include position(absolute, $_12 0 0 0);
-        content: '';
-        background: $color-white;
-        width: $_17;
-        height: $_2;
-      }
     }
   }
 }

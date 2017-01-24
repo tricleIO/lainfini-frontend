@@ -1,0 +1,67 @@
+<form class="part_configurator_summary">
+    <div class="title"><i>Souhrn poptávky:</i></div>
+    <div class="row">
+        <div class="col img">
+            <img src="//placehold.it/100" alt="" />
+        </div>
+        <div class="col">
+            <strong class="title"><i>Mikina Superfit</i></strong>
+            <p><b>Barva:</b> heather grey  |  <b>Velikost:</b> XL  |  <b>Počet KS:</b> 213  |  <b>Design:</b> Ano  |  <b>Text:</b> Ano  |  <b>Gramáž:</b> ???</p>
+            <div class="multi">
+                <a href="#" title="" class="btn btn-type-2 color-a small">
+                    <span class="icon icon-delete"></span>&nbsp;
+                    <i>Vymazat produkt</i>
+                </a><a href="#" title="" class="btn btn-type-2 color-c small">
+                    <span class="icon icon-settings"></span>&nbsp;
+                    <i>editovat produkt</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br /><hr /><br />
+    <div class="part_form">
+        <fieldset class="row">
+            <div class="col col-6 col-12-m">
+                {{> "parts/ui/input" label="Jméno"}}
+            </div>
+            <div class="col col-6 col-12-m">
+                {{> "parts/ui/input" label="Příjmení"}}
+            </div>
+            <div class="col col-6 col-12-m">
+                <div class="item">
+                    <label class="hide">Telefon</label>
+                    <input type="tel" name="f-tel" placeholder="Telefon...." />
+                </div>
+            </div>
+            <div class="col col-6 col-12-m">
+                <div class="item">
+                    <label class="hide">Email</label>
+                    <input type="email" name="f-email" placeholder="Email...." />
+                </div>
+            </div>
+            <div class="col col-12 col-12-m">
+                {{> "parts/ui/input" label="Firma"}}
+            </div>
+            <div class="col col-12">
+                <div class="item">
+                    <label class="hide">Vaše dodatečné požadavky</label>
+                    <textarea name="f-text" placeholder="Vaše dodatečné požadavky...."></textarea>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="btns">
+        <button class="btn btn-type-1 color-a col-12 big">
+            <span class="icon icon-arrow-right"></span>&nbsp;
+            <i>Odeslat poptávku</i>
+        </button>
+        {{!
+        <hr />
+        <a href="#" title="" class="btn btn-type-1 color-b col-12 big qr">
+            <span class="icon icon-qrcode"></span>&nbsp;
+            <i>Uložte si konfigurátor do svého telefonu!</i>
+        </a>
+        !}}
+    </div>
+</form>
+<br />

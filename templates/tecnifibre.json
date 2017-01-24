@@ -1,0 +1,486 @@
+{
+  "project": "eshop-outlet",
+  "page_title": "Outlet-Expert.cz - Template",
+  "css": [
+    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css",
+    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css",
+    "//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css",
+    "//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.15/css/lightgallery.min.css",
+    "//cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css",
+    "/build/webStyles.css"
+  ],
+  "js": [
+    "//cdnjs.cloudflare.com/ajax/libs/lazysizes/1.4.0/lazysizes.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.1/scrollreveal.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.15/jquery.touchSwipe.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.15/js/lightgallery-all.min.js",
+    "//cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js",
+    "/build/webScripts.js"
+  ],
+  "m1920": "(min-width: 1281px)",
+  "m768": "(min-width: 768px)",
+  "m480": "(max-width: 767px)",
+  "pages": {
+    "hp": {
+      "visual": {
+        "visual__inner": [
+          {
+            "img": "//placehold.it/1920x1080/",
+            "img_768": "//placehold.it/1280x1024/",
+            "img_480": "//placehold.it/480x320/"
+          },
+          {
+            "img": "//placehold.it/1920x1080/",
+            "img_768": "//placehold.it/1280x1024/",
+            "img_480": "//placehold.it/480x320/"
+          },
+          {
+            "img": "//placehold.it/1920x1080/",
+            "img_768": "//placehold.it/1280x1024/",
+            "img_480": "//placehold.it/480x320/"
+          },
+          {
+            "img": "//placehold.it/1920x1080/",
+            "img_768": "//placehold.it/1280x1024/",
+            "img_480": "//placehold.it/480x320/"
+          }
+        ]
+      }
+    },
+    "sp": {
+      "comp_visual": {
+        "visual": [
+          {
+            "img": "//placehold.it/1920x480/",
+            "img_768": "//placehold.it/1280x480",
+            "img_480": "//placehold.it/480x320/",
+            "heading": "Jsme fabrika na trika",
+            "text": "Jsme rychlí, přesní a 100% barevně stálí"
+          },
+          {
+            "img": "//placehold.it/1920x480/",
+            "img_768": "//placehold.it/1280x480/",
+            "img_480": "//placehold.it/480x320/",
+            "heading": "Jsme fabrika na trika",
+            "text": "Jsme rychlí, přesní a 100% barevně stálí"
+          },
+          {
+            "img": "//placehold.it/1920x480/",
+            "img_768": "//placehold.it/1280x600/",
+            "img_480": "//placehold.it/480x320/",
+            "heading": "Jsme fabrika na trika",
+            "text": "Jsme rychlí, přesní a 100% barevně stálí"
+          }
+        ]
+      }
+    },
+    "page_products": {
+      "comp_products": {
+        "part_sidebar": {
+          "nav": [
+            {
+              "title": "Podle druhu",
+              "icon": "icon-tshirt",
+              "list": [
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                }
+              ]
+            },
+            {
+              "title": "Podle značky",
+              "icon": "icon-price",
+              "list": [
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                }
+              ]
+            },
+            {
+              "title": "Výprodej",
+              "icon": "icon-perc",
+              "list": [
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                },
+                {
+                  "name": "Položka"
+                }
+              ]
+            }
+          ]
+        },
+        "part_filter": {
+          "checkboxes": [
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            },
+            {
+              "name": "Položka"
+            }
+          ]
+        },
+        "part_product": [
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          },
+          {
+            "img": "//placehold.it/180x210",
+            "price": "375,-",
+            "logo": "//placehold.it/50x50",
+            "new": true,
+            "name": "Fitted Valueweight T",
+            "number": "61-372-036"
+          }
+        ]
+      }
+    },
+    "page_products_detail": {
+      "heading": "Lady-Fit Valueweight",
+      "wsw": "Lorem ipsum"
+    },
+    "page_configurator": {
+    },
+    "page_gallery": {
+      "nav": [
+        {
+          "title": "Zakázková výroba",
+          "url": "#"
+        },
+        {
+          "title": "Potisky",
+          "url": "#"
+        },
+        {
+          "title": "Výšivky",
+          "url": "#"
+        },
+        {
+          "title": "Textilní aplikace",
+          "url": "#"
+        },
+        {
+          "title": "Ponožky",
+          "url": "#"
+        },
+        {
+          "title": "Froté",
+          "url": "#"
+        },
+        {
+          "title": "HORECA",
+          "url": "#"
+        }
+      ],
+      "gallery": [
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        },
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        },
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        },
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        },
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        },
+        {
+          "img": "//placehold.it/410x320",
+          "title": "Nadpis",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
+        }
+      ]
+    },
+    "page_contact": {
+      "heading": "Neváhejte nás kontaktovat",
+      "wsw": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "page_text": {
+      "heading": "Textová stránka",
+      "wsw": "Lorem ipsum"
+    }
+  }
+}

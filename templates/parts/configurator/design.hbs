@@ -1,0 +1,74 @@
+<div class="part_configurator_design">
+    {{> "parts/ui/heading" h="4" type="2" heading="Potisk" sub_heading="Umístěte potisk nebo výšivku, udejte tiskový rozměr" }}
+    <div class="items">
+        <div class="item">
+            <img src="../img/configurator-design.png" alt="" />
+        </div>
+    </div>
+    <div class="part_form inline-block">
+        <table>
+            <thead>
+                <tr>
+                    <th>Umístění</th>
+                    <th>1:1</th>
+                    <th colspan="2">velikost potisku/výšivky (cm)</th>
+                    <th>počet barev</th>
+                    <th>nahrání grafiky</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="item small">
+                            <label class="hide">Umístění</label>
+                            <select class="select">
+                                <option>- Umístění -</option>
+                                <option>Volba 1</option>
+                                <option>Volba 2</option>
+                                <option>Volba 3</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item">
+                            <input type="checkbox" name="checkbox" id="f-checkbox-1" />
+                            <label for="f-checkbox-1">
+                                <span class="icon"></span>
+                                <i class="text">1:1</i>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item small">
+                            <label class="hide">Šířka</label>
+                            <input type="text" name="f-number" placeholder="Šířka ..." />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item small">
+                            <label class="hide">Výška</label>
+                            <input type="text" name="f-number" placeholder="Výška ..." />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item small">
+                            <input type="text" name="f-number" placeholder="Počet barev ..." />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item file">
+                            <input type="file" name="f-file" />
+                            <div class="btn btn-type-1 color-a"><i>Vybrat soubor</i></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-left">
+            <br />
+            <div class="item">
+                <a href="#" class="btn btn-type-1" data-design-more><i>+ další potisk</i></a>
+            </div>
+        </div>
+    </div>
+</div>
