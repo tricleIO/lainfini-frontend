@@ -6,21 +6,24 @@
   padding-top: $_70;
   &__subtitle {
     font-size: $_24;
-    font-family: $font-family-nexa-l;
+    font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-small;
     color:$color-text;
     padding-bottom: $_30;
+    font-weight: lighter;
   }
   &__title {
     font-size: $_36;
     font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-base;
     line-height: $line-height-base;
+    font-weight: $dt-font-weight;
   }
   &__intro {
-    font-family: "Open Sans";
+    font-family: $font-family-open-sans;
     color: $color-black;
     font-size: $font-family-base;
+    line-height: $line-height-base;
   }
   &:before {
     @include position(absolute, 0 auto auto 50%);

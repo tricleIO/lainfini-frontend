@@ -1,5 +1,7 @@
 .arrivals {
-  margin-top: -$_100 * 1.30;
+  @include media-breakpoint-up(sm) {
+    margin-top: -$_100 * 1.30;
+  }
   font-family: $font-family-nexa;
   margin-bottom: $_100;
 
@@ -9,6 +11,7 @@
     box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
     img {
       max-width: $_100*5.50;
+      width: 100%;
     }
   }
 
@@ -18,8 +21,9 @@
   }
   &__title {
     font-size: $_22;
-    font-family: $font-family-nexa-l;
+    font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-small;
+    font-weight: lighter;
   }
   &__subtitle {
     font-size: $_36;

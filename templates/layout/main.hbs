@@ -2,11 +2,10 @@
 <!--[if lt IE 10]><html class="no-js ie" lang="en"><![endif]-->
 <!--[if gt IE 10]><!-->
 <html class="no-js" lang="en"><!--<![endif]-->
-
 {{> "layout/head"}}
 <body class="{{#if hp}}hp{{else}}sp{{/if}} preload">
+{{> "layout/header"}}
 <div id="body">
-    {{> "layout/header"}}
     <main id="page">
         {{! skládání šablon - v php jako {include file="$template"} !}}
         {{#if hp}}
@@ -16,8 +15,9 @@
             {{> "components/designers" type="h2"}}
         {{/if}}
     </main>
-    {{> "layout/footer"}}
+
 </div>
+{{> "layout/footer"}}
 {{#each js as |url|}}
     <script type="text/javascript" src="{{url}}"></script>
 {{/each}}

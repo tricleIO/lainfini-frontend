@@ -18,10 +18,17 @@
   }
 
   &__title {
-    font-size: $_30;
+    font-size: $_16;
+    @include media-breakpoint-up(sm){
+      font-size: $_30;
+    }
   }
 
   &__subtitle {
-    font-size: $_72;
+    font-size: $_32;
+    @include media-breakpoint-up(sm){
+      font-size: $_72;
+    }
+
   }
 }
