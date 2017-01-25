@@ -1,0 +1,15 @@
+.social-nav {
+  li {
+    display: inline-block;
+    padding:$_30 $_10;
+  }
+  a {
+    display: block;
+    font-size: $_60;
+    transition: color 0.4s ease, transform 0.4s ease;
+    &:hover {
+      color: $color-b;
+      transform: scale(1.05);
+    }
+  }
+}

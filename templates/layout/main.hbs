@@ -27,16 +27,23 @@
             {{> "components/arrivals_slider"}}
             {{> "components/category_card" type="h2"}}
             {{> "components/designers" type="h2"}}
+            {{> "parts/social_nav"}}
         {{/if}}
+
+        {{#if profil}}
+
+        {{/if}}
+
     </main>
     {{> "layout/footer"}}
 </div>
 
-
-<!--[if lt IE 10]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><![endif]-->
-<!--[if gt IE 10]><!--><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script><!--<![endif]-->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/ie.js" defer></script><![endif]-->
+<!--
+&lt;!&ndash;[if lt IE 10]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><![endif]&ndash;&gt;
+&lt;!&ndash;[if gt IE 10]>&lt;!&ndash;dash;&gt;<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>&lt;!&ndash;<![endif]&ndash;&gt;
+&lt;!&ndash;[if lt IE 9]>
+<script type="text/javascript" src="js/ie.js" defer></script><![endif]&ndash;&gt;
+-->
 {{#each js as |url|}}
     <script type="text/javascript" src="{{url}}"></script>
 {{/each}}

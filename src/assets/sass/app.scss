@@ -24,6 +24,7 @@
 @import "~bootstrap/scss/utilities/text";
 @import "~bootstrap/scss/utilities/clearfix";
 @import "~bootstrap/scss/utilities/display";
+@import "~bootstrap/scss/utilities/visibility";
 
 //
 // Bootstrap Grid
@@ -54,6 +55,8 @@
 @import "components/category_card";
 @import "components/designers";
 @import "components/wsw";
+
+@import "parts/social_nav";
 
 @import "helpers";
 

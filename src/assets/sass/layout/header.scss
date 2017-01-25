@@ -17,15 +17,6 @@ header {
     padding: 0;
     vertical-align: middle;
   }
-  .logo {
-    display: block;
-    width: 100%;
-    font-size: $_24;
-    font-weight: $dt-font-weight;
-    line-height:$line-height-base;
-    text-transform: uppercase;
-    letter-spacing: $_14/4;
-  }
   i {
     &:before {
       font-size: $_25;
@@ -50,4 +41,13 @@ header {
     position: relative;
     z-index: 9999;
   }
+}
+.logo {
+  display: block;
+  width: 100%;
+  font-size: $_24;
+  font-weight: $dt-font-weight;
+  line-height:$line-height-base;
+  text-transform: uppercase;
+  letter-spacing: $_14/4;
 }

@@ -2,21 +2,9 @@
   "project": "laifini",
   "page_title": "Laifini - Template",
   "css": [
-    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css",
-    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css",
-    "//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css",
-    "//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.15/css/lightgallery.min.css",
-    "//cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css",
     "build/webStyles.css"
   ],
   "js": [
-    "//cdnjs.cloudflare.com/ajax/libs/lazysizes/1.4.0/lazysizes.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.1/scrollreveal.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.15/jquery.touchSwipe.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.15/js/lightgallery-all.min.js",
-    "//cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js",
     "build/webScripts.js"
   ],
   "m1920": "(min-width: 1281px)",
