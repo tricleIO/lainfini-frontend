@@ -1,0 +1,9 @@
+.profil-gallery {
+  [class^="col-"] {
+    padding: 0;
+  }
+  &__item {
+    height: $_100 *4;
+    background-position: center center;
+  }
+}

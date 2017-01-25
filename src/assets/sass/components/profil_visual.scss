@@ -1,0 +1,73 @@
+.profil {
+  position: relative;
+  background-color: $color-a;
+  height: calc(100vh - 100px);
+  min-height: $_100 * 7.48;
+  color: $color-text;
+  .container {
+    height: 100%;
+  }
+  &__image{
+    position: absolute;
+    width: 50%;
+    top:0;
+    bottom:0;
+    right: 0;
+    background-color: $color-black;
+    background-size: cover;
+  }
+
+  &__slogan {
+    padding-top: $_50;
+    .bq {
+      position: relative;
+      font-size: $_30;
+      padding:0 $_10;
+      color: $color-b;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-base;
+      line-height: $line-height-base;
+
+      &:before, &:after {
+        position: absolute;
+
+      }
+      &:before {
+        content: '“';
+        top:0;
+        left:0;
+      }
+      &:after {
+        content: '”';
+        bottom:0;
+        right: 0;
+      }
+    }
+  }
+
+  &__head {
+    padding: $_60 0;
+    &__subtitle, &__title {
+      text-transform: uppercase;
+    }
+    &__title {
+      padding: $_20 0;
+      letter-spacing: $letter-spacing-base;
+    }
+  }
+  &__body {
+    font-family: $font-family-open-sans;
+    ul {
+      padding-left: $_20;
+      li {
+        padding: $_10 0;
+        list-style: disc;
+        letter-spacing: $letter-spacing-small;
+      }
+      a {
+
+      }
+    }
+  }
+
+}
