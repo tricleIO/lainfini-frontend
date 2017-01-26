@@ -25,6 +25,8 @@
     color: $color-black;
     font-size: $font-family-base;
     line-height: $line-height-base;
+    padding-left: $_50;
+    padding-right: $_50;
   }
   &:before {
     @include position(absolute, 0 auto auto 50%);

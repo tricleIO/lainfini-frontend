@@ -47,4 +47,32 @@ $(document).ready(function () {
         ]
     });
 
+    let $slideshow = $(".lookbook__slider").slick({
+            arrows:true,
+            lazyLoad: 'ondemand',
+            autoplay:false,
+            centerMode:true,
+            centerPadding: '0',
+            draggable:false,
+            autoplaySpeed: 3000,
+            slidesToShow: 3,
+            infinite: true,
+            speed: 800,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false
+                    }
+                }
+            ]
+    });
+
+    $('.lookbook__wrapper__arrow.icon-arrow-l').click(function() {
+        $slideshow.slick('slickNext', parseInt($slideshow.slick('slickCurrentSlide'))-1);
+    });
+    $('.lookbook__wrapper__arrow.icon-arrow-r').click(function() {
+        $slideshow.slick('slickNext', parseInt($slideshow.slick('slickCurrentSlide'))+1);
+    });
+
 });

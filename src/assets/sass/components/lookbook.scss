@@ -1,0 +1,40 @@
+.lookbook {
+    &__slider {
+      position: relative;
+      overflow: hidden;
+      padding-top: $_100;
+      padding-bottom: $_100;
+      &__item {
+        transition: transform 0.9s ease-in-out;
+      }
+    }
+    .slick-current {
+      position: relative;
+      z-index: 999;
+    }
+    &__wrapper {
+      &__arrow {
+        @include position(absolute, 50% auto auto auto);
+        transform: translateY(-50%);
+        &:hover {
+          cursor: pointer;
+        }
+        &:before {
+          font-size: $_40;
+          color: $color-b;
+        }
+        &.icon-arrow-l {
+          left: -$_100;
+        }
+        &.icon-arrow-r {
+          right: -$_100;
+        }
+      }
+    }
+    .slick-list {
+      overflow: visible;
+    }
+    .slick-current {
+      transform: scale(1.5);
+    }
+}
