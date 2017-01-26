@@ -11,6 +11,7 @@
 //
 // Bootstrap variables
 //
+@import "~bootstrap/scss/variables";
 @import 'variables/default';
 
 //
@@ -64,6 +65,8 @@
 @import "components/profil_visual";
 @import "components/meetbox";
 @import "components/single-box";
+@import "components/peoples";
+@import "components/boxes";
 
 @import "parts/social_nav";
 @import "parts/profil_gallery";

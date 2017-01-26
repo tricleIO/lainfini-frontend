@@ -1,0 +1,12 @@
+.boxes {
+  &__item {
+
+  }
+
+  &__half {
+    width: 50%;
+    float: left;
+    max-height: $_100 * 4.88;
+  }
+
+}
