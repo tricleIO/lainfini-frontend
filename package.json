@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "bootstrap": "^4.0.0-alpha.5",
+    "bootstrap": "^4.0.0-alpha.6",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-data": "^1.2.1",
     "gulp-htmlmin": "^3.0.0",
