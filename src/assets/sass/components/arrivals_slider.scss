@@ -4,8 +4,14 @@
   }
   font-family: $font-family-nexa;
   margin-bottom: $_100;
-
+  &__slider {
+    @include media-breakpoint-down(xs) {
+      padding: 0;
+    }
+  }
   &__item {
+    position: relative;
+    outline: none!important;
     background-color: lighten($color-a, 6%);
     padding: $_40;
     @include media-breakpoint-up(sm) {
@@ -16,7 +22,6 @@
       width: 100%;
     }
   }
-
   &__title, &__author {
     color: $color_text;
     margin-bottom: $_20;

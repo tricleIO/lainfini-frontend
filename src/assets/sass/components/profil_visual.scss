@@ -1,7 +1,8 @@
 .profil {
+  overflow: hidden; //because before name go out of div
   position: relative;
   background-color: $color-a;
-  height: calc(100vh - 100px);
+  height: $min-height;
   min-height: $_100 * 7.48;
   color: $color-text;
   .container {
@@ -15,6 +16,7 @@
     right: 0;
     background-color: $color-black;
     background-size: cover;
+    background-position: center center;
   }
 
   &__slogan {
@@ -46,7 +48,31 @@
   }
 
   &__head {
+    position: relative;
     padding: $_60 0;
+    @include media-breakpoint-up(sm) {
+      &:before {
+        position: absolute;
+        content: attr(data-name);
+        font-size: 8em;
+        color: darken($color-a,10);
+        opacity: 0.5;
+        left: -11px;
+        top: 50px;
+        font-family: "Helvetica";
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-small;
+      }
+    }
+    @include media-breakpoint-up(md) {
+      &:before {
+        font-size: 10em;
+      }
+    }
+    &__subtitle, &__title, &__prof {
+      position: relative;
+    }
     &__subtitle, &__title {
       text-transform: uppercase;
     }

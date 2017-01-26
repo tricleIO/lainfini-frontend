@@ -1,30 +1,21 @@
-<section class="comp_boxes lazyload">
-    <div class="background">
-        <div class="parallax-container">
-            <picture class="image">
-                <source srcset="#" data-srcset="{{bg}}" media="{{m1920}}" />
-                <source srcset="#" data-srcset="#" media="(max-width:960px)" />
-                <img src="#" data-src="{{bg}}" alt="" class="lazyload" />
-            </picture>
-        </div>
-    </div>
-    <div class="content">
-        <div class="container">
-            {{> "parts/ui/heading" h="2" type="1" heading=content_heading sub_heading=content_sub_heading}}
-            <div class="row">
-                {{#each items as |item|}}
-                <div class="col col-4 col-6-t" data-reveal>
-                    <a href="#" title="" class="item">
-                        <div class="item-heading">
-                            <span class="icon {{item.icon}}"></span>
-                            {{> "parts/ui/heading" h="3" type="2" heading=item.heading}}
-                        </div>
-                        <div class="item-content">
-                            <p>{{item.content}}</p>
-                        </div>
-                    </a>
+<section class="single-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-xs-center">
+                {{> "parts/ui/heading" subtitle="unique process of design and production" title="Every piece is the original art" type="h3"}}
+            </div>
+            <div class="col-xs-12 col-sm-6 align-middle">
+                <img src="../../userfiles/studio-background.jpg" class="img-fluid" alt="peace">
+            </div>
+            <div class="col-xs-12 col-sm-6 align-middle">
+                <div class="single-box__text">
+                    <span class="single-box__title d-inline-block">Currated collections</span>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
+                        gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+                        accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+                    </p>
                 </div>
-                {{/each}}
             </div>
         </div>
     </div>

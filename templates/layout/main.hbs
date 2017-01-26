@@ -23,7 +23,7 @@
         </div>
         {{! skládání šablon - v php jako {include file="$template"} !}}
         {{#if hp}}
-            {{> "components/visual"}}
+            {{> "components/visual" bg="../../userfiles/visual-bg.jpg" subtitle="original design" title="Unique and inspired"}}
             {{> "components/arrivals_slider"}}
             {{> "components/category_card" type="h2"}}
             {{> "components/designers" type="h2"}}
@@ -33,6 +33,14 @@
         {{#if profil}}
             {{> "components/profil_visual" type="h2"}}
             {{> "parts/profil_gallery"}}
+            {{> "parts/ui/wsw"}}
+            {{> "parts/social_nav"}}
+        {{/if}}
+
+        {{#if studio}}
+            {{> "components/visual" bg="../../userfiles/studio-bg.jpg" title="The Studio"}}
+            {{> "components/meetbox"}}
+            {{> "components/boxes"}}
         {{/if}}
 
     </main>

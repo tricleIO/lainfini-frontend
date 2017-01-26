@@ -77,8 +77,6 @@ gulp.task('dev', ['html'], function() {
 
     livereload.listen();
 
-    gulp.watch('src/assets/js/**/*.js', ['scripts']);
-
     gulp.watch(['src/assets/sass/**/*.scss']);
 
     gulp.watch(['templates/**/*.{hbs, html}'], ['html']);

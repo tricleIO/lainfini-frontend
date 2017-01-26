@@ -9,7 +9,7 @@
 @import "../../../fonts/text/stylesheet.css";
 
 //
-// Bootstrapvariables
+// Bootstrap variables
 //
 @import 'variables/default';
 
@@ -25,6 +25,7 @@
 @import "~bootstrap/scss/utilities/clearfix";
 @import "~bootstrap/scss/utilities/display";
 @import "~bootstrap/scss/utilities/visibility";
+@import "~bootstrap/scss/utilities/align";
 
 //
 // Bootstrap Grid
@@ -43,6 +44,11 @@
 //Own mixins
 @import "mixin/mixin";
 
+//Externam lib
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
 //Layout
 @import "layout/core";
 @import "layout/header";
@@ -56,6 +62,8 @@
 @import "components/designers";
 @import "components/wsw";
 @import "components/profil_visual";
+@import "components/meetbox";
+@import "components/single-box";
 
 @import "parts/social_nav";
 @import "parts/profil_gallery";
@@ -63,8 +71,10 @@
 @import "helpers";
 
 //ui elements
-@import "ui/hamburger";
 @import "ui/menu_overlay";
+@import "ui/hamburger";
 @import "ui/headings";
+@import "ui/slick";
 @import "ui/btn";
+@import "ui/wsw";
 

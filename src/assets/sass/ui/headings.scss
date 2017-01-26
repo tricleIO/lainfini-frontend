@@ -34,4 +34,10 @@
     height: 2px;
     background-color: $color-b;
   }
+  &--mod-light {
+    padding-top: $_25;
+    &:before {
+      content: none;
+    }
+  }
 }

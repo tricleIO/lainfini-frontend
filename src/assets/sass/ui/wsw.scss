@@ -1,0 +1,127 @@
+.text-page {
+  margin-bottom: $_30;
+}
+.wsw {
+  &:before, &:after {
+    content: " ";
+    display: table
+  }
+  color:$color-text;
+  h1,h2,h3,h4,h5 {
+    position: relative;
+    font-family: $font-family-nexa;
+    text-transform: uppercase;
+    text-align: center;
+    //font-size: $_30;
+    margin-top: $_20;
+    padding-top: $_20;
+    padding-bottom: $_20;
+    letter-spacing: $letter-spacing-small;
+    &:before {
+      @include position(absolute, 0 auto auto 50%);
+      @include transform(translateX(-50%));
+      content: '';
+      width: $_72;
+      height: 2px;
+      background-color: $color-b;
+    }
+  }
+
+  p, ul {
+    font-family: $font-family-open-sans;
+  }
+  p {
+    margin-bottom: $_30;
+    letter-spacing: $letter-spacing-small;
+    line-height: $line-height-base;
+    text-align: left;
+  }
+
+  ul.disc {
+    padding-left:$_18;
+    li {
+      list-style: disc;
+    }
+  }
+  ul {
+    li {
+      padding: $_8 0;
+    }
+  }
+  a {
+    position: relative;
+    color: $color-b;
+    &:after {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: $color-a;
+      content: '';
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(10px);
+    }
+    &:hover {
+      &:after {
+        opacity: 1;
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        transform: translateY(0px);
+      }
+    }
+  }
+  hr {
+    border: 1px solid $color-text;
+    margin: $_20 0;
+  }
+  i {
+    font-style: italic;
+  }
+  img[align=right],.wsw img[style="float: right"] {
+    margin: 0 0 1.25em;
+    float: none
+  }
+  img {
+    max-width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+
+    img[align=right],.wsw img[style="float: right"] {
+      margin-left: 3.75em;
+      margin-bottom: 3.75em
+    }
+  }
+  blockquote {
+    position: relative;
+    font-size: 1.4375em;
+    text-align: center;
+    color: #333;
+    font-family: $font-family-nexa;
+    z-index: 1;
+    overflow: hidden;
+    padding: .6875em;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8
+  }
+  table td,table th {
+    text-align: left;
+    padding-bottom: .9375em
+  }
+  table th {
+    font-weight: 500;
+    padding-right: .9375em
+  }
+  ul {
+    display: inline-block;
+    margin-right: $_15;
+    margin-bottom: $_15;
+  }
+  .block-center {
+    margin:0 auto;
+  }
+  [class^="col-"] {
+    img {padding:$_10 0}
+  }
+}

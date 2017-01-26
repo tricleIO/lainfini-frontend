@@ -1,51 +1,11 @@
-<section class="visual" style="background-image: url('../../userfiles/visual-bg.jpg')">
+<section class="visual" style="background-image: url('{{bg}}')">
     <div class="visual__heading text-xs-center">
-        <h1 class="visual__title">original design</h1>
-        <p class="visual__subtitle">Unique and inspired</p>
+        {{#if subtitle}}
+            <p class="visual__subtitle ">{{subtitle}}</p>
+        {{/if}}
+        {{#if title}}
+            <h1 class="visual__title">{{title}}</h1>
+        {{/if}}
+
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-<!--
-<section class="banner static{{#if small}} banner--small{{/if}}">
-    <div class="banner__wrapper {{style}}">
-    {{#each items as |item|}}
-        <div class="banner__item">
-            <picture class="banner__item__picture">
-                {{#if @first}}
-                    <source srcset="{{item.img}}" media="{{../m1920}}" />
-                    <source srcset="{{item.img_768}}" media="{{../m768}}" />
-                    <source srcset="{{item.img_480}}" media="{{../m480}}" />
-                    <img src="{{item.img}}" alt="" class="lazyload" />
-                {{else}}
-                    <source srcset="#" data-srcset="{{item.img}}/123123" media="{{../m1920}}" />
-                    <source srcset="#" data-srcset="{{item.img_768}}" media="{{../m768}}" />
-                    <source srcset="#" data-srcset="{{item.img_480}}" media="{{../m480}}" />
-                    <img src="#" data-src="{{item.img}}" class="lazyload" alt="" />
-                {{/if}}
-            </picture>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-7 text-wrapper">
-                        <div class="banner__item__text wsw">
-                            <h1 class="heading heading--type-1">Technologie Dynacore</h1>
-                            <p class="sub-title">
-                                Technologie Dynacore je bezkonkurenční kombinací flexibility a torzní stability. Zaručuje pocit
-                                stálosti rámu a dlouhotrvající výkon pro agresivní hráče.
-                            </p>
-                            <a href="#" class="btn"><i class="btn-triangle"></i>Dozvědět se více</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {{/each}}
-    </div>
-</section>-->
