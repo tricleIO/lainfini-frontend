@@ -8,6 +8,7 @@ $(document).ready(function () {
         slidesToShow: 3,
         infinite: true,
         speed: 500,
+        centerMode:true,
         responsive: [
             {
                 breakpoint: 600,

@@ -1,12 +1,48 @@
 .boxes {
-  &__item {
+  overflow: hidden;
+  color: $color-text;
+  line-height: $line-height-base;
+  letter-spacing: $letter-spacing-small;
+  &__items {
 
   }
-
   &__half {
+    position: relative;
+    overflow: hidden;
     width: 50%;
     float: left;
-    max-height: $_100 * 4.88;
+    min-height: $_100 * 4.88;
   }
-
+  &--caption {
+    @include media-breakpoint-up(sm){
+      display: table;
+      table-layout: fixed;
+      [class^="col-"] {
+        display: table-cell;
+        vertical-align: middle;
+        overflow: hidden;
+      }
+    }
+  }
+  &__background {
+    img {
+      @include media-breakpoint-up(sm){
+        @include owf-absolute-center();
+      }
+    }
+  }
+  &__text {
+    background-color: $color-a;
+    padding:0 $_30;
+    p {
+      font-size: $_16;
+    }
+  }
+  &__title {
+    display: block;
+    font-family: $font-family-nexa;
+    font-size: $_30;
+    text-transform: uppercase;
+    margin-bottom: $_10;
+  }
 }
