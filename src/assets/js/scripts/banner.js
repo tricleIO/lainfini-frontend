@@ -53,7 +53,7 @@ $(document).ready(function () {
             autoplay:false,
             centerMode:true,
             centerPadding: '0',
-            draggable:false,
+            draggable:true,
             autoplaySpeed: 3000,
             slidesToShow: 3,
             infinite: true,
@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
 
     $('.lookbook__wrapper__arrow.icon-arrow-l').click(function() {
-        $slideshow.slick('slickNext', parseInt($slideshow.slick('slickCurrentSlide'))-1);
+        $slideshow.slick('slickPrev', parseInt($slideshow.slick('slickCurrentSlide'))-1);
     });
     $('.lookbook__wrapper__arrow.icon-arrow-r').click(function() {
         $slideshow.slick('slickNext', parseInt($slideshow.slick('slickCurrentSlide'))+1);

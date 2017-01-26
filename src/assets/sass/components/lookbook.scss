@@ -1,4 +1,20 @@
 .lookbook {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: $_50;
+    &:before {
+      position: absolute;
+      content: 'unique & inspired';
+      text-transform: uppercase;
+      font-size: $_100*2.5;
+      font-weight: $font-weight-bold;
+      color:#875f37;
+      opacity:.1;
+      bottom:-10px;
+      white-space:nowrap;
+      text-shadow: 15px 15px 15px rgba(0,0,0,0.5);
+    }
+
     &__slider {
       position: relative;
       overflow: hidden;
