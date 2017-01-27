@@ -3,12 +3,12 @@
         @include media-breakpoint-down(sm) {
             margin-bottom: $_20;
         }
-        transition: all .5s ease;
-        border:1px solid transparent;
+        transition: all .8s ease!important;
+        border:1px solid transparent!important;
         padding: $_10;
         &:hover {
-            border:1px solid $color-text;
-            transform: scale(0.8) translate3d( 0, 0, 0);
+            border:1px solid $color-text!important;
+            transform: scale(0.8) translate3d( 0, 0, 0)!important;
             cursor: pointer;
         }
 
