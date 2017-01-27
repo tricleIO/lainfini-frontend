@@ -47,6 +47,9 @@
 
   .heading {
     padding: $_20 0;
+    @include media-breakpoint-down(sm) {
+      font-size: $_12;
+    }
     &:before {
       content: none;
     }

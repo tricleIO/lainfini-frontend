@@ -9,7 +9,9 @@
   &__bg {
     position: relative;
     overflow: hidden;
-    height: $_100*7.68;
+    @include media-breakpoint-up(md) {
+      min-height: $_100*4.68;
+    }
     &:before {
       @include position(absolute,0 0 0 0);
       z-index: 3;
@@ -31,7 +33,9 @@
 
     }
     img {
-      @include owf-absolute-center();
+      @include media-breakpoint-up(md) {
+        @include owf-absolute-center();
+      }
     }
   }
 
