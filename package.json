@@ -61,6 +61,7 @@
     "jquery.inputmask": "^3.2.7",
     "query-string": "^4.2.2",
     "reset-css": "^2.2.0",
+    "scrollreveal": "^3.3.2",
     "slick-carousel": "^1.6.0",
     "tiny-cookie": "^1.0.1"
   }
