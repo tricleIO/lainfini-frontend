@@ -13,11 +13,9 @@
             <label for="op"></label>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Work</a></li>
-                    <li><a href="#">Clients</a></li>
-                    <li><a href="#">Contact</a></li>
+                    {{#each menu as |item|}}
+                        <li><a href="/dist/{{item}}.html">{{item}}</a></li>
+                    {{/each}}
                 </ul>
             </nav>
         </div>
