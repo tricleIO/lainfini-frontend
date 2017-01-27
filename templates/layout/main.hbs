@@ -48,6 +48,12 @@
             {{> "parts/social_nav"}}
         {{/if}}
 
+        {{#if designers}}
+            {{> "components/welcome" type="h1" bg-color="#f9e5d3"}}
+            {{> "parts/designers"}}
+            {{> "components/lookbook" type="h2"}}
+            {{> "parts/social_nav"}}
+        {{/if}}
     </main>
     {{> "layout/footer"}}
 </div>
