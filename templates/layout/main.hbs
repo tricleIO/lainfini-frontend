@@ -52,6 +52,14 @@
             {{> "components/lookbook" type="h2"}}
             {{> "parts/social_nav"}}
         {{/if}}
+
+        {{#if eshop-list}}
+            {{> "components/visual" bg="../../userfiles/visual-bg.jpg" mod="visual--small"}}
+            {{> "components/eshop-filter"}}
+            {{> "components/eshop-list"}}
+        {{/if}}
+
+
     </main>
     {{> "layout/footer"}}
 </div>

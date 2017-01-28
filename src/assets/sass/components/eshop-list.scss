@@ -1,0 +1,51 @@
+.product-list {
+
+  &__item {
+
+  }
+
+  &__title {
+
+  }
+
+  &__bg {
+    height: $_100*5;
+    background-repeat: no-repeat;
+    background-position: right bottom, left top;
+    background-size: 50% auto,90% auto;
+    &--left-top {
+      background-position: left top, right bottom;
+    }
+    &--right-top {
+      background-position: right top, left bottom;
+    }
+    &--left-bottom {
+      background-position: left bottom, right top;
+    }
+  }
+
+  &__slide {
+    img {
+      position: relative;
+    }
+
+    .slide__img--big {
+      top:0;
+      max-width: 90%;
+    }
+    .slide__img--small {
+      left: 100%;
+      transform: translate(-100%,-50%);
+    }
+  }
+
+  &__content {
+
+  }
+
+  //BGS MODS
+  &--default {
+
+  }
+
+}

@@ -2,6 +2,11 @@
   .visual {
     min-height: $min-height - $_100 * 1.5;
     height: calc(100vh - 400px);
+    &--small {
+      height: $_100 * 2.6;
+      min-height: $min-height-ap;
+      max-height: $_100*2.6;
+    }
   }
 }
 .visual {
@@ -11,6 +16,7 @@
   height: calc(100vh - 100px);
   min-height: $min-height;
   line-height: $line-height-base;
+  font-family: $font-family-monserat;
   &__heading {
     @include position(absolute, 50% 0 auto 0);
     @include transform(translateY(-50%));
