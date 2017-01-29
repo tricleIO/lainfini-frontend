@@ -22,7 +22,6 @@
         top:-$_40;
         right: 0;
       }
-
       .product-list__slider {
         padding-bottom: 0;
         .slick-track {
@@ -36,6 +35,10 @@
         margin-top: $_15;
         max-width: 100%;
         width: 100%;
+      }
+      .slick-dots {
+        left: 0;
+        right: auto!important;
       }
     }
 
@@ -58,6 +61,7 @@
     }
 
   }
+
   &__slider {
     padding-bottom: $_100;
     &.slick-dotted.slick-slider {
