@@ -7,9 +7,17 @@ function scrollreveal() {
         reset: false,
         viewOffset: { top: 164 }
     });
+
     window.sr.reveal(".designers__item",{
         duration: 1500,
     },250);
+
+
+    window.sr.reveal(".product-list .product-list__item",{
+        duration: 1000,
+    });
+
+
     window.sr.reveal(".wsw *",{
         duration: 1500,
     });

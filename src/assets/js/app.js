@@ -8,3 +8,5 @@ require('./scripts/banner');
 require('./scripts/layout');
 require('./scripts/scroll');
 
+
+require('./scripts/eshop-slider');

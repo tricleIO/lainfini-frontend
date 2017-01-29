@@ -37,3 +37,22 @@
 
   }
 }
+.slick-dots {
+  li {
+    margin:0;
+    &.slick-active {
+      button {
+        &:before {
+          color: shade($color-a,50%);
+        }
+      }
+    }
+    button {
+      &:before {
+        font-size: 13px;
+        color: $color-a;
+        opacity:1;
+      }
+    }
+  }
+}

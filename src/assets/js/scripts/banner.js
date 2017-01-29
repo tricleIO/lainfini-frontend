@@ -75,4 +75,19 @@ $(document).ready(function () {
         $slideshow.slick('slickNext', parseInt($slideshow.slick('slickCurrentSlide'))+1);
     });
 
+    let $slideshowEshop = $(".product-list__slider").slick({
+        dots:true,
+        arrows:false,
+        fade:true,
+        cssEase:"ease",
+        speed: 1200
+    });
+
+    $slideshowEshop.find(".slick-dots").prepend("<i class='icon icon-arrow-r'></i>");
+    $slideshowEshop.find(".slick-dots .icon-arrow-r").click(function() {
+        $(this).parents(".product-list__slider").slick('slickNext', parseInt($(this).parents(".product-list__slider").slick('slickCurrentSlide')));
+    });
+
+
+
 });
