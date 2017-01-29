@@ -1,10 +1,24 @@
 <div class="peoples">
     <div class="container">
         <div class="row">
+            <div class="col-12 text-center">
+                {{> "parts/ui/heading"}}
+            </div>
             <div class="col-12 text-center" data-reveal>
-                <h4 class="peoples__title">lainfini studio: collaborative collective</h4>
                 <img src="../../userfiles/peoples.png" class="img-fluid d-inline-block" alt="peoples">
             </div>
+            {{#if btn-inline}}
+                <div class="col-12 offset-vertical-50">
+                    <div class="row btn__inline">
+                        <div class="col-12 col-sm-5 offset-sm-1">
+                            <a href="#" class="btn">designers profiles</a>
+                        </div>
+                        <div class="col-12 col-sm-5">
+                            <a href="#" class="btn">scarves - making of</a>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>

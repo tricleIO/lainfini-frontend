@@ -6,4 +6,7 @@
     text-transform: uppercase;
     color: $color-text;
   }
+  .btn {
+    @include btn($_20 $_30, $color-black,$color-white,$color-white);
+  }
 }

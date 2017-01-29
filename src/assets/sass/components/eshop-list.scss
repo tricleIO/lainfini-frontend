@@ -56,6 +56,7 @@
       @include position(absolute,auto 0 0 auto);
       width: 50%;
     }
+
   }
   &__slider {
     padding-bottom: $_100;
@@ -112,8 +113,8 @@
     clear: both;
   }
 
-  &__content {
-
+  &__small-image {
+    box-shadow: 4px 4px 41px rgba(0, 0, 0, 0.4);
   }
 
   &__action {

@@ -80,7 +80,9 @@ $(document).ready(function () {
         arrows:false,
         fade:true,
         cssEase:"ease",
-        speed: 1200
+        speed: 600,
+        infinite: true
+
     });
 
     $slideshowEshop.find(".slick-dots").prepend("<i class='icon icon-arrow-r'></i>");
