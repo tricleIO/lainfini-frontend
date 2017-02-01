@@ -1,0 +1,133 @@
+form {
+
+
+}
+
+.select2-container {
+  font-family: $font-family-open-sans;
+  letter-spacing: $letter-spacing-small;
+  .select2-selection {
+    &__rendered {
+      color: lighten($color-text,.2)!important;
+      font-size: $_24;
+      font-weight: lighter;
+    }
+    &--single {
+      outline: none;
+      border:none;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      background-color: $color-white;
+      height: auto;
+      padding: $_17;
+      .select2-selection__arrow {
+        @include position(absolute, 50% 0 0 auto);
+        transform: translateY(-50%);
+        height:auto;
+        width: auto;
+        transition: all 0.4s ease;
+        &:before {
+          font-family: 'lainfini';
+          content: $icon-arrow-down;
+          font-size: $_30;
+          color: lighten($color-text,10%);
+          transition: all 0.4s ease;
+        }
+
+        b {
+          display: none;
+        }
+      }
+      &:hover {
+        .select2-selection__arrow {
+          cursor: pointer;
+          &:before {
+            color: $color-b;
+          }
+        }
+      }
+    }
+    &__arrow {
+
+    }
+  }
+  &--open {
+    .select2-selection--single .select2-selection__arrow {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  .select2-dropdown {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+    .select2-search {
+      display: none;
+    }
+    border:none;
+    border-radius: 0;
+  }
+  .select2-results {
+
+    &__options {
+      max-height: $_100*4!important;
+    }
+
+    &__option {
+      padding: $_25 $_30;
+      color: lighten($color-text,10%);
+      &[aria-selected=true] {
+        background-color: #f1f0f0;
+      }
+      &[aria-selected] {
+        color: lighten($color-text,10%);
+      }
+      &--highlighted[aria-selected] {
+        background-color: rgba($color-text,.18);
+      }
+    }
+
+  }
+}
+.item {
+  &--error {
+    position: relative;
+    input {
+      border-color:red;
+    }
+    &:before {
+      @include position(absolute, 0 0 0 0);
+      text-align: center;
+      content: attr(data-error);
+    }
+  }
+}
+input {
+  padding: $_19;
+  outline: none;
+  font-size: $_16;
+  width: 100%;
+  border:1px solid #dddbc8;
+  text-align: center;
+  color: $color-text;
+  &::-webkit-input-placeholder {
+    color: lighten($color-text,30%);
+    text-transform: uppercase;
+  }
+
+  &[type="text"] {
+
+  }
+  &[type="email"] {
+
+  }
+
+  &[type="radio"] {
+
+  }
+
+  &[type="password"] {
+
+  }
+
+  &[type="checkbox"] {
+
+  }
+
+}

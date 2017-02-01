@@ -1,13 +1,6 @@
 //Bourbon mixin library
 @import "~bourbon/app/assets/stylesheets/bourbon";
 
-//external libraries
-@import '~reset-css/reset.css';
-
-@import "~animate.css/animate.css";
-@import "../../../fonts/icon/style";
-@import "../../../fonts/text/stylesheet.css";
-
 //
 // Bootstrap variables
 //
@@ -34,6 +27,15 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
+
+
+//external libraries
+@import '~reset-css/reset.css';
+
+@import "~animate.css/animate.css";
+@import "../../../fonts/icon/style";
+@import "../../../fonts/text/stylesheet.css";
+@import "~select2/src/scss/core";
 
 //------------------------End External SCSS FILES----------------------//
 
@@ -86,4 +88,5 @@
 @import "ui/slick";
 @import "ui/btn";
 @import "ui/wsw";
+@import "ui/interactive";
 
