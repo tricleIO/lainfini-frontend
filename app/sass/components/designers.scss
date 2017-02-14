@@ -1,0 +1,38 @@
+.designers {
+    &__item {
+        @include media-breakpoint-down(sm) {
+            margin-bottom: $_20;
+        }
+        transition: all .8s ease!important;
+        border:1px solid transparent!important;
+        padding: $_10;
+        &:hover {
+            border:1px solid $color-text!important;
+            transform: scale(0.8) translate3d( 0, 0, 0)!important;
+            cursor: pointer;
+        }
+
+        &__content {
+            padding: $_30 0;
+        }
+
+        h4 {
+            font-weight: $dt-font-weight;
+            font-family: $font-family-nexa;
+        }
+
+        p {
+            margin: $_20 0;
+            font-family: $font-family-open-sans;
+            line-height: $line-height-base - .1;
+            font-size: $font-size-sm;
+            min-height: $_46;
+        }
+
+        a {
+            text-transform: uppercase;
+            color: $color-b;
+        }
+
+    }
+}

@@ -1,0 +1,30 @@
+.currator {
+  font-family: $font-family-nexa;
+  line-height: $line-height-base;
+  &__photo {
+    position: relative;
+    &__small {
+      @include position(absolute,50% 0 0 0);
+      @include transform(translate(-65%,-50%));
+
+      filter:drop-shadow($_10 $_20 $_12 rgba(0,0,0,0.3))
+    }
+
+  }
+
+  &__context {
+
+    &__title {
+      color: $color_black;
+      text-transform: uppercase;
+      font-size: $_24;
+      letter-spacing: $letter-spacing-base;
+      font-weight: bold;
+      p {
+        color: $color-text;
+      }
+    }
+
+  }
+
+}

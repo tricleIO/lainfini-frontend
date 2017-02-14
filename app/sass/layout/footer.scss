@@ -1,0 +1,48 @@
+footer {
+  font-family: $font-family-monserat;
+  color: $color-text;
+  text-transform: uppercase;
+  border-top: 1px solid $color-black;
+  padding: $_30 0 $_20 0;
+  .logo {
+    font-size: $_34;
+  }
+  .nav-mobile {
+    padding-top: $_60;
+    padding-bottom: $_50;
+    li {
+
+    }
+    a {
+      display: block;
+      font-weight: bold;
+      font-size: $font-size-base;
+      padding: $_12 0;
+      color: $color-text;
+    }
+  }
+  .copyright {
+    font-family: $font-family-nexa;
+    font-size: $font-size-sm;
+    @include media-breakpoint-up(sm) {
+      margin-top: $_40;
+    }
+  }
+  ul:not(.nav-mobile) {
+    li {
+      padding: $_8 0;
+    }
+    a {
+      color: $color-black;
+      font-size: $font-size-xs;
+    }
+  }
+  ul {
+    a {
+      transition: color 0.4s ease;
+      &:hover {
+        color: $color-b;
+      }
+    }
+  }
+}

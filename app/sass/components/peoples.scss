@@ -1,0 +1,12 @@
+.peoples {
+  font-family: $font-family-nexa;
+  &__title {
+    margin:$_30 0;
+    font-size: $_30;
+    text-transform: uppercase;
+    color: $color-text;
+  }
+  .btn {
+    @include btn($_20 $_30, $color-black,$color-white,$color-white);
+  }
+}

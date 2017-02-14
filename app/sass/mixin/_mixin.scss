@@ -1,0 +1,65 @@
+@mixin owf-absolute-center() {
+  position: absolute!important;
+  margin: auto!important;
+  top: -9999px!important;
+  left: -9999px!important;
+  bottom: -9999px!important;
+  right: -9999px!important;
+}
+
+@mixin btn($padding,$text-color,$hover-color,$bg) {
+  @include display(inline-block);
+  padding: $padding;
+  color: $text-color;
+  background: $bg;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-weight: bold;
+  transition: background-color 0.6s ease,color 0.6s ease;
+  border:2px solid $text-color;
+    font-family: $font-family-monserat;
+    letter-spacing: $letter-spacing-base;
+  &:hover {
+    cursor: pointer;
+    color: $hover-color;
+    background: lighten($text-color,8%);
+  }
+  &:focus {
+    outline: 0;
+    color: $hover-color;
+  }
+}
+
+@mixin generate-icons($icons) {
+  @each $name, $value in $icons {
+
+    %icon-#{$name} { //placelhoders
+      content: $value;
+    }
+
+    .icon-#{$name}:before { //classes
+      @extend %icon-#{$name};
+    }
+  }
+}
+
+@mixin MQ($width, $type : true) {
+  @if ($type == true) {
+    @media (max-width: $width) {
+      @content;
+    }
+
+  }@else {
+    @media (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+//Conditional media query mixin
+@mixin cMQ($minWidth, $maxWidth) {
+  @media (min-width: $minWidth) and (max-width: $maxWidth) {
+    @content;
+  }
+}

@@ -1,0 +1,66 @@
+$size: 36px;
+$primaryColor: $color-b;
+
+#nav-lines {
+  position: relative;
+  background: transparent;
+  width: $size;
+  height: $size;
+  cursor: pointer;
+  z-index: 9999;
+  &.active {
+    position: fixed;
+    top: 32px;
+
+    .rect, .cross-line {
+      stroke: $color-white;
+    }
+    .cross-line {
+      stroke-width: 2;
+      transform: scale(0.8);
+    }
+    .nav-line, #nav-line-1, #nav-line-3 {
+      transform: scale(0.01);
+    }
+    &:hover {
+      .cross-line {
+        transform: scale(0.6);
+      }
+    }
+  }
+  &:hover {
+    .rect {
+      stroke-width: 1;
+      transform: rotate(45deg);
+    }
+    .nav-line {
+      transform: scale(0.5, 0.5);
+    }
+    #nav-line-1 {
+      transform: translateY(10px) scale(0.5);
+    }
+    #nav-line-3 {
+      transform: translateY(-10px) scale(0.5);
+    }
+  }
+  .rect {
+    stroke-width: 0;
+    stroke: $color-black;
+    fill: transparent;
+    transform-origin: 50% 50%;
+    transition: all 0.3s ease-in-out;
+    transform:rotate(0deg);
+  }
+  .cross-line {
+    stroke: $color-black;
+    stroke-width: 0;
+    transform-origin: 50% 50%;
+    transition: all 0.3s ease-in-out;
+  }
+  .nav-line {
+    stroke: $color-black;
+    transform-origin: 50% 50%;
+    stroke-width: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+}

@@ -1,0 +1,53 @@
+header {
+  @include position(absolute, 0 0 auto 0);
+  width: 100%;
+  background-color: $color-white;
+  height: 70px;
+  @include media-breakpoint-up(lg) {
+    height: 100px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .row {
+    margin:0;
+    padding: $_32 0;
+  }
+  [class^="col-"] {
+    padding: 0;
+    vertical-align: middle;
+  }
+  i {
+    &:before {
+      font-size: $_25;
+    }
+
+    @include media-breakpoint-up(sm){
+      padding: 0 $_8;
+    }
+    &.icon-menu {
+      &:hover {
+        cursor: pointer;
+      }
+
+    }
+    &.icon--toggle {
+      &:before {
+        color: $color-white;
+      }
+    }
+  }
+  label {
+    position: relative;
+    z-index: 9999;
+  }
+}
+.logo {
+  display: block;
+  width: 100%;
+  font-size: $_24;
+  font-weight: $dt-font-weight;
+  line-height:$line-height-base;
+  text-transform: uppercase;
+  letter-spacing: $_14/4;
+}

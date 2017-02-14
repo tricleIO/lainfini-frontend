@@ -1,0 +1,31 @@
+%icon {
+  font-family: 'tecnifibre';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1.0;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon {@extend %icon;}
+
+$icons: (
+        sipka: "\e900",
+        instagram: "\e901",
+        youtube: "\e902",
+        fb: "\e903",
+        like: "\e906",
+        mail: "\e907",
+        monitor: "\e908",
+        point: "\e909",
+        share: "\e90a",
+        tel: "\e90b",
+);
+
+@include generate-icons($icons);
+

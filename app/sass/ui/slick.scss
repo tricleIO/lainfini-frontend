@@ -1,0 +1,58 @@
+.slick-slider {
+  .slick-slide {
+    outline: none!important;
+  }
+  .slick-arrow {
+    width: $_50;
+    height: $_36;
+    font-size: $_25;
+    transition: all 0.4s ease;
+    &:hover {
+      &.slick-prev {
+        left: -$_50 * 1.1;
+      }
+      &.slick-next {
+        right: -$_50 * 1.6;
+      }
+    }
+    &.slick-prev, &.slick-next {
+      &:before {
+        font-family: 'lainfini';
+        color: $color-b;
+        font-size: $_25;
+      }
+    }
+    &.slick-prev {
+      left: -$_50;
+      &:before {
+        content: $icon-arrow-l;
+      }
+    }
+    &.slick-next {
+      right: -$_50 ;
+      &:before {
+        content: $icon-arrow-r;
+      }
+    }
+
+  }
+}
+.slick-dots {
+  li {
+    margin:0;
+    &.slick-active {
+      button {
+        &:before {
+          color: shade($color-a,50%);
+        }
+      }
+    }
+    button {
+      &:before {
+        font-size: 13px;
+        color: $color-a;
+        opacity:1;
+      }
+    }
+  }
+}

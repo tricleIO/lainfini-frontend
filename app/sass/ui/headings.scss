@@ -1,0 +1,45 @@
+.heading {
+  position: relative;
+  padding-top: $_70;
+  padding-bottom: $_25;
+  font-weight: $headings-font-weight - 100;
+  text-transform: uppercase;
+  &__subtitle {
+    font-size: $_24;
+    font-family: $font-family-nexa;
+    letter-spacing: $letter-spacing-small;
+    color:$color-text;
+    padding-bottom: $_8;
+    font-weight: lighter;
+    line-height: $line-height-base;
+  }
+  &__title {
+    font-size: $_36;
+    font-family: $font-family-nexa;
+    letter-spacing: $letter-spacing-base;
+    line-height: $line-height-base;
+    font-weight: $dt-font-weight;
+  }
+  &__intro {
+    font-family: $font-family-open-sans;
+    color: $color-black;
+    font-size: $font-family-base;
+    line-height: $line-height-base;
+    padding-left: $_50;
+    padding-right: $_50;
+  }
+  &:before {
+    @include position(absolute, 0 auto auto 50%);
+    @include transform(translateX(-50%));
+    content: '';
+    width: $_100 * 1.7;
+    height: 2px;
+    background-color: $color-b;
+  }
+  &--mod-light {
+    padding-top: $_25;
+    &:before {
+      content: none;
+    }
+  }
+}

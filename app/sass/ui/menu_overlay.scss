@@ -1,0 +1,80 @@
+
+#op{
+  display:none;
+}
+
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 1001;
+  nav {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    height: 60%;
+    font-size: $_25;
+    @include media-breakpoint-up(sm) {
+      font-size: $_55;
+    }
+    transform: translateY(-50%);
+  }
+  ul {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: block;
+    height: 20%;
+    height: calc(100% / 5);
+    min-height: 54px;
+  }
+  a {
+    font-weight: 300;
+    display: block;
+    color: $color-white;
+    text-decoration:none;
+    transition: color .4s;
+    text-transform:uppercase;
+    &:hover, &:focus {
+      color: $color-a;
+    }
+  }
+}
+
+.overlay__hugeinc{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+#op:checked~.overlay__hugeinc{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s;
+}
+
+.overlay__hugeinc nav {
+  -moz-perspective: 300px;
+}
+
+.overlay__hugeinc nav ul {
+  opacity: 0.4;
+  transform: translateY(-25%) rotateX(35deg);
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+#op:checked~.overlay__hugeinc nav ul {
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+#op:not(:checked)~.overlay__hugeinc nav ul {
+  transform: translateY(25%) rotateX(-35deg);
+}

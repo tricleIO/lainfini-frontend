@@ -181,6 +181,8 @@
     ]
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap": "^4.0.0-alpha.6",
     "babel-polyfill": "6.16.0",
     "chalk": "1.1.3",
     "compression": "1.6.2",
@@ -205,7 +207,10 @@
     "redux-immutable": "3.0.8",
     "redux-saga": "0.12.0",
     "reselect": "2.5.4",
+    "reset-css": "^2.2.0",
     "sanitize.css": "4.1.0",
+    "select2": "^4.0.3",
+    "slick-carousel": "^1.6.0",
     "styled-components": "1.0.3",
     "warning": "3.0.0",
     "whatwg-fetch": "1.0.0"
@@ -225,6 +230,7 @@
     "babel-preset-react": "6.16.0",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-0": "6.16.0",
+    "bourbon": "^4.2.7",
     "chai": "3.5.0",
     "chai-enzyme": "0.5.2",
     "cheerio": "0.22.0",
@@ -262,6 +268,7 @@
     "lint-staged": "3.2.0",
     "mocha": "3.1.2",
     "ngrok": "2.2.3",
+    "node-sass": "^4.5.0",
     "null-loader": "0.1.1",
     "offline-plugin": "3.4.2",
     "plop": "1.5.0",
@@ -269,6 +276,7 @@
     "psi": "2.0.4",
     "react-addons-test-utils": "15.3.2",
     "rimraf": "2.5.4",
+    "sass-loader": "^6.0.0",
     "shelljs": "0.7.5",
     "sinon": "2.0.0-pre",
     "style-loader": "0.13.1",

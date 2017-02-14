@@ -1,0 +1,19 @@
+.btn {
+  @include btn($_20 $_60,$color-b,$color-white,transparent);
+}
+.btn__inline {
+  .btn {
+    display: block;
+    margin-bottom: $_20;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 0;
+    }
+  }
+  [class^="col-"] {
+    &:last-of-type {
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

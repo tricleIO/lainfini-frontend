@@ -1,0 +1,47 @@
+.banner {
+  overflow: hidden;
+
+  &.banner--small {
+    .banner__wrapper, .row {
+      height: 640px;
+      margin-bottom: 0;
+    }
+    .banner__item__text {
+      h1, p {
+        color: $color-black;
+        &:before {
+          background: $color-black;
+        }
+      }
+    }
+  }
+
+  .row {
+    @include display(flex);
+    @include align-items(center);
+    height: 100vh;
+  }
+  .banner__item {
+    @include position(relative);
+  }
+  .banner__wrapper {
+    @include position(relative);
+    width: 100%;
+    height: calc(100vh - 74px);
+  }
+  .banner__item__picture {
+    @include position(absolute,0 0 0 0);
+    img {
+      @include owf-absolute-center();
+      width:100%;
+    }
+  }
+  
+  .banner__item__text {
+    h1, p {
+      color: $color-white;
+      text-transform: uppercase;
+    }
+  }
+}
+

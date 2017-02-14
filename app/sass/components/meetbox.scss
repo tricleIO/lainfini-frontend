@@ -1,0 +1,52 @@
+.meetbox {
+  font-family: $font-family-nexa;
+  color: $color-text;
+  .container {
+    position: relative;
+    &:before {
+      width: 100%;
+      height: 85%;
+      position: absolute;
+      left: 50%;
+      content: '';
+      transform: translateX(-50%);
+      background-color: $color-a;
+    }
+  }
+  &__image {
+    img {
+      margin-top: -$_100 * 1.5;
+      margin-left: -$_55;
+    }
+  }
+  &__text {
+    padding-top: $_70;
+    line-height: $line-height-base;
+  }
+  &__title {
+    display: inline-block;
+    padding-bottom: $_20;
+    text-transform: uppercase;
+    font-size: $_24;
+  }
+  &__subtitle {
+    font-family: $font-family-open-sans;
+    font-size: $_16;
+    text-transform: none;
+    margin-bottom: $_30;
+  }
+  &__button {
+    position: relative;
+    .btn {
+      position: absolute;
+      left: -100%;
+      bottom:8%;
+    }
+  }
+  .heading__title {
+    color: $color-black;
+  }
+  img {
+    filter: drop-shadow(11px 11px 23px rgba(0,0,0,.4));
+  }
+}

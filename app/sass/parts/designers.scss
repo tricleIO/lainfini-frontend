@@ -1,0 +1,64 @@
+.designers-list {
+  font-family: $font-family-monserat;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-base;
+  padding-bottom: $_50;
+  [class^="col-"] {
+    padding: 0;
+  }
+  &__bg {
+    position: relative;
+    overflow: hidden;
+    @include media-breakpoint-up(md) {
+      min-height: $_100*4.68;
+    }
+    &:before {
+      @include position(absolute,0 0 0 0);
+      z-index: 3;
+      background-color: transparent;
+      content: '';
+      transition: background-color 0.4s ease-in;
+    }
+    &:hover {
+      cursor: pointer;
+      &:before {
+        background-color: rgba($color-b,.25);
+      }
+
+      .designers-list__content {
+        a {
+          opacity:1;
+        }
+      }
+
+    }
+    img {
+      @include media-breakpoint-up(md) {
+        @include owf-absolute-center();
+      }
+    }
+  }
+
+  &__content {
+    @include position(absolute,50% 0 0 50%);
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 4;
+    span {
+      font-size: $_40;
+      color: $color-b;
+      margin-bottom: $_30;
+    }
+    a {
+      opacity: 0;
+      transition: all 0.5s ease;
+      position: relative;
+      &:hover {
+        color: $color-white;
+        border-color: $color-white;
+        background-color: transparent;
+      }
+    }
+  }
+  
+}

@@ -13,6 +13,11 @@
 
 import React from 'react';
 
+import "../../sass/app.scss";
+
+import Footer from './Footer';
+import Header from './Header';
+
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -22,7 +27,9 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
+        <Header />
         {React.Children.toArray(this.props.children)}
+        <Footer />
       </div>
     );
   }

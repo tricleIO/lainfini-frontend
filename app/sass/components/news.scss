@@ -1,0 +1,29 @@
+.news {
+  background:$color-a;
+  padding:20px 0;
+  .card {
+      background: transparent;
+      border:none;
+    .card-block {
+      padding: $_10 0;
+
+    }
+      .card-title {
+        @include display(inline-block);
+        background: $color-white;
+        padding: $_5;
+        color: $color-a;
+        font-size: $_20;
+      }
+      .card-text {
+        color: $color-white;
+      }
+    &[data-reveal=revealed] {
+      -webkit-animation: .5s ease-in 0s normal backwards 1 running fadeIn;
+      animation: .5s ease-in 0s normal backwards 1 running fadeIn;
+      -webkit-transition: none!important;
+      transition: none!important
+    }
+  }
+
+}

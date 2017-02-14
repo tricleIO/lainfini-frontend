@@ -1,0 +1,16 @@
+.single-box {
+  font-family: $font-family-nexa;
+  color: $color-text;
+  margin:$_20 0;
+  line-height: $line-height-base;
+  &__text {
+    font-size: $_18;
+  }
+  &__title {
+    margin-bottom: $_20;
+    font-size: $_24;
+  }
+  img {
+    filter: drop-shadow(11px 11px 23px rgba(0,0,0,.4));
+  }
+}
