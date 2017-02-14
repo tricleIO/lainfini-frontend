@@ -13,7 +13,7 @@
 
 import React from 'react';
 
-import "../../sass/app.scss";
+import '../../sass/app.scss';
 
 import Footer from './Footer';
 import Header from './Header';

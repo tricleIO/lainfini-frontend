@@ -39,11 +39,11 @@ export default class Header extends React.PureComponent { // eslint-disable-line
               </label>
             </div>
             <div className="col-8">
-              <a href="#" className="logo text-center">lainfini</a>
+              <a href="" className="logo text-center">lainfini</a>
             </div>
             <div className="col-2 text-right">
-              <a href="#"><i className="icon icon-shop"></i></a>
-              <a href="#"><i className="icon icon-wishlist"></i></a>
+              <a href=""><i className="icon icon-shop"></i></a>
+              <a href=""><i className="icon icon-wishlist"></i></a>
             </div>
           </div>
         </div>

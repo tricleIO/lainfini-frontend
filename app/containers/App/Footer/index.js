@@ -35,12 +35,12 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
               </ul>
             </div>
             <div className="col-12 col-md-4 text-center">
-              <a href="#" className="logo">lainfini</a>
+              <a href="/" className="logo">lainfini</a>
               <ul className="nav-mobile hidden-md-up">
                 <li>
-                  <a href="#">info@lainfini.com</a>
-                  <a href="#">Press inquiries</a>
-                  <a href="#">more about the brand</a>
+                  <a href="">info@lainfini.com</a>
+                  <a href="">Press inquiries</a>
+                  <a href="">more about the brand</a>
                 </li>
               </ul>
               <p className="copyright">
