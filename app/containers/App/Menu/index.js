@@ -16,13 +16,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-import '../../sass/app.scss';
-
-import Footer from './Footer';
-import Header from './Header';
-import Menu from './Menu';
-
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
@@ -30,18 +24,15 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <div id="body">
-        <Header />
-        <main id="page">
-          <input type="checkbox" id="op" />
-          <div className="overlay overlay__hugeinc">
-            <label htmlFor="op"></label>
-            <Menu />
-          </div>
-          {React.Children.toArray(this.props.children)}
-        </main>
-        <Footer />
-      </div>
+      <nav>
+        <ul>
+          <li><a href="/"><FormattedMessage {...messages.homepage} /></a></li>
+          <li><a href="/designers"><FormattedMessage {...messages.designers} /></a></li>
+          <li><a href="/profil"><FormattedMessage {...messages.profil} /></a></li>
+          <li><a href="/studio"><FormattedMessage {...messages.studio} /></a></li>
+          <li><a href="/eshop"><FormattedMessage {...messages.eshop} /></a></li>
+        </ul>
+      </nav>
     );
   }
 }
