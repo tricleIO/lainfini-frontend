@@ -16,16 +16,25 @@ import classNames from 'classnames';
 
 export default class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      navLinesActive: false
-    };
-  }
-
   static propTypes = {
     children: React.PropTypes.node,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      navLinesActive: false,
+    };
+
+    this.changeState = this.changeState.bind(this);
+  }
+
+  changeState() {
+    this.setState({
+      navLinesActive: !this.state.navLinesActive,
+    });
+  }
 
   render() {
     return (
@@ -34,7 +43,7 @@ export default class Header extends React.Component { // eslint-disable-line rea
           <div className="row">
             <div className="col-2">
               <label htmlFor="op">
-                <div id="nav-lines" className={classNames({'active': this.state.navLinesActive})} onClick={this.changeState.bind(this)}>
+                <div id="nav-lines" className={classNames({ active: this.state.navLinesActive })} onClick={this.changeState}>
                   <svg viewBox="0 0 64 64">
                     <line id="nav-line-1" x1="8" x2="56" y1="16" y2="16" className="nav-line" />
                     <line id="nav-line-2" x1="8" x2="56" y1="32" y2="32" className="nav-line" />
@@ -59,9 +68,4 @@ export default class Header extends React.Component { // eslint-disable-line rea
     );
   }
 
-  changeState() {
-    this.setState({
-      navLinesActive: !this.state.navLinesActive
-    });
-  }
 }

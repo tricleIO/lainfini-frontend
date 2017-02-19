@@ -13,9 +13,6 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
 import '../../sass/app.scss';
 
 import Footer from './Footer';
