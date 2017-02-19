@@ -5,7 +5,6 @@ import Heading from 'components/Heading';
 export default class CategoryCard extends React.PureComponent {
 
   static propTypes = {
-    children: React.PropTypes.node,
     type: React.PropTypes.string,
   };
 
@@ -25,7 +24,7 @@ export default class CategoryCard extends React.PureComponent {
         <div className="container">
           <div className="row" data-reveal>
             <div className="col-12 col-sm-8 offset-sm-2 text-center">
-              <Heading type="h2" subtitle="La Infini design scarves collection" title="original handmade scarves unique designs" />
+              <Heading type={this.props.type} subtitle="La Infini design scarves collection" title="original handmade scarves unique designs" />
             </div>
           </div>
           <div className="row category-card__contain" style={{ backgroundImage: 'url("' + this.flowerBgImg + '")' }}>
