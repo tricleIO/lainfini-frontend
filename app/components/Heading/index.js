@@ -18,16 +18,17 @@ export default class Heading extends React.PureComponent {
     };
 
     render() {
+        let headingElement = React.createElement(this.props.type, {className: "heading__title"}, this.props.title);
         return (
-            <div class="heading {{#if mod}}heading--mod-light{{/if}}" data-reveal>
-    <div class="heading__subtitle">{{subtitle}}</div>
-    <{{type}} class="heading__title">{{title}}</{{type}}>
-    {{#if intro}}
-        <p class="heading__intro">
-            {{intro}}
-        </p>
-    {{/if}}
-</div>
+            <div className={classNames("heading", {"heading--mod-light": this.props.mod})} data-reveal>
+                <div className="heading__subtitle">{this.props.subtitle}</div>
+                {headingElement}
+                { this.props.intro &&
+                    <p class="heading__intro">
+                        {this.props.intro}
+                    </p>
+                }
+            </div>
         );
     }
 
