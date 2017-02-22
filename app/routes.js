@@ -33,6 +33,73 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    },
+    {
+      path: '/designers',
+      name: 'designers',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Designers'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Profile'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/studio',
+      name: 'studio',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Studio'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/eshop',
+      name: 'eshop',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Eshop'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     }, {
       path: '*',
       name: 'notfound',
