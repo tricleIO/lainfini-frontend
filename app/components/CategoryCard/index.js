@@ -2,6 +2,8 @@ import React from 'react';
 
 import Heading from 'components/Heading';
 
+import { Link } from 'react-router';
+
 export default class CategoryCard extends React.PureComponent {
 
   static propTypes = {
@@ -61,7 +63,7 @@ export default class CategoryCard extends React.PureComponent {
               </p>
             </div>
             <div className="col-12 text-center offset-top-50" data-reveal>
-              <a href="" className="btn">shop the designs</a>
+              <Link className="btn" to="/eshop">shop the designs</Link>
             </div>
           </div>
         </div>
