@@ -66,6 +66,12 @@
             {{> "components/interactive"}}
         {{/if}}
 
+        {{#if product_detail}}
+            {{> "components/product_detail"}}
+            {{> "components/last-view"}}
+            {{> "parts/social_nav" links=1}}
+        {{/if}}
+
 
     </main>
     {{> "layout/footer"}}
