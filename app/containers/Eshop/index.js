@@ -6,6 +6,8 @@ import SocialNav from 'components/SocialNav';
 
 import ProductSlider from './productSlider';
 
+import { Link } from 'react-router';
+
 export default class Eshop extends React.Component {
   constructor(props) {
     super(props);
@@ -67,7 +69,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -100,7 +102,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -133,7 +135,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -166,7 +168,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -199,7 +201,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -232,7 +234,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -265,7 +267,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>
@@ -298,7 +300,7 @@ export default class Eshop extends React.Component {
                       <span>Add to wishlist</span>
                     </div>
                     <div className="col-6">
-                      <a href="" className="btn">See detail</a>
+                      <Link to="/eshop/detail/1" className="btn">See detail</Link>
                     </div>
                   </div>
                 </div>

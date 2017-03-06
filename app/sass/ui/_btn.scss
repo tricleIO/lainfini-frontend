@@ -8,7 +8,11 @@
     @include media-breakpoint-up(sm) {
       margin-bottom: 0;
     }
+    &-center {
+      text-align: center;
+    }
   }
+
   [class^="col-"] {
     &:last-of-type {
       .btn {

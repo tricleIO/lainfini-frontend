@@ -101,6 +101,38 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/eshop/detail/:productId',
+      name: 'productDetail',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ProductDetail'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/testing',
+      name: 'testing',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Testing'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
