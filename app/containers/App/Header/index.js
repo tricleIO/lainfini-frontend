@@ -11,29 +11,36 @@
  * the linting exception.
  */
 
+import { connect } from 'react-redux';
+
+import { createStructuredSelector } from 'reselect';
+
+import {
+  changeMenuState,
+} from '../actions';
+
+import {
+  makeSelectMenuActive,
+} from '../selectors';
+
 import React from 'react';
 import classNames from 'classnames';
 
-export default class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    children: React.PropTypes.node,
+    menuActive: React.PropTypes.bool,
+    changeMenuState: React.PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      navLinesActive: false,
-    };
-
     this.changeState = this.changeState.bind(this);
   }
 
   changeState() {
-    this.setState({
-      navLinesActive: !this.state.navLinesActive,
-    });
+    this.props.changeMenuState(!this.props.menuActive);
   }
 
   render() {
@@ -43,7 +50,7 @@ export default class Header extends React.Component { // eslint-disable-line rea
           <div className="row">
             <div className="col-2">
               <label htmlFor="op">
-                <div id="nav-lines" className={classNames({ active: this.state.navLinesActive })} onClick={this.changeState}>
+                <div id="nav-lines" className={classNames({ active: this.props.menuActive })} onClick={this.changeState}>
                   <svg viewBox="0 0 64 64">
                     <line id="nav-line-1" x1="8" x2="56" y1="16" y2="16" className="nav-line" />
                     <line id="nav-line-2" x1="8" x2="56" y1="32" y2="32" className="nav-line" />
@@ -69,3 +76,17 @@ export default class Header extends React.Component { // eslint-disable-line rea
   }
 
 }
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    changeMenuState: (state) => dispatch(changeMenuState(state)),
+  };
+}
+
+
+const mapStateToProps = createStructuredSelector({
+  menuActive: makeSelectMenuActive(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+

@@ -2,6 +2,8 @@ import React from 'react';
 
 import Heading from 'components/Heading';
 
+import { Link } from 'react-router';
+
 export default class CategoryCard extends React.PureComponent {
 
   static propTypes = {
@@ -11,7 +13,6 @@ export default class CategoryCard extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.flowerBgImg = require('./img/flower-bg.png');
     this.kachinaBigImg = require('./img/kachina_big.jpg');
     this.kachinaImg = require('./img/kachina.png');
     this.silkBigImg = require('./img/silk_big.jpg');
@@ -27,7 +28,7 @@ export default class CategoryCard extends React.PureComponent {
               <Heading type={this.props.type} subtitle="La Infini design scarves collection" title="original handmade scarves unique designs" />
             </div>
           </div>
-          <div className="row category-card__contain" style={{ backgroundImage: 'url("' + this.flowerBgImg + '")' }}>
+          <div className="row category-card__contain">
             <div className="col-sm-5 offset-sm-1 category-card__item" data-reveal>
               <img src={this.kachinaBigImg} className="img-fluid" alt="category textil" />
               <div className="category-card__item__child">
@@ -62,7 +63,7 @@ export default class CategoryCard extends React.PureComponent {
               </p>
             </div>
             <div className="col-12 text-center offset-top-50" data-reveal>
-              <a href="" className="btn">shop the designs</a>
+              <Link className="btn" to="/eshop">shop the designs</Link>
             </div>
           </div>
         </div>

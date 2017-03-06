@@ -42,4 +42,10 @@
       content: none;
     }
   }
+  &--mod-bottom {
+    &:before {
+      bottom:0;
+      top:auto;
+    }
+  }
 }

@@ -9,9 +9,9 @@ export default defineMessages({
     id: 'app.components.App.Menu.designers',
     defaultMessage: 'Designers',
   },
-  profil: {
-    id: 'app.components.App.Menu.profil',
-    defaultMessage: 'Profil',
+  profile: {
+    id: 'app.components.App.Menu.profile',
+    defaultMessage: 'Profile',
   },
   studio: {
     id: 'app.components.App.Menu.studio',

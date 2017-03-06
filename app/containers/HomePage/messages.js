@@ -6,8 +6,12 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.HomePage.header',
-    defaultMessage: 'This is HomePage components!',
+  smallTitle: {
+    id: 'app.components.HomePage.smallTitle',
+    defaultMessage: 'Unique Designs From The Heart Of Europe',
+  },
+  bigTitle: {
+    id: 'app.components.Homepage.BigTitle',
+    defaultMessage: 'Inspiring and Original',
   },
 });

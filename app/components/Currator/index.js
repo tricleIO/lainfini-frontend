@@ -2,6 +2,8 @@ import React from 'react';
 
 import Heading from 'components/Heading';
 
+import { Link } from 'react-router';
+
 export default class Currator extends React.PureComponent {
 
   static propTypes = {
@@ -34,10 +36,10 @@ export default class Currator extends React.PureComponent {
               </p>
               <div className="btn__inline offset-vertical-30">
                 <div className="col-12 col-sm-6" data-reveal>
-                  <a href="" className="btn">lainfini studio</a>
+                  <Link to="/studio" className="btn">lainfini studio</Link>
                 </div>
                 <div className="col-12 col-sm-6" data-reveal>
-                  <a href="" className="btn">currators’ profile</a>
+                  <Link to="/profile" className="btn">currators’ profile</Link>
                 </div>
               </div>
             </div>

@@ -1,0 +1,28 @@
+.item-counter {
+  font-size: $font-size-root;
+  display: table;
+  user-select: none;
+  .minus, .plus, .status {
+    display: table-cell;
+    line-height: 1;
+  }
+  .minus, .plus {
+    font-size: $_48;
+    padding-left:$_4;
+    padding-right:$_4;
+    &:hover {
+      cursor: pointer;
+      outline: none;
+
+    }
+  }
+  .status {
+    font-size: $_30;
+    background: $color-white;
+    padding: $_12 $_18;
+    color: $color-b;
+  }
+  .plus {
+
+  }
+}

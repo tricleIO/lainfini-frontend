@@ -70,4 +70,8 @@ module.exports = require('./webpack.base.babel')({
       AppCache: false,
     }),
   ],
+
+  externals: {
+    Config: JSON.stringify(require('../config.prod.json')),
+  },
 });
