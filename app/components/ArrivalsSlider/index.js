@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
 import $ from 'jquery';
 import 'slick-carousel';
 
@@ -41,7 +44,7 @@ export default class ArrivalsSlider extends React.PureComponent {
           <div className="row">
             <div className="col-12 col-sm-10 offset-sm-1 arrivals__slider" ref={(c) => { this.arrivalsSlider = c; }}>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
@@ -54,7 +57,7 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
@@ -67,7 +70,7 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
@@ -80,7 +83,7 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
@@ -93,7 +96,7 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
@@ -106,7 +109,7 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">

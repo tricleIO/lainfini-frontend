@@ -310,7 +310,7 @@ export default class Eshop extends React.Component {
         </div>
 
 
-        <Peoples btnInline />
+        <Peoples btnInline isShop />
         <SocialNav links />
       </div>
     );
