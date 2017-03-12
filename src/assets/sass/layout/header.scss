@@ -9,6 +9,7 @@ header {
   .row {
     margin:0;
     padding: 1.063em 0;
+    align-items: center;
   }
   [class^="col-"] {
     padding: 0;
@@ -37,6 +38,11 @@ header {
   label {
     position: relative;
     z-index: 9999;
+  }
+  .icons {
+    a {
+      padding: 5px;
+    }
   }
 }
 .logo {
