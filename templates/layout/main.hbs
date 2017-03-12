@@ -72,6 +72,13 @@
             {{> "parts/social_nav" links=1}}
         {{/if}}
 
+        {{#if basket}}
+            {{> "components/basket"}}
+            {{> "components/last-view"}}
+            {{> "parts/social_nav" links=1}}
+        {{/if}}
+
+
 
     </main>
     {{> "layout/footer"}}
