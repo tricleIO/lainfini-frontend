@@ -7,11 +7,11 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   smallTitle: {
-    id: 'app.components.HomePage.smallTitle',
+    id: 'app.containers.HomePage.smallTitle',
     defaultMessage: 'Unique Designs From The Heart Of Europe',
   },
   bigTitle: {
-    id: 'app.components.Homepage.BigTitle',
+    id: 'app.containers.Homepage.BigTitle',
     defaultMessage: 'Inspiring and Original',
   },
 });

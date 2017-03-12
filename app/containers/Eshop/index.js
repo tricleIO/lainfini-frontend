@@ -3,6 +3,7 @@ import React from 'react';
 import Visual from 'components/Visual';
 import Peoples from 'components/Peoples';
 import SocialNav from 'components/SocialNav';
+import LastView from 'components/LastView';
 
 import ProductSlider from './productSlider';
 
@@ -309,8 +310,8 @@ export default class Eshop extends React.Component {
           </div>
         </div>
 
-
-        <Peoples btnInline />
+        <LastView />
+        <Peoples btnInline isShop />
         <SocialNav links />
       </div>
     );

@@ -2,10 +2,13 @@ import React from 'react';
 
 import Heading from 'components/Heading';
 
+import { Link } from 'react-router';
+
 export default class SocialNav extends React.PureComponent {
 
   static propTypes = {
     btnInline: React.PropTypes.bool,
+    isShop: React.PropTypes.bool,
   };
 
   constructor(props) {
@@ -20,7 +23,7 @@ export default class SocialNav extends React.PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-              <Heading type="h2" subtitle="lainfini designers" title="meet the people who stand behind" />
+              <Heading type="h2" subtitle={this.props.isShop ? 'Atelier LAINFINI Designers' : ''} title={this.props.isShop ? 'Meet The People Behind The Brand' : 'Atelier LAINFINI DESIGN HOUSE: A Collaborative Collective'} />
             </div>
             <div className="col-12 text-center" data-reveal>
               <img src={this.peoplesImg} className="img-fluid d-inline-block" alt="peoples" />
@@ -28,11 +31,8 @@ export default class SocialNav extends React.PureComponent {
             { this.props.btnInline &&
               <div className="col-12 offset-vertical-50">
                 <div className="row btn__inline">
-                  <div className="col-12 col-sm-5 offset-sm-1">
-                    <a href="" className="btn">designers profiles</a>
-                  </div>
-                  <div className="col-12 col-sm-5">
-                    <a href="" className="btn">scarves - making of</a>
+                  <div className="col-12 col-sm-6 offset-sm-3 text-center">
+                    <Link to="/studio" className="btn">Design House Profile</Link>
                   </div>
                 </div>
               </div>

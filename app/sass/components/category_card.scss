@@ -10,7 +10,7 @@
     &__item {
         position: relative;
         max-height: $_100*4.37;
-        margin-bottom: $_100*2;
+        margin-bottom: $_100 * 1.5;
         margin-top: -$_60;
         &__child {
             @include position(absolute,35% 0 0 50%);

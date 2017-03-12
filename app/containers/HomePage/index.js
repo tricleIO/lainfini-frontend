@@ -20,7 +20,6 @@ import {
 import Visual from 'components/Visual';
 import ArrivalsSlider from 'components/ArrivalsSlider';
 import CategoryCard from 'components/CategoryCard';
-import Designers from 'components/Designers';
 import Currator from 'components/Currator';
 import Lookbook from 'components/Lookbook';
 import SocialNav from 'components/SocialNav';
@@ -50,7 +49,6 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         <Visual bg={visualBg} subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} />
         <ArrivalsSlider />
         <CategoryCard type="h2" />
-        <Designers type="h2" />
         <Currator type="h3" />
         <Lookbook type="h3" />
         <SocialNav />

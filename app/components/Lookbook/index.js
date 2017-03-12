@@ -5,6 +5,9 @@ import Heading from 'components/Heading';
 import $ from 'jquery';
 import 'slick-carousel';
 
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
 export default class CategoryCard extends React.PureComponent {
 
   static propTypes = {
@@ -48,7 +51,7 @@ export default class CategoryCard extends React.PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-8 offset-2 text-center">
-              <Heading subtitle="la infini lookbook 2016" title="lets get inspired" type={this.props.type} />
+              <Heading subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} type={this.props.type} />
             </div>
             <div className="col-12 offset-vertical-40 lookbook__wrapper">
               <div className="lookbook__slider" ref={(c) => { this.lookbookSlider = c; }}>

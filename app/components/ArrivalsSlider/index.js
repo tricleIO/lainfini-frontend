@@ -1,5 +1,10 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
+import { Link } from 'react-router';
+
 import $ from 'jquery';
 import 'slick-carousel';
 
@@ -41,82 +46,64 @@ export default class ArrivalsSlider extends React.PureComponent {
           <div className="row">
             <div className="col-12 col-sm-10 offset-sm-1 arrivals__slider" ref={(c) => { this.arrivalsSlider = c; }}>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title">New arrivals</h2>
+                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href="" className="d-block">Design by Anna Krásná</a>
-                  <div className="arrivals__icons">
-                    <a href=""><i className="icon icon-wishlist" /><span>126</span></a>
-                    <a href=""><i className="icon icon-user" /><span>73</span></a>
-                  </div>
+                  <a href=""><i className="icon icon-wishlist"></i></a>
+                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                 </div>
-                <a href="" className="arrivals__buy d-inline-block"><i className="icon icon-shop" /></a>
               </div>
             </div>
           </div>

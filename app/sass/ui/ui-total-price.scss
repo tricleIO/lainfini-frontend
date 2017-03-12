@@ -1,0 +1,23 @@
+.ui-total-price {
+  display: flex;
+  box-shadow: 10px 17px 50px rgba(0, 0, 0, 0.15);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $_50;
+  padding: $_10 $_30;
+  .title {
+    font-family: $font-family-monserat;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-base;
+    color: $color-c;
+    font-size: $_16;
+    text-transform: uppercase;
+  }
+  .price {
+    font-family: $font-family-nexa;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-small;
+    color: $color-c;
+    font-size: $_26;
+  }
+}
