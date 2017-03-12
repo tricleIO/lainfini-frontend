@@ -1,7 +1,16 @@
 <section class="visual {{mod}}" {{#if bg}}style="background-image: url('{{bg}}')"{{else}} style="background-color: {{bg-color}};"{{/if}}>
+    <div class="visual__alternative-title offset-vertical-50 text-center">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 fadeInUp animated">
+                    alternativní headline promo 10 % sleva
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="visual__heading text-center" data-reveal>
         {{#if subtitle}}
-            <p class="visual__subtitle ">{{subtitle}}</p>
+            <p class="visual__subtitle offset-vertical-30">{{subtitle}}</p>
         {{/if}}
         {{#if title}}
             <h1 class="visual__title">{{title}}</h1>

@@ -4,6 +4,11 @@
   }
   .wish-product {
     text-align: left;
+    > a {
+      &:hover {
+        cursor: pointer;
+      }
+    }
     &__background {
       padding: $_20;
       background-color: $color-white;

@@ -12,13 +12,13 @@
         left: -$_50 * 1.1;
       }
       &.slick-next {
-        right: -$_50 * 1.6;
+        right: -$_50 * 1.1;
       }
     }
     &.slick-prev, &.slick-next {
       &:before {
         font-family: 'lainfini';
-        color: $color-b;
+        color: $color-text;
         font-size: $_25;
       }
     }

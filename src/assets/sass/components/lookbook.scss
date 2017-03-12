@@ -29,6 +29,8 @@
       z-index: 999;
     }
     &__wrapper {
+      padding-top: 0;
+      padding-bottom: $_40;
       &__arrow {
         @include position(absolute, 50% auto auto auto);
         transform: translateY(-50%);
