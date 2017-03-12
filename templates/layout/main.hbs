@@ -3,7 +3,7 @@
 <!--[if gt IE 10]><!-->
 <html class="no-js sr" lang="en"><!--<![endif]-->
 {{> "layout/head"}}
-<body class="{{#if hp}}hp{{else}}sp{{/if}} preload">
+<body class="{{#if hp}}hp {{else if wishlist}}bg-orange{{else}}sp{{/if}} preload">
 
 <div id="body">
     {{> "layout/header"}}
@@ -75,6 +75,12 @@
         {{#if basket}}
             {{> "components/basket"}}
             {{> "components/last-view"}}
+            {{> "parts/social_nav" links=1}}
+        {{/if}}
+
+
+        {{#if wishlist}}
+            {{> "components/wishlist"}}
             {{> "parts/social_nav" links=1}}
         {{/if}}
 
