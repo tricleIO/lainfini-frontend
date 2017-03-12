@@ -16,10 +16,10 @@ export default class CategoryCard extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.kachinaBigImg = require('./img/kachina_big.jpg');
+    this.kachinaBigImg = require('./img/kachina_big.png');
     this.kachinaImg = require('./img/kachina.png');
-    this.silkBigImg = require('./img/silk_big.jpg');
-    this.silkImg = require('./img/profile_photo.jpg');
+    this.silkBigImg = require('./img/silk_big.png');
+    this.silkImg = require('./img/profile_photo.png');
   }
 
   render() {
