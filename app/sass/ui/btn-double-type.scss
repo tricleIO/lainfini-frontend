@@ -1,0 +1,15 @@
+.ui-btn-double-type {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  color: $color-text;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-base;
+  font-weight: 600;
+  font-size: $_16;
+  font-family: $font-family-monserat;
+  @include media-breakpoint-down(sm) {
+    display: block;
+    text-align: center;
+  }
+}

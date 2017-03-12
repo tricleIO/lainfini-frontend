@@ -3,15 +3,13 @@ header {
   width: 100%;
   background-color: $color-white;
   height: 70px;
-  @include media-breakpoint-up(lg) {
-    height: 100px;
-  }
   a {
     text-decoration: none;
   }
   .row {
     margin:0;
-    padding: $_32 0;
+    padding: 1.063em 0;
+    align-items: center;
   }
   [class^="col-"] {
     padding: 0;
@@ -40,6 +38,11 @@ header {
   label {
     position: relative;
     z-index: 9999;
+  }
+  .icons {
+    a {
+      padding: 5px;
+    }
   }
 }
 .logo {

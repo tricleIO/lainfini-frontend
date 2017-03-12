@@ -13,13 +13,21 @@
   position: relative;
   background-size: cover;
   background-position: center center;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
   min-height: $min-height;
   line-height: $line-height-base;
   font-family: $font-family-monserat;
+  &__alternative-title {
+    color: $color-white;
+    font-size: $_30;
+    font-family: $font-family-nexa;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-base;
+  }
+
   &__heading {
     @include position(absolute, 50% 0 auto 0);
-    @include transform(translateY(-50%));
+    @include transform(translateY(-50%)!important);
     color: $color-white;
 
   }

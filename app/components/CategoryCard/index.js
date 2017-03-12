@@ -31,7 +31,7 @@ export default class CategoryCard extends React.PureComponent {
               <Heading type={this.props.type} subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} />
             </div>
           </div>
-          <div className="row category-card__contain">
+          <div className="row category-card__contain" style={{ backgroundColor: '#f4f3f3' }}>
             <div className="col-sm-5 offset-sm-1 category-card__item" data-reveal>
               <img src={this.kachinaBigImg} className="img-fluid" alt="category textil" />
               <div className="category-card__item__child">
