@@ -14,6 +14,17 @@ export default class CategoryCard extends React.PureComponent {
     type: React.PropTypes.string,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.k1img = require('./img/K_1.png');
+    this.k2img = require('./img/K_2.png');
+    this.k3img = require('./img/K_3.png');
+    this.k4img = require('./img/K_4.png');
+    this.k5img = require('./img/K_5.png');
+    this.k6img = require('./img/K_6.png');
+  }
+
   componentDidMount() {
     this.slideShow = $(this.lookbookSlider).slick({
       arrows: true,
@@ -56,19 +67,22 @@ export default class CategoryCard extends React.PureComponent {
             <div className="col-12 offset-vertical-40 lookbook__wrapper">
               <div className="lookbook__slider" ref={(c) => { this.lookbookSlider = c; }}>
                 <div className="lookbook__slider__item">
-                  <img src data-lazy="http://loremflickr.com/480/380?random=1" className="img-fluid" alt="lookbook" />
+                  <img src data-lazy={this.k1img} className="img-fluid" alt="lookbook" />
                 </div>
                 <div className="lookbook__slider__item">
-                  <img src data-lazy="http://loremflickr.com/480/380?random=2" className="img-fluid" alt="lookbook" />
+                  <img src data-lazy={this.k2img} className="img-fluid" alt="lookbook" />
                 </div>
                 <div className="lookbook__slider__item">
-                  <img src data-lazy="http://loremflickr.com/480/380?random=3" className="img-fluid" alt="lookbook" />
+                  <img src data-lazy={this.k3img} className="img-fluid" alt="lookbook" />
                 </div>
                 <div className="lookbook__slider__item">
-                  <img src data-lazy="http://loremflickr.com/480/380?random=4" className="img-fluid" alt="lookbook" />
+                  <img src data-lazy={this.k4img} className="img-fluid" alt="lookbook" />
                 </div>
                 <div className="lookbook__slider__item">
-                  <img src data-lazy="http://loremflickr.com/480/380?random=5" className="img-fluid" alt="lookbook" />
+                  <img src data-lazy={this.k5img} className="img-fluid" alt="lookbook" />
+                </div>
+                <div className="lookbook__slider__item">
+                  <img src data-lazy={this.k6img} className="img-fluid" alt="lookbook" />
                 </div>
               </div>
               <i className="icon icon-arrow-l lookbook__wrapper__arrow" ref={(c) => { this.lookbookSliderArrowLeft = c; }} />

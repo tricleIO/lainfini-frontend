@@ -27,7 +27,7 @@ import SocialNav from 'components/SocialNav';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-const visualBg = require('./img/visual-bg.jpg');
+const visualBg = require('./img/visual-bg.png');
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-functional
 
