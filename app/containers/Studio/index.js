@@ -15,11 +15,12 @@ export default class Studio extends React.Component {
     super(props);
 
     this.studioBgImg = require('./img/studio-bg.jpg');
-    this.studioBackgroundImg = require('./img/studio-background.jpg');
+    this.studioBackgroundImg = require('./img/studio-background.png');
+    this.original4sImg = require('./img/original_4s.png');
     this.mirkaImg = require('./img/mirka.jpg');
-    this.handImg = require('./img/hand.jpg');
-    this.paintImg = require('./img/paint.jpg');
-    this.silksImg = require('./img/silks.jpg');
+    this.handImg = require('./img/hand.png');
+    this.paintImg = require('./img/paint.png');
+    this.silksImg = require('./img/silks.png');
   }
 
   render() {
@@ -67,7 +68,7 @@ export default class Studio extends React.Component {
                 <Heading subtitle="unique process of design and production" title="Every piece is the original art" type="h3" />
               </div>
               <div className="col-12 col-sm-6 align-middle">
-                <img src={this.studioBackgroundImg} className="img-fluid" alt="peace" data-reveal />
+                <img src={this.original4sImg} className="img-fluid" alt="peace" data-reveal />
               </div>
               <div className="col-12 col-sm-6 align-middle">
                 <div className="single-box__text" data-reveal>
