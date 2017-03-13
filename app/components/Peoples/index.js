@@ -14,7 +14,7 @@ export default class SocialNav extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.peoplesImg = require('./img/peoples.png');
+    this.peoplesImg = require('./img/Lide_5s.png');
   }
 
   render() {
