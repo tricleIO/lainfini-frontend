@@ -25,11 +25,11 @@ export default class Header extends React.PureComponent { // eslint-disable-line
   };
 
   render() {
+    // <li><MenuItem to="/designers"><FormattedMessage {...messages.designers} /></MenuItem></li>
     return (
       <nav>
         <ul>
           <li><MenuItem to="/"><FormattedMessage {...messages.homepage} /></MenuItem></li>
-          <li><MenuItem to="/designers"><FormattedMessage {...messages.designers} /></MenuItem></li>
           <li><MenuItem to="/profile"><FormattedMessage {...messages.profile} /></MenuItem></li>
           <li><MenuItem to="/studio"><FormattedMessage {...messages.studio} /></MenuItem></li>
           <li><MenuItem to="/eshop"><FormattedMessage {...messages.eshop} /></MenuItem></li>

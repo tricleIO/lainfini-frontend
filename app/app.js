@@ -31,7 +31,7 @@ import Config from 'config';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize(Config.googleAnalyticsTrackingCode, {
-  debug: true,
+  debug: false,
 });
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
