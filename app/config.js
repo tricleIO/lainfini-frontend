@@ -1,19 +1,19 @@
 const config = {
   test: {
     serverUrl: 'http://localhost:3000/',
-    apiUrl: 'http://tapi.lainfini.com/',
+    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
     googleAnalyticsTrackingCode: 'UA-92826148-1',
   },
 
   prod: {
-    serverUrl: 'http:///',
-    apiUrl: 'http://tapi.lainfini.com/',
+    serverUrl: 'http://testing.lainifini.com/',
+    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
     googleAnalyticsTrackingCode: 'UA-92826148-1',
   },
 
   dev: {
     serverUrl: 'http://localhost:3000/',
-    apiUrl: 'http://tapi.lainfini.com/',
+    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
     googleAnalyticsTrackingCode: 'UA-92826148-1',
   },
 };
