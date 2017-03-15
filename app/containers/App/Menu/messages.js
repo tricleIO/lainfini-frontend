@@ -15,7 +15,7 @@ export default defineMessages({
   },
   studio: {
     id: 'app.components.App.Menu.studio',
-    defaultMessage: 'Studio',
+    defaultMessage: 'Atelier',
   },
   eshop: {
     id: 'app.components.App.Menu.eshop',

@@ -9,6 +9,7 @@ export default class Visual extends React.PureComponent {
     subtitle: React.PropTypes.string,
     title: React.PropTypes.string,
     mod: React.PropTypes.string,
+    alternativeTitle: React.PropTypes.string,
   };
 
   render() {
@@ -18,15 +19,17 @@ export default class Visual extends React.PureComponent {
     };
     return (
       <section className={classNames('visual', this.props.mod)} style={style}>
-        <div className="visual__alternative-title offset-vertical-50 text-center">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12 fadeInUp animated">
-                alternativní headline promo 10 % sleva
+        { this.props.alternativeTitle &&
+          <div className="visual__alternative-title offset-vertical-50 text-center">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-12 fadeInUp animated">
+                  { this.props.alternativeTitle }
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
         <div className="visual__heading text-center" data-reveal>
           {this.props.subtitle &&
             <p className="visual__subtitle offset-vertical-30">{this.props.subtitle}</p>
