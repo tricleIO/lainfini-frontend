@@ -1,20 +1,43 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import Heading from 'components/Heading';
 import ItemCounter from 'components/ItemCounter';
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
 
-export default class ProductDetail extends React.Component {
+import { createStructuredSelector } from 'reselect';
+
+import { makeSelectProduct } from './selectors';
+
+import {
+  loadProduct,
+} from './actions';
+
+class ProductDetail extends React.Component {
+
+  static propTypes = {
+    loadProduct: React.PropTypes.func,
+    product: React.PropTypes.object,
+    routeParams: React.PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
 
     this.arrival1Img = require('./img/arrival-1.png');
   }
 
+  componentWillMount() {
+    this.props.loadProduct(this.props.routeParams.productId);
+  }
+
   render() {
+    const { product } = this.props;
     return (
       <div>
+        { this.props.product &&
         <div className="product-detail">
           <div className="container">
             <div className="row">
@@ -36,8 +59,8 @@ export default class ProductDetail extends React.Component {
                 <div className="row">
                   <div className="col-12">
                     <div className="product-list__title text-center text-sm-left">
-                      <h4>Blue moon</h4>
-                      <span>$239.00</span>
+                      <h4>{product.name}</h4>
+                      <span>${product.price}</span>
                     </div>
                   </div>
                 </div>
@@ -76,7 +99,7 @@ export default class ProductDetail extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> }
 
 
         <LastView />
@@ -85,3 +108,15 @@ export default class ProductDetail extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loadProduct: (urlSlug) => dispatch(loadProduct(urlSlug)),
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  product: makeSelectProduct(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
