@@ -6,7 +6,10 @@
     &__small {
       @include position(absolute,50% 0 0 0);
       @include transform(translate(-65%,-50%));
-
+      width: 50%;
+      @include media-breakpoint-down(xs) {
+         width: 100%;
+      }
       filter:drop-shadow($_10 $_20 $_12 rgba(0,0,0,0.3))
     }
 

@@ -29,12 +29,12 @@ export default class Studio extends React.Component {
         <Visual bg={this.studioBgImg} title={<FormattedMessage {...messages.pageTitle} />} />
 
         <div className="meetbox">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-5 meetbox__image">
                 <img src={this.studioBackgroundImg} className="img-fluid" alt="" data-reveal />
               </div>
-              <div className="col-12 col-sm-4 offset-sm-1 meetbox__text" data-reveal>
+              <div className="col-12 col-sm-5 meetbox__text" data-reveal>
                 <span className="meetbox__title">
                   Design House Atelier Lainfini
                 </span>
@@ -53,7 +53,7 @@ export default class Studio extends React.Component {
                   Mirka’s drive is to create pieces of luxury clothing that will allow the wearer to combine it with their own unique wardrobe and a variety of accessories, including bespoke shoes, designer handbags, and fine jewelry is the goal of the line. Her aim is to give a woman freedom in decision making by choosing high quality clothing that emphasizes the client’s personality in every way.
                 </p>
               </div>
-              <div className="col-12 col-sm-6 col-md-5 offset-md-1 meetbox__button" data-reveal>
+              <div className="col-12 col-sm-6 col-md-3 offset-md-1 meetbox__button" data-reveal>
                 <img src={this.mirkaImg} className="img-fluid" alt="" />
                 <a href="" className="btn">meet mirka</a>
               </div>

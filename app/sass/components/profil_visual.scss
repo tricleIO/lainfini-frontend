@@ -2,8 +2,8 @@
   overflow: hidden; //because before name go out of div
   position: relative;
   background-color: $color-a;
-  height: $min-height;
   min-height: $_100 * 7.48;
+  height:100%;
   color: $color-text;
   .container {
     height: 100%;
@@ -55,11 +55,11 @@
         position: absolute;
         content: attr(data-name);
         font-size: 8em;
-        color: darken($color-a,10);
-        opacity: 0.5;
-        left: -11px;
-        top: 50px;
-        font-family: "Helvetica";
+        color: #875f37;
+        opacity: 0.1;
+        left: -17px;
+        top: 0;
+        font-family: "Helvetica Neue";
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-small;
@@ -67,16 +67,19 @@
     }
     @include media-breakpoint-up(md) {
       &:before {
-        font-size: 10em;
+        font-size: 16em;
       }
     }
     &__subtitle, &__title, &__prof {
       position: relative;
+      color: $color-c;
     }
     &__subtitle, &__title {
       text-transform: uppercase;
     }
+    
     &__title {
+      color: $color-black;
       padding: $_20 0;
       letter-spacing: $letter-spacing-base;
     }
@@ -89,9 +92,7 @@
         padding: $_10 0;
         list-style: disc;
         letter-spacing: $letter-spacing-small;
-      }
-      a {
-
+        color: $color-c;
       }
     }
   }

@@ -27,7 +27,7 @@ export default class Profile extends React.Component {
       slidesToShow: 3,
       infinite: true,
       speed: 500,
-      centerMode: true,
+      centerMode: false,
       responsive: [
         {
           breakpoint: 600,
@@ -52,7 +52,7 @@ export default class Profile extends React.Component {
       <div>
         <section className="profil">
           <div className="profil__image" style={{ backgroundImage: 'url("' + this.mirkaImg + '")' }} data-reveal />
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-12 col-sm-6" data-reveal>
                 <div className="profil__info">
