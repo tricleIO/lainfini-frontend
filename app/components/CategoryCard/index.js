@@ -63,7 +63,7 @@ export default class CategoryCard extends React.PureComponent {
               </p>
             </div>
             <div className="col-12 text-center offset-top-50" data-reveal>
-              <Link className="btn" to="/eshop"><FormattedMessage {...messages.button} /></Link>
+              <Link className="btn" to="/catalog"><FormattedMessage {...messages.button} /></Link>
             </div>
           </div>
         </div>

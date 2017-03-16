@@ -85,7 +85,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/eshop',
+      path: '/catalog',
       name: 'eshop',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -106,7 +106,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/eshop/detail/:productId',
+      path: '/catalog/:productId',
       name: 'productDetail',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

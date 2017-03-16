@@ -98,7 +98,7 @@ class Eshop extends React.Component {
                         <span>Add to wishlist</span>
                       </div>
                       <div className="col-6">
-                        <Link to={'/eshop/detail/' + product.urlSlug} className="btn">See detail</Link>
+                        <Link to={'/catalog/' + product.urlSlug} className="btn">See detail</Link>
                       </div>
                     </div>
                   </div>
