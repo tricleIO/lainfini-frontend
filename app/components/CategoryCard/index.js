@@ -44,19 +44,19 @@ export default class CategoryCard extends React.PureComponent {
                 <img src={this.silkImg} className="img-fluid" alt="category" />
               </div>
             </div>
-            <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
               <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading1} /></h3>
               <p>
                 <FormattedMessage {...messages.description1} />
               </p>
             </div>
-            <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
               <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading2} /></h3>
               <p>
                 <FormattedMessage {...messages.description2} />
               </p>
             </div>
-            <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
               <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading3} /></h3>
               <p>
                 <FormattedMessage {...messages.description3} />

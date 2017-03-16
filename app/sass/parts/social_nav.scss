@@ -9,8 +9,21 @@
       display: block;
       font-size: $_60;
       transition: color 0.4s ease, transform 0.4s ease;
+      color: $color-black;
       &:hover {
-        color: $color-b;
+
+        .icon-facebook {
+          color: #3B5998;
+        }
+        
+        .icon-twitter {
+          color: #55acee;
+        }
+
+        .icon-instagram {
+          color: #e95950;
+        }
+
         transform: scale(1.05);
       }
     }

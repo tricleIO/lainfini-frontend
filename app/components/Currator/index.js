@@ -25,7 +25,7 @@ export default class Currator extends React.PureComponent {
       <div className="currator">
         <div className="container">
           <div className="row">
-            <div className="col-10 offset-1 text-center">
+            <div className="col-12 col-sm-10 offset-sm-1 text-center">
               <Heading subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} type={this.props.type} intro={<FormattedMessage {...messages.intro} />} />
             </div>
             <div className="col-6 offset-5 currator__photo offset-vertical-10" data-reveal>
