@@ -127,11 +127,11 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/testing',
-      name: 'testing',
+      path: '/templates/:template',
+      name: 'templates',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/Testing'),
+          System.import('containers/templates'),
         ]);
 
         const renderRoute = loadModule(cb);
