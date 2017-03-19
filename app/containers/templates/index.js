@@ -6,15 +6,11 @@ class templates extends React.Component {
     routeParams: React.PropTypes.object,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.innerHtml = { __html: require('../../../templates/' + props.routeParams.template + '.html') };
-  }
-
   render() {
+    const innerHtml = { __html: require('../../../templates/' + this.props.routeParams.template + '.html') };
+
     return (
-      <div dangerouslySetInnerHTML={this.innerHtml} />
+      <div dangerouslySetInnerHTML={innerHtml} />
     );
   }
 
