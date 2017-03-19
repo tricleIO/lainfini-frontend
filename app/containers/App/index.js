@@ -29,6 +29,8 @@ import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
 
+import Helmet from 'react-helmet';
+
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -40,6 +42,11 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   render() {
     return (
       <div id="body" className={classNames({ hp: this.props.isHomepage, sp: !this.props.isHomepage })}>
+        <Helmet
+          htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
+          titleTemplate="%s | LAINFINI"
+          defaultTitle="Homepage | LAINFINI"
+        />
         <Header />
         <main id="page">
           <input type="checkbox" id="op" checked={this.props.menuActive} />

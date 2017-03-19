@@ -3,10 +3,12 @@ import React from 'react';
 import $ from 'jquery';
 import 'slick-carousel';
 
+import config from 'config';
+
 export default class ProductSlider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    img: React.PropTypes.string,
+    imgs: React.PropTypes.array,
   };
 
   componentDidMount() {
@@ -28,9 +30,10 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
   render() {
     return (
       <div className="product-list__slider" ref={(c) => { this.productListSlider = c; }}>
-        <img src={this.props.img} alt="" />
-        <img src={this.props.img} alt="" />
-        <img src={this.props.img} alt="" />
+        { this.props.imgs.map((img, index) => (
+          <img src={config.apiUrl + 'file/' + img.fileIndex + '.jpg'} key={index} alt="" />
+          ))
+        }
       </div>
     );
   }

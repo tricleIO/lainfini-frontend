@@ -9,12 +9,12 @@ import request from 'utils/request';
 
 export function* getProduct(action) {
   // Select username from store
-  const requestURL = config.apiUrl + 'products?urlSlug=' + action.urlSlug;
+  const requestURL = config.apiUrl + 'products?slug=' + action.urlSlug;
 
   try {
     // Call our request helper (see 'utils/request')
-    const products = yield call(request, requestURL);
-    yield put(productLoaded(products.content[0], 0));
+    const product = yield call(request, requestURL);
+    yield put(productLoaded(product, 0));
   } catch (err) {
     yield put(productLoadingError(err.toString()));
   }

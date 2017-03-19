@@ -1,37 +1,38 @@
 const config = {
   test: {
     serverUrl: 'http://localhost:3000/',
-    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
-    googleAnalyticsTrackingCode: 'UA-92826148-1',
   },
 
   prod: {
     serverUrl: 'http://testing.lainifini.com/',
-    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
-    googleAnalyticsTrackingCode: 'UA-92826148-1',
   },
 
   dev: {
     serverUrl: 'http://localhost:3000/',
-    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
+  },
+
+  common: {
     googleAnalyticsTrackingCode: 'UA-92826148-1',
+    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
+
+    facebookLink: 'https://www.facebook.com/Lainfini.Fashion/',
+    instagramLink: 'https://www.instagram.com/lainfini_designhouse/',
+    twitterLink: 'https://twitter.com/LainfiniFashion',
   },
 };
 
 function getConfig() {
+  let Config = config.common;
+
   if (process.env.NODE_ENV === 'production') {
-    return config.prod;
+    Config = Object.assign(Config, config.prod);
+  } else if (process.env.NODE_ENV === 'development') {
+    Config = Object.assign(Config, config.dev);
+  } else {
+    Config = Object.assign(Config, config.test);
   }
 
-  if (process.env.NODE_ENV === 'test') {
-    return config.test;
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    return config.dev;
-  }
-
-  return config.test;
+  return Config;
 }
 
 export default getConfig();
