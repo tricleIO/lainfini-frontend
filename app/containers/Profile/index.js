@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import $ from 'jquery';
 import 'slick-carousel';
@@ -50,6 +51,7 @@ export default class Profile extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title="Profile" />
         <section className="profil">
           <div className="profil__image" style={{ backgroundImage: 'url("' + this.mirkaImg + '")' }} data-reveal />
           <div className="container-fluid">

@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import classNames from 'classnames';
 
@@ -42,6 +43,7 @@ class Eshop extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title="Catalog" />
         <Visual bg="//placehold.it/1920x260" mod="visual--small" />
 
         <div className="filter">
@@ -72,7 +74,7 @@ class Eshop extends React.Component {
                   })} key={product.uid}
                 >
                   <div className="product-list__bg">
-                    <ProductSlider img={this.eshopProduktBigImg} />
+                    <ProductSlider imgs={product.images} />
                     <img src={this.eshopProduktExampleImg} className="product-list__small-image" alt="example" />
                   </div>
                   <div className="product-list__content">
@@ -98,7 +100,7 @@ class Eshop extends React.Component {
                         <span>Add to wishlist</span>
                       </div>
                       <div className="col-6">
-                        <Link to={'/eshop/detail/' + product.urlSlug} className="btn">See detail</Link>
+                        <Link to={'/catalog/' + product.urlSlug} className="btn">See detail</Link>
                       </div>
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import Heading from 'components/Heading';
 
@@ -26,6 +27,7 @@ export default class Studio extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title="Atelier" />
         <Visual bg={this.studioBgImg} title={<FormattedMessage {...messages.pageTitle} />} />
 
         <div className="meetbox">
