@@ -32,7 +32,7 @@ export default class Header extends React.PureComponent { // eslint-disable-line
           <li><MenuItem to="/"><FormattedMessage {...messages.homepage} /></MenuItem></li>
           <li><MenuItem to="/profile"><FormattedMessage {...messages.profile} /></MenuItem></li>
           <li><MenuItem to="/studio"><FormattedMessage {...messages.studio} /></MenuItem></li>
-          <li><MenuItem to="/eshop"><FormattedMessage {...messages.eshop} /></MenuItem></li>
+          <li><MenuItem to="/catalog"><FormattedMessage {...messages.eshop} /></MenuItem></li>
         </ul>
       </nav>
     );

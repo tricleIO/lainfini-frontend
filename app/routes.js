@@ -85,7 +85,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/eshop',
+      path: '/catalog',
       name: 'eshop',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -106,16 +106,21 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/eshop/detail/:productId',
+      path: '/catalog/:productId',
       name: 'productDetail',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
+          System.import('containers/ProductDetail/reducer'),
+          System.import('containers/ProductDetail/sagas'),
           System.import('containers/ProductDetail'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('productDetail', reducer.default);
+          injectSagas(sagas.default);
+
           renderRoute(component);
         });
 
