@@ -54,7 +54,6 @@ export default class ArrivalsSlider extends React.PureComponent {
                   <p className="arrivals__subtitle">{products.name}</p>
                   <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
                   <div className="arrivals__author">
-                    <a href=""><i className="icon icon-wishlist"></i></a>
                     <a className="text">{product.product.material.name} {product.product.material.composition} / {product.product.size.value}</a>
                     <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
                   </div>
