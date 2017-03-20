@@ -67,7 +67,6 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             </div>
             <div className="col-5 text-right header_action">
               <a href="" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></a>
-              <a href=""><i className="icon icon-wishlist"></i></a>
             </div>
           </div>
         </div>
