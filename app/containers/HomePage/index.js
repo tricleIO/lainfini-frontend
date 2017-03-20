@@ -17,6 +17,10 @@ import {
   changeHomepageState,
 } from 'containers/App/actions';
 
+import {
+  loadArrivals,
+} from './actions';
+
 import Visual from 'components/Visual';
 import ArrivalsSlider from 'components/ArrivalsSlider';
 import CategoryCard from 'components/CategoryCard';
@@ -27,16 +31,23 @@ import SocialNav from 'components/SocialNav';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import { createStructuredSelector } from 'reselect';
+
+import { makeSelectProducts } from './selectors';
+
 const visualBg = require('./img/visual-bg.png');
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-functional
 
   static propTypes = {
     changeIsHomepage: React.PropTypes.func,
+    loadArrivals: React.PropTypes.func,
+    products: React.PropTypes.object,
   };
 
   componentWillMount() {
     this.props.changeIsHomepage(true);
+    this.props.loadArrivals();
   }
 
   componentWillUnmount() {
@@ -47,7 +58,8 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     return (
       <div>
         <Visual bg={visualBg} subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} />
-        <ArrivalsSlider />
+        { this.props.products.uid &&
+          <ArrivalsSlider products={this.props.products} /> }
         <CategoryCard type="h2" />
         <Currator type="h3" />
         <Lookbook type="h3" />
@@ -60,8 +72,13 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
 export function mapDispatchToProps(dispatch) {
   return {
     changeIsHomepage: (state) => dispatch(changeHomepageState(state)),
+    loadArrivals: () => dispatch(loadArrivals()),
   };
 }
 
-export default connect(null, mapDispatchToProps)(HomePage);
+const mapStateToProps = createStructuredSelector({
+  products: makeSelectProducts(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
