@@ -4,9 +4,11 @@
 }
 .profil-gallery {
   padding-top: $_100;
-  padding-bottom: $_100;
   margin-top: -$_100;
   overflow: hidden;
+  .container, .container-fluid {
+    padding: 0;
+  }
   [class^="col-"] {
     padding: 0;
   }
@@ -16,11 +18,12 @@
   &__item {
     height: $_100 *4;
     background-position: center center;
+    background-size: cover;
     transition: transform 0.5s ease;
   }
   .slick-current {
     position: relative;
-    transform: scale(1.25);
+    //transform: scale(1.25);
     z-index: 1002;
   }
 

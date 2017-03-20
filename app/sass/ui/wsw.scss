@@ -16,6 +16,7 @@
     padding-top: $_20;
     padding-bottom: $_20;
     letter-spacing: $letter-spacing-small;
+    color: $color-c;
     &:before {
       @include position(absolute, 0 auto auto 50%);
       @include transform(translateX(-50%));

@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 // selectLocationState expects a plain JS object for the routing state
 const selectLocationState = () => {
   let prevRoutingState;
@@ -15,6 +17,21 @@ const selectLocationState = () => {
   };
 };
 
+const selectApp = (state) => state.get('app');
+
+const makeSelectMenuActive = () => createSelector(
+  selectApp,
+  (appState) => appState.get('menuActive')
+);
+
+const makeIsHomepage = () => createSelector(
+  selectApp,
+  (appState) => appState.get('isHomepage')
+);
+
 export {
   selectLocationState,
+  selectApp,
+  makeSelectMenuActive,
+  makeIsHomepage,
 };

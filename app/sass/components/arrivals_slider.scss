@@ -5,6 +5,9 @@
   font-family: $font-family-nexa;
   margin-bottom: $_100;
   &__slider {
+    .slick-list {
+      box-shadow: 25px 43px 50px rgba(0, 0, 0, 0.1);
+    }
     @include media-breakpoint-down(xs) {
       padding: 0;
     }
@@ -41,12 +44,21 @@
   }
 
   &__author {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     margin-top: $_55;
     letter-spacing: $letter-spacing-base;
     font-family: $font-family-open-sans;
     font-weight: $headings-font-weight - 200;
     a {
       color: inherit;
+    }
+    .text {
+      padding: 0 $_16;
+    }
+    .icon {
+      font-size: $_30;
     }
   }
   &__icons {

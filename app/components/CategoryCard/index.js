@@ -1,71 +1,74 @@
 import React from 'react';
 
+import Heading from 'components/Heading';
+
+import { Link } from 'react-router';
+
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
 export default class CategoryCard extends React.PureComponent {
 
-    constructor(props) {
-        super(props);
+  static propTypes = {
+    type: React.PropTypes.string,
+  };
 
-        this.flowerBgImg = require('./img/flower-bg.png');
-        this.kachinaBigImg = require('./img/kachina_big.jpg');
-        this.kachinaImg = require('./img/kachina.png');
-        this.silkBigImg = require('./img/silk_big.jpg');
-        this.silkImg = require('./img/profile_photo.jpg');
-    }
+  constructor(props) {
+    super(props);
 
-    static propTypes = {
-        children: React.PropTypes.node,
-        type: React.PropTypes.string,
-    };
+    this.kachinaBigImg = require('./img/kachina_big.png');
+    this.kachinaImg = require('./img/kachina.png');
+    this.silkBigImg = require('./img/silk_big.png');
+    this.silkImg = require('./img/profile_photo.png');
+  }
 
-    render() {
-        return (
-            <section className="category-card">
-                <div className="container">
-                    <div className="row" data-reveal>
-                        <div className="col-12 col-sm-8 offset-sm-2 text-center">
-                        </div>
-                    </div>
-                    <div className="row category-card__contain" style={{ backgroundImage: 'url("' + this.flowerBgImg +'")' }}>
-                        <div className="col-sm-5 offset-sm-1 category-card__item" data-reveal>
-                            <img src={this.kachinaBigImg} className="img-fluid" alt="category textil" />
-                            <div className="category-card__item__child">
-                                <img src={this.kachinaImg} className="img-fluid" alt="category image" />
-                            </div>
-                        </div>
-                        <div className="col-sm-5 category-card__item" data-reveal>
-                            <img src={this.silkBigImg} className="img-fluid" alt="category textil" />
-                            <div className="category-card__item__child">
-                                <img src={this.silkImg} className="img-fluid" alt="category image" />
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
-                            <h3 className="category-card__benefits__title">original design</h3>
-                            <p>
-                                Sed quis lacus. Duis rutrum lacinia odio. Sed ac quam non odio ullamcorper tempor. Morbi tellus elit, aliquet.
-                ut, tempor ut, elementum sodales, lorem. Morbi in leo. Sed hendrerit mollis nisl.
+  render() {
+    return (
+      <section className="category-card">
+        <div className="container">
+          <div className="row" data-reveal>
+            <div className="col-12 col-sm-8 offset-sm-2 text-center">
+              <Heading type={this.props.type} subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} />
+            </div>
+          </div>
+          <div className="row category-card__contain" style={{ backgroundColor: '#f4f3f3' }}>
+            <div className="col-sm-5 offset-sm-1 category-card__item" data-reveal>
+              <img src={this.kachinaBigImg} className="img-fluid" alt="category textil" />
+              <div className="category-card__item__child">
+                <img src={this.kachinaImg} className="img-fluid" alt="category" />
+              </div>
+            </div>
+            <div className="col-sm-5 category-card__item" data-reveal>
+              <img src={this.silkBigImg} className="img-fluid" alt="category textil" />
+              <div className="category-card__item__child">
+                <img src={this.silkImg} className="img-fluid" alt="category" />
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
+              <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading1} /></h3>
+              <p>
+                <FormattedMessage {...messages.description1} />
               </p>
-                        </div>
-                        <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
-                            <h3 className="category-card__benefits__title">european quality</h3>
-                            <p>
-                                Sed quis lacus. Duis rutrum lacinia odio. Sed ac quam non odio ullamcorper tempor. Morbi tellus elit, aliquet.
-                ut, tempor ut, elementum sodales, lorem. Morbi in leo. Sed hendrerit mollis nisl.
+            </div>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
+              <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading2} /></h3>
+              <p>
+                <FormattedMessage {...messages.description2} />
               </p>
-                        </div>
-                        <div className="col-12 col-sm-4 text-center category-card__benefits" data-reveal>
-                            <h3 className="category-card__benefits__title">unique experience</h3>
-                            <p>
-                                Sed quis lacus. Duis rutrum lacinia odio. Sed ac quam non odio ullamcorper tempor. Morbi tellus elit, aliquet.
-                ut, tempor ut, elementum sodales, lorem. Morbi in leo. Sed hendrerit mollis nisl.
+            </div>
+            <div className="col-12 col-sm-6 col-md-4 text-center category-card__benefits" data-reveal>
+              <h3 className="category-card__benefits__title"><FormattedMessage {...messages.heading3} /></h3>
+              <p>
+                <FormattedMessage {...messages.description3} />
               </p>
-                        </div>
-                        <div className="col-12 text-center offset-top-50" data-reveal>
-                            <a href="#" className="btn">shop the designs</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
-    }
+            </div>
+            <div className="col-12 text-center offset-top-50" data-reveal>
+              <Link className="btn" to="/catalog"><FormattedMessage {...messages.button} /></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
 }

@@ -1,16 +1,16 @@
 .meetbox {
   font-family: $font-family-nexa;
   color: $color-text;
-  .container {
+  .container-fluid {
     position: relative;
     &:before {
-      width: 100%;
+      width: 98%;
       height: 85%;
       position: absolute;
       left: 50%;
       content: '';
       transform: translateX(-50%);
-      background-color: $color-a;
+      background-color: lighten($color-c,75%);
     }
   }
   &__image {
@@ -28,6 +28,7 @@
     padding-bottom: $_20;
     text-transform: uppercase;
     font-size: $_24;
+    letter-spacing: $letter-spacing-base;
   }
   &__subtitle {
     font-family: $font-family-open-sans;
@@ -40,7 +41,11 @@
     .btn {
       position: absolute;
       left: -100%;
-      bottom:8%;
+      bottom: -57px;
+      @include media-breakpoint-up(lg) {
+        bottom: 0;
+      }
+
     }
   }
   .heading__title {

@@ -16,6 +16,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import MenuItem from './menuItem';
+
 export default class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -23,14 +25,14 @@ export default class Header extends React.PureComponent { // eslint-disable-line
   };
 
   render() {
+    // <li><MenuItem to="/designers"><FormattedMessage {...messages.designers} /></MenuItem></li>
     return (
       <nav>
         <ul>
-          <li><a href="/"><FormattedMessage {...messages.homepage} /></a></li>
-          <li><a href="/designers"><FormattedMessage {...messages.designers} /></a></li>
-          <li><a href="/profil"><FormattedMessage {...messages.profil} /></a></li>
-          <li><a href="/studio"><FormattedMessage {...messages.studio} /></a></li>
-          <li><a href="/eshop"><FormattedMessage {...messages.eshop} /></a></li>
+          <li><MenuItem to="/"><FormattedMessage {...messages.homepage} /></MenuItem></li>
+          <li><MenuItem to="/profile"><FormattedMessage {...messages.profile} /></MenuItem></li>
+          <li><MenuItem to="/studio"><FormattedMessage {...messages.studio} /></MenuItem></li>
+          <li><MenuItem to="/catalog"><FormattedMessage {...messages.eshop} /></MenuItem></li>
         </ul>
       </nav>
     );

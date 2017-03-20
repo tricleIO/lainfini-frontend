@@ -22,11 +22,12 @@
   }
   &__intro {
     font-family: $font-family-open-sans;
-    color: $color-black;
-    font-size: $font-family-base;
+    color: $color-text;
+    font-size: $_16;
     line-height: $line-height-base;
     padding-left: $_50;
     padding-right: $_50;
+    text-transform: none;
   }
   &:before {
     @include position(absolute, 0 auto auto 50%);
@@ -40,6 +41,12 @@
     padding-top: $_25;
     &:before {
       content: none;
+    }
+  }
+  &--mod-bottom {
+    &:before {
+      bottom:0;
+      top:auto;
     }
   }
 }

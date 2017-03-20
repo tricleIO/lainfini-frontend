@@ -10,7 +10,7 @@ $primaryColor: $color-b;
   z-index: 9999;
   &.active {
     position: fixed;
-    top: 32px;
+    top: 15px;
 
     .rect, .cross-line {
       stroke: $color-white;
@@ -29,10 +29,10 @@ $primaryColor: $color-b;
     }
   }
   &:hover {
-    .rect {
+   /* .rect {
       stroke-width: 1;
       transform: rotate(45deg);
-    }
+    }*/
     .nav-line {
       transform: scale(0.5, 0.5);
     }

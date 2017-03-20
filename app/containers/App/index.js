@@ -13,27 +13,43 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import classNames from 'classnames';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import '../../sass/app.scss';
+
+import {
+  makeSelectMenuActive,
+  makeIsHomepage,
+} from './selectors';
 
 import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import Helmet from 'react-helmet';
+
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
+    menuActive: React.PropTypes.bool,
+    isHomepage: React.PropTypes.bool,
   };
 
   render() {
     return (
-      <div id="body">
+      <div id="body" className={classNames({ hp: this.props.isHomepage, sp: !this.props.isHomepage })}>
+        <Helmet
+          htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
+          titleTemplate="%s | LAINFINI"
+          defaultTitle="Homepage | LAINFINI"
+        />
         <Header />
         <main id="page">
-          <input type="checkbox" id="op" />
+          <input type="checkbox" id="op" checked={this.props.menuActive} />
           <div className="overlay overlay__hugeinc">
             <label htmlFor="op"></label>
             <Menu />
@@ -45,3 +61,10 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  menuActive: makeSelectMenuActive(),
+  isHomepage: makeIsHomepage(),
+});
+
+export default connect(mapStateToProps)(App);

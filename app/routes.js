@@ -33,6 +33,115 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    },
+    {
+      path: '/designers',
+      name: 'designers',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Designers'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Profile'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/studio',
+      name: 'studio',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Studio'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/catalog',
+      name: 'eshop',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Eshop/reducer'),
+          System.import('containers/Eshop/sagas'),
+          System.import('containers/Eshop'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('eshop', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/catalog/:productId',
+      name: 'productDetail',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ProductDetail/reducer'),
+          System.import('containers/ProductDetail/sagas'),
+          System.import('containers/ProductDetail'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('productDetail', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/templates/:template',
+      name: 'templates',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/templates'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     }, {
       path: '*',
       name: 'notfound',
