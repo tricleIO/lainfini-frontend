@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import config from 'config';
+
 import { connect } from 'react-redux';
 
 import Heading from 'components/Heading';
@@ -11,6 +13,8 @@ import LastView from 'components/LastView';
 import { createStructuredSelector } from 'reselect';
 
 import { makeSelectProduct } from './selectors';
+
+import _ from 'lodash';
 
 import {
   loadProduct,
@@ -44,7 +48,7 @@ class ProductDetail extends React.Component {
 
     return (
       <div>
-        {this.props.product &&
+        {product.name &&
           <div className="product-detail">
             <Helmet title={product.name} />
             <div className="container">
@@ -55,7 +59,7 @@ class ProductDetail extends React.Component {
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
-                      <img src={this.arrival1Img} alt="img" className="img-fluid" />
+                      <img src={config.apiUrl + 'file/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
                       <div className="ui-items">
                         <span className="like"><i className="icon icon-wishlist" /></span>
                         <span className="search"><i className="icon icon-user" /></span>
@@ -96,13 +100,13 @@ class ProductDetail extends React.Component {
                       <div className="wsw">
                         <p>
                           60x50 cm
-                      </p>
+                        </p>
                         <p>
                           23x23 inch.
-                      </p>
+                        </p>
                         <p>
                           printed fine silk
-                      </p>
+                        </p>
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
