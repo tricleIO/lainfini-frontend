@@ -79,10 +79,12 @@ class ProductDetail extends React.Component {
                     <div className="col-12 col-md-5 social-nav text-center text-sm-left">
                       <ul className="social-nav__icons">
                         <li>
-                          <a href={'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl} target="_blank" onClick={(e) => { e.preventDefault(); this.openPopup('https://www.facebook.com/sharer/sharer.php?u=' + shareUrl); }}><i className="icon icon-facebook" /></a>
+                          <a href={'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl} target="_blank" onClick={(e) => { e.preventDefault(); this.openPopup('https://www.facebook.com/sharer/sharer.php?u=' + shareUrl); }}>
+                            <i className="icon icon-facebook" />
+                          </a>
                         </li>
                         <li>
-                          <a href={'https://twitter.com/intent/tweet?text=' + product.title + '&url= ' + shareUrl + ' &via=TWITTER-HANDL'} target="_blank" onClick={(e) => { e.preventDefault(); this.openPopup('https://twitter.com/intent/tweet?text=' + product.title + '&url= ' + shareUrl + ' &via=LainfiniFashion'); }}>
+                          <a href={'https://twitter.com/intent/tweet?text=' + product.name + '&url= ' + shareUrl + ' &via=TWITTER-HANDL'} target="_blank" onClick={(e) => { e.preventDefault(); this.openPopup('https://twitter.com/intent/tweet?text=' + product.name + '&url=' + shareUrl + ' &via=LainfiniFashion'); }}>
                             <i className="icon icon-twitter" />
                           </a>
                         </li>
