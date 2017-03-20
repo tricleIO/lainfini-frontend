@@ -77,7 +77,7 @@ class Eshop extends React.Component {
                 >
                   <div className="product-list__bg">
                     <ProductSlider imgs={product.images} />
-                    <img src={config.apiUrl + 'file/' + product.mainImage.fileIndex + '.jpg'} className="product-list__small-image" alt="example" />
+                    <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} className="product-list__small-image" alt="example" />
                   </div>
                   <div className="product-list__content">
                     <div className="product-list__title">
