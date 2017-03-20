@@ -12,13 +12,6 @@ import { createStructuredSelector } from 'reselect';
 
 import { makeSelectProduct } from './selectors';
 
-import { ShareButtons } from 'react-share';
-
-const {
-  FacebookShareButton,
-  TwitterShareButton,
-} = ShareButtons;
-
 import {
   loadProduct,
 } from './actions';
