@@ -99,13 +99,13 @@ class ProductDetail extends React.Component {
                     <div className="col-12">
                       <div className="wsw">
                         <p>
-                          60x50 cm
+                          Size: {product.size.value}
                         </p>
                         <p>
-                          23x23 inch.
+                          Material: {product.material.name}
                         </p>
                         <p>
-                          printed fine silk
+                          {product.material.composition}
                         </p>
                       </div>
                     </div>
