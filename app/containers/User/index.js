@@ -8,10 +8,20 @@ import messages from './messages';
 
 import LoginForm from './forms/login';
 
+import { connect } from 'react-redux';
+
+import {
+  loginUser,
+} from './actions';
+
 class User extends React.Component {
 
+  static propTypes = {
+    loginUser: React.PropTypes.func,
+  }
+
   handleSubmit = (values) => {
-    console.log(values);
+    this.props.loginUser(values.get('email'), values.get('password'));
   }
 
   render() {
@@ -37,4 +47,10 @@ class User extends React.Component {
 
 }
 
-export default User;
+function mapDispatchToProps(dispatch) {
+  return {
+    loginUser: (email, password) => dispatch(loginUser(email, password)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(User);

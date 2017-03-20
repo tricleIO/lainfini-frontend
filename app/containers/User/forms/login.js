@@ -1,6 +1,9 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 
+import { FormattedMessage } from 'react-intl';
+import messages from '../messages';
+
 class LoginForm extends React.Component {
 
   static propTypes = {
@@ -12,18 +15,14 @@ class LoginForm extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" component="input" type="text" />
+          <label htmlFor="email"><FormattedMessage {...messages.email} /></label>
+          <Field name="email" component="input" type="text" />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" component="input" type="text" />
+          <label htmlFor="password"><FormattedMessage {...messages.password} /></label>
+          <Field name="password" component="input" type="password" />
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="email" />
-        </div>
-        <button type="submit">Submit</button>
+        <button type="submit"><FormattedMessage {...messages.login} /></button>
       </form>
     );
   }
