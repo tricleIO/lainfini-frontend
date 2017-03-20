@@ -52,10 +52,12 @@ export default class ArrivalsSlider extends React.PureComponent {
                 <div className="arrivals__item text-center" key={index}>
                   <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                   <p className="arrivals__subtitle">{products.name}</p>
-                  <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
+                  <Link to={'/catalog/' + product.product.urlSlug}>
+                    <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
+                  </Link>
                   <div className="arrivals__author">
                     <a className="text">{product.product.material.name} {product.product.material.composition} / {product.product.size.value}</a>
-                    <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                    <Link to={'/catalog/' + product.product.urlSlug}><i className="icon icon-shop"></i></Link>
                   </div>
                 </div>
               ))}
