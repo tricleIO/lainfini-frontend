@@ -31,7 +31,7 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
     return (
       <div className="product-list__slider" ref={(c) => { this.productListSlider = c; }}>
         { this.props.imgs.map((img, index) => (
-          <img src={config.apiUrl + 'file/' + img.fileIndex + '.jpg'} key={index} alt="" />
+          <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} key={index} alt="" />
           ))
         }
       </div>

@@ -59,7 +59,7 @@ class ProductDetail extends React.Component {
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
-                      <img src={config.apiUrl + 'file/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
+                      <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
                       <div className="ui-items">
                         <span className="like"><i className="icon icon-wishlist" /></span>
                         <span className="search"><i className="icon icon-user" /></span>
