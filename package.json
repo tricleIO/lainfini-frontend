@@ -179,6 +179,7 @@
     ],
     "include": [
       "core-js",
+      "redux-form",
       "lodash",
       "eventsource-polyfill"
     ]
