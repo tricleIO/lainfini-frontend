@@ -86,11 +86,11 @@ class Eshop extends React.Component {
                     </div>
                     <div className="row product-list__info">
                       <div className="col-7">size</div>
-                      <div className="col-4">60x50 cm <br /> 50x30cm</div>
+                      <div className="col-4">{product.size.value}</div>
                     </div>
                     <div className="row product-list__info">
                       <div className="col-7">material</div>
-                      <div className="col-4">printed fine silk</div>
+                      <div className="col-4">{product.material.name} <br /> {product.material.composition}</div>
                     </div>
                     <div className="row product-list__info">
                       <div className="col-7">design</div>
