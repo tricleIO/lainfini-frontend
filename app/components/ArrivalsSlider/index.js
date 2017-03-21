@@ -53,8 +53,14 @@ export default class ArrivalsSlider extends React.PureComponent {
             <div className="col-12 col-sm-10 offset-sm-1 arrivals__slider" ref={(c) => { this.arrivalsSlider = c; }}>
               { products.items.map((product, index) => (
                 <div className="arrivals__item text-center" key={index}>
-                  <h2 className="arrivals__title">{products.name}</h2>
-                  <p className="arrivals__subtitle">{product.product.name}</p>
+                  <h2 className="arrivals__title">
+                    {products.name}
+                  </h2>
+                  <p className="arrivals__subtitle">
+                    <Link to={'/catalog/' + product.product.urlSlug}>
+                      {product.product.name}
+                    </Link>
+                  </p>
                   <Link to={'/catalog/' + product.product.urlSlug}>
                     <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
                   </Link>
