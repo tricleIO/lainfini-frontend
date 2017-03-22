@@ -77,7 +77,7 @@ class Eshop extends React.Component {
                 >
                   <div className="product-list__bg">
                     <ProductSlider imgs={product.images} />
-                    <Link to={'/catalog/' + product.urlSlug}><img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} className="product-list__small-image" alt={product.name} /></Link>
+                    <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} className="product-list__small-image" alt={product.name} />
                   </div>
                   <div className="product-list__content">
                     <div className="product-list__title">
@@ -98,8 +98,6 @@ class Eshop extends React.Component {
                     </div>
                     <div className="row product-list__action">
                       <div className="col-6">
-                        <i className="icon icon-wishlist" />
-                        <span>Add to wishlist</span>
                       </div>
                       <div className="col-6">
                         <Link to={'/catalog/' + product.urlSlug} className="btn">See detail</Link>

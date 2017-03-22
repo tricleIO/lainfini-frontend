@@ -5,13 +5,17 @@ import messages from './messages';
 
 import { Link } from 'react-router';
 
+import config from 'config';
+
+import _ from 'lodash';
+
 import $ from 'jquery';
 import 'slick-carousel';
 
 export default class ArrivalsSlider extends React.PureComponent {
 
   static propTypes = {
-    children: React.PropTypes.node,
+    products: React.PropTypes.object,
   };
 
   constructor(props) {
@@ -40,6 +44,8 @@ export default class ArrivalsSlider extends React.PureComponent {
   }
 
   render() {
+    const { products } = this.props;
+    products.items = _(products.items).sortBy('position').value();
     return (
       <div className="arrivals" data-reveal>
         <div className="container">
