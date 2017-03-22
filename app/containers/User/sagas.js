@@ -4,6 +4,10 @@ import { LOGIN_USER } from './constants';
 import { loginUserSuccess, loginUserError } from './actions';
 import { saveToken } from 'containers/App/actions';
 
+import formUrlEncoded from 'form-urlencoded';
+
+import $ from 'jquery';
+
 import FormData from 'form-data';
 
 import config from 'config';
@@ -16,6 +20,12 @@ export function* getProduct(action) {
   formData.append('password', action.password);
   formData.append('grant_type', 'password');
 
+  const data = {
+    username: action.email,
+    password: action.password,
+    grant_type: 'password',
+  };
+
   // Select username from store
   const requestURL = config.apiUrl + 'oauth/token';
 
@@ -23,7 +33,12 @@ export function* getProduct(action) {
     // Call our request helper (see 'utils/request')
     const token = yield call(request, requestURL, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + btoa('clientapp:123456'),
+      },
+      cors: true,
+      body: formUrlEncoded(data),
     });
     yield put(loginUserSuccess());
     yield put(saveToken(token));
