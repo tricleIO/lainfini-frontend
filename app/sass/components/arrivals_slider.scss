@@ -16,7 +16,7 @@
     position: relative;
     outline: none!important;
     background-color: lighten($color-a, 6%);
-    padding: $_40;
+    padding: 0 $_40 $_40;
     @include media-breakpoint-up(sm) {
       box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
     }
@@ -30,6 +30,10 @@
     margin-bottom: $_20;
   }
   &__title {
+    text-align: center;
+    background: lighten($color-a, 6%);
+    margin: 0;
+    padding: 20px;
     font-size: $_22;
     font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-small;
@@ -51,6 +55,9 @@
     letter-spacing: $letter-spacing-base;
     font-family: $font-family-open-sans;
     font-weight: $headings-font-weight - 200;
+    .row {
+      width: 100%;
+    }
     a {
       color: inherit;
     }
@@ -59,6 +66,9 @@
     }
     .icon {
       font-size: $_30;
+      &:hover {
+        color: $color-b;
+      }
     }
   }
   &__icons {

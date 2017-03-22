@@ -44,65 +44,76 @@ export default class ArrivalsSlider extends React.PureComponent {
       <div className="arrivals" data-reveal>
         <div className="container">
           <div className="row">
+            <div className="col-12 col-sm-10 offset-sm-1">
+              <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
+            </div>
             <div className="col-12 col-sm-10 offset-sm-1 arrivals__slider" ref={(c) => { this.arrivalsSlider = c; }}>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                  <div className="row">
+                    <div className="col-2">
+                      <a href=""><i className="icon icon-wishlist"></i></a>
+                    </div>
+                    <div className="col-8">
+                      <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                    </div>
+                    <div className="col-2">
+                      <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                  <div className="row">
+                    <div className="col-2">
+                      <a href=""><i className="icon icon-wishlist"></i></a>
+                    </div>
+                    <div className="col-8">
+                      <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                    </div>
+                    <div className="col-2">
+                      <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                  <div className="row">
+                    <div className="col-2">
+                      <a href=""><i className="icon icon-wishlist"></i></a>
+                    </div>
+                    <div className="col-8">
+                      <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                    </div>
+                    <div className="col-2">
+                      <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
                 <p className="arrivals__subtitle">autumn mood</p>
                 <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
                 <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
-                </div>
-              </div>
-              <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
-                <p className="arrivals__subtitle">autumn mood</p>
-                <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
-                <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
-                </div>
-              </div>
-              <div className="arrivals__item text-center">
-                <h2 className="arrivals__title"><FormattedMessage {...messages.featuredDesigns} /></h2>
-                <p className="arrivals__subtitle">autumn mood</p>
-                <img src={this.arrivalImg} className="img-fluid d-inline-block" alt="new arrival img" />
-                <div className="arrivals__author">
-                  <a href=""><i className="icon icon-wishlist"></i></a>
-                  <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
-                  <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                  <div className="row">
+                    <div className="col-2">
+                      <a href=""><i className="icon icon-wishlist"></i></a>
+                    </div>
+                    <div className="col-8">
+                      <a className="text">Printed silk 20 x 20’’ / 60 x 60 cm</a>
+                    </div>
+                    <div className="col-2">
+                      <Link to="/eshop/detail/1"><i className="icon icon-shop"></i></Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
