@@ -9,9 +9,7 @@ html, body {
   @include media-breakpoint-up(lg) {
     font-size: $font-size-root;
   }
-  &.sp {
-    background-color: #f4f3f3;
-  }
+
 }
 html {
   box-sizing: border-box;
@@ -83,4 +81,10 @@ a {
 }
 .table-cell {
   display: table-cell;
+}
+
+#body {
+  &.sp {
+    background-color: #f4f3f3;
+  }
 }
