@@ -46,6 +46,10 @@
     .product-list__action {
       margin:0;
       font-size:$_24;
+      &:hover {
+        cursor: pointer;
+        color: $color-b;
+      }
     }
     .item-counter {
       padding: $_20 0;

@@ -70,7 +70,7 @@ cp('internals/templates/asyncInjectors.test.js',
 
 // Replace the files in the root app/ folder
 cp('internals/templates/app.js', 'app/app.js');
-cp('internals/templates/index.html', 'app/index.html');
+cp('internals/templates/basket.html', 'app/basket.html');
 cp('internals/templates/reducers.js', 'app/reducers.js');
 cp('internals/templates/routes.js', 'app/routes.js');
 cp('internals/templates/store.js', 'app/store.js');

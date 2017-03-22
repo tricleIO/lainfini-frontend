@@ -27,9 +27,9 @@ module.exports = require('./webpack.base.babel')({
     // Merge all duplicate modules
     new webpack.optimize.DedupePlugin(),
 
-    // Minify and optimize the index.html
+    // Minify and optimize the basket.html
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: 'app/basket.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
