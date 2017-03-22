@@ -1,0 +1,16 @@
+.p_404 {
+  height: calc(100vh - 221px);
+  background-image: url("../../userfiles/404_bg.jpg");
+  background-size: cover;
+  padding:$_45;
+  line-height: $line-height-base;
+  p {
+    color: $color-white;
+    font-size: $_26;
+    font-family: $font-family-nexa;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-base;
+    text-transform: uppercase;
+  }
+
+}
