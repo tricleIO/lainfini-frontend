@@ -10,15 +10,25 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 
 export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <main id="page">
+        <div className="p_404">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <p>
+                  Sorry, <br />
+                  the page you are looking for <br />
+                  cannot be found
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }
