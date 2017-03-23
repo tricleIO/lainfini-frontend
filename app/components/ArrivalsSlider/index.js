@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
 import { Link } from 'react-router';
 
 import config from 'config';

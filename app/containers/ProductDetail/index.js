@@ -14,8 +14,6 @@ import { createStructuredSelector } from 'reselect';
 
 import { makeSelectProduct } from './selectors';
 
-import _ from 'lodash';
-
 import {
   loadProduct,
 } from './actions';

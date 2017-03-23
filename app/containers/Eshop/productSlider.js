@@ -2,8 +2,6 @@ import React from 'react';
 
 import _ from 'lodash';
 
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
-
 import config from 'config';
 
 export default class ProductSlider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
