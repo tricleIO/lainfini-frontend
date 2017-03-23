@@ -15,6 +15,10 @@
 
       .product-list__slider {
         text-align: right;
+        img {
+          right:0;
+          left:auto;
+        }
       }
     }
 
@@ -25,10 +29,9 @@
       }
       .product-list__slider {
         padding-bottom: 0;
-        .slick-track {
-          img {
-            width: 100%;
-          }
+        img {
+          right:auto;
+          left:0;
         }
       }
       .slick-dots {
@@ -44,6 +47,10 @@
       }
       .product-list__slider {
         text-align: right;
+        img {
+          right:0;
+          left:auto;
+        }
       }
     }
   }
@@ -87,7 +94,16 @@
       }
     }
     img {
+      position: absolute;
       width: 75%;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      transition: opacity 0.9s ease;
+      &.active {
+        position: relative;
+        opacity: 1;
+      }
     }
   }
 

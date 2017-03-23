@@ -81,7 +81,9 @@ class Eshop extends React.Component {
                   </div>
                   <div className="product-list__content">
                     <div className="product-list__title">
-                      <h4><Link to={'/catalog/' + product.urlSlug}>{product.name}</Link></h4>
+                      <Link to={'/catalog/' + product.urlSlug}>
+                        <h4>{product.name}</h4>
+                      </Link>
                       <span>${product.price}</span>
                     </div>
                     <div className="product-list__action">

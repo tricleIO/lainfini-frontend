@@ -2,8 +2,6 @@ import React from 'react';
 
 import _ from 'lodash';
 
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
-
 import config from 'config';
 
 export default class ProductSlider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -49,7 +47,7 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
           <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} className={index === this.state.actualImg ? 'active' : null} alt="" />
         )}
         {_(this.props.imgs).size() === 0 &&
-          <img src="http://placehold.it/356x387" alt="" />
+          <img src="http://placehold.it/356x387" className="active" alt="" />
         }
       </div>
     );
