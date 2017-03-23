@@ -102,11 +102,15 @@
     line-height: $line-height-lg;
     font-weight: $font-weight-bold;
     padding-right: 2%;
+    font-family: $font-family-nexa;
+    h2,h3,h4 {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
     span {
-      font-family: $font-family-nexa;
       color: $color-black;
       text-transform: uppercase;
-      font-weight: bold;
     }
     > *, a, span {
       font-weight: bold;
