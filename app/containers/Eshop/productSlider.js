@@ -45,13 +45,9 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
   render() {
     return (
       <div className="product-list__slider" ref={(c) => { this.productListSlider = c; }}>
-        {_(this.props.imgs).size() > 0 &&
-          <ReactCSSTransitionReplace
-            transitionName="cross-fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}
-          >
-            <img src={config.apiUrl + 'files/' + this.props.imgs[this.state.actualImg].fileIndex + '.jpg'} alt="" />
-          </ReactCSSTransitionReplace>
-        }
+        {this.props.imgs.map((img, index) =>
+          <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} className={index === this.state.actualImg ? 'active' : null} alt="" />
+        )}
         {_(this.props.imgs).size() === 0 &&
           <img src="http://placehold.it/356x387" alt="" />
         }
