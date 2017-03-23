@@ -11,10 +11,13 @@
 
 import React from 'react';
 
+import Helmet from 'react-helmet';
+
 export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <main id="page">
+        <Helmet title="Page not found" />
         <div className="p_404">
           <div className="container-fluid">
             <div className="row">
