@@ -42,6 +42,9 @@ a {
       }
     }
   }
+  &:visited {
+    color: $color-b;
+  }
 }
 
 [class^="col-"] {
