@@ -23,6 +23,10 @@ import {
   makeSelectMenuActive,
 } from '../selectors';
 
+import {
+  Link,
+} from 'react-router';
+
 import React from 'react';
 import classNames from 'classnames';
 
@@ -63,10 +67,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               </label>
             </div>
             <div className="col-4">
-              <a href="" className="logo text-center">lainfini</a>
+              <Link to="/" className="logo text-center">lainfini</Link>
             </div>
             <div className="col-4 text-right header_action">
-              <a href="" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></a>
+              <Link to="/basket" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></Link>
             </div>
           </div>
         </div>
