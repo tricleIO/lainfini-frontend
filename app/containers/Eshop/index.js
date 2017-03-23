@@ -67,7 +67,7 @@ class Eshop extends React.Component {
         <div className="product-list">
           <div className="container">
             <div className="row">
-              { this.props.products.map((product, index) => (
+              {this.props.products.map((product, index) => (
                 <div
                   className={classNames('col-12 col-sm-6 product-list__item', {
                     'product-list__item--top-left': index % 4 === 1,
@@ -87,7 +87,7 @@ class Eshop extends React.Component {
                       <span>${product.price}</span>
                     </div>
                     <div className="product-list__action">
-                      <a className="see__detail">See detail <i className="icon icon-shop"></i></a>
+                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-shop"></i></Link>
                       <a className="add_wishlist"><i className="icon icon-wishlist"></i></a>
                     </div>
                     <div className="row product-list__info">
