@@ -36,6 +36,7 @@ class Eshop extends React.Component {
     this.eshopProduktBigImg = require('./img/eshop-produkt-big.png');
     this.eshopProduktExampleImg = require('./img/eshop-product-example.jpg');
     this.eshopSmallSecondImg = require('./img/eshop-small-second.png');
+    this.eshopHeadImg = require('./img/eshop-bg.png');
   }
 
   componentWillMount() {
@@ -46,7 +47,7 @@ class Eshop extends React.Component {
     return (
       <div>
         <Helmet title="Catalog" />
-        <Visual bg="//placehold.it/1920x260" mod="visual--small" />
+        <Visual bg={this.eshopHeadImg} mod="visual--small" />
 
         <div className="filter">
           <div className="container">

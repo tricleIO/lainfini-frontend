@@ -48,6 +48,7 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
         )}
         {_(this.props.imgs).size() === 0 &&
           <img src="http://placehold.it/356x387" className="active" alt="" />
+          <img className="active" src="http://placehold.it/356x387" alt="" />
         }
       </div>
     );
