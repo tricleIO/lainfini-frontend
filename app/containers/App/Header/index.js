@@ -48,7 +48,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
       <header>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-2">
+            <div className="col-4">
               <label htmlFor="op">
                 <div id="nav-lines" className={classNames({ active: this.props.menuActive })} onClick={this.changeState}>
                   <svg viewBox="0 0 64 64">
@@ -62,10 +62,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                 </div>
               </label>
             </div>
-            <div className="col-5 push-1">
+            <div className="col-4">
               <a href="" className="logo text-center">lainfini</a>
             </div>
-            <div className="col-5 text-right header_action">
+            <div className="col-4 text-right header_action">
               <a href="" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></a>
             </div>
           </div>

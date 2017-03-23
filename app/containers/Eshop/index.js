@@ -84,22 +84,17 @@ class Eshop extends React.Component {
                       <h4><Link to={'/catalog/' + product.urlSlug}>{product.name}</Link></h4>
                       <span>${product.price}</span>
                     </div>
-                    <div className="row product-list__info">
-                      <div className="col-7">size</div>
-                      <div className="col-4">{product.size.value}</div>
+                    <div className="product-list__action">
+                      <a className="see__detail">See detail <i className="icon icon-shop"></i></a>
+                      <a className="add_wishlist"><i className="icon icon-wishlist"></i></a>
                     </div>
                     <div className="row product-list__info">
-                      <div className="col-7">material</div>
-                      <div className="col-4">{product.material.name} <br /> {product.material.composition}</div>
-                    </div>
-                    <div className="row product-list__info">
-                      <div className="col-7">design</div>
-                      <div className="col-4">Jabob Borrows</div>
-                    </div>
-                    <div className="row product-list__action">
-                      <div className="col-6">
+                      <div className="col-7">
+                        <div>{product.size.value}</div>
+                        <div>{product.material.name}, {product.material.composition}</div>
+                        <div>Jabob Borrows</div>
                       </div>
-                      <div className="col-6">
+                      <div className="col-5 see_more">
                         <Link to={'/catalog/' + product.urlSlug} className="btn">See detail</Link>
                       </div>
                     </div>
