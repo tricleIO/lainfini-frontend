@@ -6,8 +6,6 @@ import { saveToken } from 'containers/App/actions';
 
 import formUrlEncoded from 'form-urlencoded';
 
-import $ from 'jquery';
-
 import FormData from 'form-data';
 
 import config from 'config';
