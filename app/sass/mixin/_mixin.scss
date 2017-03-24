@@ -24,6 +24,12 @@
     cursor: pointer;
     color: $hover-color;
     background: lighten($text-color,8%);
+    &:visited {
+      color: $hover-color;
+    }
+  }
+  &:visited {
+    color: $text-color;
   }
   &:focus {
     outline: 0;
