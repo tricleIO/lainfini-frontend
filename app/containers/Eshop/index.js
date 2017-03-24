@@ -56,6 +56,28 @@ class Eshop extends React.Component {
                 <div className="filter__heading">
                   <h1 className="filter__title">original handmade scarves</h1>
                   <span className="filter__subtitle">Filter by</span>
+                  <div className="row">
+                    <div className="col-6">
+                      <div className="ui-interactive">
+                        <select className="ui-interactive__select">
+                          <option>- All sizes -</option>
+                          <option>20 x 20’’ / 40 x 40 cm</option>
+                          <option>Volba 2</option>
+                          <option>Volba 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="ui-interactive">
+                        <select className="ui-interactive__select">
+                          <option>- All sizes -</option>
+                          <option>20 x 20’’ / 40 x 40 cm</option>
+                          <option>Volba 2</option>
+                          <option>Volba 3</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="col-12 col-sm-4" />
