@@ -10,6 +10,8 @@ import LastView from 'components/LastView';
 
 import ProductSlider from './productSlider';
 
+import Select from 'components/Select';
+
 import config from 'config';
 
 import { connect } from 'react-redux';
@@ -59,22 +61,22 @@ class Eshop extends React.Component {
                   <div className="row">
                     <div className="col-6">
                       <div className="ui-interactive">
-                        <select className="ui-interactive__select">
+                        <Select className="ui-interactive__select">
                           <option>- All sizes -</option>
                           <option>20 x 20’’ / 40 x 40 cm</option>
                           <option>Volba 2</option>
                           <option>Volba 3</option>
-                        </select>
+                        </Select>
                       </div>
                     </div>
                     <div className="col-6">
                       <div className="ui-interactive">
-                        <select className="ui-interactive__select">
+                        <Select className="ui-interactive__select">
                           <option>- All sizes -</option>
                           <option>20 x 20’’ / 40 x 40 cm</option>
                           <option>Volba 2</option>
                           <option>Volba 3</option>
-                        </select>
+                        </Select>
                       </div>
                     </div>
                   </div>
