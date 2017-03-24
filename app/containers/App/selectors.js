@@ -29,9 +29,15 @@ const makeIsHomepage = () => createSelector(
   (appState) => appState.get('isHomepage')
 );
 
+const makeSelectLastViewed = () => createSelector(
+  selectApp,
+  (appState) => appState.get('lastViewedDesigns')
+);
+
 export {
   selectLocationState,
   selectApp,
   makeSelectMenuActive,
   makeIsHomepage,
+  makeSelectLastViewed,
 };

@@ -31,7 +31,7 @@
     font-family: $font-family-open-sans;
   }
   p {
-    margin-bottom: $_30;
+    margin-bottom: $_10;
     letter-spacing: $letter-spacing-small;
     line-height: $line-height-base;
     text-align: left;
@@ -117,6 +117,9 @@
     display: inline-block;
     margin-right: $_15;
     margin-bottom: $_15;
+  }
+  b, strong {
+    font-weight: bold;
   }
   .block-center {
     margin:0 auto;

@@ -1,13 +1,20 @@
 import { fromJS } from 'immutable';
+import localStorage from 'local-storage';
+
+import _ from 'lodash';
 
 import {
   CHANGE_MENU_STATE,
   CHANGE_HOMEPAGE_STATE,
+  SAVE_TOKEN,
+  ADD_LAST_VIEWED_DESIGN,
 } from './constants';
 
 const initialState = fromJS({
   menuActive: false,
   isHomepage: false,
+  token: localStorage('access-token'),
+  lastViewedDesigns: localStorage('last-viewed-designs') ? JSON.parse(localStorage('last-viewed-designs')) : [],
 });
 
 function appReducer(state = initialState, action) {
@@ -18,6 +25,19 @@ function appReducer(state = initialState, action) {
     case CHANGE_HOMEPAGE_STATE:
       return state
         .set('isHomepage', action.isHomepage);
+    case SAVE_TOKEN:
+      localStorage('access-token', action.token);
+      return state
+        .set('token', action.token);
+    case ADD_LAST_VIEWED_DESIGN: // eslint-disable-line no-case-declarations
+      const lastViewedDesigns = _(_(state.get('lastViewedDesigns')).isArray() ? state.get('lastViewedDesigns') : state.get('lastViewedDesigns').toJS()).filter((o) => o.uid !== action.design.uid).value();
+      lastViewedDesigns.unshift(action.design);
+      if (_(lastViewedDesigns).size() > 4) {
+        lastViewedDesigns.pop();
+      }
+      localStorage('last-viewed-designs', JSON.stringify(lastViewedDesigns));
+      return state
+        .set('lastViewedDesigns', lastViewedDesigns);
     default:
       return state;
   }

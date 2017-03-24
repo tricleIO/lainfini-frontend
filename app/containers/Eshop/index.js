@@ -36,6 +36,7 @@ class Eshop extends React.Component {
     this.eshopProduktBigImg = require('./img/eshop-produkt-big.png');
     this.eshopProduktExampleImg = require('./img/eshop-product-example.jpg');
     this.eshopSmallSecondImg = require('./img/eshop-small-second.png');
+    this.eshopHeadImg = require('./img/eshop-bg.png');
   }
 
   componentWillMount() {
@@ -46,7 +47,7 @@ class Eshop extends React.Component {
     return (
       <div>
         <Helmet title="Catalog" />
-        <Visual bg="//placehold.it/1920x260" mod="visual--small" />
+        <Visual bg={this.eshopHeadImg} mod="visual--small" />
 
         <div className="filter">
           <div className="container">
@@ -55,6 +56,28 @@ class Eshop extends React.Component {
                 <div className="filter__heading">
                   <h1 className="filter__title">original handmade scarves</h1>
                   <span className="filter__subtitle">Filter by</span>
+                  <div className="row">
+                    <div className="col-6">
+                      <div className="ui-interactive">
+                        <select className="ui-interactive__select">
+                          <option>- All sizes -</option>
+                          <option>20 x 20’’ / 40 x 40 cm</option>
+                          <option>Volba 2</option>
+                          <option>Volba 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="ui-interactive">
+                        <select className="ui-interactive__select">
+                          <option>- All sizes -</option>
+                          <option>20 x 20’’ / 40 x 40 cm</option>
+                          <option>Volba 2</option>
+                          <option>Volba 3</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="col-12 col-sm-4" />
@@ -110,6 +133,18 @@ class Eshop extends React.Component {
         <LastView />
         <Peoples btnInline isShop />
         <SocialNav links />
+        <div className="cookies">
+          <div className="container">
+            <div className="row">
+              <div className="col-11">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam asperiores cupiditate debitis!</p>
+              </div>
+              <div className="col-1">
+                <i className="icon icon-close"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

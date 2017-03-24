@@ -15,6 +15,10 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectProduct } from './selectors';
 
 import {
+  addLastViewedDesign,
+} from 'containers/App/actions';
+
+import {
   loadProduct,
 } from './actions';
 
@@ -22,6 +26,7 @@ class ProductDetail extends React.Component {
 
   static propTypes = {
     loadProduct: React.PropTypes.func,
+    addLastViewedDesign: React.PropTypes.func,
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
   };
@@ -29,11 +34,34 @@ class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
 
+    this.sentLastViewed = false;
     this.arrival1Img = require('./img/arrival-1.png');
   }
 
   componentWillMount() {
     this.props.loadProduct(this.props.routeParams.productId);
+  }
+
+  componentDidMount() {
+    this.viewedDesignsUpdate();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.routeParams.productId !== this.props.routeParams.productId) {
+      this.sentLastViewed = false;
+      this.props.loadProduct(this.props.routeParams.productId);
+    }
+  }
+
+  componentDidUpdate() {
+    this.viewedDesignsUpdate();
+  }
+
+  viewedDesignsUpdate() {
+    if (this.props.product.name && !this.sentLastViewed) {
+      this.props.addLastViewedDesign(this.props.product);
+      this.sentLastViewed = true;
+    }
   }
 
   openPopup(url) {
@@ -128,6 +156,7 @@ class ProductDetail extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     loadProduct: (urlSlug) => dispatch(loadProduct(urlSlug)),
+    addLastViewedDesign: (design) => dispatch(addLastViewedDesign(design)),
   };
 }
 

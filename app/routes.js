@@ -113,6 +113,12 @@ export default function createRoutes(store) {
     }, {
       path: '/catalog/:productId',
       name: 'productDetail',
+      onChange() {
+        console.log("test");
+      },
+      onEnter() {
+        console.log('test');
+      },
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/ProductDetail/reducer'),
@@ -158,6 +164,27 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/user',
+      name: 'user',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/User/reducer'),
+          System.import('containers/User/sagas'),
+          System.import('containers/User'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('user', reducer.default);
+          injectSagas(sagas.default);
+
           renderRoute(component);
         });
 
