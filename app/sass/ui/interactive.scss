@@ -6,25 +6,39 @@ form {
 .select2-container {
   font-family: $font-family-open-sans;
   letter-spacing: $letter-spacing-small;
+  height: 63px;
   .select2-selection {
+    border:none;
+    outline:none;
+    &:focus {
+      border:none;
+      outline:none;
+    }
     &__rendered {
       color: lighten($color-text,.2)!important;
       font-size: $_24;
       font-weight: lighter;
     }
     &--single {
+      position: relative;
       outline: none;
-      border:none;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
       background-color: $color-white;
+      border-radius: 0;
       height: auto;
       padding: $_17;
+      .select2-selection__rendered {
+        max-width: 88%;
+        border-right: none;
+      }
       .select2-selection__arrow {
         @include position(absolute, 50% 0 0 auto);
         transform: translateY(-50%);
         height:auto;
         width: auto;
         transition: all 0.4s ease;
+        background: transparent;
+        border-left: none;
         &:before {
           font-family: 'lainfini';
           content: $icon-arrow-down;
@@ -52,7 +66,7 @@ form {
   }
   &--open {
     .select2-selection--single .select2-selection__arrow {
-      transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(180deg);
     }
   }
   .select2-dropdown {
