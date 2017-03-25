@@ -120,6 +120,7 @@ input {
   border:1px solid #dddbc8;
   text-align: center;
   color: $color-text;
+  background-color: $color-white;
   &::-webkit-input-placeholder {
     color: lighten($color-text,30%);
     text-transform: uppercase;
@@ -145,3 +146,27 @@ input {
   }
 
 }
+.form-group {
+  label {
+    display: block;
+    color: $color-c;
+    font-family: $font-family-open-sans;
+    font-size: $_16;
+    font-weight: $font-weight-normal;
+    padding-bottom: $_19;
+  }
+  .form-control {
+    border-radius: 0;
+    font-size: $_22;
+    padding: $_16 $_10;
+    font-family: $font-family-nexa;
+    &.err {
+      &:placehodler {
+        color:red;
+      }
+    }
+  }
+}
+
+
+

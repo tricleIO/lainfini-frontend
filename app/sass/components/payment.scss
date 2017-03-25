@@ -1,0 +1,31 @@
+.payment {
+  color: $color-c;
+  font-family: $font-family-open-sans;
+  p {
+    letter-spacing: $letter-spacing-small;
+    line-height: 2;
+  }
+  h1,h2,h3 {
+    margin-bottom: $_10;
+  }
+  .row {
+    justify-content: center;
+  }
+  .form-group {
+    margin-top: $_50;
+  }
+  &--method {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    @include media-breakpoint-up(sm) {
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+    }
+    .custom-radio {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
