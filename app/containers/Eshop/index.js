@@ -54,12 +54,11 @@ class Eshop extends React.Component {
         <div className="filter">
           <div className="container">
             <div className="row text-center">
-              <div className="col-10 offset-1">
+              <div className="col-12 col-sm-10 offset-sm-1">
                 <div className="filter__heading">
                   <h1 className="filter__title">original handmade scarves</h1>
-                  <span className="filter__subtitle">Filter by</span>
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <div className="ui-interactive">
                         <Select className="ui-interactive__select">
                           <option>- All sizes -</option>
@@ -69,7 +68,7 @@ class Eshop extends React.Component {
                         </Select>
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <div className="ui-interactive">
                         <Select className="ui-interactive__select">
                           <option>- All sizes -</option>
@@ -81,6 +80,9 @@ class Eshop extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className="col-3 mb-3">
+                  <hr className="hr-blue"/>
+                </div>
               </div>
               <div className="col-12 col-sm-4" />
               <div className="col-12 col-sm-4" />
@@ -90,11 +92,11 @@ class Eshop extends React.Component {
         </div>
 
         <div className="product-list">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               {this.props.products.map((product, index) => (
                 <div
-                  className={classNames('col-12 col-sm-6 product-list__item', {
+                  className={classNames('col-12 col-md-6 col-lg-5 product-list__item', {
                     'product-list__item--top-left': index % 4 === 1,
                     'product-list__item--top-right': index % 4 === 2,
                     'product-list__item--bottom-left': index % 4 === 3,
@@ -112,7 +114,7 @@ class Eshop extends React.Component {
                       <span>${product.price}</span>
                     </div>
                     <div className="product-list__action">
-                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-shop"></i></Link>
+                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-see-detail"></i></Link>
                       <a className="add_wishlist"><i className="icon icon-wishlist"></i></a>
                     </div>
                     <div className="row product-list__info">
