@@ -151,9 +151,6 @@
       color: $color-black;
       font-weight: $font-weight-bold;
       transition: color 0.4s ease;
-      .icon {
-        font-size: $_20;
-      }
       &:hover {
         color: $color-b;
       }

@@ -114,7 +114,7 @@ class Eshop extends React.Component {
                       <span>${product.price}</span>
                     </div>
                     <div className="product-list__action">
-                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-shop"></i></Link>
+                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-see-detail"></i></Link>
                       <a className="add_wishlist"><i className="icon icon-wishlist"></i></a>
                     </div>
                     <div className="row product-list__info">
