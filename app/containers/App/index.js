@@ -28,6 +28,7 @@ import {
 import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
+import Cookies from './Cookies';
 
 import Helmet from 'react-helmet';
 
@@ -56,6 +57,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
           </div>
           {React.Children.toArray(this.props.children)}
         </main>
+        <Cookies />
         <Footer />
       </div>
     );

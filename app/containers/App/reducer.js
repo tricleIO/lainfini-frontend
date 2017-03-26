@@ -8,9 +8,11 @@ import {
   CHANGE_HOMEPAGE_STATE,
   SAVE_TOKEN,
   ADD_LAST_VIEWED_DESIGN,
+  SAVE_COOKIE_LAW,
 } from './constants';
 
 const initialState = fromJS({
+  cookiesAccepted: false,
   menuActive: false,
   isHomepage: false,
   token: localStorage('access-token'),
@@ -19,6 +21,9 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_COOKIE_LAW:
+      return state
+        .set('cookiesAccepted', action.cookies);
     case CHANGE_MENU_STATE:
       return state
         .set('menuActive', action.menuActive);

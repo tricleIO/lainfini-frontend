@@ -49,7 +49,7 @@ class ProductDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.routeParams.productId !== this.props.routeParams.productId) {
       this.sentLastViewed = false;
-      this.props.loadProduct(this.props.routeParams.productId);
+      this.props.loadProduct(nextProps.routeParams.productId);
     }
   }
 

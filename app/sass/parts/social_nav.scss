@@ -8,8 +8,11 @@
     a {
       display: block;
       font-size: $_60;
-      transition: color 0.4s ease, transform 0.4s ease;
+      transition: all 0.4s ease, transform 0.4s ease;
       color: $color-black;
+      .icon {
+        transition: all 0.4s ease, transform 0.4s ease;
+      }
       &:hover {
 
         .icon-facebook {
@@ -22,6 +25,9 @@
 
         .icon-instagram {
           color: #e95950;
+          background: -webkit-linear-gradient(left top,#8a3ab9, #4c68d7,#cd486b, #fbad50, #fccc63, #fccc63, #e95950);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         transform: scale(1.05);

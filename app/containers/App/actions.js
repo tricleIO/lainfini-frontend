@@ -3,6 +3,7 @@ import {
   CHANGE_HOMEPAGE_STATE,
   SAVE_TOKEN,
   ADD_LAST_VIEWED_DESIGN,
+  SAVE_COOKIE_LAW,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -30,5 +31,12 @@ export function addLastViewedDesign(design) {
   return {
     type: ADD_LAST_VIEWED_DESIGN,
     design,
+  };
+}
+
+export function saveCookieAccepted(cookies) {
+  return {
+    type: SAVE_COOKIE_LAW,
+    cookies,
   };
 }

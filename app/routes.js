@@ -113,12 +113,6 @@ export default function createRoutes(store) {
     }, {
       path: '/catalog/:productId',
       name: 'productDetail',
-      onChange() {
-        console.log("test");
-      },
-      onEnter() {
-        console.log('test');
-      },
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/ProductDetail/reducer'),
