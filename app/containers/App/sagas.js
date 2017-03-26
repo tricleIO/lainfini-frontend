@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP } from './constants';
-import { saveUser, saveToken } from './actions';
+import { saveUser, saveToken, logout } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
 
@@ -32,7 +32,7 @@ export function* getUser(action) {
         yield put(push('/catalog'));
       }
     } catch (err) {
-      yield put(saveToken({}));
+      yield put(logout());
     }
   }
 }
@@ -66,7 +66,7 @@ export function* initApp() {
       });
       yield put(saveToken(token, true));
     } catch (err) {
-      yield put(saveToken({}));
+      yield put(logout());
     }
   }
 }

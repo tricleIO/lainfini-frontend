@@ -63,11 +63,11 @@ class ArrivalsSlider extends React.PureComponent {
               {products.items.map((product, index) => (
                 <div className="arrivals__item text-center" key={index}>
                   <p className="arrivals__subtitle">
-                    <Link to={'/catalog/' + product.product.urlSlug}>
+                    <Link to={'/catalog/' + product.product.slug}>
                       {product.product.name}
                     </Link>
                   </p>
-                  <Link to={'/catalog/' + product.product.urlSlug}>
+                  <Link to={'/catalog/' + product.product.slug}>
                     <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
                   </Link>
                   <div className="arrivals__author">
@@ -79,7 +79,7 @@ class ArrivalsSlider extends React.PureComponent {
                         <a className="text">{product.product.material.name} {product.product.material.composition} / {product.product.size.value}</a>
                       </div>
                       <div className="col-2">
-                        <Link to={'/catalog/' + product.product.urlSlug}><i className="icon icon-shop"></i></Link>
+                        <Link to={'/catalog/' + product.product.slug}><i className="icon icon-shop"></i></Link>
                       </div>
                     </div>
                   </div>

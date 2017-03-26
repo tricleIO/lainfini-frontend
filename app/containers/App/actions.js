@@ -6,6 +6,7 @@ import {
   SAVE_COOKIE_LAW,
   SAVE_USER,
   INIT_APP,
+  LOGOUT,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -55,5 +56,11 @@ export function saveUser(user, fromAppInit = false) {
 export function initApp() {
   return {
     type: INIT_APP,
+  };
+}
+
+export function logout() {
+  return {
+    type: LOGOUT,
   };
 }
