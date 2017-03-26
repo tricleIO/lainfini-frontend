@@ -2,7 +2,7 @@ import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER } from './constants';
 import { loginUserSuccess, loginUserError } from './actions';
-import { saveToken } from 'containers/App/actions';
+import { saveToken, logout } from 'containers/App/actions';
 
 import formUrlEncoded from 'form-urlencoded';
 
@@ -34,6 +34,7 @@ export function* getProduct(action) {
     yield put(loginUserSuccess());
     yield put(saveToken(token));
   } catch (err) {
+    yield put(logout());
     yield put(loginUserError(err.toString()));
   }
 }
