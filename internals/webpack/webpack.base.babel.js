@@ -4,6 +4,8 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
+
 
 module.exports = (options) => ({
   entry: options.entry,
@@ -14,9 +16,8 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.js$/, // Transform all .js files required somewhere with Babel
-      loader: 'babel',
+      loader: 'happypack/loader?id=babel',
       exclude: /node_modules/,
-      query: options.babelQuery,
     }, {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
@@ -54,7 +55,7 @@ module.exports = (options) => ({
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-      loaders: ['style', 'css', 'sass'],
+      loader: 'happypack/loader?id=sass',
     }],
   },
   plugins: options.plugins.concat([
@@ -70,6 +71,26 @@ module.exports = (options) => ({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
+    }),
+
+    // For faster builds
+    new HappyPack({
+      id: 'babel',
+      loaders: [
+        {
+          loader: 'babel',
+          query: options.babelQuery,
+        },
+      ],
+    }),
+
+    new HappyPack({
+      id: 'sass',
+      loaders: [
+        'style',
+        'css',
+        'sass',
+      ],
     }),
   ]),
   resolve: {
