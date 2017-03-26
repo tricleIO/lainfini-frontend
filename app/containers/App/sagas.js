@@ -1,8 +1,8 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP } from './constants';
 import { saveUser, saveToken } from './actions';
 
-import { push } from 'react-router-redux';
+import { push, LOCATION_CHANGE } from 'react-router-redux';
 
 import config from 'config';
 
@@ -26,9 +26,11 @@ export function* getUser(action) {
 
     try {
       // Call our request helper (see 'utils/request')
-      const products = yield call(request, requestURL, options);
-      yield put(saveUser(products));
-      yield put(push('/catalog'));
+      const user = yield call(request, requestURL, options);
+      yield put(saveUser(user, action.fromAppInit));
+      if (!action.fromAppInit) {
+        yield put(push('/catalog'));
+      }
     } catch (err) {
       yield put(saveToken({}));
     }
@@ -62,7 +64,7 @@ export function* initApp() {
         cors: true,
         body: formUrlEncoded(data),
       });
-      yield put(saveToken(token));
+      yield put(saveToken(token, true));
     } catch (err) {
       yield put(saveToken({}));
     }
@@ -70,7 +72,10 @@ export function* initApp() {
 }
 
 export function* initAppData() {
-  yield takeLatest(INIT_APP, initApp);
+  const watcher = yield takeLatest(INIT_APP, initApp);
+
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
 }
 
 // Bootstrap sagas

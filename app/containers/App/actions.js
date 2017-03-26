@@ -22,9 +22,10 @@ export function changeHomepageState(state) {
   };
 }
 
-export function saveToken(token) {
+export function saveToken(token, fromAppInit = false) {
   return {
     type: SAVE_TOKEN,
+    fromAppInit,
     token,
   };
 }
@@ -43,9 +44,10 @@ export function saveCookieAccepted(cookies) {
   };
 }
 
-export function saveUser(user) {
+export function saveUser(user, fromAppInit = false) {
   return {
     type: SAVE_USER,
+    fromAppInit,
     user,
   };
 }
