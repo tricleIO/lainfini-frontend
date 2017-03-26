@@ -161,7 +161,7 @@ input {
     padding: $_16 $_10;
     font-family: $font-family-nexa;
     &.err {
-      &:placehodler {
+      &:-webkit-placeholder {
         color:red;
       }
     }
