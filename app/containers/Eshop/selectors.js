@@ -7,7 +7,13 @@ const makeSelectProducts = () => createSelector(
   (eshopState) => eshopState.get('products')
 );
 
+const makeSelectFilter = (type) => createSelector(
+  selectEshop,
+  (eshopState) => eshopState.get('filterBy' + type)
+);
+
 export {
   selectEshop,
   makeSelectProducts,
+  makeSelectFilter,
 };

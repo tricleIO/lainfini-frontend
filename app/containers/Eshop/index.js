@@ -14,13 +14,20 @@ import Select from 'components/Select';
 
 import config from 'config';
 
+import _ from 'lodash';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectProducts } from './selectors';
+import {
+  makeSelectProducts,
+  makeSelectFilter,
+ } from './selectors';
 
 import {
   loadProducts,
+  selectFilterMaterial,
+  selectFilterSize,
 } from './actions';
 
 import { Link } from 'react-router';
@@ -30,6 +37,10 @@ class Eshop extends React.Component {
   static propTypes = {
     loadProducts: React.PropTypes.func,
     products: React.PropTypes.array,
+    filterSize: React.PropTypes.string,
+    filterMaterial: React.PropTypes.string,
+    selectFilterMaterial: React.PropTypes.func,
+    selectFilterSize: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -46,6 +57,19 @@ class Eshop extends React.Component {
   }
 
   render() {
+    const sizes = _(this.props.products).isArray() ? _(this.props.products).map((obj) => obj.size).uniqBy('uid').value() : [];
+    const materials = _(this.props.products).isArray() ? _(this.props.products).map((obj) => obj.material).uniqBy('uid').value() : [];
+
+    let products = _(this.props.products).isArray() ? this.props.products : [];
+
+    if (parseInt(this.props.filterSize, 10) !== -1) {
+      products = _(products).filter((obj) => obj.size.uid === parseInt(this.props.filterSize, 10)).value();
+    }
+
+    if (parseInt(this.props.filterMaterial, 10) !== -1) {
+      products = _(products).filter((obj) => obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
+    }
+
     return (
       <div>
         <Helmet title="Catalog" />
@@ -60,28 +84,32 @@ class Eshop extends React.Component {
                   <div className="row">
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select">
-                          <option>- All sizes -</option>
-                          <option>20 x 20’’ / 40 x 40 cm</option>
-                          <option>Volba 2</option>
-                          <option>Volba 3</option>
+                        <Select className="ui-interactive__select" onChange={(event, value) => { this.props.selectFilterSize(value); }}>
+                          <option value="-1">- All sizes -</option>
+                          {
+                            sizes.map((size) =>
+                              <option value={size.uid} key={size.uid}>{size.value}</option>
+                            )
+                          }
                         </Select>
                       </div>
                     </div>
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select">
-                          <option>- All sizes -</option>
-                          <option>20 x 20’’ / 40 x 40 cm</option>
-                          <option>Volba 2</option>
-                          <option>Volba 3</option>
+                        <Select className="ui-interactive__select" onChange={(event, value) => { this.props.selectFilterMaterial(value); }}>
+                          <option value="-1">- All materials -</option>
+                          {
+                            materials.map((material) =>
+                              <option value={material.uid} key={material.uid}>{material.name}</option>
+                            )
+                          }
                         </Select>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-3 mb-3">
-                  <hr className="hr-blue"/>
+                  <hr className="hr-blue" />
                 </div>
               </div>
               <div className="col-12 col-sm-4" />
@@ -94,7 +122,7 @@ class Eshop extends React.Component {
         <div className="product-list">
           <div className="container-fluid">
             <div className="row">
-              {this.props.products.map((product, index) => (
+              { products.map((product, index) => (
                 <div
                   className={classNames('col-12 col-md-6 col-lg-5 product-list__item', {
                     'product-list__item--top-left': index % 4 === 1,
@@ -157,11 +185,15 @@ class Eshop extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     loadProducts: (page) => dispatch(loadProducts(page)),
+    selectFilterMaterial: (uid) => dispatch(selectFilterMaterial(uid)),
+    selectFilterSize: (uid) => dispatch(selectFilterSize(uid)),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
   products: makeSelectProducts(),
+  filterSize: makeSelectFilter('Size'),
+  filterMaterial: makeSelectFilter('Material'),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Eshop);

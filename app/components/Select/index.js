@@ -10,11 +10,16 @@ export default class Select extends React.Component {
 
   static propTypes = {
     className: React.PropTypes.string,
+    onChange: React.PropTypes.func,
   }
 
   componentDidMount() {
     $(this.select).select2({
       theme: 'classic',
+    });
+
+    $(this.select).on('select2:select', (event) => {
+      this.props.onChange(event, this.select.value);
     });
   }
 
