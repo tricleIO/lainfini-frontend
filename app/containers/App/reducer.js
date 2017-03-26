@@ -9,18 +9,23 @@ import {
   SAVE_TOKEN,
   ADD_LAST_VIEWED_DESIGN,
   SAVE_COOKIE_LAW,
+  SAVE_USER,
 } from './constants';
 
 const initialState = fromJS({
   cookiesAccepted: false,
   menuActive: false,
   isHomepage: false,
+  user: {},
   token: localStorage('access-token'),
   lastViewedDesigns: localStorage('last-viewed-designs') ? JSON.parse(localStorage('last-viewed-designs')) : [],
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_USER:
+      return state
+        .set('user', action.user);
     case SAVE_COOKIE_LAW:
       return state
         .set('cookiesAccepted', action.cookies);

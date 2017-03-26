@@ -4,6 +4,8 @@ import {
   SAVE_TOKEN,
   ADD_LAST_VIEWED_DESIGN,
   SAVE_COOKIE_LAW,
+  SAVE_USER,
+  INIT_APP,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -38,5 +40,18 @@ export function saveCookieAccepted(cookies) {
   return {
     type: SAVE_COOKIE_LAW,
     cookies,
+  };
+}
+
+export function saveUser(user) {
+  return {
+    type: SAVE_USER,
+    user,
+  };
+}
+
+export function initApp() {
+  return {
+    type: INIT_APP,
   };
 }

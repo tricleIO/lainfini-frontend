@@ -6,18 +6,11 @@ import { saveToken } from 'containers/App/actions';
 
 import formUrlEncoded from 'form-urlencoded';
 
-import FormData from 'form-data';
-
 import config from 'config';
 
 import request from 'utils/request';
 
 export function* getProduct(action) {
-  const formData = new FormData();
-  formData.append('username', action.email);
-  formData.append('password', action.password);
-  formData.append('grant_type', 'password');
-
   const data = {
     username: action.email,
     password: action.password,
