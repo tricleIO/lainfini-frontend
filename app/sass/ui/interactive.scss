@@ -121,6 +121,8 @@ input {
   text-align: center;
   color: $color-text;
   background-color: $color-white;
+
+
   &::-webkit-input-placeholder {
     color: lighten($color-text,30%);
     text-transform: uppercase;
@@ -160,6 +162,10 @@ input {
     font-size: $_22;
     padding: $_16 $_10;
     font-family: $font-family-nexa;
+    &.form-control-sm {
+      padding: $_15;
+      font-size: $_23;
+    }
     &.err {
       &:-webkit-placeholder {
         color:red;
