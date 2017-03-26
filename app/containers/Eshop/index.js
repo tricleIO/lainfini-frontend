@@ -84,7 +84,7 @@ class Eshop extends React.Component {
                   <div className="row">
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select" onChange={(event, value) => { this.props.selectFilterSize(value); }}>
+                        <Select className="ui-interactive__select" value={this.props.filterSize} onChange={(event, value) => { this.props.selectFilterSize(value); }}>
                           <option value="-1">- All sizes -</option>
                           {
                             sizes.map((size) =>
@@ -96,7 +96,7 @@ class Eshop extends React.Component {
                     </div>
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select" onChange={(event, value) => { this.props.selectFilterMaterial(value); }}>
+                        <Select className="ui-interactive__select" value={this.props.filterMaterial} onChange={(event, value) => { this.props.selectFilterMaterial(value); }}>
                           <option value="-1">- All materials -</option>
                           {
                             materials.map((material) =>
