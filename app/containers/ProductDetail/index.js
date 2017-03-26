@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import config from 'config';
 
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Heading from 'components/Heading';
 import ItemCounter from 'components/ItemCounter';
@@ -12,7 +13,10 @@ import LastView from 'components/LastView';
 
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectProduct } from './selectors';
+import {
+  makeSelectProduct,
+  makeSelectError,
+} from './selectors';
 
 import {
   addLastViewedDesign,
@@ -34,6 +38,7 @@ class ProductDetail extends React.Component {
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
     user: React.PropTypes.object,
+    redirectToCatalog: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -55,6 +60,9 @@ class ProductDetail extends React.Component {
     if (nextProps.routeParams.productId !== this.props.routeParams.productId) {
       this.sentLastViewed = false;
       this.props.loadProduct(nextProps.routeParams.productId);
+    }
+    if (nextProps.error) {
+      this.props.redirectToCatalog();
     }
   }
 
@@ -163,12 +171,14 @@ function mapDispatchToProps(dispatch) {
   return {
     loadProduct: (urlSlug) => dispatch(loadProduct(urlSlug)),
     addLastViewedDesign: (design) => dispatch(addLastViewedDesign(design)),
+    redirectToCatalog: () => dispatch(push('/catalog')),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
   product: makeSelectProduct(),
   user: makeSelectUser(),
+  error: makeSelectError(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -18,7 +18,7 @@ class LastView extends React.Component {
   }
 
   render() {
-    const products = _(this.props.products).filter((obj) => _(obj).isObject()).take(4).value();
+    const products = _(this.props.products).isArray ? _(this.props.products).take(4).value() : [];
     return (
       <div className="last-view offset-bottom-50">
         {_(products).size() > 0 &&
