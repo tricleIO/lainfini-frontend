@@ -11,6 +11,8 @@ import ItemCounter from 'components/ItemCounter';
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
 
+import WishlistHeart from 'components/WishlistHeart';
+
 import { createStructuredSelector } from 'reselect';
 
 import {
@@ -37,7 +39,6 @@ class ProductDetail extends React.Component {
     addLastViewedDesign: React.PropTypes.func,
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
-    user: React.PropTypes.object,
     redirectToCatalog: React.PropTypes.func,
   };
 
@@ -100,8 +101,7 @@ class ProductDetail extends React.Component {
                     <div className="detail-slider__item">
                       <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
                       <div className="ui-items">
-                        { this.props.user.uid && <span className="like"><i className="icon icon-wishlist"></i></span> }
-                        <span className="search"><i className="icon icon-user" /></span>
+                        <WishlistHeart uid={product.uid} />
                       </div>
                     </div>
                   </div>
@@ -177,7 +177,6 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   product: makeSelectProduct(),
-  user: makeSelectUser(),
   error: makeSelectError(),
 });
 
