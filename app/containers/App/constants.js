@@ -9,6 +9,6 @@ export const SAVE_USER = 'App/SAVE_USER';
 export const INIT_APP = 'App/INIT_APP';
 export const LOGOUT = 'App/LOGOUT';
 export const GET_WISHLIST = 'App/GET_WISHLIST';
-export const GET_DEFAULT_CART = 'App/GET_DEFAULT_CART';
+export const GET_CART = 'App/GET_CART';
 export const SAVE_WISHLIST = 'App/SAVE_WISHLIST';
 export const SAVE_CART = 'App/SAVE_CART';
