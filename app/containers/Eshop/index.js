@@ -12,16 +12,14 @@ import ProductSlider from './productSlider';
 
 import Select from 'components/Select';
 
+import WishlistHeart from 'components/WishlistHeart';
+
 import config from 'config';
 
 import _ from 'lodash';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-
-import {
-  makeSelectUser,
-} from 'containers/App/selectors';
 
 import {
   makeSelectProducts,
@@ -45,7 +43,6 @@ class Eshop extends React.Component {
     filterMaterial: React.PropTypes.string,
     selectFilterMaterial: React.PropTypes.func,
     selectFilterSize: React.PropTypes.func,
-    user: React.PropTypes.object,
   };
 
   constructor(props) {
@@ -148,7 +145,7 @@ class Eshop extends React.Component {
                     </div>
                     <div className="product-list__action">
                       <Link to={'/catalog/' + product.slug} className="see__detail">See detail <i className="icon icon-see-detail"></i></Link>
-                      { this.props.user.uid && <a className="add_wishlist"><i className="icon icon-wishlist"></i></a> }
+                      <WishlistHeart uid={product.uid} />
                     </div>
                     <div className="row product-list__info">
                       <div className="col-7">
@@ -187,7 +184,6 @@ const mapStateToProps = createStructuredSelector({
   products: makeSelectProducts(),
   filterSize: makeSelectFilter('Size'),
   filterMaterial: makeSelectFilter('Material'),
-  user: makeSelectUser(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Eshop);

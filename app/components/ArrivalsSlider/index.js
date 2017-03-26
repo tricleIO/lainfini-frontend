@@ -2,16 +2,11 @@ import React from 'react';
 
 import { Link } from 'react-router';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
-import {
-  makeSelectUser,
-} from 'containers/App/selectors';
-
 import config from 'config';
 
 import _ from 'lodash';
+
+import WishlistHeart from 'components/WishlistHeart';
 
 import $ from 'jquery';
 import 'slick-carousel';
@@ -20,9 +15,8 @@ class ArrivalsSlider extends React.PureComponent {
 
   static propTypes = {
     products: React.PropTypes.object,
-    user: React.PropTypes.object,
   };
-  
+
   componentDidMount() {
     $(this.arrivalsSlider).slick({
       arrows: true,
@@ -67,7 +61,7 @@ class ArrivalsSlider extends React.PureComponent {
                   <div className="arrivals__author">
                     <div className="row">
                       <div className="col-2">
-                        { this.props.user.uid && <a href=""><i className="icon icon-wishlist"></i></a> }
+                        <WishlistHeart uid={product.product.uid} />
                       </div>
                       <div className="col-8">
                         <a className="text">{product.product.material.name} {product.product.material.composition} / {product.product.size.value}</a>
@@ -88,8 +82,4 @@ class ArrivalsSlider extends React.PureComponent {
 
 }
 
-const mapStateToProps = createStructuredSelector({
-  user: makeSelectUser(),
-});
-
-export default connect(mapStateToProps)(ArrivalsSlider);
+export default ArrivalsSlider;

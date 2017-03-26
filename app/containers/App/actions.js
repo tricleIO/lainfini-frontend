@@ -9,6 +9,8 @@ import {
   LOGOUT,
   SAVE_WISHLIST,
   SAVE_CART,
+  ADD_TO_WISHLIST,
+  DELETE_FROM_WISHLIST,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -78,5 +80,19 @@ export function saveCart(cart) {
   return {
     type: SAVE_CART,
     cart,
+  };
+}
+
+export function addToWishlist(uid) {
+  return {
+    type: ADD_TO_WISHLIST,
+    uid,
+  };
+}
+
+export function deleteFromWishlist(uid) {
+  return {
+    type: DELETE_FROM_WISHLIST,
+    uid,
   };
 }

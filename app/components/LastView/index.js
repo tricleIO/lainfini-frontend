@@ -27,8 +27,8 @@ class LastView extends React.Component {
               <div className="col-12 text-center offset-bottom-30">
                 <h3>last viewed designs</h3>
               </div>
-              {products.map((product) =>
-                <div className="col-12 col-sm-6 col-md-3">
+              {products.map((product, index) =>
+                <div className="col-12 col-sm-6 col-md-3" key={index}>
                   <div className="last-view__item">
                     <Link to={'/catalog/' + product.slug}>
                       <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} className="img-fluid" alt="" />

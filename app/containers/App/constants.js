@@ -12,3 +12,5 @@ export const GET_WISHLIST = 'App/GET_WISHLIST';
 export const GET_CART = 'App/GET_CART';
 export const SAVE_WISHLIST = 'App/SAVE_WISHLIST';
 export const SAVE_CART = 'App/SAVE_CART';
+export const ADD_TO_WISHLIST = 'App/ADD_TO_WISHLIST';
+export const DELETE_FROM_WISHLIST = 'App/DELETE_FROM_WISHLIST';

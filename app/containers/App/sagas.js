@@ -1,5 +1,5 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
-import { SAVE_TOKEN, INIT_APP, SAVE_USER } from './constants';
+import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST } from './constants';
 import { saveUser, saveToken, logout, saveWishlist, saveCart } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
@@ -13,6 +13,7 @@ import formUrlEncoded from 'form-urlencoded';
 import {
   makeSelectToken,
   makeSelectCart,
+  makeSelectUser,
 } from './selectors';
 
 export function* getUser(action) {
@@ -132,10 +133,75 @@ export function* getCartData() {
   yield takeLatest(SAVE_USER, getCart);
 }
 
+export function* addToWishlist(action) {
+  const token = yield select(makeSelectToken());
+  if (token.access_token) {
+    const requestURL = config.apiUrl + 'customers/current/wishlist';
+    const headers = {
+      Authorization: token.token_type + ' ' + token.access_token,
+      'Content-Type': 'application/json',
+    };
+    const body = JSON.stringify({
+      productUid: action.uid,
+    });
+
+    try {
+      // Call our request helper (see 'utils/request')
+      yield call(request, requestURL, { headers, method: 'POST', body });
+
+      try {
+        // Call our request helper (see 'utils/request')
+        const wishlist = (yield call(request, requestURL, { headers })).content;
+        yield put(saveWishlist(wishlist));
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export function* addToWishlistData() {
+  yield takeLatest(ADD_TO_WISHLIST, addToWishlist);
+}
+
+export function* deleteFromWishlist(action) {
+  const token = yield select(makeSelectToken());
+  if (token.access_token) {
+    const requestURL = config.apiUrl + 'customers/current/wishlist/' + action.uid;
+    const headers = {
+      Authorization: token.token_type + ' ' + token.access_token,
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      // Call our request helper (see 'utils/request')
+      yield call(request, requestURL, { headers, method: 'DELETE' });
+
+      try {
+        // Call our request helper (see 'utils/request')
+        const wishlist = (yield call(request, requestURL, { headers })).content;
+        yield put(saveWishlist(wishlist));
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export function* deleteFromWishlistData() {
+  yield takeLatest(DELETE_FROM_WISHLIST, deleteFromWishlist);
+}
+
 // Bootstrap sagas
 export default [
   userData,
   initAppData,
   getWishlistData,
   getCartData,
+  addToWishlistData,
+  deleteFromWishlistData,
 ];
