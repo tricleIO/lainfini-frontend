@@ -1,10 +1,6 @@
 import React from 'react';
 
-import Heading from 'components/Heading';
 import SocialNav from 'components/SocialNav';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 
 import LoginForm from './forms/login';
 
