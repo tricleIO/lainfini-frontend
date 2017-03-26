@@ -165,18 +165,6 @@ class Eshop extends React.Component {
         <LastView />
         <Peoples btnInline isShop />
         <SocialNav links />
-        <div className="cookies">
-          <div className="container">
-            <div className="row">
-              <div className="col-11">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam asperiores cupiditate debitis!</p>
-              </div>
-              <div className="col-1">
-                <i className="icon icon-close"></i>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }

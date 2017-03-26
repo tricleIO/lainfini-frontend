@@ -34,10 +34,16 @@ const makeSelectLastViewed = () => createSelector(
   (appState) => appState.get('lastViewedDesigns')
 );
 
+const makeSelectCookiesAccepted = () => createSelector(
+  selectApp,
+  (appState) => appState.get('cookiesAccepted')
+);
+
 export {
   selectLocationState,
   selectApp,
   makeSelectMenuActive,
   makeIsHomepage,
   makeSelectLastViewed,
+  makeSelectCookiesAccepted,
 };
