@@ -39,6 +39,16 @@ const makeSelectCookiesAccepted = () => createSelector(
   (appState) => appState.get('cookiesAccepted')
 );
 
+const makeSelectUser = () => createSelector(
+  selectApp,
+  (appState) => appState.get('user')
+);
+
+const makeSelectToken = () => createSelector(
+  selectApp,
+  (appState) => appState.get('token')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -46,4 +56,6 @@ export {
   makeIsHomepage,
   makeSelectLastViewed,
   makeSelectCookiesAccepted,
+  makeSelectUser,
+  makeSelectToken,
 };

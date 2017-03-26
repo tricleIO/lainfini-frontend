@@ -25,6 +25,10 @@ import {
   makeIsHomepage,
 } from './selectors';
 
+import {
+  initApp,
+} from './actions';
+
 import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
@@ -38,7 +42,12 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
     children: React.PropTypes.node,
     menuActive: React.PropTypes.bool,
     isHomepage: React.PropTypes.bool,
+    initApp: React.PropTypes.func,
   };
+
+  componentWillMount() {
+    this.props.initApp();
+  }
 
   render() {
     return (
@@ -69,4 +78,10 @@ const mapStateToProps = createStructuredSelector({
   isHomepage: makeIsHomepage(),
 });
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    initApp: () => dispatch(initApp()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

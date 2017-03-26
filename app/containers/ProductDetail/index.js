@@ -22,6 +22,10 @@ import {
   loadProduct,
 } from './actions';
 
+import {
+  makeSelectUser,
+} from 'containers/App/selectors';
+
 class ProductDetail extends React.Component {
 
   static propTypes = {
@@ -29,6 +33,7 @@ class ProductDetail extends React.Component {
     addLastViewedDesign: React.PropTypes.func,
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
+    user: React.PropTypes.object,
   };
 
   constructor(props) {
@@ -87,6 +92,7 @@ class ProductDetail extends React.Component {
                     <div className="detail-slider__item">
                       <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
                       <div className="ui-items">
+                        { this.props.user.uid && <span className="like"><i className="icon icon-wishlist"></i></span> }
                         <span className="search"><i className="icon icon-user" /></span>
                       </div>
                     </div>
@@ -162,6 +168,7 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   product: makeSelectProduct(),
+  user: makeSelectUser(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

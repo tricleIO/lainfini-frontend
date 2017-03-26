@@ -4,6 +4,8 @@ import {
   SAVE_TOKEN,
   ADD_LAST_VIEWED_DESIGN,
   SAVE_COOKIE_LAW,
+  SAVE_USER,
+  INIT_APP,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -20,9 +22,10 @@ export function changeHomepageState(state) {
   };
 }
 
-export function saveToken(token) {
+export function saveToken(token, fromAppInit = false) {
   return {
     type: SAVE_TOKEN,
+    fromAppInit,
     token,
   };
 }
@@ -38,5 +41,19 @@ export function saveCookieAccepted(cookies) {
   return {
     type: SAVE_COOKIE_LAW,
     cookies,
+  };
+}
+
+export function saveUser(user, fromAppInit = false) {
+  return {
+    type: SAVE_USER,
+    fromAppInit,
+    user,
+  };
+}
+
+export function initApp() {
+  return {
+    type: INIT_APP,
   };
 }
