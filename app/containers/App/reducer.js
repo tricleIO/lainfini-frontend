@@ -21,7 +21,7 @@ const initialState = fromJS({
   wishlist: undefined,
   cart: undefined,
   token: localStorage('access-token'),
-  lastViewedDesigns: localStorage('last-viewed-designs') ? JSON.parse(localStorage('last-viewed-designs')) : [],
+  lastViewedDesigns: localStorage('last-viewed-designs') ? localStorage('last-viewed-designs') : [],
 });
 
 function appReducer(state = initialState, action) {
@@ -54,7 +54,7 @@ function appReducer(state = initialState, action) {
       if (_(lastViewedDesigns).size() > 4) {
         lastViewedDesigns.pop();
       }
-      localStorage('last-viewed-designs', JSON.stringify(lastViewedDesigns));
+      localStorage('last-viewed-designs', lastViewedDesigns);
       return state
         .set('lastViewedDesigns', lastViewedDesigns);
     default:

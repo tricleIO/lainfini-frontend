@@ -7,7 +7,13 @@ const makeSelectProduct = () => createSelector(
   (productDetailState) => productDetailState.get('product')
 );
 
+const makeSelectError = () => createSelector(
+  selectProductDetail,
+  (productDetailState) => productDetailState.get('error')
+);
+
 export {
   selectProductDetail,
   makeSelectProduct,
+  makeSelectError,
 };
