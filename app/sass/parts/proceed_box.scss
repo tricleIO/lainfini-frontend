@@ -1,0 +1,51 @@
+.proceed_box {
+  box-shadow: 25px 43px 50px rgba(0, 0, 0, 0.15);
+  background-color: $color-white;
+  padding: $_40 $_35;
+  font-family: $font-family-open-sans;
+  margin-bottom: $_50;
+  h3 {
+    font-size: $_30;
+  }
+  h3, p {
+    font-family: inherit;
+    color: $color-c;
+    line-height: $line-height-base;
+    letter-spacing: $letter-spacing-small;
+  }
+  a {
+    color: #999999;
+    &.forgot-pass {
+      text-decoration: underline;
+    }
+  }
+  .form-group {
+    margin-top: $_25;
+    .form-control {
+      padding: 1.188rem;
+      font-size: $_16;
+      &::-webkit-input-placeholder {
+        letter-spacing: $letter-spacing-base;
+        color: $color-text;
+        font-family: $font-family-monserat;
+        font-size: $_16;
+        font-weight: $font-weight-normal;
+        text-transform: uppercase;
+      }
+
+    }
+  }
+
+
+
+  .social-nav__icons {
+    display: flex;
+    justify-content: center;
+    li {
+      padding-bottom: 0;
+    }
+    a {
+      color: $color-black;
+    }
+  }
+}
