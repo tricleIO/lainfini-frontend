@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP, SAVE_USER } from './constants';
-import { saveUser, saveToken, logout, saveWishlist } from './actions';
+import { saveUser, saveToken, logout, saveWishlist, saveCart } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
 
@@ -12,6 +12,7 @@ import formUrlEncoded from 'form-urlencoded';
 
 import {
   makeSelectToken,
+  makeSelectCart,
 } from './selectors';
 
 export function* getUser(action) {
@@ -104,9 +105,37 @@ export function* getWishlistData() {
   yield takeLatest(SAVE_USER, getWishlist);
 }
 
+export function* getCart(action) {
+  const cartInState = yield select(makeSelectCart());
+  if (action.user.uid && !cartInState) {
+    const token = yield select(makeSelectToken());
+
+    const requestURL = config.apiUrl + 'carts/current';
+    const options = {
+      headers: {
+        Authorization: token.token_type + ' ' + token.access_token,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      // Call our request helper (see 'utils/request')
+      const cart = yield call(request, requestURL, options);
+      yield put(saveCart(cart));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export function* getCartData() {
+  yield takeLatest(SAVE_USER, getCart);
+}
+
 // Bootstrap sagas
 export default [
   userData,
   initAppData,
   getWishlistData,
+  getCartData,
 ];

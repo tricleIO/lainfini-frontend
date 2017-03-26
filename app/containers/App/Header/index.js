@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
 
+import _ from 'lodash';
+
 import {
   changeMenuState,
 } from '../actions';
@@ -22,6 +24,7 @@ import {
 import {
   makeSelectMenuActive,
   makeSelectUser,
+  makeSelectCart,
 } from '../selectors';
 
 import {
@@ -36,6 +39,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   static propTypes = {
     menuActive: React.PropTypes.bool,
     user: React.PropTypes.object,
+    cart: React.PropTypes.object,
     changeMenuState: React.PropTypes.func,
   };
 
@@ -72,7 +76,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               <Link to="/" className="logo text-center">lainfini</Link>
             </div>
             <div className="col-4 text-right header_action">
-              <Link to="/basket" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></Link>
+              <Link to="/basket" className="shop-active">{ this.props.cart && _(this.props.cart.items).size() > 0 && <i className="cart-state">{_(this.props.cart.items).size()}</i> }<i className="icon icon-shop"></i></Link>
               { this.props.user.uid && <Link to="/wishlist"><i className="icon icon-wishlist"></i></Link> }
               <Link to="/user"><i className="icon icon-user"></i></Link>
             </div>
@@ -94,6 +98,7 @@ export function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   menuActive: makeSelectMenuActive(),
   user: makeSelectUser(),
+  cart: makeSelectCart(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

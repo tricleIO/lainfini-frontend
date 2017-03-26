@@ -12,6 +12,7 @@ import {
   SAVE_USER,
   LOGOUT,
   SAVE_WISHLIST,
+  SAVE_CART,
 } from './constants';
 
 const initialState = fromJS({
@@ -27,6 +28,9 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_CART:
+      return state
+        .set('cart', action.cart);
     case SAVE_WISHLIST:
       return state
         .set('wishlist', action.wishlist);

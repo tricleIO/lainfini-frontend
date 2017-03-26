@@ -8,6 +8,7 @@ import {
   INIT_APP,
   LOGOUT,
   SAVE_WISHLIST,
+  SAVE_CART,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -70,5 +71,12 @@ export function saveWishlist(wishlist) {
   return {
     type: SAVE_WISHLIST,
     wishlist,
+  };
+}
+
+export function saveCart(cart) {
+  return {
+    type: SAVE_CART,
+    cart,
   };
 }
