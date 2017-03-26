@@ -13,16 +13,26 @@ class LoginForm extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email"><FormattedMessage {...messages.email} /></label>
-          <Field name="email" component="input" type="text" />
+      <form className="proceed_box" onSubmit={handleSubmit}>
+        <h3 className="mb-3">Returning Customer</h3>
+        <p className="mb-5">Log in to recall your saved details and speed up your purchase.</p>
+        <div className="form-group">
+          <Field component="input" name="email" type="text" className="form-control" placeholder="Your@email" />
         </div>
-        <div>
-          <label htmlFor="password"><FormattedMessage {...messages.password} /></label>
-          <Field name="password" component="input" type="password" />
+        <div className="form-group">
+          <Field component="input" name="password" type="password" className="form-control" placeholder="Password" />
         </div>
-        <button type="submit"><FormattedMessage {...messages.login} /></button>
+        <div className="pt-4 pb-4">
+          <a href="" className="forgot-pass d-block pt-1 text-center ">Forgotten password?</a>
+        </div>
+        <button type="submit" className="btn btn-block mt-4 mb-4 text-uppercase">Sign In</button>
+        <p className="text-center">Or sign in with your existing social media account</p>
+        <ul className="social-nav__icons">
+          <li><a href><i className="icon icon-facebook" /></a></li>
+          <li><a href><i className="icon icon-twitter" /></a></li>
+          <li><a href><i className="icon icon-instagram" /></a></li>
+          <li><a href><i className="icon icon-google" /></a></li>
+        </ul>
       </form>
     );
   }
