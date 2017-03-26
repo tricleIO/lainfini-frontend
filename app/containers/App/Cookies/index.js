@@ -11,6 +11,8 @@ import {
   makeSelectCookiesAccepted,
 } from '../selectors';
 
+import { Link } from 'react-router';
+
 class Cookies extends React.Component {
 
   static propTypes = {
@@ -53,7 +55,7 @@ class Cookies extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-11">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam asperiores cupiditate debitis!</p>
+              <p>Lainfini uses cookies to ensure you get the best experience on our website. <Link to="/">Find out more info</Link></p>
             </div>
             <div className="col-1">
               <a onClick={() => this.cookiesAccepted()}>

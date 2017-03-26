@@ -10,6 +10,7 @@ import {
   ADD_LAST_VIEWED_DESIGN,
   SAVE_COOKIE_LAW,
   SAVE_USER,
+  LOGOUT,
 } from './constants';
 
 const initialState = fromJS({
@@ -17,12 +18,20 @@ const initialState = fromJS({
   menuActive: false,
   isHomepage: false,
   user: {},
+  wishlist: undefined,
+  cart: undefined,
   token: localStorage('access-token'),
   lastViewedDesigns: localStorage('last-viewed-designs') ? JSON.parse(localStorage('last-viewed-designs')) : [],
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case LOGOUT:
+      return state
+        .set('wishlist', undefined)
+        .set('cart', undefined)
+        .set('user', {})
+        .set('token', {});
     case SAVE_USER:
       return state
         .set('user', action.user);

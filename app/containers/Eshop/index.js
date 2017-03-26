@@ -125,7 +125,7 @@ class Eshop extends React.Component {
         </div>
 
         <div className="product-list">
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               { products.map((product, index) => (
                 <div
@@ -141,13 +141,13 @@ class Eshop extends React.Component {
                   </div>
                   <div className="product-list__content">
                     <div className="product-list__title">
-                      <Link to={'/catalog/' + product.urlSlug}>
+                      <Link to={'/catalog/' + product.slug}>
                         <h4>{product.name}</h4>
                       </Link>
                       <span>${product.price}</span>
                     </div>
                     <div className="product-list__action">
-                      <Link to={'/catalog/' + product.urlSlug} className="see__detail">See detail <i className="icon icon-see-detail"></i></Link>
+                      <Link to={'/catalog/' + product.slug} className="see__detail">See detail <i className="icon icon-see-detail"></i></Link>
                       { this.props.user.uid && <a className="add_wishlist"><i className="icon icon-wishlist"></i></a> }
                     </div>
                     <div className="row product-list__info">
@@ -157,7 +157,7 @@ class Eshop extends React.Component {
                         <div>Jabob Borrows</div>
                       </div>
                       <div className="col-5 see_more">
-                        <Link to={'/catalog/' + product.urlSlug} className="btn">See detail</Link>
+                        <Link to={'/catalog/' + product.slug} className="btn">See detail</Link>
                       </div>
                     </div>
                   </div>
