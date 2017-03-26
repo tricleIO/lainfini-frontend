@@ -1,0 +1,28 @@
+.account-page {
+  color: $color-c;
+  font-family: $font-family-open-sans;
+  letter-spacing: $letter-spacing-small;
+  .heading {
+    h1 {
+      font-size: $_24;
+    }
+  }
+  .buy-step {
+    justify-content: center;
+    .form-group {
+      margin-bottom: $_50;
+    }
+    .save-changes {
+      color: #999999;
+      font-family: $font-family-monserat;
+      font-size: $_20;
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-base;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
