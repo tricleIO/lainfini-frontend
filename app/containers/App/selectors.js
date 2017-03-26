@@ -54,6 +54,11 @@ const makeSelectWishlist = () => createSelector(
   (appState) => appState.get('wishlist')
 );
 
+const makeSelectCart = () => createSelector(
+  selectApp,
+  (appState) => appState.get('cart')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -64,4 +69,5 @@ export {
   makeSelectUser,
   makeSelectToken,
   makeSelectWishlist,
+  makeSelectCart,
 };

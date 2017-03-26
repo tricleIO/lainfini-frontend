@@ -45,6 +45,9 @@
     text-transform: uppercase;
     letter-spacing: $letter-spacing-base;
     margin-bottom: $_20;
+    a {
+      color: $color-black;
+    }
   }
 
   &__author {
