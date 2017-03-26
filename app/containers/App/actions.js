@@ -7,6 +7,7 @@ import {
   SAVE_USER,
   INIT_APP,
   LOGOUT,
+  SAVE_WISHLIST,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -62,5 +63,12 @@ export function initApp() {
 export function logout() {
   return {
     type: LOGOUT,
+  };
+}
+
+export function saveWishlist(wishlist) {
+  return {
+    type: SAVE_WISHLIST,
+    wishlist,
   };
 }

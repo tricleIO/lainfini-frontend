@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
-import { SAVE_TOKEN, INIT_APP } from './constants';
-import { saveUser, saveToken, logout } from './actions';
+import { SAVE_TOKEN, INIT_APP, SAVE_USER } from './constants';
+import { saveUser, saveToken, logout, saveWishlist } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
 
@@ -78,8 +78,35 @@ export function* initAppData() {
   yield cancel(watcher);
 }
 
+export function* getWishlist(action) {
+  if (action.user.uid) {
+    const token = yield select(makeSelectToken());
+
+    const requestURL = config.apiUrl + 'customers/' + action.user.uid + '/wishlist';
+    const options = {
+      headers: {
+        Authorization: token.token_type + ' ' + token.access_token,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      // Call our request helper (see 'utils/request')
+      const wishlist = (yield call(request, requestURL, options)).content;
+      yield put(saveWishlist(wishlist));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export function* getWishlistData() {
+  yield takeLatest(SAVE_USER, getWishlist);
+}
+
 // Bootstrap sagas
 export default [
   userData,
   initAppData,
+  getWishlistData,
 ];
