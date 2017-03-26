@@ -22,13 +22,7 @@ class ArrivalsSlider extends React.PureComponent {
     products: React.PropTypes.object,
     user: React.PropTypes.object,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.arrivalImg = require('./img/arrival-1.png');
-  }
-
+  
   componentDidMount() {
     $(this.arrivalsSlider).slick({
       arrows: true,
