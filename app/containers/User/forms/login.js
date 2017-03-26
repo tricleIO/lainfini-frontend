@@ -1,9 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 
-import { FormattedMessage } from 'react-intl';
-import messages from '../messages';
-
 class LoginForm extends React.Component {
 
   static propTypes = {

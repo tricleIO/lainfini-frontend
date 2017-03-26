@@ -1,8 +1,27 @@
 import React from 'react';
+import config from 'config';
+
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
+import _ from 'lodash';
+
+import {
+  makeSelectWishlist,
+} from 'containers/App/selectors';
+
+import SocialNav from 'components/SocialNav';
 
 class Wishlist extends React.Component {
 
+  static propTypes = {
+    products: React.PropTypes.array,
+  };
+
   render() {
+    const products = _(this.props.products).isArray ? this.props.products : [];
+
     return (
       <div className="wishlist">
         <div className="container-fluid">
@@ -15,44 +34,39 @@ class Wishlist extends React.Component {
             </div>
           </div>
           <div className="row wishlist-product-list text-center animated fadeInUp">
-            <div className="col-12 col-sm-6 col-lg-6 col-xl-3">
-              <div className="wish-product">
-                <div className="wish-product__background">
-                  <img className="img-fluid" src="../userfiles/arrival-1.png" alt="product img" />
-                </div>
-                <div className="wish-product__content">
-                  <div className="wish-product__title">
-                    <h4>Blue moon</h4>
-                    <i className="icon icon-shop" />
+            {products.map((p, index) =>
+              <div className="col-12 col-sm-6 col-lg-6 col-xl-3" key={index}>
+                <div className="wish-product">
+                  <div className="wish-product__background">
+                    <Link to={'/catalog/' + p.product.slug}>
+                      <img className="img-fluid" src={config.apiUrl + 'files/' + p.product.mainImage.fileIndex + '.jpg'} alt="product img" />
+                    </Link>
                   </div>
-                  <div className="wish-product__price">
-                    <span>$239.00</span>
-                  </div>
-                </div>
-                <div className="social-nav" data-reveal>
-                  <div className="row">
-                    <div className="col-12 text-center">
-                      <div className="d-inline-block">
-                        <ul className="social-nav__icons">
-                          <li><a href><i className="icon icon-facebook" /></a></li>
-                          <li><a href><i className="icon icon-twitter" /></a></li>
-                          <li><a href><i className="icon icon-instagram" /></a></li>
-                        </ul>
-                      </div>
+                  <div className="wish-product__content">
+                    <div className="wish-product__title">
+                      <h4>{p.product.name}</h4>
+                      <Link to={'/catalog/' + p.product.slug}>
+                        <i className="icon icon-shop" />
+                      </Link>
+                    </div>
+                    <div className="wish-product__price">
+                      <span>${p.product.price}</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-12 text-center offset-top-50" data-reveal>
-              <a href="" className="btn">save your wishlist</a>
-            </div>
+            )}
           </div>
         </div>
+        <SocialNav links />
       </div>
     );
   }
 
 }
 
-export default Wishlist;
+const mapStateToProps = createStructuredSelector({
+  products: makeSelectWishlist(),
+});
+
+export default connect(mapStateToProps)(Wishlist);

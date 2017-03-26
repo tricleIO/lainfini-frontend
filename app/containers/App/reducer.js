@@ -11,6 +11,7 @@ import {
   SAVE_COOKIE_LAW,
   SAVE_USER,
   LOGOUT,
+  SAVE_WISHLIST,
 } from './constants';
 
 const initialState = fromJS({
@@ -26,6 +27,9 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_WISHLIST:
+      return state
+        .set('wishlist', action.wishlist);
     case LOGOUT:
       return state
         .set('wishlist', undefined)

@@ -49,6 +49,11 @@ const makeSelectToken = () => createSelector(
   (appState) => appState.get('token')
 );
 
+const makeSelectWishlist = () => createSelector(
+  selectApp,
+  (appState) => appState.get('wishlist')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -58,4 +63,5 @@ export {
   makeSelectCookiesAccepted,
   makeSelectUser,
   makeSelectToken,
+  makeSelectWishlist,
 };
