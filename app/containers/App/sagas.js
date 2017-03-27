@@ -13,7 +13,6 @@ import formUrlEncoded from 'form-urlencoded';
 import {
   makeSelectToken,
   makeSelectCart,
-  makeSelectUser,
 } from './selectors';
 
 export function* getUser(action) {

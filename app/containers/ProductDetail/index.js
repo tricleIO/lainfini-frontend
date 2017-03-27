@@ -28,10 +28,6 @@ import {
   loadProduct,
 } from './actions';
 
-import {
-  makeSelectUser,
-} from 'containers/App/selectors';
-
 class ProductDetail extends React.Component {
 
   static propTypes = {
