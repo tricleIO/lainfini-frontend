@@ -1,5 +1,5 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
-import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST } from './constants';
+import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY } from './constants';
 import { saveUser, saveToken, logout, saveWishlist, saveCart } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
@@ -38,9 +38,6 @@ export function* getUser(action) {
   }
 }
 
-/**
- * Root saga manages watcher lifecycle
- */
 export function* userData() {
   yield takeLatest(SAVE_TOKEN, getUser);
 }
@@ -195,6 +192,14 @@ export function* deleteFromWishlistData() {
   yield takeLatest(DELETE_FROM_WISHLIST, deleteFromWishlist);
 }
 
+export function* addToCart(action) {
+  console.log(action);
+}
+
+export function* addToCartData() {
+  yield takeLatest(ADD_TO_CART, addToCart);
+}
+
 // Bootstrap sagas
 export default [
   userData,
@@ -203,4 +208,5 @@ export default [
   getCartData,
   addToWishlistData,
   deleteFromWishlistData,
+  addToCartData,
 ];
