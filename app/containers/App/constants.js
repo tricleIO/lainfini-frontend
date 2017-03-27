@@ -14,3 +14,7 @@ export const SAVE_WISHLIST = 'App/SAVE_WISHLIST';
 export const SAVE_CART = 'App/SAVE_CART';
 export const ADD_TO_WISHLIST = 'App/ADD_TO_WISHLIST';
 export const DELETE_FROM_WISHLIST = 'App/DELETE_FROM_WISHLIST';
+export const ADD_TO_CART = 'App/ADD_TO_CART';
+export const CREATE_CART = 'App/CREATE_CART';
+export const DELETE_FROM_CART = 'App/DELETE_FROM_CART';
+export const UPDATE_CART_QTY = 'App/UPDATE_CART_QTY';

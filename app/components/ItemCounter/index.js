@@ -29,6 +29,10 @@ export default class ItemCounter extends React.Component {
     }
   }
 
+  value() {
+    return this.state.value;
+  }
+
   render() {
     return (
       <div className="item-counter">

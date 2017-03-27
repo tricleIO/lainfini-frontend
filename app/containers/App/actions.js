@@ -11,6 +11,10 @@ import {
   SAVE_CART,
   ADD_TO_WISHLIST,
   DELETE_FROM_WISHLIST,
+  ADD_TO_CART,
+  DELETE_FROM_CART,
+  UPDATE_CART_QTY,
+  CREATE_CART,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -94,5 +98,34 @@ export function deleteFromWishlist(uid) {
   return {
     type: DELETE_FROM_WISHLIST,
     uid,
+  };
+}
+
+export function addToCart(item, qty = 1) {
+  return {
+    type: ADD_TO_CART,
+    item,
+    qty,
+  };
+}
+
+export function deleteFromCart(item) {
+  return {
+    type: DELETE_FROM_CART,
+    item,
+  };
+}
+
+export function updateCartQty(item, qty) {
+  return {
+    type: UPDATE_CART_QTY,
+    item,
+    qty,
+  };
+}
+
+export function createCart() {
+  return {
+    type: CREATE_CART,
   };
 }
