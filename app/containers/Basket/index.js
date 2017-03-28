@@ -38,7 +38,7 @@ class Basket extends React.Component {
         const o = obj;
         o.totalPrice = obj.quantity * obj.product.price;
         return o;
-      }).value();
+      }).orderBy('uid').value();
     }
     return (
       <main id="page">
