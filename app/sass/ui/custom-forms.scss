@@ -1,0 +1,28 @@
+.custom-control {
+  padding-left: $_60+$_4;
+  .custom-control-indicator {
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .custom-control-input {
+      outline: none;
+    appearance:none;
+    &:focus,&:active {
+      outline: none;
+    }
+  }
+  .custom-control-indicator {
+    border-radius: 0;
+    width: $_50;
+    height: $_50;
+    background-color: $color-white;
+    border:1px solid lighten($color-c,40%);
+    outline:none;
+
+  }
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-indicator {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAXCAYAAABqBU3hAAABXElEQVRIS8WVvy/FUBTHP6disJgMwtZYDa9tYiAiVmLAZGA3SiRGg4HBbrFIiHg2P2PAYJOOVn8GiUSO9PU+v6rt7Xttdb3n9vO5N99zrvAfX0OHcJgCLqR2vqcjCPfAMHBSr4Cvo8ANMGgOvl+fQAy/BQYM/A6YrUcgBU4oL9ULZMCjm6hWIAderYAFvDoBS3g1AgXg5Qv8hgvXKAtR2tMGnuDrErAJHBDKVseTsaEBDleffS6c8coiT/KW9c9I4AEYN0U7hLJRWMLXMTPh+lt7LeFxqafzCE3AMeBdQtZB1EqkC/hXBmKJY6DXQPcIWc2V6BL+M4SBzqGcWkuUAE92ga1ESfC/2zBPokR4+hzwdQZawewzmTjEZYVngk7Tnj4H0lY8nUY4/yZxCUwAhVstew5krSYl2tVHuCzTlHerVs0oyn+OkxKlwe3fgoZO0sM2yiMua2WcvH0pH8t2nT5XKdNwAAAAAElFTkSuQmCC");
+  background-color: transparent;
+}

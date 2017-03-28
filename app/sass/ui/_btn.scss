@@ -1,5 +1,9 @@
 .btn {
-  @include btn($_20 $_60,$color-b,$color-white,transparent);
+  @include btn($_20 $_50,$color-b,$color-white,transparent);
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
 }
 .btn__inline {
   .btn {

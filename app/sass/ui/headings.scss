@@ -49,4 +49,23 @@
       top:auto;
     }
   }
+  &--mod-middle {
+    &:before {
+      content: none;
+    }
+    .mod-line {
+      position: relative;
+      &:before {
+        @include position(absolute, 0 auto auto 50%);
+        @include transform(translateX(-50%));
+        content: '';
+        width: $_100 * 1.7;
+        height: 2px;
+        background-color: $color-b;
+      }
+      &.mod-line-5 {
+
+      }
+    }
+  }
 }

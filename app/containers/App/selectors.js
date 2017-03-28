@@ -29,9 +29,45 @@ const makeIsHomepage = () => createSelector(
   (appState) => appState.get('isHomepage')
 );
 
+const makeSelectLastViewed = () => createSelector(
+  selectApp,
+  (appState) => appState.get('lastViewedDesigns')
+);
+
+const makeSelectCookiesAccepted = () => createSelector(
+  selectApp,
+  (appState) => appState.get('cookiesAccepted')
+);
+
+const makeSelectUser = () => createSelector(
+  selectApp,
+  (appState) => appState.get('user')
+);
+
+const makeSelectToken = () => createSelector(
+  selectApp,
+  (appState) => appState.get('token')
+);
+
+const makeSelectWishlist = () => createSelector(
+  selectApp,
+  (appState) => appState.get('wishlist')
+);
+
+const makeSelectCart = () => createSelector(
+  selectApp,
+  (appState) => appState.get('cart')
+);
+
 export {
   selectLocationState,
   selectApp,
   makeSelectMenuActive,
   makeIsHomepage,
+  makeSelectLastViewed,
+  makeSelectCookiesAccepted,
+  makeSelectUser,
+  makeSelectToken,
+  makeSelectWishlist,
+  makeSelectCart,
 };

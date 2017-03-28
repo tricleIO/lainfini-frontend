@@ -6,10 +6,19 @@ export default class Heading extends React.PureComponent { // eslint-disable-lin
 
   static propTypes = {
     mod: React.PropTypes.bool,
-    subtitle: React.PropTypes.string,
-    title: React.PropTypes.string,
+    subtitle: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
+    title: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
     type: React.PropTypes.string,
-    intro: React.PropTypes.string,
+    intro: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
     line: React.PropTypes.bool,
   };
 

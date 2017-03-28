@@ -3,6 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
+import appSagas from 'containers/App/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -15,6 +16,7 @@ const loadModule = (cb) => (componentModule) => {
 export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
+  injectSagas(appSagas);
 
   return [
     {
@@ -22,12 +24,17 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
+          System.import('containers/HomePage/reducer'),
+          System.import('containers/HomePage/sagas'),
           System.import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('homepage', reducer.default);
+          injectSagas(sagas.default);
+
           renderRoute(component);
         });
 
@@ -127,6 +134,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/basket',
+      name: 'basket',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Basket'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/templates/:template',
       name: 'templates',
       getComponent(nextState, cb) {
@@ -141,6 +164,51 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/user',
+      name: 'user',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/User/reducer'),
+          System.import('containers/User/sagas'),
+          System.import('containers/User'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('user', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/wishlist',
+      name: 'wishlist',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Wishlist'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/server-down',
+      name: 'serverDown',
+      getComponent(nextState, cb) {
+        System.import('containers/ServerDown')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       path: '*',

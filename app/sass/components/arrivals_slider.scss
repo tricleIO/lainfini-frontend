@@ -16,7 +16,7 @@
     position: relative;
     outline: none!important;
     background-color: lighten($color-a, 6%);
-    padding: $_40;
+    padding: 0 $_40 $_40;
     @include media-breakpoint-up(sm) {
       box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
     }
@@ -30,6 +30,10 @@
     margin-bottom: $_20;
   }
   &__title {
+    text-align: center;
+    background: lighten($color-a, 6%);
+    margin: 0;
+    padding: 20px;
     font-size: $_22;
     font-family: $font-family-nexa;
     letter-spacing: $letter-spacing-small;
@@ -41,6 +45,9 @@
     text-transform: uppercase;
     letter-spacing: $letter-spacing-base;
     margin-bottom: $_20;
+    a {
+      color: $color-black;
+    }
   }
 
   &__author {
@@ -51,6 +58,9 @@
     letter-spacing: $letter-spacing-base;
     font-family: $font-family-open-sans;
     font-weight: $headings-font-weight - 200;
+    .row {
+      width: 100%;
+    }
     a {
       color: inherit;
     }
@@ -59,6 +69,9 @@
     }
     .icon {
       font-size: $_30;
+      &:hover {
+        color: $color-b;
+      }
     }
   }
   &__icons {
@@ -77,4 +90,24 @@
     }
   }
 
+}
+
+.cross-fade-leave {
+  opacity: 1;
+}
+.cross-fade-leave.cross-fade-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.cross-fade-enter {
+  opacity: 0;
+}
+.cross-fade-enter.cross-fade-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.cross-fade-height {
+  transition: height .5s ease-in-out;
 }

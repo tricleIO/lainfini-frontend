@@ -15,13 +15,21 @@ import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
 
+import _ from 'lodash';
+
 import {
   changeMenuState,
 } from '../actions';
 
 import {
   makeSelectMenuActive,
+  makeSelectUser,
+  makeSelectCart,
 } from '../selectors';
+
+import {
+  Link,
+} from 'react-router';
 
 import React from 'react';
 import classNames from 'classnames';
@@ -30,6 +38,8 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 
   static propTypes = {
     menuActive: React.PropTypes.bool,
+    user: React.PropTypes.object,
+    cart: React.PropTypes.object,
     changeMenuState: React.PropTypes.func,
   };
 
@@ -48,7 +58,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
       <header>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-2">
+            <div className="col-4">
               <label htmlFor="op">
                 <div id="nav-lines" className={classNames({ active: this.props.menuActive })} onClick={this.changeState}>
                   <svg viewBox="0 0 64 64">
@@ -62,12 +72,13 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                 </div>
               </label>
             </div>
-            <div className="col-5 push-1">
-              <a href="" className="logo text-center">lainfini</a>
+            <div className="col-4">
+              <Link to="/" className="logo text-center">lainfini</Link>
             </div>
-            <div className="col-5 text-right header_action">
-              <a href="" className="shop-active"><i className="cart-state">23</i><i className="icon icon-shop"></i></a>
-              <a href=""><i className="icon icon-wishlist"></i></a>
+            <div className="col-4 text-right header_action">
+              <Link to="/basket" className="shop-active">{ this.props.cart && _(this.props.cart.items).size() > 0 && <i className="cart-state">{_(this.props.cart.items).sumBy('quantity')}</i> }<i className="icon icon-shop"></i></Link>
+              { this.props.user.uid && <Link to="/wishlist"><i className="icon icon-wishlist"></i></Link> }
+              <Link to="/user"><i className="icon icon-user"></i></Link>
             </div>
           </div>
         </div>
@@ -86,6 +97,8 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   menuActive: makeSelectMenuActive(),
+  user: makeSelectUser(),
+  cart: makeSelectCart(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

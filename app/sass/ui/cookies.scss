@@ -1,0 +1,33 @@
+.cookies {
+  position: fixed;
+  bottom:0;
+  left: 0;
+  right: 0;
+  background-color: $color-black;
+  color: $color-white;
+  padding: $_20 0;
+  text-align: center;
+  animation: .5s ease-in 0s normal backwards 1 running fadeInUp;
+  z-index: 9999;
+  p {
+    a {
+      color: $color-white;
+      text-decoration: underline;
+    }
+  }
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .row {
+    align-items: center;
+  }
+  .icon {
+    padding: $_10;
+    font-size: $_30;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import $ from 'jquery';
-import 'slick-carousel';
+import _ from 'lodash';
 
 import config from 'config';
 
@@ -11,28 +10,44 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
     imgs: React.PropTypes.array,
   };
 
-  componentDidMount() {
-    const slick = $(this.productListSlider).slick({
-      dots: true,
-      arrows: false,
-      fade: true,
-      cssEase: 'ease',
-      speed: 600,
-      infinite: true,
-    });
+  constructor(props) {
+    super(props);
 
-    slick.find('.slick-dots').prepend("<i class='icon icon-arrow-r'></i>");
-    slick.find('.slick-dots .icon-arrow-r').click(function click() {
-      $(this).parents('.product-list__slider').slick('slickNext', parseInt($(this).parents('.product-list__slider').slick('slickCurrentSlide'), 10));
-    });
+    this.state = {
+      actualImg: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.timer = window.setInterval(() => this.findNextImg(), 5000);
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.timer);
+  }
+
+  findNextImg() {
+    const count = _(this.props.imgs).size() - 1;
+
+    if (this.state.actualImg < count) {
+      this.setState({
+        actualImg: this.state.actualImg + 1,
+      });
+    } else {
+      this.setState({
+        actualImg: 0,
+      });
+    }
   }
 
   render() {
     return (
       <div className="product-list__slider" ref={(c) => { this.productListSlider = c; }}>
-        { this.props.imgs.map((img, index) => (
-          <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} key={index} alt="" />
-          ))
+        {this.props.imgs.map((img, index) =>
+          <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} className={index === this.state.actualImg ? 'active' : null} alt="" key={index} />
+        )}
+        {_(this.props.imgs).size() === 0 &&
+          <img src="http://placehold.it/356x387" className="active" alt="" />
         }
       </div>
     );

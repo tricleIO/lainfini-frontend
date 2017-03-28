@@ -24,8 +24,8 @@ export default class SocialNav extends React.PureComponent {
                       <li><a className="mod--1" href="">Customer Service</a></li>
                       <li><a className="mod--1" href="">Returns</a></li>
                       <li><a className="mod--1" href="">Privacy Policy</a></li>
-                      <li><Link className="mod--1" to="/login">Login</Link></li>
-                      <li><Link className="mod--1" to="/register">Register</Link></li>
+                      <li><a className="mod--1" href="">About Cookies</a></li>
+                      <li><Link className="mod--1" to="/user">User</Link></li>
                     </ul>
                   </nav>
                 </div>

@@ -20,6 +20,7 @@
 @import "~bootstrap/scss/utilities/display";
 @import "~bootstrap/scss/utilities/visibility";
 @import "~bootstrap/scss/utilities/align";
+@import "~bootstrap/scss/utilities/spacing";
 
 //
 // Bootstrap Grid
@@ -27,6 +28,11 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom";
+@import "~bootstrap/scss/custom-forms";
+
 
 
 //external libraries
@@ -76,11 +82,17 @@
 @import "components/product_detail";
 @import "components/basket";
 @import "components/wish-product";
+@import "components/404";
+@import "components/503";
+@import "components/payment";
+@import "components/buy-step";
+@import "components/user-settings";
 
 @import "parts/social_nav";
 @import "parts/profil_gallery";
 @import "parts/designers";
 @import "parts/filter";
+@import "parts/proceed_box";
 
 @import "helpers";
 
@@ -95,4 +107,6 @@
 @import "ui/item_counter";
 @import "ui/ui-total-price";
 @import "ui/btn-double-type";
+@import "ui/custom-forms";
+@import "ui/cookies";
 

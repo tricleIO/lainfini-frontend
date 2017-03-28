@@ -3,6 +3,7 @@ import React from 'react';
 export default class ItemCounter extends React.Component {
   static propTypes = {
     defaultValue: React.PropTypes.number,
+    onChange: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -15,18 +16,40 @@ export default class ItemCounter extends React.Component {
     this.onMinusClick = this.onMinusClick.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value) {
+      this.setState({
+        value: nextProps.value,
+      });
+    }
+  }
+
   onPlusClick() {
-    this.setState({
-      value: this.state.value + 1,
-    });
+    const value = this.state.value + 1;
+    if (this.state.value > 0) {
+      this.onChange(value);
+      this.setState({
+        value,
+      });
+    }
   }
 
   onMinusClick() {
-    if (this.state.value > 0) {
+    const value = this.state.value - 1;
+    if (this.state.value > 1) {
+      this.onChange(value);
       this.setState({
-        value: this.state.value - 1,
+        value,
       });
     }
+  }
+
+  onChange(val) {
+    return this.props.onChange(val);
+  }
+
+  value() {
+    return this.state.value;
   }
 
   render() {

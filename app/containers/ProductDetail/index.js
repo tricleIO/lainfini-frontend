@@ -4,17 +4,26 @@ import Helmet from 'react-helmet';
 import config from 'config';
 
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Heading from 'components/Heading';
 import ItemCounter from 'components/ItemCounter';
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
 
+import WishlistHeart from 'components/WishlistHeart';
+
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectProduct } from './selectors';
+import {
+  makeSelectProduct,
+  makeSelectError,
+} from './selectors';
 
-import _ from 'lodash';
+import {
+  addLastViewedDesign,
+  addToCart,
+} from 'containers/App/actions';
 
 import {
   loadProduct,
@@ -24,18 +33,53 @@ class ProductDetail extends React.Component {
 
   static propTypes = {
     loadProduct: React.PropTypes.func,
+    addLastViewedDesign: React.PropTypes.func,
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
+    redirectToCatalog: React.PropTypes.func,
+    redirectToCart: React.PropTypes.func,
+    addToCart: React.PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
-    this.arrival1Img = require('./img/arrival-1.png');
+    this.sentLastViewed = false;
   }
 
   componentWillMount() {
     this.props.loadProduct(this.props.routeParams.productId);
+  }
+
+  componentDidMount() {
+    this.viewedDesignsUpdate();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.routeParams.productId !== this.props.routeParams.productId) {
+      this.sentLastViewed = false;
+      this.props.loadProduct(nextProps.routeParams.productId);
+    }
+    if (nextProps.error) {
+      this.props.redirectToCatalog();
+    }
+  }
+
+  componentDidUpdate() {
+    this.viewedDesignsUpdate();
+  }
+
+  addToCart() {
+    const { product } = this.props;
+    this.props.addToCart(product.uid, this.itemCounter.value());
+    this.props.redirectToCart();
+  }
+
+  viewedDesignsUpdate() {
+    if (this.props.product.name && !this.sentLastViewed) {
+      this.props.addLastViewedDesign(this.props.product);
+      this.sentLastViewed = true;
+    }
   }
 
   openPopup(url) {
@@ -61,8 +105,7 @@ class ProductDetail extends React.Component {
                     <div className="detail-slider__item">
                       <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
                       <div className="ui-items">
-                        <span className="like"><i className="icon icon-wishlist" /></span>
-                        <span className="search"><i className="icon icon-user" /></span>
+                        <WishlistHeart uid={product.uid} />
                       </div>
                     </div>
                   </div>
@@ -78,7 +121,7 @@ class ProductDetail extends React.Component {
                   </div>
                   <div className="row product-detail__iteractive">
                     <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
-                      <ItemCounter />
+                      <ItemCounter ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
                     </div>
                     <div className="col-12 col-md-5 social-nav text-center text-sm-left">
                       <ul className="social-nav__icons">
@@ -99,19 +142,19 @@ class ProductDetail extends React.Component {
                     <div className="col-12">
                       <div className="wsw">
                         <p>
-                          60x50 cm
+                          Size: {product.size.value}
                         </p>
                         <p>
-                          23x23 inch.
+                          Material: {product.material.name}
                         </p>
                         <p>
-                          printed fine silk
+                          {product.material.composition}
                         </p>
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
                       <div className="btn__inline">
-                        <a href="" className="btn btn-center">add to shopping basket</a>
+                        <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
                       </div>
                     </div>
                   </div>
@@ -131,11 +174,16 @@ class ProductDetail extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     loadProduct: (urlSlug) => dispatch(loadProduct(urlSlug)),
+    addLastViewedDesign: (design) => dispatch(addLastViewedDesign(design)),
+    redirectToCatalog: () => dispatch(push('/catalog')),
+    redirectToCart: () => dispatch(push('/basket')),
+    addToCart: (item, qty) => dispatch(addToCart(item, qty)),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
   product: makeSelectProduct(),
+  error: makeSelectError(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
