@@ -203,6 +203,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/server-down',
+      name: 'serverDown',
+      getComponent(nextState, cb) {
+        System.import('containers/ServerDown')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

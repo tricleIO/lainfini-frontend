@@ -34,7 +34,7 @@ class Wishlist extends React.Component {
             </div>
           </div>
           <div className="row wishlist-product-list text-center animated fadeInUp">
-            {products.map((p, index) =>
+            {products && products.map((p, index) =>
               <div className="col-12 col-sm-6 col-lg-6 col-xl-3" key={index}>
                 <div className="wish-product">
                   <div className="wish-product__background">

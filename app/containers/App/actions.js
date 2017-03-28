@@ -15,6 +15,7 @@ import {
   DELETE_FROM_CART,
   UPDATE_CART_QTY,
   CREATE_CART,
+  GET_CURRENT_CART,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -127,5 +128,11 @@ export function updateCartQty(item, qty) {
 export function createCart() {
   return {
     type: CREATE_CART,
+  };
+}
+
+export function getCurrentCart() {
+  return {
+    type: GET_CURRENT_CART,
   };
 }

@@ -24,7 +24,11 @@ import { createStructuredSelector } from 'reselect';
 import {
   makeSelectProducts,
   makeSelectFilter,
- } from './selectors';
+} from './selectors';
+
+import {
+  addToCart,
+} from 'containers/App/actions';
 
 import {
   loadProducts,
@@ -38,11 +42,15 @@ class Eshop extends React.Component {
 
   static propTypes = {
     loadProducts: React.PropTypes.func,
-    products: React.PropTypes.array,
-    filterSize: React.PropTypes.string,
-    filterMaterial: React.PropTypes.string,
+    products: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      React.PropTypes.object,
+    ]),
+    filterSize: React.PropTypes.number,
+    filterMaterial: React.PropTypes.number,
     selectFilterMaterial: React.PropTypes.func,
     selectFilterSize: React.PropTypes.func,
+    addToCart: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -56,6 +64,10 @@ class Eshop extends React.Component {
 
   componentWillMount() {
     this.props.loadProducts();
+  }
+
+  addToBasket(uid) {
+    this.props.addToCart(uid);
   }
 
   render() {
@@ -124,7 +136,7 @@ class Eshop extends React.Component {
         <div className="product-list">
           <div className="container">
             <div className="row">
-              { products.map((product, index) => (
+              {products.map((product, index) => (
                 <div
                   className={classNames('col-12 col-md-6 col-lg-5 product-list__item', {
                     'product-list__item--top-left': index % 4 === 1,
@@ -154,7 +166,7 @@ class Eshop extends React.Component {
                         <div>Jabob Borrows</div>
                       </div>
                       <div className="col-5 see_more">
-                        <Link to={'/catalog/' + product.slug} className="btn">See detail</Link>
+                        <Link to={'/basket'} onClick={() => this.addToBasket(product.uid)} className="btn">Add to Basket</Link>
                       </div>
                     </div>
                   </div>
@@ -177,6 +189,7 @@ function mapDispatchToProps(dispatch) {
     loadProducts: (page) => dispatch(loadProducts(page)),
     selectFilterMaterial: (uid) => dispatch(selectFilterMaterial(uid)),
     selectFilterSize: (uid) => dispatch(selectFilterSize(uid)),
+    addToCart: (uid, qty) => dispatch(addToCart(uid, qty)),
   };
 }
 

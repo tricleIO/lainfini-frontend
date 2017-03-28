@@ -6,8 +6,14 @@ export default class Visual extends React.PureComponent {
   static propTypes = {
     bg: React.PropTypes.string,
     bgColor: React.PropTypes.string,
-    subtitle: React.PropTypes.string,
-    title: React.PropTypes.string,
+    subtitle: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
+    title: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
     mod: React.PropTypes.string,
     alternativeTitle: React.PropTypes.string,
   };
