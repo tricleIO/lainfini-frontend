@@ -19,3 +19,4 @@ export const CREATE_CART = 'App/CREATE_CART';
 export const DELETE_FROM_CART = 'App/DELETE_FROM_CART';
 export const UPDATE_CART_QTY = 'App/UPDATE_CART_QTY';
 export const GET_CURRENT_CART = 'App/GET_CURRENT_CART';
+export const GET_CART_ID = 'App/GET_CART_ID';

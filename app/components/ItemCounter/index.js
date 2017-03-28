@@ -16,9 +16,11 @@ export default class ItemCounter extends React.Component {
     this.onMinusClick = this.onMinusClick.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.value !== prevState.value) {
-      this.onChange();
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value) {
+      this.setState({
+        value: nextProps.value,
+      });
     }
   }
 

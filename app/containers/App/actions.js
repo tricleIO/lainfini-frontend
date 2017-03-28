@@ -16,6 +16,7 @@ import {
   UPDATE_CART_QTY,
   CREATE_CART,
   GET_CURRENT_CART,
+  GET_CART_ID,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -134,5 +135,12 @@ export function createCart() {
 export function getCurrentCart() {
   return {
     type: GET_CURRENT_CART,
+  };
+}
+
+export function getCart(uid) {
+  return {
+    type: GET_CART_ID,
+    uid,
   };
 }
