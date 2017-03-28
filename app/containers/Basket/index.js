@@ -27,13 +27,19 @@ class Basket extends React.Component {
   };
 
   updateQty(uid, qty) {
-    if (qty) {
-      this.props.updateCartQty(uid, qty);
-    }
+    this.props.updateCartQty(uid, qty);
   }
 
   render() {
     const { basket } = this.props;
+    console.log(basket);
+    if (basket) {
+      basket.items = _(basket.items).map((obj) => {
+        const o = obj;
+        o.totalPrice = obj.quantity * obj.product.price;
+        return o;
+      }).value();
+    }
     return (
       <main id="page">
         <div className="basket">
@@ -49,7 +55,7 @@ class Basket extends React.Component {
                       <div className="product-list__content col-12 col-sm-10">
                         <div className="product-list__title col-12 col-sm-4">
                           <h4>{i.product.name}</h4>
-                          <ItemCounter defaultValue={i.quantity} onChange={(qty) => this.updateQty(i.productUid, qty)} />
+                          <ItemCounter defaultValue={i.quantity} value={i.quantity} onChange={(qty) => this.updateQty(i.productUid, qty)} />
                         </div>
                         <div className="product-list__info col-12 col-sm-4">
                           {i.product.size.value} <br />
@@ -57,7 +63,7 @@ class Basket extends React.Component {
                           {i.product.material.composition}
                         </div>
                         <div className="product-list__price col-12 col-sm-3">
-                          <span>${i.product.price}</span>
+                          <span>${i.totalPrice}</span>
                         </div>
                         <div className="product-list__action col-12 col-sm-1" onClick={() => this.props.deleteFromCart(i.productUid)}>
                           <i className="icon icon-close" />
@@ -74,7 +80,7 @@ class Basket extends React.Component {
                       subtotal
                     </div>
                     <div className="price">
-                      $439.00
+                      ${_(basket.items).sumBy('totalPrice')}
                     </div>
                   </div>
                 </div>

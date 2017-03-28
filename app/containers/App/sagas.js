@@ -1,6 +1,6 @@
-import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
+import { call, put, takeLatest, select, take, cancel, takeEvery } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT, GET_CART_ID } from './constants';
-import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart } from './actions';
+import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart, getCurrentCart } from './actions';
 
 import localStorage from 'local-storage';
 
@@ -202,7 +202,7 @@ export function* deleteFromWishlistData() {
 export function* addToCart(action) {
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
-  const requestURL = token.access_token ? config.apiUrl + 'carts/' + stateCart.uid + '/items' : null;
+  const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items';
 
   const options = {
     headers: {
@@ -231,7 +231,7 @@ export function* addToCartData() {
   yield takeLatest(ADD_TO_CART, addToCart);
 }
 
-export function* getCurrentCart() {
+export function* getCurrentCarts() {
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
 
@@ -255,7 +255,7 @@ export function* getCurrentCart() {
 }
 
 export function* getCurrentCartData() {
-  yield takeLatest(GET_CURRENT_CART, getCurrentCart);
+  yield takeLatest(GET_CURRENT_CART, getCurrentCarts);
 }
 
 export function* updateCartQty(action) {
@@ -267,7 +267,7 @@ export function* updateCartQty(action) {
     headers: {
       'Content-Type': 'application/json',
     },
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify({
       productUid: action.item,
       quantity: action.qty,
@@ -315,7 +315,7 @@ export function* deleteFromCart(action) {
 }
 
 export function* deleteFromCartData() {
-  take(DELETE_FROM_CART, deleteFromCart);
+  yield takeEvery(DELETE_FROM_CART, deleteFromCart);
 }
 
 export function* createCarts() {
@@ -387,4 +387,5 @@ export default [
   createCartData,
   logoutData,
   getCartData,
+  deleteFromCartData,
 ];
