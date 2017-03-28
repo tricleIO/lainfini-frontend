@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
-import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST } from './constants';
-import { saveUser, saveToken, logout, saveWishlist, saveCart } from './actions';
+import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT } from './constants';
+import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart } from './actions';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
 
@@ -13,7 +13,6 @@ import formUrlEncoded from 'form-urlencoded';
 import {
   makeSelectToken,
   makeSelectCart,
-  makeSelectUser,
 } from './selectors';
 
 export function* getUser(action) {
@@ -39,9 +38,6 @@ export function* getUser(action) {
   }
 }
 
-/**
- * Root saga manages watcher lifecycle
- */
 export function* userData() {
   yield takeLatest(SAVE_TOKEN, getUser);
 }
@@ -70,6 +66,8 @@ export function* initApp() {
     } catch (err) {
       yield put(logout());
     }
+  } else {
+    yield put(createCart());
   }
 }
 
@@ -84,7 +82,7 @@ export function* getWishlist(action) {
   if (action.user.uid) {
     const token = yield select(makeSelectToken());
 
-    const requestURL = config.apiUrl + 'customers/' + action.user.uid + '/wishlist';
+    const requestURL = config.apiUrl + 'customers/current/wishlist';
     const options = {
       headers: {
         Authorization: token.token_type + ' ' + token.access_token,
@@ -196,6 +194,155 @@ export function* deleteFromWishlistData() {
   yield takeLatest(DELETE_FROM_WISHLIST, deleteFromWishlist);
 }
 
+export function* addToCart(action) {
+  const token = yield select(makeSelectToken());
+  const stateCart = yield select(makeSelectCart());
+  const requestURL = token.access_token ? config.apiUrl + 'carts/' + stateCart.uid + '/items' : null;
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      productUid: action.item,
+      quantity: action.qty,
+    }),
+  };
+
+  if (token) {
+    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+  }
+
+  try {
+    yield call(request, requestURL, options);
+    yield put(getCurrentCart());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* addToCartData() {
+  yield takeLatest(ADD_TO_CART, addToCart);
+}
+
+export function* getCurrentCart() {
+  const token = yield select(makeSelectToken());
+  const stateCart = yield select(makeSelectCart());
+
+  const options = {
+    headers: {
+      Authorization: token.token_type + ' ' + token.access_token,
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  };
+
+  const requestURLCart = config.apiUrl + 'carts/' + stateCart.uid;
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const cart = yield call(request, requestURLCart, options);
+    yield put(saveCart(cart));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* getCurrentCartData() {
+  yield takeLatest(GET_CURRENT_CART, getCurrentCart);
+}
+
+export function* updateCartQty(action) {
+  const token = yield select(makeSelectToken());
+  const stateCart = yield select(makeSelectCart());
+  const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items';
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      productUid: action.item,
+      quantity: action.qty,
+    }),
+  };
+
+  if (token) {
+    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+  }
+
+  try {
+    yield call(request, requestURL, options);
+    yield put(getCurrentCart());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* updateCartQtyData() {
+  yield takeLatest(UPDATE_CART_QTY, updateCartQty);
+}
+
+export function* deleteFromCart(action) {
+  const token = yield select(makeSelectToken());
+  const stateCart = yield select(makeSelectCart());
+  const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items/' + action.item;
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'DELETE',
+  };
+
+  if (token) {
+    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+  }
+
+  try {
+    yield call(request, requestURL, options);
+    yield put(getCurrentCart());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* deleteFromCartData() {
+  take(DELETE_FROM_CART, deleteFromCart);
+}
+
+export function* createCartF() {
+  const requestURL = config.apiUrl + 'carts';
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  };
+
+  try {
+    const cart = yield call(request, requestURL, options);
+    yield put(saveCart(cart));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* createCartData() {
+  takeLatest(CREATE_CART, createCartF);
+}
+
+export function* logoutF() {
+  yield put(createCart());
+}
+
+export function* logoutData() {
+  takeLatest(LOGOUT, logoutF);
+}
+
 // Bootstrap sagas
 export default [
   userData,
@@ -204,4 +351,9 @@ export default [
   getCartData,
   addToWishlistData,
   deleteFromWishlistData,
+  addToCartData,
+  getCurrentCartData,
+  updateCartQtyData,
+  createCartData,
+  logoutData,
 ];

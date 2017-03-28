@@ -22,15 +22,12 @@ import {
 
 import {
   addLastViewedDesign,
+  addToCart,
 } from 'containers/App/actions';
 
 import {
   loadProduct,
 } from './actions';
-
-import {
-  makeSelectUser,
-} from 'containers/App/selectors';
 
 class ProductDetail extends React.Component {
 
@@ -40,13 +37,14 @@ class ProductDetail extends React.Component {
     product: React.PropTypes.object,
     routeParams: React.PropTypes.object,
     redirectToCatalog: React.PropTypes.func,
+    redirectToCart: React.PropTypes.func,
+    addToCart: React.PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
     this.sentLastViewed = false;
-    this.arrival1Img = require('./img/arrival-1.png');
   }
 
   componentWillMount() {
@@ -69,6 +67,12 @@ class ProductDetail extends React.Component {
 
   componentDidUpdate() {
     this.viewedDesignsUpdate();
+  }
+
+  addToCart() {
+    const { product } = this.props;
+    this.props.addToCart(product.uid, this.itemCounter.value());
+    this.props.redirectToCart();
   }
 
   viewedDesignsUpdate() {
@@ -117,7 +121,7 @@ class ProductDetail extends React.Component {
                   </div>
                   <div className="row product-detail__iteractive">
                     <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
-                      <ItemCounter />
+                      <ItemCounter ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
                     </div>
                     <div className="col-12 col-md-5 social-nav text-center text-sm-left">
                       <ul className="social-nav__icons">
@@ -150,7 +154,7 @@ class ProductDetail extends React.Component {
                     </div>
                     <div className="col-12 product-detail__add-cart">
                       <div className="btn__inline">
-                        <a href="" className="btn btn-center">add to shopping basket</a>
+                        <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
                       </div>
                     </div>
                   </div>
@@ -172,6 +176,8 @@ function mapDispatchToProps(dispatch) {
     loadProduct: (urlSlug) => dispatch(loadProduct(urlSlug)),
     addLastViewedDesign: (design) => dispatch(addLastViewedDesign(design)),
     redirectToCatalog: () => dispatch(push('/catalog')),
+    redirectToCart: () => dispatch(push('/basket')),
+    addToCart: (item, qty) => dispatch(addToCart(item, qty)),
   };
 }
 

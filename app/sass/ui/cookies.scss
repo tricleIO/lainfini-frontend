@@ -9,13 +9,17 @@
   text-align: center;
   animation: .5s ease-in 0s normal backwards 1 running fadeInUp;
   z-index: 9999;
-   a {
-     color: $color-white;
-     text-decoration: underline;
-     &:hover {
-       cursor: pointer;
-     }
-   }
+  p {
+    a {
+      color: $color-white;
+      text-decoration: underline;
+    }
+  }
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+  }
   .row {
     align-items: center;
   }
