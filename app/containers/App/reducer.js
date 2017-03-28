@@ -35,6 +35,7 @@ function appReducer(state = initialState, action) {
       return state
         .set('wishlist', action.wishlist);
     case LOGOUT:
+      localStorage('access-token', {});
       return state
         .set('wishlist', undefined)
         .set('cart', undefined)

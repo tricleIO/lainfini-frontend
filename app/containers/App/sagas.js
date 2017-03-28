@@ -1,6 +1,8 @@
 import { call, put, takeLatest, select, take, cancel } from 'redux-saga/effects';
-import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT } from './constants';
-import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart } from './actions';
+import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT, GET_CART_ID } from './constants';
+import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart } from './actions';
+
+import localStorage from 'local-storage';
 
 import { push, LOCATION_CHANGE } from 'react-router-redux';
 
@@ -66,6 +68,8 @@ export function* initApp() {
     } catch (err) {
       yield put(logout());
     }
+  } else if (localStorage('cartUid')) {
+    yield put(getCart(localStorage('cartUid')));
   } else {
     yield put(createCart());
   }
@@ -104,9 +108,10 @@ export function* getWishlistData() {
   yield takeLatest(SAVE_USER, getWishlist);
 }
 
-export function* getCart(action) {
+export function* getCartUser(action) {
   const cartInState = yield select(makeSelectCart());
   if (action.user.uid && !cartInState) {
+    localStorage('cartUid', null);
     const token = yield select(makeSelectToken());
 
     const requestURL = config.apiUrl + 'carts/current';
@@ -127,8 +132,8 @@ export function* getCart(action) {
   }
 }
 
-export function* getCartData() {
-  yield takeLatest(SAVE_USER, getCart);
+export function* getCartUserData() {
+  yield takeLatest(SAVE_USER, getCartUser);
 }
 
 export function* addToWishlist(action) {
@@ -313,18 +318,20 @@ export function* deleteFromCartData() {
   take(DELETE_FROM_CART, deleteFromCart);
 }
 
-export function* createCartF() {
+export function* createCarts() {
   const requestURL = config.apiUrl + 'carts';
 
   const options = {
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({}),
     method: 'POST',
   };
 
   try {
     const cart = yield call(request, requestURL, options);
+    localStorage('cartUid', cart.uid);
     yield put(saveCart(cart));
   } catch (err) {
     console.log(err);
@@ -332,7 +339,7 @@ export function* createCartF() {
 }
 
 export function* createCartData() {
-  takeLatest(CREATE_CART, createCartF);
+  yield takeLatest(CREATE_CART, createCarts);
 }
 
 export function* logoutF() {
@@ -340,7 +347,30 @@ export function* logoutF() {
 }
 
 export function* logoutData() {
-  takeLatest(LOGOUT, logoutF);
+  yield takeLatest(LOGOUT, logoutF);
+}
+
+export function* getCarts(action) {
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  };
+
+  const requestURLCart = config.apiUrl + 'carts/' + action.uid;
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const cart = yield call(request, requestURLCart, options);
+    yield put(saveCart(cart));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* getCartData() {
+  yield takeLatest(GET_CART_ID, getCarts);
 }
 
 // Bootstrap sagas
@@ -348,7 +378,7 @@ export default [
   userData,
   initAppData,
   getWishlistData,
-  getCartData,
+  getCartUserData,
   addToWishlistData,
   deleteFromWishlistData,
   addToCartData,
@@ -356,4 +386,5 @@ export default [
   updateCartQtyData,
   createCartData,
   logoutData,
+  getCartData,
 ];
