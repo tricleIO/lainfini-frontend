@@ -32,7 +32,6 @@ class Basket extends React.Component {
 
   render() {
     const { basket } = this.props;
-    console.log(basket);
     if (basket) {
       basket.items = _(basket.items).map((obj) => {
         const o = obj;
@@ -72,19 +71,26 @@ class Basket extends React.Component {
                     </div>
                   </div>
                 )}
+                {basket && _(basket.items).size() === 0 &&
+                  <div className="col-12 empty__basket">
+                    Your basket is empty, go to <Link to="/catalog">catalog</Link> and select some products.
+                  </div>
+                }
               </div>
-              <div className="row">
-                <div className="col-12 col-sm-5 offset-sm-6">
-                  <div className="ui-total-price">
-                    <div className="title">
-                      subtotal
-                    </div>
-                    <div className="price">
-                      ${_(basket.items).sumBy('totalPrice')}
+              {_(basket.items).size() > 0 &&
+                <div className="row">
+                  <div className="col-12 col-sm-5 offset-sm-6">
+                    <div className="ui-total-price">
+                      <div className="title">
+                        subtotal
+                      </div>
+                      <div className="price">
+                        ${_(basket.items).sumBy('totalPrice')}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              }
               <div className="row">
                 <div className="ui-btn-double-type">
                   <div className="col-12 col-sm-4 offset-sm-2">
@@ -93,9 +99,11 @@ class Basket extends React.Component {
                     </div>
                   </div>
                   <div className="col-12 col-sm-5">
-                    <div className="btn__inline offset-vertical-30">
-                      <a href="" className="btn" data-reveal>check out your basket</a>
-                    </div>
+                    {_(basket.items).size() > 0 &&
+                      <div className="btn__inline offset-vertical-30">
+                        <a href="" className="btn" data-reveal>check out your basket</a>
+                      </div>
+                    }
                   </div>
                 </div>
               </div>
