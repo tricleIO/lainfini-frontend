@@ -1,6 +1,6 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOGIN_USER } from './constants';
+import { LOGIN_USER, REGISTER_USER } from './constants';
 import { loginUserSuccess, loginUserError } from './actions';
 import { saveToken, logout } from 'containers/App/actions';
 
@@ -10,7 +10,7 @@ import config from 'config';
 
 import request from 'utils/request';
 
-export function* getProduct(action) {
+export function* getLogin(action) {
   const data = {
     username: action.email,
     password: action.password,
@@ -42,14 +42,41 @@ export function* getProduct(action) {
 /**
  * Root saga manages watcher lifecycle
  */
-export function* productsData() {
-  const watcher = yield takeLatest(LOGIN_USER, getProduct);
+export function* loginData() {
+  const watcher = yield takeLatest(LOGIN_USER, getLogin);
 
   yield take(LOCATION_CHANGE);
   yield cancel(watcher);
 }
 
+export function* getRegister(action) {
+  const data = {
+    username: action.email,
+    password: action.password,
+    firstName: action.firstName,
+    lastName: action.lastName,
+  };
+  const requestURL = config.apiUrl + 'customers';
+  try {
+    // Call our request helper (see 'utils/request')
+    yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cors: true,
+      body: JSON.stringify(data),
+    });
+  } catch (err) {
+  }
+}
+
+export function* registerData() {
+  yield takeLatest(REGISTER_USER, getRegister);
+}
+
 // Bootstrap sagas
-export default [
-  productsData,
+export default[
+  loginData,
+  registerData,
 ];
