@@ -17,6 +17,8 @@ import {
   CREATE_CART,
   GET_CURRENT_CART,
   GET_CART_ID,
+  ADD_NOTIFICATION,
+  SHOWED_NOTIFICATION,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -142,5 +144,19 @@ export function getCart(uid) {
   return {
     type: GET_CART_ID,
     uid,
+  };
+}
+
+export function addNotification(notification) {
+  return {
+    type: ADD_NOTIFICATION,
+    notification,
+  };
+}
+
+export function showedNotification(uuid) {
+  return {
+    type: SHOWED_NOTIFICATION,
+    uuid,
   };
 }
