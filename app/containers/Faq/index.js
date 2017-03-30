@@ -43,7 +43,7 @@ class Faq extends React.Component {
           </div>
         </div>
 
-        <SocialNav />
+        <SocialNav links />
       </div>
     );
   }

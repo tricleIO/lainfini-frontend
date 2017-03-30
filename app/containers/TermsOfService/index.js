@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import SocialNav from 'components/SocialNav';
+
 class TermsOfService extends React.Component {
 
   render() {
@@ -519,6 +521,8 @@ class TermsOfService extends React.Component {
             </div>
           </div>
         </div>
+
+        <SocialNav links />
       </div>
     );
   }
