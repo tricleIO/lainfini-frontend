@@ -28,6 +28,7 @@ const initialState = fromJS({
   token: localStorage('access-token'),
   lastViewedDesigns: localStorage('last-viewed-designs') ? localStorage('last-viewed-designs') : [],
   notifications: null,
+  notificationsUpdate: true,
 });
 
 function appReducer(state = initialState, action) {
@@ -39,7 +40,8 @@ function appReducer(state = initialState, action) {
       notification.showed = false;
       notifications.push(notification);
       return state
-        .set('notifications', notifications);
+        .set('notifications', notifications)
+        .set('notificationsUpdate', !state.get('notificationsUpdate'));
     case SHOWED_NOTIFICATION:
       return state
         .set('notifications', _(state.get('notifications')).map((obj) => { const o = obj; if (obj.uuid === action.uuid) { o.showed = true; } return o; }).value());

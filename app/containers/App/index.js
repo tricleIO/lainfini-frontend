@@ -24,6 +24,7 @@ import {
   makeSelectMenuActive,
   makeIsHomepage,
   makeSelectNotifications,
+  makeSelectNotificationsUpdate,
 } from './selectors';
 
 import {
@@ -100,6 +101,7 @@ const mapStateToProps = createStructuredSelector({
   menuActive: makeSelectMenuActive(),
   isHomepage: makeIsHomepage(),
   notifications: makeSelectNotifications(),
+  notificationsUpdate: makeSelectNotificationsUpdate(),
 });
 
 function mapDispatchToProps(dispatch) {

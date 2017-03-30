@@ -2,7 +2,7 @@ import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import { loginUserSuccess, loginUserError } from './actions';
-import { saveToken, logout } from 'containers/App/actions';
+import { saveToken, logout, addNotification } from 'containers/App/actions';
 
 import formUrlEncoded from 'form-urlencoded';
 
@@ -35,7 +35,13 @@ export function* getLogin(action) {
     yield put(saveToken(token));
   } catch (err) {
     yield put(logout());
-    yield put(loginUserError(err.toString()));
+    const errorMessage = err.response.status === 400 ? 'You have passed invalid creditals. Please try it again, or create new account.' : '';
+    yield put(addNotification({
+      title: 'Error',
+      level: 'error',
+      message: errorMessage,
+    }));
+    yield put(loginUserError(errorMessage));
   }
 }
 

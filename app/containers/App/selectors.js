@@ -64,6 +64,11 @@ const makeSelectNotifications = () => createSelector(
   (appState) => appState.get('notifications')
 );
 
+const makeSelectNotificationsUpdate = () => createSelector(
+  selectApp,
+  (appState) => appState.get('notificationsUpdate')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -76,4 +81,5 @@ export {
   makeSelectWishlist,
   makeSelectCart,
   makeSelectNotifications,
+  makeSelectNotificationsUpdate,
 };
