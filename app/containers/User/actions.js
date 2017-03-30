@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
