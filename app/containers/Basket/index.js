@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
@@ -41,6 +42,7 @@ class Basket extends React.Component {
     }
     return (
       <main id="page">
+        <Helmet title="Basket" />
         <div className="basket">
           <div className="product-list">
             <div className="container">
