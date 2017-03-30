@@ -46,7 +46,7 @@ export default class ItemCounter extends React.Component {
   }
 
   onChange(val) {
-    return _(this.props.onChange).isFunction ? this.props.onChange(val) : null;
+    return _(this.props.onChange).isFunction() ? this.props.onChange(val) : null;
   }
 
   value() {
