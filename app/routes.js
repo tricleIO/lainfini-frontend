@@ -166,8 +166,8 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/user',
-      name: 'user',
+      path: '/login',
+      name: 'login-register',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/User/reducer'),
