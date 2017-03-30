@@ -203,6 +203,27 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/faq',
+      name: 'faq',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Faq/reducer'),
+          System.import('containers/Faq/sagas'),
+          System.import('containers/Faq'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('faq', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/server-down',
       name: 'serverDown',
       getComponent(nextState, cb) {
