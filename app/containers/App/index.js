@@ -23,10 +23,13 @@ import '../../sass/app.scss';
 import {
   makeSelectMenuActive,
   makeIsHomepage,
+  makeSelectNotifications,
+  makeSelectNotificationsUpdate,
 } from './selectors';
 
 import {
   initApp,
+  showedNotification,
 } from './actions';
 
 import Footer from './Footer';
@@ -36,6 +39,10 @@ import Cookies from './Cookies';
 
 import Helmet from 'react-helmet';
 
+import NotificationSystem from 'react-notification-system';
+
+import _ from 'lodash';
+
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -43,10 +50,26 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
     menuActive: React.PropTypes.bool,
     isHomepage: React.PropTypes.bool,
     initApp: React.PropTypes.func,
+    showedNotification: React.PropTypes.func,
   };
 
   componentWillMount() {
     this.props.initApp();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const notifications = _(nextProps.notifications).filter({ showed: false }).value();
+    if (notifications) {
+      notifications.map((notification) => this.addNotification(notification));
+    }
+  }
+
+  addNotification(notification) {
+    if (this.notificationSystem) {
+      const noti = _({ level: 'info', autoDismiss: 5, dismissable: true, position: 'br' }).merge(notification).value();
+      this.props.showedNotification(noti.uuid);
+      this.notificationSystem.addNotification(noti);
+    }
   }
 
   render() {
@@ -57,6 +80,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
           titleTemplate="%s | LAINFINI"
           defaultTitle="Homepage | LAINFINI"
         />
+        <NotificationSystem ref={(c) => { this.notificationSystem = c; }} />
         <Header />
         <main id="page">
           <input type="checkbox" id="op" checked={this.props.menuActive} />
@@ -76,11 +100,14 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 const mapStateToProps = createStructuredSelector({
   menuActive: makeSelectMenuActive(),
   isHomepage: makeIsHomepage(),
+  notifications: makeSelectNotifications(),
+  notificationsUpdate: makeSelectNotificationsUpdate(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     initApp: () => dispatch(initApp()),
+    showedNotification: (uuid) => dispatch(showedNotification(uuid)),
   };
 }
 

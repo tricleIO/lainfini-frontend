@@ -59,6 +59,16 @@ const makeSelectCart = () => createSelector(
   (appState) => appState.get('cart')
 );
 
+const makeSelectNotifications = () => createSelector(
+  selectApp,
+  (appState) => appState.get('notifications')
+);
+
+const makeSelectNotificationsUpdate = () => createSelector(
+  selectApp,
+  (appState) => appState.get('notificationsUpdate')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -70,4 +80,6 @@ export {
   makeSelectToken,
   makeSelectWishlist,
   makeSelectCart,
+  makeSelectNotifications,
+  makeSelectNotificationsUpdate,
 };
