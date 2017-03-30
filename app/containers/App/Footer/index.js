@@ -13,6 +13,8 @@
 
 import React from 'react';
 
+import { Link } from 'react-router';
+
 export default class Footer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -27,19 +29,19 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
             <div className="col-md-4 hidden-sm-down">
               <ul>
                 <li>
-                  <a href="">info@lainfini.com</a>
+                  <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="">Press inquiries</a>
+                  <a href="tel:+420123456789">+420 123 456 789</a>
                 </li>
               </ul>
             </div>
             <div className="col-12 col-md-4 text-center">
-              <a href="/" className="logo">lainfini</a>
+              <Link to="/" className="logo">lainfini</Link>
               <ul className="nav-mobile hidden-md-up">
                 <li>
-                  <a href="">info@lainfini.com</a>
-                  <a href="">Press inquiries</a>
+                  <a href="mailto:info@lainfini.com">info@lainfini.com</a>
+                  <a href="tel:+420123456789">+420 123 456 789</a>
                   <a href="">more about the brand</a>
                 </li>
               </ul>
@@ -53,7 +55,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="">download our brochure</a>
                 </li>
                 <li>
-                  <a href="">more about the brand</a>
+                  <Link to="/studio">more about the brand</Link>
                 </li>
               </ul>
             </div>
