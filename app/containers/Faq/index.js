@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
+import _ from 'lodash';
 
 import { getFaq } from './actions';
 import { makeSelectFaq } from './selectors';
@@ -12,7 +13,7 @@ class Faq extends React.Component {
 
   static propTypes = {
     loadFaqs: React.PropTypes.func,
-    faqs: React.PropTypes.object,
+    faqs: React.PropTypes.array,
   }
 
   componentDidMount() {
@@ -21,7 +22,6 @@ class Faq extends React.Component {
 
   render() {
     const { faqs } = this.props;
-    console.log(faqs);
     return (
       <div>
         <Helmet title="FAQ" />
@@ -31,7 +31,7 @@ class Faq extends React.Component {
               <div className="col-12 col-sm-10 offset-sm-1">
                 <div className="wsw">
                   <h1>FAQ</h1>
-                  {faqs && faqs.map((faq) =>
+                  {_(faqs).isArray() && faqs.map((faq) =>
                     <div>
                       <p><b>{faq.question}</b></p>
                       <p>{faq.answer}</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 export default class ItemCounter extends React.Component {
   static propTypes = {
@@ -45,7 +46,7 @@ export default class ItemCounter extends React.Component {
   }
 
   onChange(val) {
-    return this.props.onChange(val);
+    return _(this.props.onChange).isFunction ? this.props.onChange(val) : null;
   }
 
   value() {
