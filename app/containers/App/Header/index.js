@@ -78,7 +78,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             <div className="col-4 text-right header_action">
               <Link to="/basket" className="shop-active">{ this.props.cart && _(this.props.cart.items).size() > 0 && <i className="cart-state">{_(this.props.cart.items).sumBy('quantity')}</i> }<i className="icon icon-shop"></i></Link>
               { this.props.user.uid && <Link to="/wishlist"><i className="icon icon-wishlist"></i></Link> }
-              <Link to="/user"><i className="icon icon-user"></i></Link>
+              <Link to={this.props.user.uid ? '/user' : '/login'}><i className="icon icon-user"></i></Link>
             </div>
           </div>
         </div>
@@ -102,4 +102,3 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-

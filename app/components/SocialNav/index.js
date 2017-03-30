@@ -4,10 +4,19 @@ import { Link } from 'react-router';
 
 import config from 'config';
 
-export default class SocialNav extends React.PureComponent {
+import { connect } from 'react-redux';
+
+import { createStructuredSelector } from 'reselect';
+
+import {
+  makeSelectUser,
+} from 'containers/App/selectors';
+
+class SocialNav extends React.PureComponent {
 
   static propTypes = {
     links: React.PropTypes.bool,
+    user: React.PropTypes.object,
   };
 
   render() {
@@ -20,12 +29,12 @@ export default class SocialNav extends React.PureComponent {
                 <div className="d-inline-block">
                   <nav className="social-nav__links offset-vertical-50">
                     <ul>
-                      <li><a className="mod--1" href="">Terms of Service</a></li>
-                      <li><a className="mod--1" href="">Customer Service</a></li>
-                      <li><a className="mod--1" href="">Returns</a></li>
-                      <li><a className="mod--1" href="">Privacy Policy</a></li>
-                      <li><a className="mod--1" href="">About Cookies</a></li>
-                      <li><Link className="mod--1" to="/user">User</Link></li>
+                      <li><Link to="/faq">FAQ</Link></li>
+                      <li><Link to="/terms-of-service">Terms of Service</Link></li>
+                      { this.props.user.uid && <li><Link to="/user">Customer Service</Link></li> }
+                      { this.props.user.uid && <li><Link to="/user/order-history">Order history</Link></li> }
+                      { this.props.user.uid && <li><Link to="/user/complaints">Complaints</Link></li> }
+                      { !this.props.user.uid && <li><Link to="/login">Login / Register</Link></li> }
                     </ul>
                   </nav>
                 </div>
@@ -47,3 +56,9 @@ export default class SocialNav extends React.PureComponent {
   }
 
 }
+
+const mapStateToProps = createStructuredSelector({
+  user: makeSelectUser(),
+});
+
+export default connect(mapStateToProps)(SocialNav);
