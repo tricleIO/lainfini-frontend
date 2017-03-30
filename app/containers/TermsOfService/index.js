@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import SocialNav from 'components/SocialNav';
+
 class TermsOfService extends React.Component {
 
   render() {
@@ -166,8 +168,7 @@ class TermsOfService extends React.Component {
                   </p>
                   <p align="justify">
                     4.1 The Buyer may pay the purchase price online by payment card, by means
-                    of the payment portal PayPal, ApplePay, or by bank transfer to the bank
-                    account of the Seller, Account No. ...... held with .....
+                    of the payment portal PayPal, ApplePay.
                   </p>
                   <p align="justify">
                     4.2 The payment by card shall take place via authorized payment portal. The
@@ -488,7 +489,7 @@ class TermsOfService extends React.Component {
                   </p>
                   <p align="justify">
                     9.3 Should the Buyer assume that its legal rights have been breached, it
-                    may send a complaint to info@lainfini.com and require non-judicial
+                    may send a complaint to <a href="mailto:info@lainfini.com">info@lainfini.com</a> and require non-judicial
                     compensation, or it may contact directly the Czech Trade Inspection
                     Authority with its registered seat at Štěpánská 567/15, Postcode: 120 00,
                     Prague 2, Company ID No.: 000 20 869, website at: <a href="http://www.coi.cz"><u>http://www.coi.cz</u></a>.
@@ -520,6 +521,8 @@ class TermsOfService extends React.Component {
             </div>
           </div>
         </div>
+
+        <SocialNav links />
       </div>
     );
   }

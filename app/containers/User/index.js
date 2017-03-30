@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import SocialNav from 'components/SocialNav';
 
@@ -30,6 +31,7 @@ class User extends React.Component {
   render() {
     return (
       <div className="login_page">
+        <Helmet title="Login" />
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">

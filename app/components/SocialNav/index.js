@@ -29,6 +29,7 @@ class SocialNav extends React.PureComponent {
                 <div className="d-inline-block">
                   <nav className="social-nav__links offset-vertical-50">
                     <ul>
+                      <li><Link to="/catalog">Catalog</Link></li>
                       <li><Link to="/faq">FAQ</Link></li>
                       <li><Link to="/terms-of-service">Terms of Service</Link></li>
                       { this.props.user.uid && <li><Link to="/user">Customer Service</Link></li> }
