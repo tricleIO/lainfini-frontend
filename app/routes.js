@@ -232,6 +232,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/terms-of-service',
+      name: 'termsOfService',
+      getComponent(nextState, cb) {
+        System.import('containers/TermsOfService')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
