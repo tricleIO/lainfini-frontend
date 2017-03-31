@@ -73,7 +73,19 @@ export function* getRegister(action) {
       cors: true,
       body: JSON.stringify(data),
     });
+    const message = "You've been successfully registered. We sent you an activation email. After activation you can use your account.";
+    yield put(addNotification({
+      title: 'Success',
+      level: 'success',
+      message,
+    }));
   } catch (err) {
+    const errorMessage = 'There was an error, please try it again.';
+    yield put(addNotification({
+      title: 'Error',
+      level: 'error',
+      message: errorMessage,
+    }));
   }
 }
 
