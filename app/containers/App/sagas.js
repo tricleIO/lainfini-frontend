@@ -45,8 +45,8 @@ export function* userData() {
 }
 
 export function* initApp() {
-  const initToken = (yield select(makeSelectToken())).toJS();
-  if (initToken.refresh_token) {
+  const initToken = Boolean(yield select(makeSelectToken())) ? (yield select(makeSelectToken())).toJS() : undefined;
+  if (initToken && initToken.refresh_token) {
     const data = {
       grant_type: 'refresh_token',
       refresh_token: initToken.refresh_token,
@@ -237,11 +237,14 @@ export function* getCurrentCarts() {
 
   const options = {
     headers: {
-      Authorization: token.token_type + ' ' + token.access_token,
       'Content-Type': 'application/json',
     },
     method: 'GET',
   };
+
+  if (token) {
+    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+  }
 
   const requestURLCart = config.apiUrl + 'carts/' + stateCart.uid;
 
