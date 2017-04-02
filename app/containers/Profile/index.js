@@ -11,7 +11,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.mirkaImg = require('./img/mirka.jpg');
+    this.mirkaImg = require('./img/mirka.png');
     this.img1Img = require('./img/img-1.jpg');
     this.img2Img = require('./img/img-2.jpg');
     this.wswImg1Img = require('./img/wsw-img-1.jpg');
