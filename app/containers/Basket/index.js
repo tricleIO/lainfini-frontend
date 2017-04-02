@@ -103,7 +103,7 @@ class Basket extends React.Component {
                   <div className="col-12 col-sm-5">
                     {_(basket.items).size() > 0 &&
                       <div className="btn__inline offset-vertical-30">
-                        <a href="" className="btn" data-reveal>check out your basket</a>
+                        <Link to="/order" className="btn" data-reveal>check out your basket</Link>
                       </div>
                     }
                   </div>
