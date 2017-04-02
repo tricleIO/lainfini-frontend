@@ -32,7 +32,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="tel:+420123456789">+420 123 456 789</a>
+                  <a href="tel:+18004050388">+1 800 405 0388</a>
                 </li>
               </ul>
             </div>
@@ -41,7 +41,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
               <ul className="nav-mobile hidden-md-up">
                 <li>
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
-                  <a href="tel:+420123456789">+420 123 456 789</a>
+                  <a href="tel:+18004050388">+1 800 405 0388</a>
                   <a href="">more about the brand</a>
                 </li>
               </ul>
