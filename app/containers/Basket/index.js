@@ -47,7 +47,7 @@ class Basket extends React.Component {
           <div className="product-list">
             <div className="container">
               <div className="row">
-                {basket && _(basket.items).size() > 0 && basket.items.map((i, index) =>
+                {_(basket).isObject() && _(basket.items).size() > 0 && basket.items.map((i, index) =>
                   <div className="col-12 product-list__item" key={index}>
                     <div className="product-list__item--flex">
                       <div className="product-list__bg col-12 col-sm-2">
@@ -79,7 +79,7 @@ class Basket extends React.Component {
                   </div>
                 }
               </div>
-              {_(basket.items).size() > 0 &&
+              {basket && _(basket.items).size() > 0 &&
                 <div className="row">
                   <div className="col-12 col-sm-5 offset-sm-6">
                     <div className="ui-total-price">
@@ -101,7 +101,7 @@ class Basket extends React.Component {
                     </div>
                   </div>
                   <div className="col-12 col-sm-5">
-                    {_(basket.items).size() > 0 &&
+                    {basket && _(basket.items).size() > 0 &&
                       <div className="btn__inline offset-vertical-30">
                         <Link to="/order" className="btn" data-reveal>check out your basket</Link>
                       </div>
