@@ -8,7 +8,7 @@ import config from 'config';
 import request from 'utils/request';
 
 export function* getProducts() {
-  const requestURL = config.apiUrl + 'collections/?slug=new-arrivals';
+  const requestURL = config.apiUrl + 'products/collections/?slug=new-arrivals';
 
   try {
     // Call our request helper (see 'utils/request')
