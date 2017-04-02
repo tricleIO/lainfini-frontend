@@ -1,0 +1,47 @@
+.adress-place {
+
+  &__item {
+    justify-content: center;
+    align-items: center;
+    padding: $_30;
+    background-color: $color-white;
+    border-radius: $border-radius;
+    margin-top: $_16;
+    box-shadow: 0 0.3125em 1.25em rgba(0, 0, 0, 0.1);
+    border:1px solid lighten($color-black,90%);
+    &--strip {
+      border-style: dashed;
+      border-width: 2px;
+      border-color: lighten($color-b,10%);
+      .icon {
+        &:before {
+          color: lighten($color-b,10%);
+        }
+      }
+      a {
+        color: lighten($color-b,10%);
+      }
+    }
+    &--grey-bg {
+      background-color: lighten($color-c,70%);
+    }
+    &--small-padding {
+      padding: $_10;
+    }
+  }
+
+  .icon {
+    &:before {
+      font-size: $_30;
+    }
+  }
+
+  &__content {
+
+    line-height: 1.2;
+    b {
+      font-weight: bold;
+    }
+  }
+
+}

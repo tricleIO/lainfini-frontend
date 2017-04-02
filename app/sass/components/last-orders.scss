@@ -1,0 +1,89 @@
+.last-orders {
+  &__item {
+    justify-content: center;
+    align-items: center;
+    padding: $_30 0;
+    font-weight: $font-weight-normal;
+    font-family: $font-family-monserat;
+    background-color: $color-white;
+    margin: $_15 0;
+    box-shadow: 0 0.3125em 1.25em rgba(0, 0, 0, 0.1);
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+  }
+
+  &__list {
+    justify-content: center;
+  }
+
+  &__title {
+    @include media-breakpoint-down(md) {
+      padding: $_8 0;
+    }
+    small {
+      a {
+        transition: color .4s ease;
+        &:hover {
+          color: $color-b;
+        }
+      }
+      @include media-breakpoint-down(md) {
+        display: block;
+      }
+    }
+  }
+
+  &__desc {
+    color: $red;
+    line-height: $line-height-base;
+    small {
+      @include media-breakpoint-down(md) {
+        padding: $_8 0;
+        display: block;
+      }
+    }
+  }
+
+  .ui-btn-double-type {
+    justify-content: space-between;
+    @include media-breakpoint-down(md) {
+      a {
+        display: block;
+      }
+    }
+  }
+  &__btn {
+    padding: $_8;
+    border:3px solid $color-b;
+    margin:0;
+    background-color: $color-b;
+    color: $color-white;
+    border-radius: $border-radius;
+    transition: all 0.4s ease;
+    &:hover {
+      background-color: transparent;
+      color: $color-b;
+      &:visited {
+        color: $color-b;
+      }
+    }
+    &:visited {
+      color: $color-white;
+    }
+  }
+  &__btn-1 {
+    border:none;
+    background-color: transparent;
+    color: $color-b;
+    &:hover {
+      color: $color-c;
+      &:visited {
+        color: $color-c;
+      }
+    }
+    &:visited {
+      color: $color-b;
+    }
+  }
+}

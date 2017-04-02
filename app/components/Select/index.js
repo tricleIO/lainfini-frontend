@@ -2,6 +2,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 
+import _ from 'lodash';
+
 import $ from 'jquery';
 
 import 'select2';
@@ -19,7 +21,9 @@ export default class Select extends React.Component {
     });
 
     $(this.select).on('select2:select', (event) => {
-      this.props.onChange(event, this.select.value);
+      if (_(this.props.onChange).isFunction()) {
+        this.props.onChange(event, this.select.value);
+      }
     });
   }
 
