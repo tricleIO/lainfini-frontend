@@ -35,6 +35,7 @@ class SocialNav extends React.PureComponent {
                       { this.props.user.uid && <li><Link to="/customer">Customer Service</Link></li> }
                       { this.props.user.uid && <li><Link to="/customer/order-history">Order history</Link></li> }
                       { this.props.user.uid && <li><Link to="/customer/complaints">Complaints</Link></li> }
+                      { this.props.user.uid && <li><Link to="/logout">Logout</Link></li> }
                       { !this.props.user.uid && <li><Link to="/login">Login / Register</Link></li> }
                     </ul>
                   </nav>
