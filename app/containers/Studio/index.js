@@ -10,6 +10,8 @@ import SocialNav from 'components/SocialNav';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import { Link } from 'react-router';
+
 export default class Studio extends React.Component {
 
   constructor(props) {
@@ -57,7 +59,7 @@ export default class Studio extends React.Component {
               </div>
               <div className="col-12 col-sm-6 col-md-3 offset-md-1 meetbox__button" data-reveal>
                 <img src={this.mirkaImg} className="img-fluid" alt="" />
-                <a href="" className="btn">meet mirka</a>
+                <Link to="/profile" className="btn">meet mirka</Link>
               </div>
             </div>
           </div>
