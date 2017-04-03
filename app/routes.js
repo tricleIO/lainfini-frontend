@@ -266,6 +266,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/logout',
+      name: 'logout',
+      getComponent(nextState, cb) {
+        System.import('containers/Logout')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
