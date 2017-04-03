@@ -7,7 +7,7 @@ import { makeSelectUser } from 'containers/App/selectors';
 import { loadCountries } from './actions';
 import { makeSelectCountries } from './selectors';
 
-import Select from 'components/Select';
+import OrderForm from './forms/order';
 import SocialNav from 'components/SocialNav';
 
 class Order extends React.Component {
@@ -22,15 +22,20 @@ class Order extends React.Component {
     this.props.loadCountries();
   }
 
+  onSubmit(values) {
+    console.log(values);
+  }
+
   render() {
     const { user, countries } = this.props;
+
     return (
       <div>
         <Helmet title="Order" />
         {countries &&
           <div className="account-page">
             <div className="container">
-              {user &&
+              {user.uid &&
                 <div className="row">
                   <div className="col-12 text-center">
                     <div className="heading heading--mod-bottom mb-5" data-reveal="true">
@@ -41,12 +46,12 @@ class Order extends React.Component {
               }
               <div className="row">
                 <div className="col-12">
-                  {!user &&
+                  {!user.uid &&
                     <form className="row buy-step">
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label htmlFor="exampleInputEmail1">Name</label>
-                          <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby />
+                          <input type="text" className="form-control" id="exampleInputEmail1" />
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -80,84 +85,7 @@ class Order extends React.Component {
                       </div>
                     </form>
                   }
-                  <form action className="row buy-step">
-                    <div className="col-12 text-center">
-                      <div className="heading heading--mod-bottom mb-5" data-reveal="true">
-                        <h1 className="heading__title"><span>Billing Address </span></h1>
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Name</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Name" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Surname</label>
-                        <div>
-                          <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Surname" aria-describedby="emailHelp" data-text="Ahojky" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Company</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Company" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Address</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Address" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">ZIP code</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="ZIP Code" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">City</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="City" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">County / Province</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Country / Province" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Country</label>
-                        <Select className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          {
-                            countries.map((country) =>
-                              <option value={country.code} key={country.uid}>{country.name}</option>
-                            )
-                          }
-                        </Select>
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Telephone</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Telephone" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Telephone alternative</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Telephone alternative" aria-describedby="emailHelp" />
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-8 mt-5 mb-5 text-center">
-                      <button className="btn text-uppercase ">proceed to shipping and payment</button>
-                    </div>
-                  </form>
+                  <OrderForm countries={countries} onSubmit={this.onSubmit} />
                 </div>
               </div>
             </div>
