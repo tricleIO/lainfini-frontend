@@ -13,9 +13,14 @@ export default class Select extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
     onChange: React.PropTypes.func,
+    input: React.PropTypes.object,
   }
 
   componentDidMount() {
+    if (this.props.input) {
+      this.props.input.onChange(this.select.value);
+    }
+
     $(this.select).select2({
       theme: 'classic',
     });
@@ -24,14 +29,21 @@ export default class Select extends React.Component {
       if (_(this.props.onChange).isFunction()) {
         this.props.onChange(event, this.select.value);
       }
+      if (this.props.input) {
+        this.props.input.onChange(this.select.value);
+      }
     });
   }
 
+  getValue() {
+    return this.select.value;
+  }
+
   render() {
-    const { className } = this.props;
+    const { className, input, meta, ...props } = this.props;
     return (
       <div className="ui-interactive">
-        <select className={classNames('ui-interactive__select', className)} style={{ width: '100%' }} ref={(c) => { this.select = c; }} {...this.props} />
+        <select className={classNames('ui-interactive__select', className)} style={{ width: '100%' }} ref={(c) => { this.select = c; }} {...props} />
       </div>
     );
   }

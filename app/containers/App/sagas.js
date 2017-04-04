@@ -76,10 +76,7 @@ export function* initApp() {
 }
 
 export function* initAppData() {
-  const watcher = yield takeLatest(INIT_APP, initApp);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(INIT_APP, initApp);
 }
 
 export function* getWishlist(action) {

@@ -2,6 +2,9 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import uuidV4 from 'uuid/v4';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectUser } from 'containers/App/selectors';
 
 import Select from 'components/Select';
 
@@ -10,10 +13,37 @@ class LoginForm extends React.Component {
   static propTypes = {
     handleSubmit: React.PropTypes.func,
     countries: React.PropTypes.array,
+    user: React.PropTypes.object,
+    initialize: React.PropTypes.func, // eslint-disable-line
   };
 
+  componentWillMount() {
+    this.setUpForm();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.uid !== this.props.user.uid) {
+      this.setUpForm(nextProps);
+    }
+  }
+
+  setUpForm(nextProps) {
+    const { initialize, user } = nextProps || this.props;
+    if (user.uid) {
+      initialize({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        telephone: user.phoneCode + user.phoneNumber,
+      });
+    }
+  }
+
+  handleSubmit(values) {
+    this.props.handleSubmit(values);
+  }
+
   render() {
-    const { handleSubmit, countries } = this.props;
+    const { countries } = this.props;
 
     const renderField = ({ input, label, type, meta: { error, touched }, ...props }) => {
       const uuid = uuidV4();
@@ -26,7 +56,7 @@ class LoginForm extends React.Component {
     };
 
     return (
-      <form onSubmit={handleSubmit} className="row buy-step">
+      <form onSubmit={(values) => this.handleSubmit(values)} className="row buy-step">
         <div className="col-12 text-center">
           <div className="heading heading--mod-bottom mb-5" data-reveal="true">
             <h1 className="heading__title"><span>Billing Address</span></h1>
@@ -56,13 +86,13 @@ class LoginForm extends React.Component {
         <div className="col-12 col-md-6">
           <div className="form-group">
             <label htmlFor="countrySelectBox">Country</label>
-            <Select className="form-control" id="countrySelectBox" aria-describedby="emailHelp">
+            <Field component={Select} className="form-control" id="countrySelectBox" name="country" aria-describedby="emailHelp">
               {
                 countries.map((country) =>
                   <option value={country.code} key={country.uid}>{country.name}</option>
                 )
               }
-            </Select>
+            </Field>
           </div>
         </div>
         <div className="col-12 col-md-6">
@@ -80,7 +110,38 @@ class LoginForm extends React.Component {
 
 }
 
-export default reduxForm({
+const validate = (val) => {
+  const values = val.toJS();
+  const errors = {};
+
+  if (!values.firstName) {
+    errors.firstName = 'Required';
+  }
+  if (!values.lastName) {
+    errors.lastName = 'Required';
+  }
+  if (!values.address) {
+    errors.address = 'Required';
+  }
+  if (!values.zipCode) {
+    errors.zipCode = 'Required';
+  }
+  if (!values.city) {
+    errors.city = 'Required';
+  }
+  if (!values.telephone) {
+    errors.telephone = 'Required';
+  }
+  return errors;
+};
+
+const form = reduxForm({
   form: 'orderStepOne',
+  validate,
 })(LoginForm);
 
+const mapStateToProps = createStructuredSelector({
+  user: makeSelectUser(),
+});
+
+export default connect(mapStateToProps)(form);
