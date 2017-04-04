@@ -1,14 +1,18 @@
 import { fromJS } from 'immutable';
-import { LOAD_COUNTRIES_SUCCESS, LOAD_COUNTRIES_ERROR, LOAD_COUNTRIES } from './constants';
+import { LOAD_COUNTRIES_SUCCESS, LOAD_COUNTRIES_ERROR, LOAD_COUNTRIES, SAVE_BILLING_ADDRESS } from './constants';
 
 const initialState = fromJS({
   loading: false,
   error: false,
   countries: null,
+  billingAddress: null,
 });
 
 function orderReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_BILLING_ADDRESS:
+      return state
+        .set('billingAddress', action.address);
     case LOAD_COUNTRIES:
       return state
         .set('loading', true)

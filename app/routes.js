@@ -176,6 +176,27 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/order/shipping-and-payment',
+      name: 'order',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ShippingAndPayment/reducer'),
+          System.import('containers/ShippingAndPayment/sagas'),
+          System.import('containers/ShippingAndPayment'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          // injectReducer('ShippingAndPayment', reducer.default);
+          // injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/templates/:template',
       name: 'templates',
       getComponent(nextState, cb) {

@@ -18,11 +18,11 @@ import {
 } from './selectors';
 
 export function* getUser(action) {
-  if (action.token.access_token) {
+  if (action.token.value) {
     const requestURL = config.apiUrl + 'customers/current';
     const options = {
       headers: {
-        Authorization: action.token.token_type + ' ' + action.token.access_token,
+        Authorization: action.token.tokenType + ' ' + action.token.value,
         'Content-Type': 'application/json',
       },
     };
@@ -45,11 +45,11 @@ export function* userData() {
 }
 
 export function* initApp() {
-  const initToken = Boolean(yield select(makeSelectToken())) ? (yield select(makeSelectToken())).toJS() : undefined;
-  if (initToken && initToken.refresh_token) {
+  const initToken = Boolean(yield select(makeSelectToken())) ? (yield select(makeSelectToken())).toJS() : undefined; // eslint-disable-line
+  if (initToken && initToken.refreshToken) {
     const data = {
       grant_type: 'refresh_token',
-      refresh_token: initToken.refresh_token,
+      refresh_token: initToken.refreshToken.value,
     };
     const requestURL = config.apiUrl + 'oauth/token';
 
@@ -76,10 +76,7 @@ export function* initApp() {
 }
 
 export function* initAppData() {
-  const watcher = yield takeLatest(INIT_APP, initApp);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(INIT_APP, initApp);
 }
 
 export function* getWishlist(action) {
@@ -89,7 +86,7 @@ export function* getWishlist(action) {
     const requestURL = config.apiUrl + 'customers/current/wishlist';
     const options = {
       headers: {
-        Authorization: token.token_type + ' ' + token.access_token,
+        Authorization: token.tokenType + ' ' + token.value,
         'Content-Type': 'application/json',
       },
     };
@@ -117,7 +114,7 @@ export function* getCartUser(action) {
     const requestURL = config.apiUrl + 'carts/current';
     const options = {
       headers: {
-        Authorization: token.token_type + ' ' + token.access_token,
+        Authorization: token.tokenType + ' ' + token.value,
         'Content-Type': 'application/json',
       },
     };
@@ -141,7 +138,7 @@ export function* addToWishlist(action) {
   if (token.access_token) {
     const requestURL = config.apiUrl + 'customers/current/wishlist';
     const headers = {
-      Authorization: token.token_type + ' ' + token.access_token,
+      Authorization: token.tokenType + ' ' + token.value,
       'Content-Type': 'application/json',
     };
     const body = JSON.stringify({
@@ -171,10 +168,10 @@ export function* addToWishlistData() {
 
 export function* deleteFromWishlist(action) {
   const token = yield select(makeSelectToken());
-  if (token.access_token) {
+  if (token.value) {
     const requestURL = config.apiUrl + 'customers/current/wishlist/' + action.uid;
     const headers = {
-      Authorization: token.token_type + ' ' + token.access_token,
+      Authorization: token.tokenType + ' ' + token.value,
       'Content-Type': 'application/json',
     };
 
@@ -216,7 +213,7 @@ export function* addToCart(action) {
   };
 
   if (token) {
-    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+    options.headers.Authorization = token.tokenType + ' ' + token.value;
   }
 
   try {
@@ -243,7 +240,7 @@ export function* getCurrentCarts() {
   };
 
   if (token) {
-    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+    options.headers.Authorization = token.tokenType + ' ' + token.value;
   }
 
   const requestURLCart = config.apiUrl + 'carts/' + stateCart.uid;
@@ -278,7 +275,7 @@ export function* updateCartQty(action) {
   };
 
   if (token) {
-    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+    options.headers.Authorization = token.tokenType + ' ' + token.value;
   }
 
   try {
@@ -306,7 +303,7 @@ export function* deleteFromCart(action) {
   };
 
   if (token) {
-    options.headers.Authorization = token.token_type + ' ' + token.access_token;
+    options.headers.Authorization = token.tokenType + ' ' + token.value;
   }
 
   try {
