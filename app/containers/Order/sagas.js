@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select, take, cancel, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { LOAD_COUNTRIES } from './constants';
 import { saveCountries, errorLoadingCountries } from './actions';
 import config from 'config';
@@ -13,7 +13,7 @@ function* getCountries() {
     const countries = yield call(request, requestURL);
     yield put(saveCountries(countries.content));
   } catch (err) {
-    console.log(err);
+    yield put(errorLoadingCountries(err));
   }
 }
 
