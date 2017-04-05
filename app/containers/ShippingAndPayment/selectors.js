@@ -17,9 +17,15 @@ const makeSelectLoading = () => createSelector(
   (State) => State.get('loading')
 );
 
+const makeSelectOrder = () => createSelector(
+  selectShippingAndPayment,
+  (State) => { return State ? State.get('order') : null; } // eslint-disable-line
+);
+
 export {
   selectShippingAndPayment,
   makeSelectShippingMethods,
   makeSelectPaymentMethods,
   makeSelectLoading,
+  makeSelectOrder,
 };

@@ -1,7 +1,8 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { LOAD_SHIPPING_METHODS, LOAD_PAYMENT_METHODS, SAVE_ORDER } from './constants';
-import { savePaymentMethods, saveShippingMethods, paymentMethodsError, shippingMethodsError } from './actions';
+import { savePaymentMethods, saveShippingMethods, paymentMethodsError, shippingMethodsError, orderSaved } from './actions';
 import config from 'config';
+import { push } from 'react-router-redux';
 
 import {
   makeSelectToken,
@@ -53,11 +54,13 @@ function* saveOrder(action) {
   const data = {
     cartUid: cart.uid,
     deliveryAddress: {
+      street: order.address,
       city: order.city,
       postal: order.zipCode,
       country: order.country,
     },
     billingAddress: {
+      street: billingAddress.address,
       city: billingAddress.city,
       postal: billingAddress.postal,
       country: billingAddress.country,
@@ -83,16 +86,14 @@ function* saveOrder(action) {
   }
 
   try {
-    const test = yield call(request, requestURL, options);
-    console.log(test);
+    const ordr = yield call(request, requestURL, options);
+    yield put(orderSaved(ordr));
+    if (order.paymentMethod === 'STRIPE') {
+      yield put(push('/order/pay/stripe'));
+    }
   } catch (err) {
     console.log(err);
   }
-
-  console.log(data);
-  console.log(token);
-  console.log(cart);
-  console.log(order);
 }
 
 function* saveOrderData() {

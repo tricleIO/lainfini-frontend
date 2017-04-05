@@ -6,6 +6,7 @@ import {
   LOAD_PAYMENT_METHODS_ERROR,
   LOAD_SHIPPING_METHODS_ERROR,
   SAVE_ORDER,
+  SAVE_ORDER_SUCCESS,
 } from './constants';
 
 export function loadPaymentMethods(country) {
@@ -53,6 +54,13 @@ export function shippingMethodsError(error) {
 export function saveOrder(order) {
   return {
     type: SAVE_ORDER,
+    order,
+  };
+}
+
+export function orderSaved(order) {
+  return {
+    type: SAVE_ORDER_SUCCESS,
     order,
   };
 }

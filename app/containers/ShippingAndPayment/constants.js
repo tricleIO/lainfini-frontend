@@ -5,3 +5,4 @@ export const LOAD_PAYMENT_METHODS = 'Lainfini/Containers/ShippingAndPayment/LOAD
 export const LOAD_PAYMENT_METHODS_SUCCESS = 'Lainfini/Containers/ShippingAndPayment/LOAD_PAYMENT_METHODS_SUCCESS';
 export const LOAD_PAYMENT_METHODS_ERROR = 'Lainfini/Containers/ShippingAndPayment/LOAD_PAYMENT_METHODS_ERROR';
 export const SAVE_ORDER = 'Lainfini/Containers/ShippingAndPayment/SAVE_ORDER';
+export const SAVE_ORDER_SUCCESS = 'Lainfini/Containers/ShippingAndPayment/SAVE_ORDER_SUCCESS';

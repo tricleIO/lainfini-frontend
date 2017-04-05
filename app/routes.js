@@ -197,6 +197,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/order/pay/stripe',
+      name: 'payByStripe',
+      getComponent(nextState, cb) {
+        System.import('containers/ShippingAndPayment/stripe')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/templates/:template',
       name: 'templates',
       getComponent(nextState, cb) {

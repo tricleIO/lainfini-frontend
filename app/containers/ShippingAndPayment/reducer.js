@@ -7,6 +7,7 @@ import {
   LOAD_SHIPPING_METHODS_SUCCESS,
   LOAD_SHIPPING_METHODS_ERROR,
   SAVE_ORDER,
+  SAVE_ORDER_SUCCESS,
 } from './constants';
 
 const initialState = fromJS({
@@ -17,12 +18,18 @@ const initialState = fromJS({
   shippingMethods: undefined,
   paymentMethods: undefined,
   loading: false,
+  order: undefined,
 });
 
 function shippingAndPaymentReducer(state = initialState, action) {
   switch (action.type) {
+    case SAVE_ORDER_SUCCESS:
+      return state
+        .set('order', action.order)
+        .set('loading', false);
     case SAVE_ORDER:
       return state
+        .set('order', undefined)
         .set('loading', true);
     case LOAD_PAYMENT_METHODS:
       return state
