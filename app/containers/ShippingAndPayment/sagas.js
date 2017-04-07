@@ -10,6 +10,7 @@ import {
 } from 'containers/App/selectors';
 
 import {
+  createCart,
   addNotification,
   addLoading,
   removeLoading,
@@ -152,6 +153,7 @@ function* sendStripePayment(action) {
         level: 'success',
         autoDismiss: 0,
       }));
+      yield put(createCart());
       yield put(push('/catalog'));
     } else {
       yield put(addNotification({
