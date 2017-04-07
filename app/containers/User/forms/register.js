@@ -8,22 +8,24 @@ class RegisterForm extends React.Component {
     handleSubmit: React.PropTypes.func,
   };
 
-  render() {
-    const { handleSubmit } = this.props;
-
-    const renderField = ({ input, type, meta: { error, touched }, ...props }) => (
+  renderField({ input, type, meta: { error, touched }, ...props }) {
+    return (
       <div className={classNames('form-group', { 'has-danger': touched && error })}>
         <input {...input} {...props} type={type} />
       </div>
     );
+  }
+
+  render() {
+    const { handleSubmit } = this.props;
 
     return (
       <form className="proceed_box" onSubmit={handleSubmit}>
         <h3 className="mb-3">New Customer</h3>
         <p className="mb-5">Sign up to place your order and receive exclusive offers.</p>
-        <Field component={renderField} name="email" type="email" className="form-control" placeholder="Your@email" />
-        <Field component={renderField} name="full-name" type="text" className="form-control" placeholder="Full name" />
-        <Field component={renderField} name="password" type="password" className="form-control" placeholder="Password" />
+        <Field component={this.renderField} name="email" type="email" className="form-control" placeholder="Your@email" />
+        <Field component={this.renderField} name="full-name" type="text" className="form-control" placeholder="Full name" />
+        <Field component={this.renderField} name="password" type="password" className="form-control" placeholder="Password" />
         <button className="btn btn-block mt-4 mb-4 text-uppercase">Sign Up</button>
         <p className="text-center">Or sign in with your existing social media account</p>
         <ul className="social-nav__icons">

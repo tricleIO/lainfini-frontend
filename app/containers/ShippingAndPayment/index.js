@@ -50,17 +50,17 @@ class ShippingAndPaymentForm extends React.Component {
     this.props.handleSubmit();
   }
 
-  render() {
-    const renderField = ({ input, label, type, meta: { error, touched }, ...props }) => {
-      const uuid = uuidV4();
-      return (
-        <div className={classNames('form-group', { 'has-danger': touched && error })}>
-          <label htmlFor={uuid}>{label}</label>
-          <input id={uuid} {...input} placeholder={label} {...props} type={type} />
-        </div>
-      );
-    };
+  renderField({ input, label, type, meta: { error, touched }, ...props }) {
+    const uuid = uuidV4();
+    return (
+      <div className={classNames('form-group', { 'has-danger': touched && error })}>
+        <label htmlFor={uuid}>{label}</label>
+        <input id={uuid} {...input} placeholder={label} {...props} type={type} />
+      </div>
+    );
+  }
 
+  render() {
     const { billingAddress, countries, shippingMethods, paymentMethods, isLoading } = this.props;
 
     return (
@@ -79,25 +79,25 @@ class ShippingAndPaymentForm extends React.Component {
               </div>
               <div className="row">
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="firstName" type="text" className="form-control" label="First Name" />
+                  <Field component={this.renderField} name="firstName" type="text" className="form-control" label="First Name" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="lastName" type="text" className="form-control" label="Last Name" />
+                  <Field component={this.renderField} name="lastName" type="text" className="form-control" label="Last Name" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="company" type="text" className="form-control" label="Company" />
+                  <Field component={this.renderField} name="company" type="text" className="form-control" label="Company" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="address" type="text" className="form-control" label="Address" />
+                  <Field component={this.renderField} name="address" type="text" className="form-control" label="Address" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="zipCode" type="text" className="form-control" label="Zip Code" />
+                  <Field component={this.renderField} name="zipCode" type="text" className="form-control" label="Zip Code" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="city" type="text" className="form-control" label="City" />
+                  <Field component={this.renderField} name="city" type="text" className="form-control" label="City" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="countryProvince" type="text" className="form-control" label="Country / Province" />
+                  <Field component={this.renderField} name="countryProvince" type="text" className="form-control" label="Country / Province" />
                 </div>
                 <div className="col-12 col-md-6">
                   <div className="form-group">
@@ -112,10 +112,10 @@ class ShippingAndPaymentForm extends React.Component {
                   </div>
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="telephone" type="text" className="form-control" label="Telephone" />
+                  <Field component={this.renderField} name="telephone" type="text" className="form-control" label="Telephone" />
                 </div>
                 <div className="col-12 col-md-6">
-                  <Field component={renderField} name="telephoneAlternative" type="text" className="form-control" label="Telephone alternative" />
+                  <Field component={this.renderField} name="telephoneAlternative" type="text" className="form-control" label="Telephone alternative" />
                 </div>
                 {shippingMethods &&
                   <div className="col-12 text-center mt-5">
