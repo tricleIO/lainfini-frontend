@@ -363,7 +363,11 @@ export function* getCarts(action) {
   try {
     // Call our request helper (see 'utils/request')
     const cart = yield call(request, requestURLCart, options);
-    yield put(saveCart(cart));
+    if (cart.status === 'OPENED') {
+      yield put(saveCart(cart));
+    } else {
+      yield put(createCart());
+    }
   } catch (err) {
     console.log(err);
   }

@@ -8,6 +8,7 @@ import {
   LOAD_SHIPPING_METHODS_ERROR,
   SAVE_ORDER,
   SAVE_ORDER_SUCCESS,
+  STRIPE_LOADER_SET_STATE,
 } from './constants';
 
 const initialState = fromJS({
@@ -19,10 +20,14 @@ const initialState = fromJS({
   paymentMethods: undefined,
   loading: false,
   order: undefined,
+  stripeLoader: false,
 });
 
 function shippingAndPaymentReducer(state = initialState, action) {
   switch (action.type) {
+    case STRIPE_LOADER_SET_STATE:
+      return state
+        .set('stripeLoader', action.state);
     case SAVE_ORDER_SUCCESS:
       return state
         .set('order', action.order)
