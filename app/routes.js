@@ -279,6 +279,25 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/email-verification/:token',
+      name: 'emailVerification',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/EmailVerification/sagas'),
+          System.import('containers/EmailVerification'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/server-down',
       name: 'serverDown',
       getComponent(nextState, cb) {
