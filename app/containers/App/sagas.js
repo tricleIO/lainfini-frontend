@@ -183,7 +183,7 @@ export function* deleteFromWishlist(action) {
 
       try {
         // Call our request helper (see 'utils/request')
-        const wishlist = (yield call(request, requestURL, { headers })).content;
+        const wishlist = (yield call(request, config.apiUrl + 'customers/current/wishlist', { headers })).content;
         yield put(saveWishlist(wishlist));
       } catch (err) {
         console.log(err);
