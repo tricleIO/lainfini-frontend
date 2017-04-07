@@ -188,13 +188,21 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          // injectReducer('ShippingAndPayment', reducer.default);
-          // injectSagas(sagas.default);
+          injectReducer('ShippingAndPayment', reducer.default);
+          injectSagas(sagas.default);
 
           renderRoute(component);
         });
 
         importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/order/pay/stripe',
+      name: 'payByStripe',
+      getComponent(nextState, cb) {
+        System.import('containers/ShippingAndPayment/stripe')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       path: '/templates/:template',
