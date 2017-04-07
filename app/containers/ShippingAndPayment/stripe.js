@@ -20,21 +20,10 @@ class PayByStripe extends React.Component {
 
   render() {
     const { order } = this.props;
-
-    /*
-
-    <li>
-                    Items:
-                    <ul>
-                      {order.items.map((item, index) =>
-                        <li key={index}>{item.quantity} x {item.name}</li>
-                      )}
-                    </ul>
-                  </li>
-                  */
     console.log(order);
+
     return (
-      <div className="user-card">
+      <form className="user-card">
         {this.props.order &&
           <div className="row">
             <div className="col-12 col-sm-6">
@@ -80,7 +69,7 @@ class PayByStripe extends React.Component {
                     </div>
                   </div>
                 </div>
-                <form className="form" autoComplete="off" noValidate>
+                <div className="form">
                   <fieldset>
                     <label htmlFor="card-number">Card Number</label>
                     <input type="num" id="card-number" className="input-cart-number" maxLength={4} />
@@ -132,12 +121,12 @@ class PayByStripe extends React.Component {
                     <input type="text" id="card-ccv" maxLength={3} />
                   </fieldset>
                   <button className="btn"><i className="fa fa-lock" /> submit</button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
         }
-      </div>
+      </form>
     );
   }
 }

@@ -71,6 +71,13 @@ function* saveOrder(action) {
 
   if (cart.customerUid) {
     data.customerUid = cart.customerUid;
+  } else {
+    data.customer = {
+      firstName: billingAddress.firstNameUnlogged,
+      lastName: billingAddress.lastNameUnlogged,
+      username: billingAddress.emailUnlogged,
+      phoneNumber: order.telephone,
+    };
   }
 
   const options = {

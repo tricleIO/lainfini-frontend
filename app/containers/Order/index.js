@@ -3,6 +3,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'react-router-redux';
+import { SubmissionError } from 'redux-form';
+import _ from 'lodash';
 
 import { makeSelectUser } from 'containers/App/selectors';
 import { loadCountries, saveBillingAddress } from './actions';
@@ -27,6 +29,23 @@ class Order extends React.Component {
 
   onSubmit(values) {
     const vals = values.toJS();
+
+    if (!this.props.user.uid) {
+      const errors = {};
+      if (!vals.firstNameUnlogged) {
+        errors.firstNameUnlogged = 'First name is required!';
+      }
+      if (!vals.lastNameUnlogged) {
+        errors.lastNameUnlogged = 'Last name is required!';
+      }
+      if (!vals.emailUnlogged) {
+        errors.emailUnlogged = 'Email is required!';
+      }
+      if (!_(errors).isEmpty()) {
+        throw new SubmissionError(errors);
+      }
+    }
+
     if (!values.get('country')) {
       vals.country = this.props.countries[0].code;
     }
@@ -56,50 +75,7 @@ class Order extends React.Component {
                   </div>
                 </div>
               }
-              <div className="row">
-                <div className="col-12">
-                  {!user.uid &&
-                    <form className="row buy-step">
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label htmlFor="exampleInputEmail1">Name</label>
-                          <input type="text" className="form-control" id="exampleInputEmail1" />
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label htmlFor="exampleInputEmail1">Surname</label>
-                          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label htmlFor="exampleInputEmail1">Email</label>
-                          <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label htmlFor="exampleInputEmail1">Password</label>
-                          <input type="password" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                      </div>
-                      <div className="col-6">
-                        <p>Or aloow to sign in with your existing  account</p>
-                        <ul className="social-nav__icons">
-                          <li><a href><i className="icon icon-facebook" /></a></li>
-                          <li><a href><i className="icon icon-twitter" /></a></li>
-                          <li><a href><i className="icon icon-instagram" /></a></li>
-                        </ul>
-                      </div>
-                      <div className="col-6 text-right">
-                        <button className="save-changes">save changes</button>
-                      </div>
-                    </form>
-                  }
-                  <OrderForm countries={countries} onSubmit={(values) => this.onSubmit(values)} initialValues={formInitialValues} />
-                </div>
-              </div>
+              <OrderForm countries={countries} onSubmit={(values) => this.onSubmit(values)} initialValues={formInitialValues} />
             </div>
           </div>
         }
