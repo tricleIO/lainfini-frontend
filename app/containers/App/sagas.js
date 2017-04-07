@@ -137,7 +137,7 @@ export function* getCartUserData() {
 
 export function* addToWishlist(action) {
   const token = yield select(makeSelectToken());
-  if (token.access_token) {
+  if (token.value) {
     const requestURL = config.apiUrl + 'customers/current/wishlist';
     const headers = {
       Authorization: token.tokenType + ' ' + token.value,
