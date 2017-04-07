@@ -69,6 +69,16 @@ const makeSelectNotificationsUpdate = () => createSelector(
   (appState) => appState.get('notificationsUpdate')
 );
 
+const makeSelectLoadings = () => createSelector(
+  selectApp,
+  (appState) => appState.get('loadings')
+);
+
+const makeSelectLoadingsCount = () => createSelector(
+  selectApp,
+  (appState) => appState.get('loadingsNumber')
+);
+
 export {
   selectLocationState,
   selectApp,
@@ -82,4 +92,6 @@ export {
   makeSelectCart,
   makeSelectNotifications,
   makeSelectNotificationsUpdate,
+  makeSelectLoadings,
+  makeSelectLoadingsCount,
 };

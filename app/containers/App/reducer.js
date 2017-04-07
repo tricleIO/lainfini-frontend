@@ -16,6 +16,8 @@ import {
   SAVE_CART,
   ADD_NOTIFICATION,
   SHOWED_NOTIFICATION,
+  ADD_LOADING,
+  REMOVE_LOADING,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,10 +31,24 @@ const initialState = fromJS({
   lastViewedDesigns: localStorage('last-viewed-designs') ? localStorage('last-viewed-designs') : [],
   notifications: null,
   notificationsUpdate: true,
+  loadingsNumber: 0,
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case ADD_LOADING: //eslint-disable-line
+      const loadings = state.get('loadings');
+      if (!_(state.get('loadings')).includes(action.name)) {
+        loadings.push(action.name);
+      }
+      return state
+        .set('loadingsNumber', _(loadings).size())
+        .set('loadings', loadings);
+    case REMOVE_LOADING: //eslint-disable-line
+      const loadingss = _(state.get('loadings')).filter((o) => o !== action.name).value();
+      return state
+        .set('loadingsNumber', _(loadingss).size())
+        .set('loadings', loadingss);
     case ADD_NOTIFICATION: // eslint-disable-line no-case-declarations
       const notification = action.notification;
       const notifications = state.get('notifications') ? state.get('notifications') : [];
@@ -84,7 +100,8 @@ function appReducer(state = initialState, action) {
       return state
         .set('lastViewedDesigns', lastViewedDesigns);
     default:
-      return state;
+      return state
+        .set('loadings', []);
   }
 }
 

@@ -11,6 +11,8 @@ import {
 
 import {
   addNotification,
+  addLoading,
+  removeLoading,
 } from 'containers/App/actions';
 
 import { makeSelectBillingAddress } from 'containers/Order/selectors';
@@ -50,6 +52,7 @@ function* getPaymentData() {
 }
 
 function* saveOrder(action) {
+  yield put(addLoading('saveOrder'));
   const requestURL = config.apiUrl + 'orders';
 
   const token = yield select(makeSelectToken());
@@ -107,6 +110,7 @@ function* saveOrder(action) {
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('saveOrder'));
 }
 
 function* saveOrderData() {
@@ -114,6 +118,7 @@ function* saveOrderData() {
 }
 
 function* sendStripePayment(action) {
+  yield put(addLoading('stripePayment'));
   const requestURL = config.apiUrl + 'payments/stripe';
   const token = yield select(makeSelectToken());
   const order = yield select(makeSelectOrder());
@@ -158,6 +163,7 @@ function* sendStripePayment(action) {
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('stripePayment'));
 }
 
 function* sendStripePaymentData() {
