@@ -25,6 +25,8 @@ import {
   makeIsHomepage,
   makeSelectNotifications,
   makeSelectNotificationsUpdate,
+  makeSelectLoadings,
+  makeSelectLoadingsCount,
 } from './selectors';
 
 import {
@@ -51,6 +53,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
     isHomepage: React.PropTypes.bool,
     initApp: React.PropTypes.func,
     showedNotification: React.PropTypes.func,
+    loadingsCount: React.PropTypes.number,
   };
 
   componentWillMount() {
@@ -80,6 +83,16 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
           titleTemplate="%s | LAINFINI"
           defaultTitle="Homepage | LAINFINI"
         />
+        { this.props.loadingsCount > 0 &&
+        <div className="loading">
+          <div className="sk-folding-cube">
+            <div className="sk-cube1 sk-cube"></div>
+            <div className="sk-cube2 sk-cube"></div>
+            <div className="sk-cube4 sk-cube"></div>
+            <div className="sk-cube3 sk-cube"></div>
+          </div>
+        </div>
+        }
         <NotificationSystem ref={(c) => { this.notificationSystem = c; }} />
         <Header />
         <main id="page">
@@ -102,6 +115,8 @@ const mapStateToProps = createStructuredSelector({
   isHomepage: makeIsHomepage(),
   notifications: makeSelectNotifications(),
   notificationsUpdate: makeSelectNotificationsUpdate(),
+  loadings: makeSelectLoadings(),
+  loadingsCount: makeSelectLoadingsCount(),
 });
 
 function mapDispatchToProps(dispatch) {

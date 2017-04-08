@@ -7,6 +7,8 @@ import {
   LOAD_SHIPPING_METHODS_ERROR,
   SAVE_ORDER,
   SAVE_ORDER_SUCCESS,
+  SEND_STRIPE_PAYMENT,
+  STRIPE_LOADER_SET_STATE,
 } from './constants';
 
 export function loadPaymentMethods(country) {
@@ -62,5 +64,19 @@ export function orderSaved(order) {
   return {
     type: SAVE_ORDER_SUCCESS,
     order,
+  };
+}
+
+export function sendStripePayment(card) {
+  return {
+    type: SEND_STRIPE_PAYMENT,
+    card,
+  };
+}
+
+export function setStripeLoader(state) {
+  return {
+    type: STRIPE_LOADER_SET_STATE,
+    state,
   };
 }

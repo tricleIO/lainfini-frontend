@@ -38,6 +38,6 @@ function checkStatus(response) {
  */
 export default function request(url, options) {
   return fetch(url, options)
-    .then(checkStatus)
+    // .then(checkStatus)
     .then(parseJSON);
 }

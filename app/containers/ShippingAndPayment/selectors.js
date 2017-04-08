@@ -22,10 +22,16 @@ const makeSelectOrder = () => createSelector(
   (State) => { return State ? State.get('order') : null; } // eslint-disable-line
 );
 
+const makeSelectStripeLoader = () => createSelector(
+  selectShippingAndPayment,
+  (State) => { return State ? State.get('stripeLoader') : null; } // eslint-disable-line
+);
+
 export {
   selectShippingAndPayment,
   makeSelectShippingMethods,
   makeSelectPaymentMethods,
   makeSelectLoading,
   makeSelectOrder,
+  makeSelectStripeLoader,
 };

@@ -197,7 +197,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/order/pay/stripe',
+      path: '/order/pay/card',
       name: 'payByStripe',
       getComponent(nextState, cb) {
         System.import('containers/ShippingAndPayment/stripe')
@@ -271,6 +271,25 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('faq', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/email-verification/:token',
+      name: 'emailVerification',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/EmailVerification/sagas'),
+          System.import('containers/EmailVerification'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([sagas, component]) => {
           injectSagas(sagas.default);
 
           renderRoute(component);

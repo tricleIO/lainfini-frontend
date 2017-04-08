@@ -42,18 +42,18 @@ class LoginForm extends React.Component {
     this.props.handleSubmit(values);
   }
 
+  renderField({ input, label, type, meta: { error, touched }, ...props }) {
+    const uuid = uuidV4();
+    return (
+      <div className={classNames('form-group', { 'has-danger': touched && error })}>
+        <label htmlFor={uuid}>{label}</label>
+        <input id={uuid} {...input} placeholder={label} {...props} type={type} />
+      </div>
+    );
+  }
+
   render() {
     const { countries, user } = this.props;
-
-    const renderField = ({ input, label, type, meta: { error, touched }, ...props }) => {
-      const uuid = uuidV4();
-      return (
-        <div className={classNames('form-group', { 'has-danger': touched && error })}>
-          <label htmlFor={uuid}>{label}</label>
-          <input id={uuid} {...input} placeholder={label} {...props} type={type} />
-        </div>
-      );
-    };
 
     return (
       <form onSubmit={(values) => this.handleSubmit(values)}>
@@ -61,13 +61,13 @@ class LoginForm extends React.Component {
           <div className="row buy-step offset-vertical-40">
             <div className="col-12">
               <div className="col-12 col-md-6">
-                <Field component={renderField} name="firstNameUnlogged" type="text" className="form-control" label="First Name" />
+                <Field component={this.renderField} name="firstNameUnlogged" type="text" className="form-control" label="First Name" />
               </div>
               <div className="col-12 col-md-6">
-                <Field component={renderField} name="lastNameUnlogged" type="text" className="form-control" label="Last Name" />
+                <Field component={this.renderField} name="lastNameUnlogged" type="text" className="form-control" label="Last Name" />
               </div>
               <div className="col-12 col-md-12">
-                <Field component={renderField} name="emailUnlogged" type="text" className="form-control" label="Email" />
+                <Field component={this.renderField} name="emailUnlogged" type="text" className="form-control" label="Email" />
               </div>
             </div>
           </div>
@@ -80,25 +80,25 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="firstName" type="text" className="form-control" label="First Name" />
+              <Field component={this.renderField} name="firstName" type="text" className="form-control" label="First Name" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="lastName" type="text" className="form-control" label="Last Name" />
+              <Field component={this.renderField} name="lastName" type="text" className="form-control" label="Last Name" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="company" type="text" className="form-control" label="Company" />
+              <Field component={this.renderField} name="company" type="text" className="form-control" label="Company" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="address" type="text" className="form-control" label="Address" />
+              <Field component={this.renderField} name="address" type="text" className="form-control" label="Address" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="zipCode" type="text" className="form-control" label="Zip Code" />
+              <Field component={this.renderField} name="zipCode" type="text" className="form-control" label="Zip Code" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="city" type="text" className="form-control" label="City" />
+              <Field component={this.renderField} name="city" type="text" className="form-control" label="City" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="countryProvince" type="text" className="form-control" label="Country / Province" />
+              <Field component={this.renderField} name="countryProvince" type="text" className="form-control" label="Country / Province" />
             </div>
             <div className="col-12 col-md-6">
               <div className="form-group">
@@ -113,10 +113,10 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="telephone" type="text" className="form-control" label="Telephone" />
+              <Field component={this.renderField} name="telephone" type="text" className="form-control" label="Telephone" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={renderField} name="telephoneAlternative" type="text" className="form-control" label="Telephone alternative" />
+              <Field component={this.renderField} name="telephoneAlternative" type="text" className="form-control" label="Telephone alternative" />
             </div>
             <div className="col-12 col-md-8 mt-5 mb-5 text-center">
               <button type="submit" className="btn text-uppercase">proceed to shipping and payment</button>

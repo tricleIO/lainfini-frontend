@@ -1,15 +1,37 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'react-router-redux';
+import { reduxForm, Field, Form } from 'redux-form/immutable';
+import $ from 'jquery';
 
-import { makeSelectOrder } from './selectors';
+import { makeSelectOrder, makeSelectStripeLoader } from './selectors';
+
+import { sendStripePayment } from './actions';
 
 class PayByStripe extends React.Component {
 
   static propTypes = {
     order: React.PropTypes.object,
     redirectNoOrder: React.PropTypes.func,
+    handleSubmit: React.PropTypes.func,
+    valid: React.PropTypes.bool,
+    stripeLoading: React.PropTypes.bool,
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardNumber1: '',
+      cardNumber2: '',
+      cardNumber3: '',
+      cardNumber4: '',
+      cardCCV: '',
+      cardHolder: '',
+      cardExpirationMonth: '',
+      cardExpirationYear: '',
+    };
   }
 
   componentWillMount() {
@@ -18,12 +40,28 @@ class PayByStripe extends React.Component {
     }
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    if (this.props.valid) {
+      const formData = decodeURIComponent($(e.target).serialize());
+      const data = {};
+      formData.split('&').forEach((val) => {
+        const split = val.split('=');
+        data[split[0]] = split[1];
+      });
+      data.cardNumber = data.cardNumber1 + data.cardNumber2 + data.cardNumber3 + data.cardNumber4;
+      this.props.handleSubmit(data);
+    }
+  }
+
   render() {
-    const { order } = this.props;
-    console.log(order);
+    const { order, stripeLoading } = this.props;
+
+    const maxLength4 = (value) => value && value.length > 4 ? true : undefined;
 
     return (
-      <form className="user-card">
+      <Form className="user-card" onSubmit={(e, val) => this.onSubmit(e, val)}>
+        <Helmet title="Order: Pay with card" />
         {this.props.order &&
           <div className="row">
             <div className="col-12 col-sm-6">
@@ -37,7 +75,7 @@ class PayByStripe extends React.Component {
               </div>
             </div>
             <div className="col-12 col-sm-6">
-              <div className="checkout">
+              <div className="checkout" style={{ zIndex: stripeLoading ? -1 : 1 }}>
                 <div className="credit-card-box">
                   <div className="flip">
                     <div className="front">
@@ -46,14 +84,16 @@ class PayByStripe extends React.Component {
 
 
                       </div>
-                      <div className="number" />
+                      <div className="number">
+                        {this.state.cardNumber1} {this.state.cardNumber2} {this.state.cardNumber3} {this.state.cardNumber4}
+                      </div>
                       <div className="card-holder">
                         <label>Card holder</label>
-                        <div />
+                        <div>{this.state.cardHolder}</div>
                       </div>
                       <div className="card-expiration-date">
                         <label>Expires</label>
-                        <div />
+                        <div>{this.state.cardExpirationMonth} / {this.state.cardExpirationYear}</div>
                       </div>
                     </div>
                     <div className="back">
@@ -64,7 +104,7 @@ class PayByStripe extends React.Component {
                       </div>
                       <div className="ccv">
                         <label>CCV</label>
-                        <div />
+                        <div>{this.state.cardCCV}</div>
                       </div>
                     </div>
                   </div>
@@ -72,19 +112,19 @@ class PayByStripe extends React.Component {
                 <div className="form">
                   <fieldset>
                     <label htmlFor="card-number">Card Number</label>
-                    <input type="num" id="card-number" className="input-cart-number" maxLength={4} />
-                    <input type="num" id="card-number-1" className="input-cart-number" maxLength={4} />
-                    <input type="num" id="card-number-2" className="input-cart-number" maxLength={4} />
-                    <input type="num" id="card-number-3" className="input-cart-number" maxLength={4} />
+                    <Field validate={[maxLength4]} component="input" name="cardNumber1" type="number" id="card-number" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
+                    <Field validate={[maxLength4]} component="input" name="cardNumber2" type="number" id="card-number-1" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
+                    <Field validate={[maxLength4]} component="input" name="cardNumber3" type="number" id="card-number-2" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-3').focus(); } this.setState({ cardNumber3: e.target.value }); }} ref={(c) => { this.cardNumber3 = c; }} maxLength={4} />
+                    <Field validate={[maxLength4]} component="input" name="cardNumber4" type="number" id="card-number-3" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-holder').focus(); } this.setState({ cardNumber4: e.target.value }); }} ref={(c) => { this.cardNumber4 = c; }} maxLength={4} />
                   </fieldset>
                   <fieldset>
                     <label htmlFor="card-holder">Card holder</label>
-                    <input type="text" id="card-holder" />
+                    <Field component="input" name="cardHolder" type="text" id="card-holder" onChange={(e) => this.setState({ cardHolder: e.target.value })} />
                   </fieldset>
                   <fieldset className="fieldset-expiration">
                     <label htmlFor="card-expiration-month">Expiration date</label>
                     <div className="select">
-                      <select id="card-expiration-month">
+                      <Field component="select" name="cardExpirationMonth" id="card-expiration-month" onChange={(e) => this.setState({ cardExpirationMonth: e.target.value })}>
                         <option />
                         <option>01</option>
                         <option>02</option>
@@ -98,10 +138,10 @@ class PayByStripe extends React.Component {
                         <option>10</option>
                         <option>11</option>
                         <option>12</option>
-                      </select>
+                      </Field>
                     </div>
                     <div className="select">
-                      <select id="card-expiration-year">
+                      <Field component="select" name="cardExpirationYear" id="card-expiration-year" onChange={(e) => this.setState({ cardExpirationYear: e.target.value })}>
                         <option />
                         <option>2016</option>
                         <option>2017</option>
@@ -113,32 +153,38 @@ class PayByStripe extends React.Component {
                         <option>2023</option>
                         <option>2024</option>
                         <option>2025</option>
-                      </select>
+                      </Field>
                     </div>
                   </fieldset>
                   <fieldset className="fieldset-ccv">
                     <label htmlFor="card-ccv">CCV</label>
-                    <input type="text" id="card-ccv" maxLength={3} />
+                    <Field component="input" name="cardCCV" type="number" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
                   </fieldset>
-                  <button className="btn"><i className="fa fa-lock" /> submit</button>
+                  <button type="submit" className="btn"><i className="fa fa-lock" />Pay</button>
                 </div>
               </div>
             </div>
           </div>
         }
-      </form>
+      </Form>
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector({
   order: makeSelectOrder(),
+  stripeLoading: makeSelectStripeLoader(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    handleSubmit: (values) => dispatch(sendStripePayment(values)),
     redirectNoOrder: () => dispatch(push('/catalog')),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PayByStripe);
+const form = reduxForm({
+  form: 'payByStripe',
+})(PayByStripe);
+
+export default connect(mapStateToProps, mapDispatchToProps)(form);

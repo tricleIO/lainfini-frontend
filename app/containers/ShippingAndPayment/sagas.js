@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { LOAD_SHIPPING_METHODS, LOAD_PAYMENT_METHODS, SAVE_ORDER } from './constants';
-import { savePaymentMethods, saveShippingMethods, paymentMethodsError, shippingMethodsError, orderSaved } from './actions';
+import { LOAD_SHIPPING_METHODS, LOAD_PAYMENT_METHODS, SAVE_ORDER, SEND_STRIPE_PAYMENT } from './constants';
+import { savePaymentMethods, saveShippingMethods, paymentMethodsError, shippingMethodsError, orderSaved, setStripeLoader } from './actions';
 import config from 'config';
 import { push } from 'react-router-redux';
 
@@ -9,7 +9,16 @@ import {
   makeSelectCart,
 } from 'containers/App/selectors';
 
+import {
+  createCart,
+  addNotification,
+  addLoading,
+  removeLoading,
+} from 'containers/App/actions';
+
 import { makeSelectBillingAddress } from 'containers/Order/selectors';
+
+import { makeSelectOrder } from './selectors';
 
 import request from 'utils/request';
 
@@ -44,6 +53,7 @@ function* getPaymentData() {
 }
 
 function* saveOrder(action) {
+  yield put(addLoading('saveOrder'));
   const requestURL = config.apiUrl + 'orders';
 
   const token = yield select(makeSelectToken());
@@ -96,19 +106,75 @@ function* saveOrder(action) {
     const ordr = yield call(request, requestURL, options);
     yield put(orderSaved(ordr));
     if (order.paymentMethod === 'STRIPE') {
-      yield put(push('/order/pay/stripe'));
+      yield put(push('/order/pay/card'));
     }
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('saveOrder'));
 }
 
 function* saveOrderData() {
   yield takeLatest(SAVE_ORDER, saveOrder);
 }
 
+function* sendStripePayment(action) {
+  yield put(addLoading('stripePayment'));
+  const requestURL = config.apiUrl + 'payments/stripe';
+  const token = yield select(makeSelectToken());
+  const order = yield select(makeSelectOrder());
+
+  const data = {
+    cardNumber: action.card.cardNumber,
+    cvc: action.card.cardCCV,
+    monthExpiration: action.card.cardExpirationMonth,
+    orderUid: order.uid,
+    yearExpiration: action.card.cardExpirationYear,
+  };
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(data),
+  };
+
+  if (token) {
+    options.headers.Authorization = token.tokenType + ' ' + token.value;
+  }
+
+  try {
+    yield put(setStripeLoader(true));
+    const payment = yield call(request, requestURL, options);
+    if (payment.referenceCode) {
+      yield put(addNotification({
+        message: 'Your payment has been received. We will inform you through the email about order process',
+        level: 'success',
+        autoDismiss: 0,
+      }));
+      yield put(createCart());
+      yield put(push('/catalog'));
+    } else {
+      yield put(addNotification({
+        message: payment.message,
+        level: 'error',
+      }));
+    }
+    yield put(setStripeLoader(false));
+  } catch (err) {
+    console.log(err);
+  }
+  yield put(removeLoading('stripePayment'));
+}
+
+function* sendStripePaymentData() {
+  yield takeLatest(SEND_STRIPE_PAYMENT, sendStripePayment);
+}
+
 export default [
   getShippingData,
   getPaymentData,
   saveOrderData,
+  sendStripePaymentData,
 ];

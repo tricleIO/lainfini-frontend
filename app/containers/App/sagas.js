@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel, takeEvery } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT, GET_CART_ID } from './constants';
-import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart, getCurrentCart } from './actions';
+import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart, getCurrentCart, addLoading, removeLoading } from './actions';
 
 import localStorage from 'local-storage';
 
@@ -45,6 +45,7 @@ export function* userData() {
 }
 
 export function* initApp() {
+  yield put(addLoading('initApp'));
   const initToken = Boolean(yield select(makeSelectToken())) ? (yield select(makeSelectToken())).toJS() : undefined; // eslint-disable-line
   if (initToken && initToken.refreshToken) {
     const data = {
@@ -73,6 +74,7 @@ export function* initApp() {
   } else {
     yield put(createCart());
   }
+  yield put(removeLoading('initApp'));
 }
 
 export function* initAppData() {
@@ -135,7 +137,7 @@ export function* getCartUserData() {
 
 export function* addToWishlist(action) {
   const token = yield select(makeSelectToken());
-  if (token.access_token) {
+  if (token.value) {
     const requestURL = config.apiUrl + 'customers/current/wishlist';
     const headers = {
       Authorization: token.tokenType + ' ' + token.value,
@@ -181,7 +183,7 @@ export function* deleteFromWishlist(action) {
 
       try {
         // Call our request helper (see 'utils/request')
-        const wishlist = (yield call(request, requestURL, { headers })).content;
+        const wishlist = (yield call(request, config.apiUrl + 'customers/current/wishlist', { headers })).content;
         yield put(saveWishlist(wishlist));
       } catch (err) {
         console.log(err);
@@ -197,6 +199,7 @@ export function* deleteFromWishlistData() {
 }
 
 export function* addToCart(action) {
+  yield put(addLoading('addToCart'));
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
   const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items';
@@ -222,6 +225,7 @@ export function* addToCart(action) {
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('addToCart'));
 }
 
 export function* addToCartData() {
@@ -229,6 +233,7 @@ export function* addToCartData() {
 }
 
 export function* getCurrentCarts() {
+  yield put(addLoading('getCurrentCart'));
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
 
@@ -252,6 +257,7 @@ export function* getCurrentCarts() {
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('getCurrentCart'));
 }
 
 export function* getCurrentCartData() {
@@ -259,6 +265,7 @@ export function* getCurrentCartData() {
 }
 
 export function* updateCartQty(action) {
+  yield put(addLoading('updateCartQty'));
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
   const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items';
@@ -284,6 +291,7 @@ export function* updateCartQty(action) {
   } catch (err) {
     console.log(err);
   }
+  yield put(removeLoading('updateCartQty'));
 }
 
 export function* updateCartQtyData() {
@@ -363,7 +371,11 @@ export function* getCarts(action) {
   try {
     // Call our request helper (see 'utils/request')
     const cart = yield call(request, requestURLCart, options);
-    yield put(saveCart(cart));
+    if (cart.status === 'OPENED') {
+      yield put(saveCart(cart));
+    } else {
+      yield put(createCart());
+    }
   } catch (err) {
     console.log(err);
   }
