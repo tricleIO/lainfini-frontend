@@ -118,7 +118,7 @@ class LoginForm extends React.Component {
             <div className="col-12 col-md-6">
               <Field component={this.renderField} name="telephoneAlternative" type="text" className="form-control" label="Telephone alternative" />
             </div>
-            <div className="col-12 col-md-8 mt-5 mb-5 text-center">
+            <div className="col-12 col-md-12 mt-5 mb-5 text-center">
               <button type="submit" className="btn text-uppercase">proceed to shipping and payment</button>
             </div>
           </div>

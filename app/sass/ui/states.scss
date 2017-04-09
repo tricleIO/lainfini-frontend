@@ -1,0 +1,27 @@
+.empty__basket {
+  text-align: center;
+}
+.no-content {
+  text-align: center;
+  &__border {
+    display: inline-block;
+    border:1px solid $color-black;
+    padding: $_10;
+  }
+
+  a {
+    color: $color-b;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+}
+
+.icon-google {
+
+  &:hover {
+    color:#d34836;
+  }
+
+}

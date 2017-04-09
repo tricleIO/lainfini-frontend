@@ -32,8 +32,8 @@ class Faq extends React.Component {
                 <div className="wsw">
                   <h1>FAQ</h1>
                   {_(faqs).isArray() && faqs.map((faq) =>
-                    <div>
-                      <p><b>{faq.question}</b></p>
+                    <div className="mb-5">
+                      <h6>{faq.question}</h6>
                       <p>{faq.answer}</p>
                     </div>
                   )}

@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'lainfini';
-  src:  url('#{$icomoon-font-path}/lainfini.eot?alz14q');
-  src:  url('#{$icomoon-font-path}/lainfini.eot?alz14q#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/lainfini.ttf?alz14q') format('truetype'),
-    url('#{$icomoon-font-path}/lainfini.woff?alz14q') format('woff'),
-    url('#{$icomoon-font-path}/lainfini.svg?alz14q#lainfini') format('svg');
+  src:  url('#{$icomoon-font-path}/lainfini.eot');
+  src:  url('#{$icomoon-font-path}/lainfini.eot') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/lainfini.ttf') format('truetype'),
+    url('#{$icomoon-font-path}/lainfini.woff') format('woff'),
+    url('#{$icomoon-font-path}/lainfini.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -104,6 +104,11 @@ i {
 .icon-see-detail {
   &:before {
     content: $icon-see-detail;
+  }
+}
+.icon-logout {
+  &:before {
+    content: $icon-logout;
   }
 }
 
