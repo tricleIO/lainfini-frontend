@@ -1,7 +1,7 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
-import { loginUserSuccess, loginUserError } from './actions';
+import { loginUserSuccess, loginUserError, registerUserError } from './actions';
 import { saveToken, logout, addNotification } from 'containers/App/actions';
 
 import formUrlEncoded from 'form-urlencoded';
@@ -65,7 +65,7 @@ export function* getRegister(action) {
   const requestURL = config.apiUrl + 'customers';
   try {
     // Call our request helper (see 'utils/request')
-    yield call(request, requestURL, {
+    const register = yield call(request, requestURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,12 +73,18 @@ export function* getRegister(action) {
       cors: true,
       body: JSON.stringify(data),
     });
-    const message = "You've been successfully registered. We sent you an activation email. After activation you can use your account.";
-    yield put(addNotification({
-      title: 'Success',
-      level: 'success',
-      message,
-    }));
+    if (register.code === 200) {
+      const message = "You've been successfully registered. We sent you an activation email. After activation you can use your account.";
+      yield put(addNotification({
+        title: 'Success',
+        level: 'success',
+        message,
+      }));
+    } else if (register.code === 409) {
+      yield put(registerUserError('This email is taken, you can try to log in. Or you can request new password!'));
+    } else {
+      throw new Error();
+    }
   } catch (err) {
     const errorMessage = 'There was an error, please try it again.';
     yield put(addNotification({
@@ -94,7 +100,7 @@ export function* registerData() {
 }
 
 // Bootstrap sagas
-export default[
+export default [
   loginData,
   registerData,
 ];

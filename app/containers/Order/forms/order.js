@@ -103,7 +103,7 @@ class LoginForm extends React.Component {
             <div className="col-12 col-md-6">
               <div className="form-group">
                 <label htmlFor="countrySelectBox">Country</label>
-                <Field component={Select} className="form-control" id="countrySelectBox" name="country" aria-describedby="emailHelp">
+                <Field component={Select} className="form-control select-search-inside" id="countrySelectBox" name="country" aria-describedby="emailHelp">
                   {
                     countries.map((country) =>
                       <option value={country.code} key={country.uid}>{country.name}</option>
