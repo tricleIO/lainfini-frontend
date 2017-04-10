@@ -8,6 +8,7 @@ import $ from 'jquery';
 
 import { makeSelectOrder, makeSelectStripeLoader } from './selectors';
 
+import Select from 'components/Select';
 import { sendStripePayment } from './actions';
 
 class PayByStripe extends React.Component {
@@ -58,6 +59,7 @@ class PayByStripe extends React.Component {
     const { order, stripeLoading } = this.props;
 
     const maxLength4 = (value) => value && value.length > 4 ? true : undefined;
+    const isNumber = (value) => value && isNaN(Number(value)) ? 'Must be number' : undefined;
 
     return (
       <Form className="user-card" onSubmit={(e, val) => this.onSubmit(e, val)}>
@@ -120,10 +122,10 @@ class PayByStripe extends React.Component {
                     <div className="form-group">
                       <label htmlFor="card-number">Card Number</label>
                       <div className="content card-number">
-                        <Field validate={[maxLength4]} component="input" name="cardNumber1" type="number" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
-                        <Field validate={[maxLength4]} component="input" name="cardNumber2" type="number" id="card-number-1" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
-                        <Field validate={[maxLength4]} component="input" name="cardNumber3" type="number" id="card-number-2" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-3').focus(); } this.setState({ cardNumber3: e.target.value }); }} ref={(c) => { this.cardNumber3 = c; }} maxLength={4} />
-                        <Field validate={[maxLength4]} component="input" name="cardNumber4" type="number" id="card-number-3" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-holder').focus(); } this.setState({ cardNumber4: e.target.value }); }} ref={(c) => { this.cardNumber4 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber1" type="text" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber2" type="text" id="card-number-1" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber3" type="text" id="card-number-2" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-3').focus(); } this.setState({ cardNumber3: e.target.value }); }} ref={(c) => { this.cardNumber3 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber4" type="text" id="card-number-3" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-holder').focus(); } this.setState({ cardNumber4: e.target.value }); }} ref={(c) => { this.cardNumber4 = c; }} maxLength={4} />
                       </div>
                     </div>
                   </fieldset>
@@ -137,8 +139,7 @@ class PayByStripe extends React.Component {
                     <div className="form-group">
                       <label htmlFor="card-expiration-month">Expiration date</label>
                       <div className="select">
-                        <Field component="select" name="cardExpirationMonth" id="card-expiration-month" onChange={(e) => this.setState({ cardExpirationMonth: e.target.value })}>
-                          <option />
+                        <Field component={Select} name="cardExpirationMonth" id="card-expiration-month" onChange={(e, v) => this.setState({ cardExpirationMonth: v })}>
                           <option>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -154,9 +155,7 @@ class PayByStripe extends React.Component {
                         </Field>
                       </div>
                       <div className="select">
-                        <Field component="select" name="cardExpirationYear" id="card-expiration-year" onChange={(e) => this.setState({ cardExpirationYear: e.target.value })}>
-                          <option />
-                          <option>2016</option>
+                        <Field component={Select} name="cardExpirationYear" id="card-expiration-year" onChange={(e, v) => this.setState({ cardExpirationYear: v })}>
                           <option>2017</option>
                           <option>2018</option>
                           <option>2019</option>
@@ -173,7 +172,7 @@ class PayByStripe extends React.Component {
                   <fieldset className="fieldset-ccv">
                     <div className="form-group">
                       <label htmlFor="card-ccv">CCV</label>
-                      <Field component="input" name="cardCCV" type="number" className="form-control" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
+                      <Field validate={[isNumber]} component="input" name="cardCCV" type="text" className="form-control" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
                     </div>
                   </fieldset>
                   <button type="submit" className="btn"><i className="fa fa-lock" />Pay</button>

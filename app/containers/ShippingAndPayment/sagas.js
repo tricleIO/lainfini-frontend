@@ -154,7 +154,7 @@ function* sendStripePayment(action) {
         autoDismiss: 0,
       }));
       yield put(createCart());
-      yield put(push('/catalog'));
+      yield put(push({ pathname: '/catalog', state: { successfulPayment: true } }));
     } else {
       yield put(addNotification({
         message: payment.message,
