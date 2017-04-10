@@ -39,6 +39,19 @@ class PayByStripe extends React.Component {
     if (!this.props.order) {
       this.props.redirectNoOrder();
     }
+
+    $(this.select).select2({
+      theme: 'classic',
+    });
+
+    $(this.select).on('select2:select', (event) => {
+      if (_(this.props.onChange).isFunction()) {
+        this.props.onChange(event, this.select.value);
+      }
+      if (this.props.input) {
+        this.props.input.onChange(this.select.value);
+      }
+    });
   }
 
   onSubmit(e) {
