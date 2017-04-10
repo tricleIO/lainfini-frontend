@@ -148,11 +148,6 @@ function* sendStripePayment(action) {
     yield put(setStripeLoader(true));
     const payment = yield call(request, requestURL, options);
     if (payment.referenceCode) {
-      yield put(addNotification({
-        message: 'Your payment has been received. We will inform you through the email about order process',
-        level: 'success',
-        autoDismiss: 0,
-      }));
       yield put(createCart());
       yield put(push({ pathname: '/catalog', state: { successfulPayment: true } }));
     } else {
