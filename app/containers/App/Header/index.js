@@ -81,7 +81,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               {!this.props.user.uid && <Link to="/login" ><i className="icon icon-user" /></Link>}
               {this.props.user.uid && <Link to="/customer" className="logged-in">
                 <img src="//placehold.it/30" alt="" />
-                <p>Hello John</p>
+                <p>Hello {this.props.user.firstName}</p>
                 <Link to="/logout"><i className="icon icon-logout"></i></Link>
               </Link>}
             </div>
