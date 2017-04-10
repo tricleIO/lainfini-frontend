@@ -195,6 +195,7 @@
     "fontfaceobserver": "2.0.5",
     "form-data": "^2.1.2",
     "form-urlencoded": "^1.5.0",
+    "gravatar": "^1.6.0",
     "immutable": "3.8.1",
     "intl": "1.2.5",
     "invariant": "2.2.1",
