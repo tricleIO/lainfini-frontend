@@ -314,6 +314,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/about-cookies',
+      name: 'aboutCookies',
+      getComponent(nextState, cb) {
+        System.import('containers/AboutCookies')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/logout',
       name: 'logout',
       getComponent(nextState, cb) {
