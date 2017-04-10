@@ -74,8 +74,10 @@ class Basket extends React.Component {
                   </div>
                 )}
                 {basket && _(basket.items).size() === 0 &&
-                  <div className="col-12 empty__basket">
-                    Your basket is empty, go to <Link to="/catalog">catalog</Link> and select some products.
+                  <div className="col-12 empty__basket no-content mt-5">
+                    <div className="no-content__border">
+                      Your basket is empty, go to <Link to="/catalog">catalog</Link> and select some products.
+                    </div>
                   </div>
                 }
               </div>

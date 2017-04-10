@@ -42,10 +42,6 @@
       position: absolute;
       left: -100%;
       bottom: -57px;
-      @include media-breakpoint-up(lg) {
-        bottom: 0;
-      }
-
     }
   }
   .heading__title {

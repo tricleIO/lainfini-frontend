@@ -12,6 +12,10 @@ class RegisterForm extends React.Component {
     return (
       <div className={classNames('form-group', { 'has-danger': touched && error })}>
         <input {...input} {...props} type={type} />
+        {/*
+            msg
+        */}
+        <div className="form-control-feedback">Sorry, that username's taken. Try another?</div>
       </div>
     );
   }

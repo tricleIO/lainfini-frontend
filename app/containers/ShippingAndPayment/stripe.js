@@ -64,17 +64,23 @@ class PayByStripe extends React.Component {
         <Helmet title="Order: Pay with card" />
         {this.props.order &&
           <div className="row">
-            <div className="col-12 col-sm-6">
+            <div className="col-12 col-sm-12 text-center">
               <div className="order-info">
                 <h2>Payment and order info</h2>
-                <ul>
-                  <li>Price: {order.totalPrice}$</li>
-                  <li>Shipping price: {order.shipping.price}$</li>
-                  <li>Total price: {order.totalPriceWithShipping}$</li>
-                </ul>
+                <div className="order-info__table">
+                  <div className="order-info__table-item">
+                    <span>Price:&nbsp;</span> <span className="text-right">{order.totalPrice}$</span>
+                  </div>
+                  <div className="order-info__table-item">
+                    <span>Shipping price:&nbsp;</span> <span className="text-right">{order.shipping.price}$</span>
+                  </div>
+                  <div className="order-info__table-item">
+                    <span>Total price:&nbsp;</span> <span className="text-right">{order.totalPriceWithShipping}$</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6">
+            <div className="col-12 col-sm-12">
               <div className="checkout" style={{ zIndex: stripeLoading ? -1 : 1 }}>
                 <div className="credit-card-box">
                   <div className="flip">
@@ -111,54 +117,64 @@ class PayByStripe extends React.Component {
                 </div>
                 <div className="form">
                   <fieldset>
-                    <label htmlFor="card-number">Card Number</label>
-                    <Field validate={[maxLength4]} component="input" name="cardNumber1" type="number" id="card-number" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
-                    <Field validate={[maxLength4]} component="input" name="cardNumber2" type="number" id="card-number-1" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
-                    <Field validate={[maxLength4]} component="input" name="cardNumber3" type="number" id="card-number-2" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-3').focus(); } this.setState({ cardNumber3: e.target.value }); }} ref={(c) => { this.cardNumber3 = c; }} maxLength={4} />
-                    <Field validate={[maxLength4]} component="input" name="cardNumber4" type="number" id="card-number-3" className="input-cart-number" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-holder').focus(); } this.setState({ cardNumber4: e.target.value }); }} ref={(c) => { this.cardNumber4 = c; }} maxLength={4} />
+                    <div className="form-group">
+                      <label htmlFor="card-number">Card Number</label>
+                      <div className="content card-number">
+                        <Field validate={[maxLength4]} component="input" name="cardNumber1" type="number" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4]} component="input" name="cardNumber2" type="number" id="card-number-1" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4]} component="input" name="cardNumber3" type="number" id="card-number-2" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-3').focus(); } this.setState({ cardNumber3: e.target.value }); }} ref={(c) => { this.cardNumber3 = c; }} maxLength={4} />
+                        <Field validate={[maxLength4]} component="input" name="cardNumber4" type="number" id="card-number-3" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-holder').focus(); } this.setState({ cardNumber4: e.target.value }); }} ref={(c) => { this.cardNumber4 = c; }} maxLength={4} />
+                      </div>
+                    </div>
                   </fieldset>
                   <fieldset>
-                    <label htmlFor="card-holder">Card holder</label>
-                    <Field component="input" name="cardHolder" type="text" id="card-holder" onChange={(e) => this.setState({ cardHolder: e.target.value })} />
+                    <div className="form-group">
+                      <label htmlFor="card-holder">Card holder</label>
+                      <Field component="input" name="cardHolder" className="form-control" type="text" id="card-holder" onChange={(e) => this.setState({ cardHolder: e.target.value })} />
+                    </div>
                   </fieldset>
                   <fieldset className="fieldset-expiration">
-                    <label htmlFor="card-expiration-month">Expiration date</label>
-                    <div className="select">
-                      <Field component="select" name="cardExpirationMonth" id="card-expiration-month" onChange={(e) => this.setState({ cardExpirationMonth: e.target.value })}>
-                        <option />
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                        <option>06</option>
-                        <option>07</option>
-                        <option>08</option>
-                        <option>09</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                      </Field>
-                    </div>
-                    <div className="select">
-                      <Field component="select" name="cardExpirationYear" id="card-expiration-year" onChange={(e) => this.setState({ cardExpirationYear: e.target.value })}>
-                        <option />
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                      </Field>
+                    <div className="form-group">
+                      <label htmlFor="card-expiration-month">Expiration date</label>
+                      <div className="select">
+                        <Field component="select" name="cardExpirationMonth" id="card-expiration-month" onChange={(e) => this.setState({ cardExpirationMonth: e.target.value })}>
+                          <option />
+                          <option>01</option>
+                          <option>02</option>
+                          <option>03</option>
+                          <option>04</option>
+                          <option>05</option>
+                          <option>06</option>
+                          <option>07</option>
+                          <option>08</option>
+                          <option>09</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                        </Field>
+                      </div>
+                      <div className="select">
+                        <Field component="select" name="cardExpirationYear" id="card-expiration-year" onChange={(e) => this.setState({ cardExpirationYear: e.target.value })}>
+                          <option />
+                          <option>2016</option>
+                          <option>2017</option>
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                          <option>2021</option>
+                          <option>2022</option>
+                          <option>2023</option>
+                          <option>2024</option>
+                          <option>2025</option>
+                        </Field>
+                      </div>
                     </div>
                   </fieldset>
                   <fieldset className="fieldset-ccv">
-                    <label htmlFor="card-ccv">CCV</label>
-                    <Field component="input" name="cardCCV" type="number" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
+                    <div className="form-group">
+                      <label htmlFor="card-ccv">CCV</label>
+                      <Field component="input" name="cardCCV" type="number" className="form-control" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
+                    </div>
                   </fieldset>
                   <button type="submit" className="btn"><i className="fa fa-lock" />Pay</button>
                 </div>

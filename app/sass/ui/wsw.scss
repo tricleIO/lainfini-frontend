@@ -26,6 +26,16 @@
       background-color: $color-b;
     }
   }
+  h6 {
+    font-size: $_20;
+    font-family: $font-family-nexa;
+    text-transform: uppercase;
+    margin-top: $_20;
+    padding-top: $_20;
+    padding-bottom: $_20;
+    letter-spacing: $letter-spacing-small;
+    color: $color-c;
+  }
 
   p, ul {
     font-family: $font-family-open-sans;

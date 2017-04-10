@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'lainfini';
-  src:  url('fonts/lainfini.eot?alz14q');
-  src:  url('fonts/lainfini.eot?alz14q#iefix') format('embedded-opentype'),
-    url('fonts/lainfini.ttf?alz14q') format('truetype'),
-    url('fonts/lainfini.woff?alz14q') format('woff'),
-    url('fonts/lainfini.svg?alz14q#lainfini') format('svg');
+  src:  url('fonts/lainfini.eot?708tev');
+  src:  url('fonts/lainfini.eot?708tev#iefix') format('embedded-opentype'),
+    url('fonts/lainfini.ttf?708tev') format('truetype'),
+    url('fonts/lainfini.woff?708tev') format('woff'),
+    url('fonts/lainfini.svg?708tev#lainfini') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -71,5 +71,8 @@ i {
 }
 .icon-see-detail:before {
   content: "\e90c";
+}
+.icon-logout:before {
+  content: "\e90d";
 }
 

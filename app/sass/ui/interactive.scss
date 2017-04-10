@@ -149,7 +149,7 @@ input {
 
 }
 .form-group {
-  label {
+  label:not(.custom-checkbox) {
     display: block;
     color: $color-c;
     font-family: $font-family-open-sans;

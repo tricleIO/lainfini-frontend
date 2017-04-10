@@ -62,7 +62,15 @@
       width: 100%;
     }
     a {
+      display: block;
       color: inherit;
+      outline: none;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
     }
     .text {
       padding: 0 $_16;
@@ -73,6 +81,7 @@
         color: $color-b;
       }
     }
+
   }
   &__icons {
     margin-top: $_20;

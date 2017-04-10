@@ -2,7 +2,15 @@
   .form-group {
     padding: $_20;
     background-color: $white;
+
+    .form-control {
+      padding-top: $_8;
+      padding-bottom: $_8;
+    }
+
   }
+
+
   .help-block {
     padding: $_10 0;
   }
