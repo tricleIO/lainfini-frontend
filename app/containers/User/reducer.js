@@ -4,16 +4,21 @@ import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  REGISTER_USER_ERROR,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
   loadingUser: false,
   errorUser: false,
+  registerError: false,
 });
 
 function userReducer(state = initialState, action) {
   switch (action.type) {
+    case REGISTER_USER_ERROR:
+      return state
+        .set('registerError', action.error);
     case LOGIN_USER:
       return state
         .set('loadingUser', true)

@@ -47,3 +47,10 @@ export function registerUser(email, fullname, password) {
     lastName,
   };
 }
+
+export function registerUserError(error) {
+  return {
+    type: REGISTER_USER_ERROR,
+    error,
+  };
+}
