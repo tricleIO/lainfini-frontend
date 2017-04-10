@@ -122,16 +122,21 @@ class ShippingAndPaymentForm extends React.Component {
                     <h2>Shipping Methods</h2>
                     <div className="row">
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
+                        <div className="form-group" style={_(shippingMethods).size() === 1 ? { display: 'none' } : {}}>
                           <label htmlFor="paymentSelectBox">Select shipping method</label>
                           <Field component={Select} defaultValue={shippingMethods[0].uid} className="form-control" id="paymentSelectBox" name="shippingMethod" aria-describedby="emailHelp">
                             {
                               shippingMethods.map((shippingMethod) =>
-                                <option value={shippingMethod.uid} key={shippingMethod.uid}>{shippingMethod.name} {shippingMethod.price > 0 && '(+' + shippingMethod.price + '$)'}</option>
+                                <option value={shippingMethod.uid} key={shippingMethod.uid}>{shippingMethod.price > 0 && '(+' + shippingMethod.price + '$)'} {shippingMethod.name}</option>
                               )
                             }
                           </Field>
                         </div>
+                        {_(shippingMethods).size() === 1 &&
+                          <div className="form-group">
+                            Your shipping method: {shippingMethods[0].name} for {shippingMethods[0].price}$
+                          </div>
+                        }
                       </div>
                       <div className="col-12 col-md-6">
                         <p>

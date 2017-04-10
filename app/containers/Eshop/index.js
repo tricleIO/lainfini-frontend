@@ -51,6 +51,7 @@ class Eshop extends React.Component {
     selectFilterMaterial: React.PropTypes.func,
     selectFilterSize: React.PropTypes.func,
     addToCart: React.PropTypes.func,
+    location: React.PropTypes.object,
   };
 
   constructor(props) {
@@ -89,6 +90,13 @@ class Eshop extends React.Component {
         <Helmet title="Catalog" />
         <Visual bg={this.eshopHeadImg} mod="visual--small" />
 
+        {
+          this.props.location /* && this.props.location.state && this.props.location.state.successfulPayment */ &&
+          <div className="successful-payment">
+            Your payment has been successful. You will be informed through the email.
+          </div>
+        }
+
         <div className="filter">
           <div className="container">
             <div className="row text-center">
@@ -98,26 +106,11 @@ class Eshop extends React.Component {
                   <div className="row">
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select" value={this.props.filterSize} onChange={(event, value) => { this.props.selectFilterSize(value); }}>
-                          <option value="-1">- All sizes -</option>
-                          {
-                            sizes.map((size) =>
-                              <option value={size.uid} key={size.uid}>{size.value}</option>
-                            )
-                          }
-                        </Select>
+
                       </div>
                     </div>
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
-                        <Select className="ui-interactive__select" value={this.props.filterMaterial} onChange={(event, value) => { this.props.selectFilterMaterial(value); }}>
-                          <option value="-1">- All materials -</option>
-                          {
-                            materials.map((material) =>
-                              <option value={material.uid} key={material.uid}>{material.name}</option>
-                            )
-                          }
-                        </Select>
                       </div>
                     </div>
                   </div>
