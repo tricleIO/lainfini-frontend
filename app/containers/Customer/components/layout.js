@@ -16,12 +16,12 @@ class CustomerLayout extends React.Component {
               <nav className="user-settings__menu">
                 <ul>
                   <li className="active"><Link to="/customer">Customer Menu</Link></li>
-                  <li><Link to="/customer/order-history">Historie Objednavek</Link></li>
-                  <li><Link to="/customer/complaints">Stiznosti</Link></li>
-                  <li><Link to="/customer/addresses">Seznam adress</Link></li>
-                  <li><Link to="/customer/settings">Nastaveni uzivatele</Link></li>
-                  <li><Link to="/customer/linked-accounts">Propojene ucty</Link></li>
-                  <li><Link to="/customer/change-password">Zmena hesla</Link></li>
+                  <li><Link to="/customer/order-history">Order history</Link></li>
+                  <li><Link to="/customer/complaints">Complaints</Link></li>
+                  <li><Link to="/customer/addresses">Addresses</Link></li>
+                  <li><Link to="/customer/settings">Customer settings</Link></li>
+                  <li><Link to="/customer/linked-accounts">Linked accounts</Link></li>
+                  <li><Link to="/customer/change-password">Password change</Link></li>
                 </ul>
               </nav>
             </div>
