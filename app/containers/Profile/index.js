@@ -18,6 +18,8 @@ import {
 
 import $ from 'jquery';
 import 'slick-carousel';
+import 'lightbox2/dist/css/lightbox.min.css';
+import 'lightbox2';
 
 import SocialNav from 'components/SocialNav';
 
@@ -150,7 +152,7 @@ class Profile extends React.Component {
                     <div className="row">
                       {workImages.files.map((file, index) =>
                         <div className="col-12 col-sm-4" key={index}>
-                          <img src={config.apiUrl + 'files/' + file.fileIndex + '.jpg'} alt="" />
+                          <a href={config.apiUrl + 'files/' + file.fileIndex + '.jpg'} data-lightbox="profile-lightbox"><img src={config.apiUrl + 'files/' + file.fileIndex + '.jpg'} alt="" /></a>
                         </div>
                       )}
                     </div>
