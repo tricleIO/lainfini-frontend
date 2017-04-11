@@ -11,12 +11,15 @@ import {
   makeSelectWishlist,
 } from 'containers/App/selectors';
 
+import { deleteFromWishlist } from 'containers/App/actions';
+
 import SocialNav from 'components/SocialNav';
 
 class Wishlist extends React.Component {
 
   static propTypes = {
     products: React.PropTypes.array,
+    deleteFromWishlist: React.PropTypes.func,
   };
 
   render() {
@@ -44,13 +47,16 @@ class Wishlist extends React.Component {
                   </div>
                   <div className="wish-product__content">
                     <div className="wish-product__title">
-                      <h4>{p.product.name}</h4>
+                      <Link to={'/catalog/' + p.product.slug}><h4>{p.product.name}</h4></Link>
                       <Link to={'/catalog/' + p.product.slug}>
                         <i className="icon icon-shop" />
                       </Link>
                     </div>
                     <div className="wish-product__price">
                       <span>${p.product.price}</span>
+                      <a onClick={() => this.props.deleteFromWishlist(p.productUid)}>
+                        <i className="icon icon-close" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -65,8 +71,14 @@ class Wishlist extends React.Component {
 
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteFromWishlist: (uid) => dispatch(deleteFromWishlist(uid)),
+  };
+}
+
 const mapStateToProps = createStructuredSelector({
   products: makeSelectWishlist(),
 });
 
-export default connect(mapStateToProps)(Wishlist);
+export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
