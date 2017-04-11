@@ -298,6 +298,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/customer',
+      name: 'customer',
+      getComponent(nextState, cb) {
+        System.import('containers/Customer')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/server-down',
       name: 'serverDown',
       getComponent(nextState, cb) {
