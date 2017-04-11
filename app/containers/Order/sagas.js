@@ -6,7 +6,7 @@ import config from 'config';
 import request from 'utils/request';
 
 function* getCountries() {
-  const requestURL = config.apiUrl + 'shipping/countries';
+  const requestURL = config.apiUrl + 'shipping/countries?excludePagination=true';
 
   try {
     // Call our request helper (see 'utils/request')

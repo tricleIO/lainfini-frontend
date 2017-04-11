@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select, take, cancel, takeEvery } from 'redux-saga/effects';
 import { SAVE_TOKEN, INIT_APP, SAVE_USER, ADD_TO_WISHLIST, DELETE_FROM_WISHLIST, ADD_TO_CART, DELETE_FROM_CART, CREATE_CART, UPDATE_CART_QTY, GET_CURRENT_CART, LOGOUT, GET_CART_ID } from './constants';
-import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart, getCurrentCart, addLoading, removeLoading } from './actions';
+import { saveUser, saveToken, logout, saveWishlist, saveCart, createCart, getCart, getCurrentCart, addLoading, removeLoading, addNotification } from './actions';
 
 import localStorage from 'local-storage';
 
@@ -32,7 +32,11 @@ export function* getUser(action) {
       const user = yield call(request, requestURL, options);
       yield put(saveUser(user, action.fromAppInit));
       if (!action.fromAppInit) {
-        yield put(push('/catalog'));
+        yield put(addNotification({
+          level: 'success',
+          message: 'You has been successfuly logged in! Welcome!',
+        }));
+        yield put(push('/customer'));
       }
     } catch (err) {
       yield put(logout());
