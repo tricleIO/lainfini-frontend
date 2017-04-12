@@ -40,7 +40,7 @@ export default class Studio extends React.Component {
               </div>
               <div className="col-12 col-sm-5 meetbox__text" data-reveal>
                 <span className="meetbox__title">
-                  Design House Atelier Lainfini
+                  Atelier Lainfini
                 </span>
                 <p>
                   Atelier LAINFINI presents gorgeous luxury scarves and shawls made by skilled Czech designers, offering them to the world. Our ambition is to spread the culture of creativity and liberty to showcase the beauty in each of us.
@@ -59,7 +59,11 @@ export default class Studio extends React.Component {
               </div>
               <div className="col-12 col-sm-6 col-md-3 offset-md-1 meetbox__button" data-reveal>
                 <img src={this.mirkaImg} className="img-fluid" alt="" />
-                <Link to="/profile" className="btn">meet mirka</Link>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12 text-center offset-top-50" data-reveal>
+                <Link className="btn" to="/profile">meet mirka</Link>
               </div>
             </div>
           </div>

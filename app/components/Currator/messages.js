@@ -23,7 +23,7 @@ export default defineMessages({
   },
   studioLink: {
     id: 'app.components.Currator.studioLink',
-    defaultMessage: 'Atelier LAINFINI Design House',
+    defaultMessage: 'Atelier LAINFINI',
   },
   profileLink: {
     id: 'app.components.Currator.profileLink',

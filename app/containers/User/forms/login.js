@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
+import { Link } from 'react-router';
 
 class LoginForm extends React.Component {
 
@@ -20,7 +21,7 @@ class LoginForm extends React.Component {
           <Field component="input" name="password" type="password" className="form-control" placeholder="Password" />
         </div>
         <div className="pt-4 pb-4">
-          <a href="" className="forgot-pass d-block pt-1 text-center ">Forgotten password?</a>
+          <Link to="/login/forgotten-password" className="forgot-pass d-block pt-1 text-center ">Forgotten password?</Link>
         </div>
         <button type="submit" className="btn btn-block mt-4 mb-4 text-uppercase">Sign In</button>
         <p className="text-center">Or sign in with your existing social media account</p>
