@@ -29,6 +29,7 @@ class User extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="login_page">
         <Helmet title="Login" />
