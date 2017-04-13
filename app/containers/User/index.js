@@ -13,6 +13,7 @@ import {
   loginUser,
   registerUser,
   requestPassword,
+  loginWithFacebook,
 } from './actions';
 
 class User extends React.Component {
@@ -21,7 +22,8 @@ class User extends React.Component {
     loginUser: React.PropTypes.func,
     registerUser: React.PropTypes.func,
     requestPassword: React.PropTypes.func,
-    location: React.PropTypes.object,
+    loginWithFacebook: React.PropTypes.func,
+    params: React.PropTypes.object,
   }
 
   handleLogin = (values) => {
@@ -37,6 +39,7 @@ class User extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="login_page">
         <Helmet title="Login" />
@@ -53,10 +56,10 @@ class User extends React.Component {
               <RegisterForm onSubmit={this.handleRegister} />
             </div>
             <div className="col-12 col-lg-6">
-              {this.props.location.pathname === '/login' &&
-                <LoginForm onSubmit={this.handleLogin} />
+              {this.props.params.splat !== 'forgotten-password' &&
+                <LoginForm onSubmit={this.handleLogin} loginWithFacebook={this.props.loginWithFacebook} />
               }
-              {this.props.location.pathname === '/login/forgotten-password' &&
+              {this.props.params.splat === 'forgotten-password' &&
                 <LostPasswordForm onSubmit={this.handleLostPassword} />
               }
             </div>
@@ -74,6 +77,7 @@ function mapDispatchToProps(dispatch) {
     loginUser: (email, password) => dispatch(loginUser(email, password)),
     registerUser: (email, fullName, password) => dispatch(registerUser(email, fullName, password)),
     requestPassword: (email) => dispatch(requestPassword(email)),
+    loginWithFacebook: () => dispatch(loginWithFacebook()),
   };
 }
 

@@ -1,8 +1,9 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOGIN_USER, REGISTER_USER, REQUEST_PASSWORD } from './constants';
+import { LOGIN_USER, REGISTER_USER, REQUEST_PASSWORD, LOGIN_FACEBOOK } from './constants';
 import { loginUserSuccess, loginUserError, registerUserError } from './actions';
 import { saveToken, logout, addNotification } from 'containers/App/actions';
+import { OAuth2 } from 'oauth';
 
 import formUrlEncoded from 'form-urlencoded';
 
@@ -128,9 +129,32 @@ export function* requestPasswordData() {
   yield takeLatest(REQUEST_PASSWORD, requestPassword);
 }
 
+export function* loginWithFacebook() {
+  const facebookOAuth = new OAuth2(
+    config.facebookAppId,
+    config.facebookAppSecret,
+    'https://www.facebook.com/',
+    'v2.8/dialog/oauth',
+    'v2.8/oauth/access_token',
+    null
+  );
+  console.log(facebookOAuth.getAuthorizeUrl({
+    redirect_uri: 'http://localhost:3000/login/facebook',
+    scope: ['public_profile', 'email', 'user_friends', 'user_about_me'],
+  }));
+}
+
+export function* loginWithFacebookData() {
+  const watcher = yield takeLatest(LOGIN_FACEBOOK, loginWithFacebook);
+
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // Bootstrap sagas
 export default [
   loginData,
   registerData,
   requestPasswordData,
+  loginWithFacebookData,
 ];

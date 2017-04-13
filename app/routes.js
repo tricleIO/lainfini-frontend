@@ -221,7 +221,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/login(/forgotten-password)',
+      path: '/login(/**)',
       name: 'login-register',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

@@ -6,6 +6,7 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
   REQUEST_PASSWORD,
+  LOGIN_FACEBOOK,
 } from './constants';
 
 /**
@@ -61,5 +62,11 @@ export function requestPassword(email, redirect = true) {
     type: REQUEST_PASSWORD,
     email,
     redirect,
+  };
+}
+
+export function loginWithFacebook() {
+  return {
+    type: LOGIN_FACEBOOK,
   };
 }

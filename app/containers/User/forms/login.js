@@ -1,7 +1,8 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { Link } from 'react-router';
-import { OAuth2 } from 'oauth';
+
+import OAuthLogins from '../oauthLogins';
 
 class LoginForm extends React.Component {
 
@@ -25,13 +26,7 @@ class LoginForm extends React.Component {
           <Link to="/login/forgotten-password" className="forgot-pass d-block pt-1 text-center ">Forgotten password?</Link>
         </div>
         <button type="submit" className="btn btn-block mt-4 mb-4 text-uppercase">Sign In</button>
-        <p className="text-center">Or sign in with your existing social media account</p>
-        <ul className="social-nav__icons">
-          <li><a><i className="icon icon-facebook" /></a></li>
-          <li><a><i className="icon icon-twitter" /></a></li>
-          <li><a><i className="icon icon-instagram" /></a></li>
-          <li><a><i className="icon icon-google" /></a></li>
-        </ul>
+        <OAuthLogins />
       </form>
     );
   }
