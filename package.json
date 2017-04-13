@@ -204,6 +204,7 @@
     "local-storage": "^1.4.2",
     "lodash": "4.16.4",
     "minimist": "1.2.0",
+    "oauth": "^0.9.15",
     "react": "15.3.2",
     "react-css-transition-replace": "^2.2.0",
     "react-dom": "15.3.2",

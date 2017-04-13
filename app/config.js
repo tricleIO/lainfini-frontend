@@ -18,6 +18,8 @@ const config = {
     facebookLink: 'https://www.facebook.com/Lainfini.Fashion/',
     instagramLink: 'https://www.instagram.com/lainfini_designhouse/',
     twitterLink: 'https://twitter.com/LainfiniFashion',
+
+    facebookAppId: 1420040611404397,
   },
 };
 

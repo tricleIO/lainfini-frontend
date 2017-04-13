@@ -4,7 +4,8 @@ import {
   LOGIN_USER_ERROR,
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR
+  REGISTER_USER_ERROR,
+  REQUEST_PASSWORD,
 } from './constants';
 
 /**
@@ -52,5 +53,13 @@ export function registerUserError(error) {
   return {
     type: REGISTER_USER_ERROR,
     error,
+  };
+}
+
+export function requestPassword(email, redirect = true) {
+  return {
+    type: REQUEST_PASSWORD,
+    email,
+    redirect,
   };
 }
