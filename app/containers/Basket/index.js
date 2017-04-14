@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import classNames from 'classnames';
 
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
@@ -97,7 +98,7 @@ class Basket extends React.Component {
               }
               <div className="row">
                 <div className="ui-btn-double-type">
-                  <div className="col-12 col-sm-4 offset-sm-2">
+                  <div className={classNames('col-12', _(basket.items).size() > 0 ? 'col-sm-4 offset-sm-2' : 'col-sm-6 offset-sm-3 text-center')}>
                     <div className="btn__inline offset-vertical-30">
                       <Link to="/catalog" data-reveal>continue shopping</Link>
                     </div>

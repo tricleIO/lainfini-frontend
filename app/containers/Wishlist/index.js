@@ -36,6 +36,13 @@ class Wishlist extends React.Component {
               </div>
             </div>
           </div>
+          {products && _(products).size() === 0 &&
+            <div className="col-12 empty__basket no-content mt-5">
+              <div className="no-content__border">
+                Your wishlist is empty, go to <Link to="/catalog">catalog</Link> and select some products.
+              </div>
+            </div>
+          }
           <div className="row wishlist-product-list text-center animated fadeInUp">
             {products && products.map((p, index) =>
               <div className="col-12 col-sm-6 col-lg-6 col-xl-3" key={index}>
@@ -62,6 +69,15 @@ class Wishlist extends React.Component {
                 </div>
               </div>
             )}
+          </div>
+          <div className="row">
+            <div className="ui-btn-double-type">
+              <div className="col-12 col-sm-6 offset-sm-3 text-center">
+                <div className="btn__inline offset-vertical-30">
+                  <Link to="/catalog" data-reveal>continue shopping</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <SocialNav links />
