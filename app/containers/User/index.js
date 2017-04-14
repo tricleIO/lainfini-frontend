@@ -5,12 +5,15 @@ import SocialNav from 'components/SocialNav';
 
 import LoginForm from './forms/login';
 import RegisterForm from './forms/register';
+import LostPasswordForm from './forms/lostPassword';
 
 import { connect } from 'react-redux';
 
 import {
   loginUser,
   registerUser,
+  requestPassword,
+  loginWithFacebook,
 } from './actions';
 
 class User extends React.Component {
@@ -18,6 +21,9 @@ class User extends React.Component {
   static propTypes = {
     loginUser: React.PropTypes.func,
     registerUser: React.PropTypes.func,
+    requestPassword: React.PropTypes.func,
+    loginWithFacebook: React.PropTypes.func,
+    params: React.PropTypes.object,
   }
 
   handleLogin = (values) => {
@@ -27,6 +33,10 @@ class User extends React.Component {
   handleRegister = (values) => {
     this.props.registerUser(values.get('email'), values.get('full-name'), values.get('password'));
   }
+
+  handleLostPassword = (values) => {
+    this.props.requestPassword(values.get('email'));
+  };
 
   render() {
     console.log(this.props);
@@ -46,7 +56,12 @@ class User extends React.Component {
               <RegisterForm onSubmit={this.handleRegister} />
             </div>
             <div className="col-12 col-lg-6">
-              <LoginForm onSubmit={this.handleLogin} />
+              {this.props.params.splat !== 'forgotten-password' &&
+                <LoginForm onSubmit={this.handleLogin} loginWithFacebook={this.props.loginWithFacebook} />
+              }
+              {this.props.params.splat === 'forgotten-password' &&
+                <LostPasswordForm onSubmit={this.handleLostPassword} />
+              }
             </div>
           </div>
         </div>
@@ -61,6 +76,8 @@ function mapDispatchToProps(dispatch) {
   return {
     loginUser: (email, password) => dispatch(loginUser(email, password)),
     registerUser: (email, fullName, password) => dispatch(registerUser(email, fullName, password)),
+    requestPassword: (email) => dispatch(requestPassword(email)),
+    loginWithFacebook: () => dispatch(loginWithFacebook()),
   };
 }
 
