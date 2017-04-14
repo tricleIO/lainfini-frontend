@@ -16,6 +16,7 @@ class OAuthLogins extends React.Component {
     );
     this.facebookLink = facebookOAuth.getAuthorizeUrl({
       redirect_uri: config.serverUrl + 'login/facebook',
+      response_type: 'token',
       scope: ['public_profile', 'email', 'user_friends', 'user_about_me'],
     });
   }

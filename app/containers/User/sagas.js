@@ -140,6 +140,7 @@ export function* loginWithFacebook() {
   );
   console.log(facebookOAuth.getAuthorizeUrl({
     redirect_uri: 'http://localhost:3000/login/facebook',
+    response_type: 'token',
     scope: ['public_profile', 'email', 'user_friends', 'user_about_me'],
   }));
 }

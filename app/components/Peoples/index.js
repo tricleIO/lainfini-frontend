@@ -23,7 +23,7 @@ export default class SocialNav extends React.PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-              <Heading type="h2" subtitle={this.props.isShop ? 'Atelier LAINFINI Designers' : ''} title={this.props.isShop ? 'Meet The People Behind The Brand' : 'Atelier LAINFINI DESIGN HOUSE: A Collaborative Collective'} />
+              <Heading type="h2" subtitle={this.props.isShop ? 'Atelier LAINFINI Designers' : ''} title={this.props.isShop ? 'Meet The People Behind The Brand' : 'Atelier LAINFINI: A Collaborative Collective'} />
             </div>
             <div className="col-12 text-center" data-reveal>
               <img src={this.peoplesImg} className="img-fluid d-inline-block" alt="peoples" />

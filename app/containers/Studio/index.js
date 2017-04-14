@@ -52,7 +52,7 @@ export default class Studio extends React.Component {
               </div>
               <div className="col-12 col-sm-6 col-md-5  meetbox__text text-right" data-reveal>
                 <span className="meetbox__title">Mirka Talavašková</span>
-                <span className="meetbox__subtitle d-block">Fashion Designer And Head of Design House Atelier LAINFINI</span>
+                <span className="meetbox__subtitle d-block">Fashion Designer And Head of Atelier LAINFINI</span>
                 <p>
                   Mirka’s drive is to create pieces of luxury clothing that will allow the wearer to combine it with their own unique wardrobe and a variety of accessories, including bespoke shoes, designer handbags, and fine jewelry is the goal of the line. Her aim is to give a woman freedom in decision making by choosing high quality clothing that emphasizes the client’s personality in every way.
                 </p>
