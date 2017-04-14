@@ -1,8 +1,7 @@
-import { conformsTo, isEmpty, isFunction, isObject, isString } from 'lodash';
+import { conformsTo, isEmpty, isFunction, isObject, isString, includes } from 'lodash';
 import invariant from 'invariant';
 import warning from 'warning';
 import createReducer from 'reducers';
-
 /**
  * Validate the shape of redux store
  */
@@ -40,6 +39,8 @@ export function injectAsyncReducer(store, isValid) {
   };
 }
 
+const loadedSagas = [];
+
 /**
  * Inject an asynchronously loaded saga
  */
@@ -56,8 +57,7 @@ export function injectAsyncSagas(store, isValid) {
       !isEmpty(sagas),
       '(app/utils...) injectAsyncSagas: Received an empty `sagas` array'
     );
-
-    sagas.map(store.runSaga);
+    sagas.map((saga) => { if (!includes(loadedSagas, saga)) { loadedSagas.push(saga); return store.runSaga(saga); } return false; });
   };
 }
 
