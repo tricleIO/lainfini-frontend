@@ -32,7 +32,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="tel:+18004050388">+1 800 405 0388</a>
+                  <a href="">Press inquries</a>
                 </li>
               </ul>
             </div>
@@ -46,16 +46,16 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                 </li>
               </ul>
               <p className="copyright">
-                2016 Copyright la infini
+                2017 &copy; Copyright la infini
               </p>
             </div>
             <div className="col-sm-4 text-sm-right hidden-sm-down">
               <ul>
                 <li>
-                  <a href="">download our brochure</a>
+                  <a href="tel:+18004050388">+1 800 405 0388</a>
                 </li>
                 <li>
-                  <Link to="/studio">more about the brand</Link>
+                  <a href="">download our brochure</a>
                 </li>
               </ul>
             </div>
