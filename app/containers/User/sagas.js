@@ -74,7 +74,7 @@ export function* getRegister(action) {
       cors: true,
       body: JSON.stringify(data),
     });
-    if (register.code === 200) {
+    if (register.registerStatus) {
       const message = "You've been successfully registered. We sent you an activation email. After activation you can use your account.";
       yield put(addNotification({
         title: 'Success',
@@ -102,7 +102,7 @@ export function* registerData() {
 
 export function* requestPassword(action) {
   const data = {
-    email: action.email,
+    username: action.email,
   };
   const requestURL = config.apiUrl + 'users/password-reset';
 
