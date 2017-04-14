@@ -87,6 +87,7 @@ i {
   }
 }
 .icon-user {
+  font-weight: 600;
   &:before {
     content: $icon-user;
   }
