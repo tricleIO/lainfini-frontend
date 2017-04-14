@@ -91,7 +91,7 @@ class Eshop extends React.Component {
         <Visual bg={this.eshopHeadImg} mod="visual--small" />
 
         {
-          this.props.location /* && this.props.location.state && this.props.location.state.successfulPayment */ &&
+          this.props.location && this.props.location.state && this.props.location.state.successfulPayment &&
           <div className="successful-payment">
             Your payment has been successful. You will be informed through the email.
           </div>
