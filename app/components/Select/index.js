@@ -43,7 +43,7 @@ export default class Select extends React.Component {
     const { className, input, meta, ...props } = this.props;
     return (
       <div className="ui-interactive">
-        <select name={input.name} className={classNames('ui-interactive__select', className)} style={{ width: '100%' }} ref={(c) => { this.select = c; }} {...props} />
+        <select name={input ? input.name : null} className={classNames('ui-interactive__select', className)} style={{ width: '100%' }} ref={(c) => { this.select = c; }} {...props} />
       </div>
     );
   }
