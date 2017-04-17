@@ -85,8 +85,6 @@ class Eshop extends React.Component {
       products = _(products).filter((obj) => obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
     }
 
-    console.log(products);
-
     return (
       <div>
         <Helmet title="Catalog" />
