@@ -124,7 +124,7 @@ class Eshop extends React.Component {
                           <option value="-1">- All materials -</option>
                           {
                             materials.map((material) =>
-                              <option value={material.uid} key={material.uid}>{material.value}</option>
+                              <option value={material.uid} key={material.uid}>{material.name}</option>
                             )
                           }
                         </Select>
