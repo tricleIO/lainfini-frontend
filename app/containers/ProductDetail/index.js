@@ -90,6 +90,8 @@ class ProductDetail extends React.Component {
     const { product } = this.props;
     const shareUrl = String(window.location);
 
+    console.log(product);
+
     return (
       <div>
         {product.name &&
