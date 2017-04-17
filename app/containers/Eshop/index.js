@@ -85,6 +85,8 @@ class Eshop extends React.Component {
       products = _(products).filter((obj) => obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
     }
 
+    console.log(products);
+
     return (
       <div>
         <Helmet title="Catalog" />
@@ -171,7 +173,8 @@ class Eshop extends React.Component {
                       <div className="col-7">
                         <div>{product.size.value}</div>
                         <div>{product.material.name}, {product.material.composition}</div>
-                        <div>Jabob Borrows</div>
+                        <div>{product.technology.name}</div>
+                        <div>{product.design.name}</div>
                       </div>
                       <div className="col-5 see_more">
                         <Link to={'/basket'} onClick={() => this.addToBasket(product.uid)} className="btn">Add to Basket</Link>
