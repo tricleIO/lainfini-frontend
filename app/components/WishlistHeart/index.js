@@ -28,9 +28,9 @@ class WishlistHeart extends React.Component {
   }
 
   onClick() {
-    const { wishlist, uid } = this.props;
+    const { uid } = this.props;
     if (this.isActive()) {
-      this.props.deleteFromWishlist(_(wishlist).find({ productUid: uid }).uid);
+      this.props.deleteFromWishlist(uid);
     } else {
       this.props.addToWishlist(uid);
     }

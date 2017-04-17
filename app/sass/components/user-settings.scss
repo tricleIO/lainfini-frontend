@@ -40,7 +40,8 @@
 
   }
   &__box__title {
-    padding: $_15;
+    padding: $_20;
+    font-size: $_20;
     border:1px solid lighten($color-c,80%);
     background-color: $color-white;
     box-shadow: 0 $_5 $_20 rgba(0,0,0,.1);

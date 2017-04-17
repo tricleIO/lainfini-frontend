@@ -32,6 +32,7 @@
 @import "~bootstrap/scss/input-group";
 @import "~bootstrap/scss/custom";
 @import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/transitions";
 
 
 
@@ -87,6 +88,12 @@
 @import "components/payment";
 @import "components/buy-step";
 @import "components/user-settings";
+@import "components/last-orders";
+@import "components/adress-place";
+@import "components/user-card";
+@import "components/user-profil-settings";
+@import "components/loading";
+@import "components/user-setting-card";
 
 @import "parts/social_nav";
 @import "parts/profil_gallery";
@@ -109,4 +116,6 @@
 @import "ui/btn-double-type";
 @import "ui/custom-forms";
 @import "ui/cookies";
+@import "ui/states";
+
 

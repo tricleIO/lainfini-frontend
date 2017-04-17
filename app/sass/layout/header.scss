@@ -47,6 +47,8 @@ header {
     }
   }
   .header_action {
+    display: flex;
+    justify-content: flex-end;
     a,i {
       vertical-align: middle;
     }
@@ -73,6 +75,19 @@ header {
         vertical-align: bottom;
       }
     }
+
+    .logged-in {
+      display: flex;
+      align-items: center;
+      p {
+        font-family: $font-family-nexa;
+      }
+      img {
+        border-radius: 50%;
+        padding-right: $_5;
+      }
+    }
+
   }
 }
 .logo {

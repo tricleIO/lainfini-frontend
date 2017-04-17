@@ -1,5 +1,4 @@
-import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { LOAD_PRODUCT } from './constants';
 import { productLoaded, productLoadingError } from './actions';
 
@@ -24,10 +23,7 @@ export function* getProduct(action) {
  * Root saga manages watcher lifecycle
  */
 export function* productsData() {
-  const watcher = yield takeLatest(LOAD_PRODUCT, getProduct);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(LOAD_PRODUCT, getProduct);
 }
 
 // Bootstrap sagas

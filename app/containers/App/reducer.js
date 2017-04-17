@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 import localStorage from 'local-storage';
 
 import _ from 'lodash';
+import uuidV4 from 'uuid/v4';
 
 import {
   CHANGE_MENU_STATE,
@@ -13,6 +14,10 @@ import {
   LOGOUT,
   SAVE_WISHLIST,
   SAVE_CART,
+  ADD_NOTIFICATION,
+  SHOWED_NOTIFICATION,
+  ADD_LOADING,
+  REMOVE_LOADING,
 } from './constants';
 
 const initialState = fromJS({
@@ -24,10 +29,38 @@ const initialState = fromJS({
   cart: undefined,
   token: localStorage('access-token'),
   lastViewedDesigns: localStorage('last-viewed-designs') ? localStorage('last-viewed-designs') : [],
+  notifications: null,
+  notificationsUpdate: true,
+  loadingsNumber: 0,
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case ADD_LOADING: //eslint-disable-line
+      const loadings = state.get('loadings');
+      if (!_(state.get('loadings')).includes(action.name)) {
+        loadings.push(action.name);
+      }
+      return state
+        .set('loadingsNumber', _(loadings).size())
+        .set('loadings', loadings);
+    case REMOVE_LOADING: //eslint-disable-line
+      const loadingss = _(state.get('loadings')).filter((o) => o !== action.name).value();
+      return state
+        .set('loadingsNumber', _(loadingss).size())
+        .set('loadings', loadingss);
+    case ADD_NOTIFICATION: // eslint-disable-line no-case-declarations
+      const notification = action.notification;
+      const notifications = state.get('notifications') ? state.get('notifications') : [];
+      notification.uuid = uuidV4();
+      notification.showed = false;
+      notifications.push(notification);
+      return state
+        .set('notifications', notifications)
+        .set('notificationsUpdate', !state.get('notificationsUpdate'));
+    case SHOWED_NOTIFICATION:
+      return state
+        .set('notifications', _(state.get('notifications')).map((obj) => { const o = obj; if (obj.uuid === action.uuid) { o.showed = true; } return o; }).value());
     case SAVE_CART:
       return state
         .set('cart', action.cart);
@@ -67,7 +100,8 @@ function appReducer(state = initialState, action) {
       return state
         .set('lastViewedDesigns', lastViewedDesigns);
     default:
-      return state;
+      return state
+        .set('loadings', []);
   }
 }
 

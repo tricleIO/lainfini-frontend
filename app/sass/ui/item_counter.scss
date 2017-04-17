@@ -2,6 +2,9 @@
   font-size: $font-size-root;
   display: table;
   user-select: none;
+  @include media-breakpoint-down(xs) {
+    justify-content: center;
+  }
   .minus, .plus, .status {
     display: table-cell;
     line-height: 1;

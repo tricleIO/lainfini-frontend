@@ -20,3 +20,7 @@ export const DELETE_FROM_CART = 'App/DELETE_FROM_CART';
 export const UPDATE_CART_QTY = 'App/UPDATE_CART_QTY';
 export const GET_CURRENT_CART = 'App/GET_CURRENT_CART';
 export const GET_CART_ID = 'App/GET_CART_ID';
+export const ADD_NOTIFICATION = 'App/ADD_NOTIFICATION';
+export const SHOWED_NOTIFICATION = 'App/SHOWED_NOTIFICATION';
+export const ADD_LOADING = 'App/ADD_LOADING';
+export const REMOVE_LOADING = 'App/REMOVE_LOADING';

@@ -1,28 +1,48 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import SocialNav from 'components/SocialNav';
 
 import LoginForm from './forms/login';
+import RegisterForm from './forms/register';
+import LostPasswordForm from './forms/lostPassword';
 
 import { connect } from 'react-redux';
 
 import {
   loginUser,
+  registerUser,
+  requestPassword,
+  loginWithFacebook,
 } from './actions';
 
 class User extends React.Component {
 
   static propTypes = {
     loginUser: React.PropTypes.func,
+    registerUser: React.PropTypes.func,
+    requestPassword: React.PropTypes.func,
+    loginWithFacebook: React.PropTypes.func,
+    params: React.PropTypes.object,
   }
 
-  handleSubmit = (values) => {
+  handleLogin = (values) => {
     this.props.loginUser(values.get('email'), values.get('password'));
   }
 
+  handleRegister = (values) => {
+    this.props.registerUser(values.get('email'), values.get('full-name'), values.get('password'));
+  }
+
+  handleLostPassword = (values) => {
+    this.props.requestPassword(values.get('email'));
+  };
+
   render() {
+    console.log(this.props);
     return (
       <div className="login_page">
+        <Helmet title="Login" />
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
@@ -33,30 +53,15 @@ class User extends React.Component {
           </div>
           <div className="row">
             <div className="col-12 col-lg-6">
-              <form className="proceed_box">
-                <h3 className="mb-3">New Customer</h3>
-                <p className="mb-5">Sign up to place your order and receive exclusive offers.</p>
-                <div className="form-group">
-                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Your@email" />
-                </div>
-                <div className="form-group">
-                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Your name" />
-                </div>
-                <div className="form-group">
-                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Your surname" />
-                </div>
-                <button className="btn btn-block mt-4 mb-4 text-uppercase">Sign Up</button>
-                <p className="text-center">Or sign in with your existing social media account</p>
-                <ul className="social-nav__icons">
-                  <li><a href><i className="icon icon-facebook" /></a></li>
-                  <li><a href><i className="icon icon-twitter" /></a></li>
-                  <li><a href><i className="icon icon-instagram" /></a></li>
-                  <li><a href><i className="icon icon-google" /></a></li>
-                </ul>
-              </form>
+              <RegisterForm onSubmit={this.handleRegister} />
             </div>
             <div className="col-12 col-lg-6">
-              <LoginForm onSubmit={this.handleSubmit} />
+              {this.props.params.splat !== 'forgotten-password' &&
+                <LoginForm onSubmit={this.handleLogin} loginWithFacebook={this.props.loginWithFacebook} />
+              }
+              {this.props.params.splat === 'forgotten-password' &&
+                <LostPasswordForm onSubmit={this.handleLostPassword} />
+              }
             </div>
           </div>
         </div>
@@ -70,6 +75,9 @@ class User extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     loginUser: (email, password) => dispatch(loginUser(email, password)),
+    registerUser: (email, fullName, password) => dispatch(registerUser(email, fullName, password)),
+    requestPassword: (email) => dispatch(requestPassword(email)),
+    loginWithFacebook: () => dispatch(loginWithFacebook()),
   };
 }
 

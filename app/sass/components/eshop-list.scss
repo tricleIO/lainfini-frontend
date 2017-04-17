@@ -118,10 +118,18 @@
     line-height: $line-height-lg;
     font-weight: $font-weight-bold;
     padding-right: 2%;
+
     @include media-breakpoint-up(sm) {
       max-width: 60%;
       margin-bottom: $_25;
     }
+
+    @include media-breakpoint-down(sm) {
+      h4 {
+        margin:$_8 0;
+      }
+    }
+
     span {
       font-family: $font-family-nexa;
       color: $color-black;
@@ -134,14 +142,16 @@
         color: $color-b;
       }
     }
+
   }
 
   &__action {
     float: right;
     margin-bottom: $_15;
-    text-align: right;
+    text-align: center;
     @include media-breakpoint-up(sm) {
       width: 40%;
+      text-align: right;
     }
     .see__detail {
       font-size: $_16;

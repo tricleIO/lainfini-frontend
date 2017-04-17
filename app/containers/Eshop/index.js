@@ -51,6 +51,7 @@ class Eshop extends React.Component {
     selectFilterMaterial: React.PropTypes.func,
     selectFilterSize: React.PropTypes.func,
     addToCart: React.PropTypes.func,
+    location: React.PropTypes.object,
   };
 
   constructor(props) {
@@ -88,6 +89,13 @@ class Eshop extends React.Component {
       <div>
         <Helmet title="Catalog" />
         <Visual bg={this.eshopHeadImg} mod="visual--small" />
+
+        {
+          this.props.location && this.props.location.state && this.props.location.state.successfulPayment &&
+          <div className="successful-payment">
+            Your payment has been successful. You will be informed through the email.
+          </div>
+        }
 
         <div className="filter">
           <div className="container">
@@ -163,7 +171,8 @@ class Eshop extends React.Component {
                       <div className="col-7">
                         <div>{product.size.value}</div>
                         <div>{product.material.name}, {product.material.composition}</div>
-                        <div>Jabob Borrows</div>
+                        <div>{product.technology.name}</div>
+                        <div>{product.design.name}</div>
                       </div>
                       <div className="col-5 see_more">
                         <Link to={'/basket'} onClick={() => this.addToBasket(product.uid)} className="btn">Add to Basket</Link>

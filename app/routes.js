@@ -63,12 +63,17 @@ export default function createRoutes(store) {
       name: 'profile',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
+          System.import('containers/Profile/reducer'),
+          System.import('containers/Profile/sagas'),
           System.import('containers/Profile'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('profile', reducer.default);
+          injectSagas(sagas.default);
+
           renderRoute(component);
         });
 
@@ -150,6 +155,56 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/order',
+      name: 'order',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Order/reducer'),
+          System.import('containers/Order/sagas'),
+          System.import('containers/Order'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('order', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/order/shipping-and-payment',
+      name: 'order',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ShippingAndPayment/reducer'),
+          System.import('containers/ShippingAndPayment/sagas'),
+          System.import('containers/ShippingAndPayment'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('ShippingAndPayment', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/order/pay/card',
+      name: 'payByStripe',
+      getComponent(nextState, cb) {
+        System.import('containers/ShippingAndPayment/stripe')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/templates/:template',
       name: 'templates',
       getComponent(nextState, cb) {
@@ -166,8 +221,8 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/user',
-      name: 'user',
+      path: '/login(/**)',
+      name: 'login-register',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/User/reducer'),
@@ -203,10 +258,82 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/faq',
+      name: 'faq',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/Faq/reducer'),
+          System.import('containers/Faq/sagas'),
+          System.import('containers/Faq'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('faq', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/email-verification/:token',
+      name: 'emailVerification',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/EmailVerification/sagas'),
+          System.import('containers/EmailVerification'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/customer',
+      name: 'customer',
+      getComponent(nextState, cb) {
+        System.import('containers/Customer')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/server-down',
       name: 'serverDown',
       getComponent(nextState, cb) {
         System.import('containers/ServerDown')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/terms-of-service',
+      name: 'termsOfService',
+      getComponent(nextState, cb) {
+        System.import('containers/TermsOfService')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/about-cookies',
+      name: 'aboutCookies',
+      getComponent(nextState, cb) {
+        System.import('containers/AboutCookies')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/logout',
+      name: 'logout',
+      getComponent(nextState, cb) {
+        System.import('containers/Logout')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

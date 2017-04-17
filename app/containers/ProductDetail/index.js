@@ -90,6 +90,8 @@ class ProductDetail extends React.Component {
     const { product } = this.props;
     const shareUrl = String(window.location);
 
+    console.log(product);
+
     return (
       <div>
         {product.name &&
@@ -141,15 +143,11 @@ class ProductDetail extends React.Component {
                   <div className="row product-detail__table">
                     <div className="col-12">
                       <div className="wsw">
-                        <p>
-                          Size: {product.size.value}
-                        </p>
-                        <p>
-                          Material: {product.material.name}
-                        </p>
-                        <p>
-                          {product.material.composition}
-                        </p>
+                        <p>Size: {product.size.value}</p>
+                        <p>Material: {product.material.name}</p>
+                        <p>{product.material.composition}</p>
+                        <p>{product.technology.name}</p>
+                        <p>Designer: {product.design.name}</p>
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">

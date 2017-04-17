@@ -13,6 +13,8 @@
 
 import React from 'react';
 
+import { Link } from 'react-router';
+
 export default class Footer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -27,33 +29,33 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
             <div className="col-md-4 hidden-sm-down">
               <ul>
                 <li>
-                  <a href="">info@lainfini.com</a>
+                  <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="">Press inquiries</a>
+                  <a href="">Press inquries</a>
                 </li>
               </ul>
             </div>
             <div className="col-12 col-md-4 text-center">
-              <a href="/" className="logo">lainfini</a>
+              <Link to="/" className="logo">lainfini</Link>
               <ul className="nav-mobile hidden-md-up">
                 <li>
-                  <a href="">info@lainfini.com</a>
-                  <a href="">Press inquiries</a>
+                  <a href="mailto:info@lainfini.com">info@lainfini.com</a>
+                  <a href="tel:+18004050388">+1 800 405 0388</a>
                   <a href="">more about the brand</a>
                 </li>
               </ul>
               <p className="copyright">
-                2016 Copyright la infini
+                2017 &copy; Copyright la infini
               </p>
             </div>
             <div className="col-sm-4 text-sm-right hidden-sm-down">
               <ul>
                 <li>
-                  <a href="">download our brochure</a>
+                  <a href="tel:+18004050388">+1 800 405 0388</a>
                 </li>
                 <li>
-                  <a href="">more about the brand</a>
+                  <a href="">download our brochure</a>
                 </li>
               </ul>
             </div>

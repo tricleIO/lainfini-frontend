@@ -1,0 +1,40 @@
+.user-setting-card {
+
+
+  &__title {
+    background-color: $color-c;
+    padding: $_30;
+    color: $color-white;
+    font-size: $_25;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: $_10;
+      border-radius: $border-radius;
+    }
+    strong {
+      font-size: $_40;
+    }
+  }
+
+  &__infobox {
+    background-color: $color-white;
+    padding: $_30;
+    line-height: $line-height-base;
+  }
+
+  &__item-panel {
+    display: flex;
+    align-items: center;
+    background-color: $color-white;
+    margin:$_10 0;
+    padding: $_15;
+  }
+
+  &__item__content {
+    padding-bottom: $_40;
+    background-color: $color-white;
+    margin-bottom: $_40;
+  }
+
+}

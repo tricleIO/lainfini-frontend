@@ -1,54 +1,83 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import _ from 'lodash';
+
+import config from 'config';
+
+import {
+  makeSelectCarouselImages,
+  makeSelectWorkImages,
+} from './selectors';
+
+import {
+  loadCarouselImages,
+  loadWorkImages,
+} from './actions';
 
 import $ from 'jquery';
 import 'slick-carousel';
+import 'lightbox2/dist/css/lightbox.min.css';
+import 'lightbox2';
 
 import SocialNav from 'components/SocialNav';
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
+
+  static propTypes = {
+    carouselImages: React.PropTypes.object,
+    workImages: React.PropTypes.object,
+    loadCarouselImages: React.PropTypes.func,
+    loadWorkImages: React.PropTypes.func,
+  }
 
   constructor(props) {
     super(props);
 
-    this.mirkaImg = require('./img/mirka.jpg');
+    this.mirkaImg = require('./img/mirka.png');
     this.img1Img = require('./img/img-1.jpg');
     this.img2Img = require('./img/img-2.jpg');
-    this.wswImg1Img = require('./img/wsw-img-1.jpg');
-    this.wswImg2Img = require('./img/wsw-img-2.jpg');
-    this.wswImg3Img = require('./img/wsw-img-3.jpg');
-    this.wswImg4Img = require('./img/wsw-img-4.jpg');
   }
 
-  componentDidMount() {
-    $(this.profileGallerySlider).slick({
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      slidesToShow: 3,
-      infinite: true,
-      speed: 500,
-      centerMode: false,
-      responsive: [
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+  componentWillMount() {
+    this.props.loadCarouselImages();
+    this.props.loadWorkImages();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!_(prevProps.carouselImages).isObject() && _(this.props.carouselImages).isObject()) {
+      $(this.profileGallerySlider).slick({
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        slidesToShow: 3,
+        infinite: true,
+        speed: 500,
+        centerMode: false,
+        responsive: [
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            },
           },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
+    }
   }
 
   render() {
+    const { workImages, carouselImages } = this.props;
+
     return (
       <div>
         <Helmet title="Profile" />
@@ -88,18 +117,19 @@ export default class Profile extends React.Component {
           </div>
         </section>
 
-        <div className="profil-gallery">
-          <div className="container-fluid" data-reveal>
-            <div className="row">
-              <div className="col-12 profil-gallery__slider" ref={(c) => { this.profileGallerySlider = c; }}>
-                <div className="profil-gallery__item" style={{ backgroundImage: 'url("' + this.img1Img + '")' }} />
-                <div className="profil-gallery__item" style={{ backgroundImage: 'url("' + this.img2Img + '")' }} />
-                <div className="profil-gallery__item" style={{ backgroundImage: 'url("' + this.img1Img + '")' }} />
-                <div className="profil-gallery__item" style={{ backgroundImage: 'url("' + this.img2Img + '")' }} />
+        {_(carouselImages).isObject() &&
+          <div className="profil-gallery">
+            <div className="container-fluid" data-reveal>
+              <div className="row">
+                <div className="col-12 profil-gallery__slider" ref={(c) => { this.profileGallerySlider = c; }}>
+                  {carouselImages.files.map((file, index) =>
+                    <div className="profil-gallery__item" style={{ backgroundImage: 'url("' + config.apiUrl + 'files/' + file.fileIndex + '.jpg")' }} key={index} />
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
 
         <div className="text-page" data-reveal>
           <div className="container">
@@ -118,26 +148,15 @@ export default class Profile extends React.Component {
                   </p>
 
                   <h2>selected works</h2>
-                  <div className="row">
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg1Img} alt="" />
+                  {_(workImages).isObject() &&
+                    <div className="row">
+                      {workImages.files.map((file, index) =>
+                        <div className="col-12 col-sm-4" key={index}>
+                          <a href={config.apiUrl + 'files/' + file.fileIndex + '.jpg'} data-lightbox="profile-lightbox"><img src={config.apiUrl + 'files/' + file.fileIndex + '.jpg'} alt="" /></a>
+                        </div>
+                      )}
                     </div>
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg2Img} alt="" />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg3Img} alt="" />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg4Img} alt="" />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg3Img} alt="" />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                      <img src={this.wswImg1Img} alt="" />
-                    </div>
-                  </div>
+                  }
                 </div>
               </div>
             </div>
@@ -151,3 +170,17 @@ export default class Profile extends React.Component {
   }
 
 }
+
+const mapStateToProps = createStructuredSelector({
+  workImages: makeSelectWorkImages(),
+  carouselImages: makeSelectCarouselImages(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loadCarouselImages: () => dispatch(loadCarouselImages()),
+    loadWorkImages: () => dispatch(loadWorkImages()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

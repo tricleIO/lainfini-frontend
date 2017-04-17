@@ -56,7 +56,7 @@ class ArrivalsSlider extends React.PureComponent {
                     </Link>
                   </p>
                   <Link to={'/catalog/' + product.product.slug}>
-                    <img src={config.apiUrl + 'files/' + product.product.mainImage.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
+                    <img src={config.apiUrl + 'files/' + product.product.mainImageDTO.fileIndex + '.png'} className="img-fluid d-inline-block" alt="new arrival img" />
                   </Link>
                   <div className="arrivals__author">
                     <div className="row">

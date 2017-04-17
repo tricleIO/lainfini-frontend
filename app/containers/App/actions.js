@@ -17,6 +17,10 @@ import {
   CREATE_CART,
   GET_CURRENT_CART,
   GET_CART_ID,
+  ADD_NOTIFICATION,
+  SHOWED_NOTIFICATION,
+  ADD_LOADING,
+  REMOVE_LOADING,
 } from './constants';
 
 export function changeMenuState(state) {
@@ -142,5 +146,33 @@ export function getCart(uid) {
   return {
     type: GET_CART_ID,
     uid,
+  };
+}
+
+export function addNotification(notification) {
+  return {
+    type: ADD_NOTIFICATION,
+    notification,
+  };
+}
+
+export function showedNotification(uuid) {
+  return {
+    type: SHOWED_NOTIFICATION,
+    uuid,
+  };
+}
+
+export function addLoading(name) {
+  return {
+    type: ADD_LOADING,
+    name,
+  };
+}
+
+export function removeLoading(name) {
+  return {
+    type: REMOVE_LOADING,
+    name,
   };
 }
