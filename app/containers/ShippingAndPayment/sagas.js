@@ -194,6 +194,8 @@ function* initBraintreeCard(action) {
         action.form.addEventListener('submit', (event) => {
           event.preventDefault();
 
+          action.dispatch(setStripeLoader(true));
+
           const data = {
             creditCard: {
               number: action.form.cardNumber.value,
@@ -215,6 +217,7 @@ function* initBraintreeCard(action) {
                 message: requestErr.details.originalError.error.message,
                 level: 'error',
               }));
+              action.dispatch(setStripeLoader(false));
               return;
             }
             request(config.apiUrl + 'payments/braintree/card', {
@@ -227,6 +230,7 @@ function* initBraintreeCard(action) {
                 paymentMethodNonce: response.creditCards[0].nonce,
               }),
             }).then((paymentData) => {
+              action.dispatch(setStripeLoader(false));
               if (paymentData.referenceCode) {
                 action.dispatch(createCart());
                 action.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
