@@ -9,6 +9,7 @@ import braintreeClient from 'braintree-web/client';
 import {
   makeSelectToken,
   makeSelectCart,
+  makeSelectUser,
 } from 'containers/App/selectors';
 
 import {
@@ -62,6 +63,7 @@ function* saveOrder(action) {
   const cart = yield select(makeSelectCart());
   const order = action.order.toJS();
   const billingAddress = yield select(makeSelectBillingAddress());
+  const user = yield select(makeSelectUser());
 
   const data = {
     cartUid: cart.uid,
@@ -81,8 +83,13 @@ function* saveOrder(action) {
     shippingTariffUid: order.shippingMethod,
   };
 
-  if (cart.customerUid) {
-    data.customerUid = cart.customerUid;
+  if (user.uid) {
+    data.customerUid = user.uid;
+    if (order.telephone) {
+      data.customer = {
+        phoneNumber: order.telephone,
+      };
+    }
   } else {
     data.customer = {
       firstName: billingAddress.firstNameUnlogged,
