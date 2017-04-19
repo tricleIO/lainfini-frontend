@@ -8,3 +8,4 @@ export const SAVE_ORDER = 'Lainfini/Containers/ShippingAndPayment/SAVE_ORDER';
 export const SAVE_ORDER_SUCCESS = 'Lainfini/Containers/ShippingAndPayment/SAVE_ORDER_SUCCESS';
 export const SEND_STRIPE_PAYMENT = 'Lainfini/Containers/ShippingAndPayment/SEND_STRIPE_PAYMENT';
 export const STRIPE_LOADER_SET_STATE = 'Lainfini/Containers/ShippingAndPayment/STRIPE_LOADER_SET_STATE';
+export const INIT_BRAINTREE_CARD_PAYMENT = 'Lainfini/Containers/ShippingAndPayment/INIT_BRAINTREE_CARD_PAYMENT';

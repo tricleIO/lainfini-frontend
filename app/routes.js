@@ -200,9 +200,20 @@ export default function createRoutes(store) {
       path: '/order/pay/card',
       name: 'payByStripe',
       getComponent(nextState, cb) {
-        System.import('containers/ShippingAndPayment/stripe')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+        const importModules = Promise.all([
+          System.import('containers/ShippingAndPayment/sagas'),
+          System.import('containers/ShippingAndPayment/stripe'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     }, {
       path: '/templates/:template',

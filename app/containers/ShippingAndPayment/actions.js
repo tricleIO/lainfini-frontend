@@ -9,6 +9,7 @@ import {
   SAVE_ORDER_SUCCESS,
   SEND_STRIPE_PAYMENT,
   STRIPE_LOADER_SET_STATE,
+  INIT_BRAINTREE_CARD_PAYMENT,
 } from './constants';
 
 export function loadPaymentMethods(country) {
@@ -78,5 +79,14 @@ export function setStripeLoader(state) {
   return {
     type: STRIPE_LOADER_SET_STATE,
     state,
+  };
+}
+
+export function initBraintreePayment(form, submit, dispatch) {
+  return {
+    type: INIT_BRAINTREE_CARD_PAYMENT,
+    form,
+    submit,
+    dispatch,
   };
 }

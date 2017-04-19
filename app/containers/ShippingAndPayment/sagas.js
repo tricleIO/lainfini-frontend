@@ -1,8 +1,10 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { LOAD_SHIPPING_METHODS, LOAD_PAYMENT_METHODS, SAVE_ORDER, SEND_STRIPE_PAYMENT } from './constants';
+import { LOAD_SHIPPING_METHODS, LOAD_PAYMENT_METHODS, SAVE_ORDER, SEND_STRIPE_PAYMENT, INIT_BRAINTREE_CARD_PAYMENT } from './constants';
 import { savePaymentMethods, saveShippingMethods, paymentMethodsError, shippingMethodsError, orderSaved, setStripeLoader } from './actions';
 import config from 'config';
 import { push } from 'react-router-redux';
+
+import braintreeClient from 'braintree-web/client';
 
 import {
   makeSelectToken,
@@ -105,7 +107,7 @@ function* saveOrder(action) {
   try {
     const ordr = yield call(request, requestURL, options);
     yield put(orderSaved(ordr));
-    if (order.paymentMethod === 'STRIPE') {
+    if (order.paymentMethod === 'CARD') {
       yield put(push('/order/pay/card'));
     }
   } catch (err) {
@@ -167,9 +169,86 @@ function* sendStripePaymentData() {
   yield takeLatest(SEND_STRIPE_PAYMENT, sendStripePayment);
 }
 
+function* initBraintreeCard(action) {
+  const order = yield select(makeSelectOrder());
+  const requestURL = config.apiUrl + 'payments/braintree/token';
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  };
+  try {
+    const clientToken = (yield call(request, requestURL, options)).clientToken;
+
+    braintreeClient.create(
+      {
+        authorization: clientToken,
+      },
+      (clientErr, clientInstance) => {
+        if (clientErr) {
+          // Handle error in client creation
+          return;
+        }
+        action.submit.removeAttribute('disabled');
+        action.form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const data = {
+            creditCard: {
+              number: action.form.cardNumber.value,
+              cvv: action.form.cardCCV.value,
+              expirationDate: action.form.expirationDate.value,
+              options: {
+                validate: true,
+              },
+            },
+          };
+
+          clientInstance.request({
+            endpoint: 'payment_methods/credit_cards',
+            method: 'post',
+            data,
+          }, (requestErr, response) => {
+            if (requestErr) {
+              action.dispatch(addNotification({
+                message: requestErr.details.originalError.error.message,
+                level: 'error',
+              }));
+              return;
+            }
+            request(config.apiUrl + 'payments/braintree/card', {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              method: 'POST',
+              body: JSON.stringify({
+                orderUid: order.uid,
+                paymentMethodNonce: response.creditCards[0].nonce,
+              }),
+            }).then((paymentData) => {
+              if (paymentData.referenceCode) {
+                action.dispatch(createCart());
+                action.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
+              }
+            });
+          });
+        });
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* initBraintreeCardData() {
+  yield takeLatest(INIT_BRAINTREE_CARD_PAYMENT, initBraintreeCard);
+}
+
 export default [
   getShippingData,
   getPaymentData,
   saveOrderData,
   sendStripePaymentData,
+  initBraintreeCardData,
 ];
