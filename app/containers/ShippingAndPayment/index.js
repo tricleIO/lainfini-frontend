@@ -176,7 +176,7 @@ class ShippingAndPaymentForm extends React.Component {
                       </span>
                     </label>
                   }
-                  {_(paymentMethods).find({ value: 'APPLE_PAY' }) &&
+                  {_(paymentMethods).find({ value: 'APPLE_PAY' }) && window.ApplePaySession && window.ApplePaySession.canMakePayments() &&
                     <label htmlFor="applePayMethod" className="custom-control custom-radio mb-4 mb-sm-0">
                       <Field component="input" value="APPLE_PAY" id="applePayMethod" name="paymentMethod" type="radio" className="custom-control-input" />
                       <span className="custom-control-indicator" />
