@@ -116,6 +116,8 @@ function* saveOrder(action) {
     yield put(orderSaved(ordr));
     if (order.paymentMethod === 'CARD') {
       yield put(push('/order/pay/card'));
+    } else if (order.paymentMethod === 'PAYPAL') {
+      yield put(push('/order/pay/paypal'));
     }
   } catch (err) {
     console.log(err);

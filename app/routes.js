@@ -216,6 +216,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/order/pay/paypal',
+      name: 'payByPaypal',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ShippingAndPayment/paypal'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/templates/:template',
       name: 'templates',
       getComponent(nextState, cb) {
