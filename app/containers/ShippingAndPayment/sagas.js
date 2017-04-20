@@ -238,12 +238,12 @@ function* initBraintreeCard(action) {
                 paymentMethodNonce: response.creditCards[0].nonce,
               }),
             }).then((paymentData) => {
-              action.dispatch(removeLoading('stripePayment'));
-              action.dispatch(setStripeLoader(false));
               if (paymentData.referenceCode) {
                 action.dispatch(createCart());
                 action.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
               }
+              action.dispatch(removeLoading('stripePayment'));
+              action.dispatch(setStripeLoader(false));
             });
           });
         });
