@@ -30,7 +30,7 @@ class Paypal extends React.Component {
 
     this.state = {
       message: 'We are waiting for you to complete payment on paypal...',
-      submessage: 'We will open up paypal window for you, if not shown, check your browser settings.',
+      popupError: false,
     };
   }
 
@@ -41,83 +41,97 @@ class Paypal extends React.Component {
   }
 
   componentDidMount() {
-    const orderData = this.props.location.state.data;
-    const userData = this.props.location.state.user;
-    const paymentData = {
-      shippingName: userData ? userData.firstName + ' ' + userData.lastName : orderData.customer.firstName + ' ' + orderData.customer.lastName,
-      line: orderData.deliveryAddress.street,
-      city: orderData.deliveryAddress.city,
-      state: orderData.deliveryAddress.country,
-      phone: orderData.customer.phoneNumber,
-      postal: orderData.deliveryAddress.postal,
-    };
-    if (this.props.order) {
-      request(config.apiUrl + 'payments/braintree/token', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      }).then((braintreeTokenData) => {
-        const braintreeToken = braintreeTokenData.clientToken;
+    this.initPaypal();
+  }
 
-        braintreeClient.create(
-          {
-            authorization: braintreeToken,
-          },
-          (clientErr, clientInstance) => {
-            braintreePaypal.create({
-              client: clientInstance,
-            }, (paypalErr, paypalInstance) => {
-              if (paypalErr) {
-                console.error('Error creating PayPal:', paypalErr);
-                return;
-              }
-              paypalInstance.tokenize({
-                flow: 'checkout',
-                amount: this.props.order.totalPriceWithShipping, // Required
-                currency: 'USD', // Required
-                locale: 'en_US',
-                enableShippingAddress: true,
-                shippingAddressEditable: false,
-                shippingAddressOverride: {
-                  recipientName: paymentData.shippingName,
-                  line1: paymentData.line,
-                  city: paymentData.city,
-                  countryCode: paymentData.country,
-                  postalCode: paymentData.postal,
-                  phone: paymentData.phone,
-                },
-              }, (tokenizeErr, payload) => {
-                if (tokenizeErr) {
-                  if (tokenizeErr.type !== 'CUSTOMER') {
-                    this.props.dispatch(addNotification({
-                      message: tokenizeErr,
-                      level: 'error',
-                    }));
+  initPaypal() {
+    const pop = window.open('about:blank', 'new_window_123', 'height=150,width=150');
+
+    setTimeout(() => {
+      if (!pop || pop.closed || pop.closed === 'undefined' || pop === 'undefined' || parseInt(pop.innerWidth, 10) === 0) {
+        this.setState({ popupError: true });
+      } else {
+        this.setState({ popupError: false });
+        const orderData = this.props.location.state.data;
+        const userData = this.props.location.state.user;
+        const paymentData = {
+          shippingName: userData ? userData.firstName + ' ' + userData.lastName : orderData.customer.firstName + ' ' + orderData.customer.lastName,
+          line: orderData.deliveryAddress.street,
+          city: orderData.deliveryAddress.city,
+          state: orderData.deliveryAddress.country,
+          phone: orderData.customer.phoneNumber,
+          postal: orderData.deliveryAddress.postal,
+        };
+        if (this.props.order) {
+          request(config.apiUrl + 'payments/braintree/token', {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+          }).then((braintreeTokenData) => {
+            const braintreeToken = braintreeTokenData.clientToken;
+
+            braintreeClient.create(
+              {
+                authorization: braintreeToken,
+              },
+              (clientErr, clientInstance) => {
+                braintreePaypal.create({
+                  client: clientInstance,
+                }, (paypalErr, paypalInstance) => {
+                  if (paypalErr) {
+                    console.error('Error creating PayPal:', paypalErr);
+                    return;
                   }
-                  return;
-                }
-                this.setState({ message: 'We are processing your payment, please wait...', submessage: '' });
-                request(config.apiUrl + 'payments/braintree/paypal', {
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  method: 'POST',
-                  body: JSON.stringify({
-                    orderUid: this.props.order.uid,
-                    paymentMethodNonce: payload.nonce,
-                  }),
-                }).then((paymentDatas) => {
-                  if (paymentDatas.referenceCode) {
-                    this.props.dispatch(createCart());
-                    this.props.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
-                  }
+                  paypalInstance.tokenize({
+                    flow: 'checkout',
+                    amount: this.props.order.totalPriceWithShipping, // Required
+                    currency: 'USD', // Required
+                    locale: 'en_US',
+                    enableShippingAddress: true,
+                    shippingAddressEditable: false,
+                    shippingAddressOverride: {
+                      recipientName: paymentData.shippingName,
+                      line1: paymentData.line,
+                      city: paymentData.city,
+                      countryCode: paymentData.country,
+                      postalCode: paymentData.postal,
+                      phone: paymentData.phone,
+                    },
+                  }, (tokenizeErr, payload) => {
+                    if (tokenizeErr) {
+                      if (tokenizeErr.type !== 'CUSTOMER') {
+                        this.props.dispatch(addNotification({
+                          message: tokenizeErr,
+                          level: 'error',
+                        }));
+                      }
+                      return;
+                    }
+                    this.setState({ message: 'We are processing your payment, please wait...', submessage: '' });
+                    request(config.apiUrl + 'payments/braintree/paypal', {
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      method: 'POST',
+                      body: JSON.stringify({
+                        orderUid: this.props.order.uid,
+                        paymentMethodNonce: payload.nonce,
+                      }),
+                    }).then((paymentDatas) => {
+                      if (paymentDatas.referenceCode) {
+                        this.props.dispatch(createCart());
+                        this.props.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
+                      }
+                    });
+                  });
                 });
               });
-            });
           });
-      });
-    }
+        }
+      }
+      if (pop) pop.close();
+    }, 1000);
   }
 
   render() {
@@ -133,7 +147,14 @@ class Paypal extends React.Component {
               <div className="sk-cube3 sk-cube"></div>
             </div>
             <p className="text-center" style={{ marginTop: '25px' }}>{this.state.message}</p>
-            <p className="text-center" style={{ marginTop: '5px' }}>{this.state.submessage}</p>
+            {this.state.popupError &&
+              <p className="text-center" style={{ marginTop: '5px' }}>We cannot open popup for PayPal payment, you have to enable popups for our website!</p>
+            }
+            {this.state.popupError &&
+              <div className="btn__inline offset-vertical-30 text-center">
+                <a onClick={() => this.initPaypal()} className="btn" data-reveal>try popup again</a>
+              </div>
+            }
             <div className="btn__inline offset-vertical-30 text-center">
               <Link to="/catalog" className="btn" data-reveal>back to catalog</Link>
             </div>
