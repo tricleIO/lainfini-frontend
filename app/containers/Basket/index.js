@@ -34,7 +34,7 @@ class Basket extends React.Component {
 
   render() {
     const { basket } = this.props;
-    if (basket) {
+    if (_(basket).isObject()) {
       basket.items = _(basket.items).map((obj) => {
         const o = obj;
         o.totalPrice = obj.quantity * obj.product.price;
@@ -74,7 +74,7 @@ class Basket extends React.Component {
                     </div>
                   </div>
                 )}
-                {basket && _(basket.items).size() === 0 &&
+                {_(basket).isObject() && _(basket.items).size() === 0 &&
                   <div className="col-12 empty__basket no-content mt-5">
                     <div className="no-content__border">
                       Your basket is empty, go to <Link to="/catalog">catalog</Link> and select some products.
@@ -82,7 +82,7 @@ class Basket extends React.Component {
                   </div>
                 }
               </div>
-              {basket && _(basket.items).size() > 0 &&
+              {_(basket).isObject() && _(basket.items).size() > 0 &&
                 <div className="row">
                   <div className="col-12 col-sm-5 offset-sm-6">
                     <div className="ui-total-price">
@@ -98,7 +98,7 @@ class Basket extends React.Component {
               }
               <div className="row">
                 <div className="ui-btn-double-type">
-                  <div className={classNames('col-12', _(basket.items).size() > 0 ? 'col-sm-4 offset-sm-2' : 'col-sm-6 offset-sm-3 text-center')}>
+                  <div className={classNames('col-12', basket && _(basket.items).size() > 0 ? 'col-sm-4 offset-sm-2' : 'col-sm-6 offset-sm-3 text-center')}>
                     <div className="btn__inline offset-vertical-30">
                       <Link to="/catalog" data-reveal>continue shopping</Link>
                     </div>
