@@ -45,7 +45,7 @@ class Paypal extends React.Component {
   }
 
   initPaypal() {
-    const pop = window.open('about:blank', 'new_window_123', 'height=150,width=150');
+    const pop = window.open('about:blank', '_blank', 'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=10, height=10, visible=none');
 
     setTimeout(() => {
       if (!pop || pop.closed || pop.closed === 'undefined' || pop === 'undefined' || parseInt(pop.innerWidth, 10) === 0) {
