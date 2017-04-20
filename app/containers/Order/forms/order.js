@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
       initialize({
         firstName: user.firstName,
         lastName: user.lastName,
-        telephone: user.phoneCode + user.phoneNumber,
+        telephone: user.phoneCode || user.phoneNumber ? user.phoneCode + user.phoneNumber : '',
       });
     }
   }
