@@ -201,6 +201,7 @@ function* initBraintreeCard(action) {
         action.form.addEventListener('submit', (event) => {
           event.preventDefault();
 
+          action.dispatch(addLoading('stripePayment'));
           action.dispatch(setStripeLoader(true));
 
           const data = {
@@ -237,6 +238,7 @@ function* initBraintreeCard(action) {
                 paymentMethodNonce: response.creditCards[0].nonce,
               }),
             }).then((paymentData) => {
+              action.dispatch(removeLoading('stripePayment'));
               action.dispatch(setStripeLoader(false));
               if (paymentData.referenceCode) {
                 action.dispatch(createCart());

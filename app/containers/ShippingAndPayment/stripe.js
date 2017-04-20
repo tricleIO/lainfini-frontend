@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { push } from 'react-router-redux';
 import { reduxForm, Field, Form } from 'redux-form/immutable';
 import $ from 'jquery';
+import _ from 'lodash';
 
 import { makeSelectOrder, makeSelectStripeLoader } from './selectors';
 
@@ -54,6 +55,28 @@ class PayByStripe extends React.Component {
       data.cardNumber = data.cardNumber1 + data.cardNumber2 + data.cardNumber3 + data.cardNumber4;
       this.props.handleSubmit(data);
     }
+  }
+
+  expirationDateOnChange(e) {
+    let targetValue = e.target.value;
+    if (_(targetValue).size() === 2 && _(this.state.cardExpirationDate).size() < 2 && !targetValue.includes('/')) {
+      targetValue += '/';
+    } else if (_(targetValue).size() === 2 && _(this.state.cardExpirationDate).size() > 2) {
+      targetValue = targetValue.substring(0, targetValue.length - 1);
+    }
+    if (targetValue.includes('/')) {
+      const pieces = targetValue.split('/');
+      if (pieces[0] > 12) {
+        pieces[0] = '12';
+      } else if (pieces[0] < 1) {
+        pieces[0] = '01';
+      }
+      if (_(pieces[0]).size() === 1) {
+        pieces[0] = '0' + pieces[0];
+      }
+      targetValue = pieces.join('/');
+    }
+    this.setState({ cardExpirationDate: targetValue });
   }
 
   render() {
@@ -120,7 +143,7 @@ class PayByStripe extends React.Component {
                     <div className="form-group">
                       <label htmlFor="card-number">Card Number</label>
                       <div className="content card-number">
-                        <input value={this.state.cardNumber} type="text" name="cardNumber" id="card-number" className="input-cart-number form-control" onChange={(e) => this.setState({ cardNumber: e.target.value })} maxLength={16} />
+                        <input value={this.state.cardNumber} type="text" name="cardNumber" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (!_(_(e.target.value).toNumber()).isNaN()) this.setState({ cardNumber: e.target.value }); }} maxLength={16} />
                         {/*
                         <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber1" type="text" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
                         <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber2" type="text" id="card-number-1" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
@@ -139,13 +162,13 @@ class PayByStripe extends React.Component {
                   <fieldset className="fieldset-expiration">
                     <div className="form-group">
                       <label htmlFor="card-expiration-month">Expiration date</label>
-                      <input type="text" name="expirationDate" id="expiration-date" className="form-control" maxLength={7} onChange={(e) => this.setState({ cardExpirationDate: e.target.value })} />
+                      <input value={this.state.cardExpirationDate} type="text" name="expirationDate" id="expiration-date" className="form-control" maxLength={7} onChange={(e) => this.expirationDateOnChange(e)} />
                     </div>
                   </fieldset>
                   <fieldset className="fieldset-ccv">
                     <div className="form-group">
                       <label htmlFor="card-ccv">CCV</label>
-                      <input name="cardCCV" type="text" className="form-control" id="card-ccv" maxLength={3} onChange={(e) => this.setState({ cardCCV: e.target.value })} />
+                      <input value={this.state.cardCCV} name="cardCCV" type="text" className="form-control" id="card-ccv" maxLength={3} onChange={(e) => { if (!_(_(e.target.value).toNumber()).isNaN()) this.setState({ cardCCV: e.target.value }); }} />
                     </div>
                   </fieldset>
                   <button type="submit" className="btn" disabled="true" ref={(c) => { this.submit = c; }}><i className="fa fa-lock" />Pay</button>
