@@ -22,6 +22,7 @@ class Paypal extends React.Component {
     order: React.PropTypes.object,
     dispatch: React.PropTypes.func,
     redirectNoOrder: React.PropTypes.func,
+    location: React.PropTypes.object,
   }
 
   constructor(props) {
@@ -40,6 +41,15 @@ class Paypal extends React.Component {
   }
 
   componentDidMount() {
+    const orderData = this.props.location.state.data;
+    const paymentData = {
+      shippingName: orderData.customer.firstName + ' ' + orderData.customer.lastName,
+      line: orderData.deliveryAddress.street,
+      city: orderData.deliveryAddress.city,
+      state: orderData.deliveryAddress.country,
+      phone: orderData.customer.phoneNumber,
+      postal: orderData.deliveryAddress.postal,
+    };
     if (this.props.order) {
       request(config.apiUrl + 'payments/braintree/token', {
         headers: {
@@ -63,6 +73,19 @@ class Paypal extends React.Component {
               }
               paypalInstance.tokenize({
                 flow: 'checkout',
+                amount: this.props.order.totalPriceWithShipping, // Required
+                currency: 'USD', // Required
+                locale: 'en_US',
+                enableShippingAddress: true,
+                shippingAddressEditable: false,
+                shippingAddressOverride: {
+                  recipientName: paymentData.shippingName,
+                  line1: paymentData.line,
+                  city: paymentData.city,
+                  countryCode: paymentData.country,
+                  postalCode: paymentData.postal,
+                  phone: paymentData.phone,
+                },
               }, (tokenizeErr, payload) => {
                 if (tokenizeErr) {
                   if (tokenizeErr.type !== 'CUSTOMER') {
@@ -83,8 +106,8 @@ class Paypal extends React.Component {
                     orderUid: this.props.order.uid,
                     paymentMethodNonce: payload.nonce,
                   }),
-                }).then((paymentData) => {
-                  if (paymentData.referenceCode) {
+                }).then((paymentDatas) => {
+                  if (paymentDatas.referenceCode) {
                     this.props.dispatch(createCart());
                     this.props.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
                   }
@@ -97,6 +120,7 @@ class Paypal extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className="loading">
