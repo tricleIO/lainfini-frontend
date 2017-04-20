@@ -42,8 +42,9 @@ class Paypal extends React.Component {
 
   componentDidMount() {
     const orderData = this.props.location.state.data;
+    const userData = this.props.location.state.user;
     const paymentData = {
-      shippingName: orderData.customer.firstName + ' ' + orderData.customer.lastName,
+      shippingName: userData ? userData.firstName + ' ' + userData.lastName : orderData.customer.firstName + ' ' + orderData.customer.lastName,
       line: orderData.deliveryAddress.street,
       city: orderData.deliveryAddress.city,
       state: orderData.deliveryAddress.country,
