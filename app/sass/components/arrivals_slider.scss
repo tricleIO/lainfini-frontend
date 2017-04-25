@@ -20,9 +20,14 @@
     @include media-breakpoint-up(sm) {
       box-shadow: $_25 $_45 $_50 rgba(0, 0, 0, 0.1);
     }
+
     img {
-      max-width: $_100*5.50;
+      max-width: $_100*5;
       width: 100%;
+      @include media-breakpoint-down(xl) {
+        max-width: $_100*4;
+
+      }
     }
   }
   &__title, &__author {

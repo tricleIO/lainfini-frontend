@@ -134,7 +134,7 @@ class Profile extends React.Component {
         <div className="text-page" data-reveal>
           <div className="container">
             <div className="row">
-              <div className="col-12 col-sm-10 offset-sm-1">
+              <div className="col-12">
                 <div className="wsw">
                   <h1>“I prefer moderate elegance in a luxury design!”</h1>
                   <p>
