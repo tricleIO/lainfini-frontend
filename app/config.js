@@ -13,7 +13,7 @@ const config = {
 
   common: {
     googleAnalyticsTrackingCode: 'UA-92826148-1',
-    apiUrl: 'http://api.lainfini.com/',
+    apiUrl: 'http://elise.srv.lainfini.com:8080/testing/',
 
     facebookLink: 'https://www.facebook.com/Lainfini.Fashion/',
     instagramLink: 'https://www.instagram.com/lainfini_designhouse/',
