@@ -127,7 +127,7 @@ class Eshop extends React.Component {
         </div>
 
         <div className="product-list">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               {products.map((product, index) => (
                 <div

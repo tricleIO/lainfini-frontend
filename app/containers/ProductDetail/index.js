@@ -104,9 +104,9 @@ class ProductDetail extends React.Component {
                   <div className="detail-slider">
                     <div className="detail-slider__item">
                       <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
-                      <div className="ui-items">
+                     {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
-                      </div>
+                      </div>*/}
                     </div>
                   </div>
                 </div>

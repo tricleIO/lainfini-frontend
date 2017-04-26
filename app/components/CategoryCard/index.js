@@ -27,7 +27,7 @@ export default class CategoryCard extends React.PureComponent {
       <section className="category-card">
         <div className="container">
           <div className="row" data-reveal>
-            <div className="col-12 col-sm-8 offset-sm-2 text-center">
+            <div className="col-12 text-center">
               <Heading type={this.props.type} subtitle={<FormattedMessage {...messages.smallTitle} />} title={<FormattedMessage {...messages.bigTitle} />} />
             </div>
           </div>

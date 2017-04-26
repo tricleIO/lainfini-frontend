@@ -18,6 +18,14 @@
   
 }
 
+.successful-payment {
+  font-family: $font-family-nexa;
+  text-align: center;
+  font-size: $_20;
+  font-weight: bold;
+  padding: $_30 0;
+}
+
 .icon-google {
 
   &:hover {
