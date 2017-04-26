@@ -11,7 +11,7 @@
 
     &--top-left {
       .product-list__small-image {
-        top:$_40;
+        top:-$_40;
         left: 0;
       }
 
@@ -119,9 +119,14 @@
     font-weight: $font-weight-bold;
     padding-right: 2%;
 
+
+
     @include media-breakpoint-up(sm) {
       max-width: 60%;
-      margin-bottom: $_25;
+      margin-bottom: $_8;
+      h4 {
+        min-height: 52px;
+      }
     }
 
     @include media-breakpoint-down(sm) {
@@ -129,6 +134,8 @@
         margin:$_8 0;
       }
     }
+
+
 
     span {
       font-family: $font-family-nexa;
@@ -198,7 +205,7 @@
     }
     .btn {
       padding: $_15;
-      font-size: $_12;
+      font-size: $_12 - $_1;
       text-align: center;
       width: 100%;
     }
