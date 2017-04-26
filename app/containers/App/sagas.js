@@ -36,7 +36,7 @@ export function* getUser(action) {
           level: 'success',
           message: 'You has been successfuly logged in! Welcome!',
         }));
-        yield put(push('/customer'));
+        yield put(push('/catalog'));
       }
     } catch (err) {
       yield put(logout());

@@ -24,13 +24,13 @@ class OAuthLogins extends React.Component {
   render() {
     return (
       <div>
-        <p className="text-center">Or sign in with your existing social media account</p>
+        {/* <p className="text-center">Or sign in with your existing social media account</p>
         <ul className="social-nav__icons">
           <li><a href={this.facebookLink}><i className="icon icon-facebook" /></a></li>
           <li><a><i className="icon icon-twitter" /></a></li>
           <li><a><i className="icon icon-instagram" /></a></li>
           <li><a><i className="icon icon-google" /></a></li>
-        </ul>
+        </ul> */}
       </div>
     );
   }
