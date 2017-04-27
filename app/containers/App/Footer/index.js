@@ -37,7 +37,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
               </ul>
             </div>
             <div className="col-12 col-md-4 text-center">
-              <Link to="/" className="logo">lainfini</Link>
+              <Link to="/" className="logo">LAINFINI</Link>
               <ul className="nav-mobile hidden-md-up">
                 <li>
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
@@ -46,7 +46,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                 </li>
               </ul>
               <p className="copyright">
-                2016 Copyright la infini
+                2016 Copyright LAINFINI
               </p>
             </div>
             <div className="col-sm-4 text-sm-right hidden-sm-down">
