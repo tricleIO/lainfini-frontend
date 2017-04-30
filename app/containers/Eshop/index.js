@@ -78,11 +78,11 @@ class Eshop extends React.Component {
     let products = _(this.props.products).isArray() ? this.props.products : [];
 
     if (parseInt(this.props.filterSize, 10) !== -1) {
-      products = _(products).filter((obj) => obj.size.uid === parseInt(this.props.filterSize, 10)).value();
+      products = _(products).filter((obj) => obj.size && obj.size.uid === parseInt(this.props.filterSize, 10)).value();
     }
 
     if (parseInt(this.props.filterMaterial, 10) !== -1) {
-      products = _(products).filter((obj) => obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
+      products = _(products).filter((obj) => obj.material && obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
     }
 
     return (
