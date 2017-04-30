@@ -49,7 +49,7 @@ class Wishlist extends React.Component {
                 <div className="wish-product">
                   <div className="wish-product__background">
                     <Link to={'/catalog/' + p.product.slug}>
-                      <img className="img-fluid" src={config.apiUrl + 'files/' + p.product.mainImage.fileIndex + '.jpg'} alt="product img" />
+                      <img className="img-fluid" src={p.product.mainImage && p.product.mainImage.fileIndex ? config.apiUrl + 'files/' + p.product.mainImage.fileIndex + '.jpg' : 'http://placehold.it/460x500'} alt="product img" />
                     </Link>
                   </div>
                   <div className="wish-product__content">

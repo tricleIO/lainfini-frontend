@@ -103,7 +103,7 @@ class ProductDetail extends React.Component {
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
-                      <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
+                      <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'http://placehold.it/460x500'} alt="img" className="img-fluid" />
                      {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
                       </div>*/}
@@ -141,11 +141,21 @@ class ProductDetail extends React.Component {
                   <div className="row product-detail__table">
                     <div className="col-12">
                       <div className="wsw">
-                        <p>Size: {product.size.value}</p>
-                        <p>Material: {product.material.name}</p>
-                        <p>{product.material.composition}</p>
-                        <p>{product.technology.name}</p>
-                        <p>Designer: {product.design.name}</p>
+                        {product.size &&
+                          <p>Size: {product.size.value}</p>
+                        }
+                        {product.material &&
+                          <p>Material: {product.material.name}</p>
+                        }
+                        {product.material &&
+                          <p>{product.material.composition}</p>
+                        }
+                        {product.technology &&
+                          <p>{product.technology.name}</p>
+                        }
+                        {product.design &&
+                          <p>Designer: {product.design.name}</p>
+                        }
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
