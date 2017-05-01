@@ -52,7 +52,7 @@ class Basket extends React.Component {
                   <div className="col-12 product-list__item" key={index}>
                     <div className="product-list__item--flex">
                       <div className="product-list__bg col-12 col-sm-2">
-                        <img src={i.product.mainImage && i.product.mainImage.fileIndex ? config.apiUrl + 'files/' + i.product.mainImage.fileIndex + '.jpg' : 'http://placehold.it/460x500'} alt="basket product" />
+                        <img src={i.product.mainImage && i.product.mainImage.fileIndex ? config.apiUrl + 'files/' + i.product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'} alt="basket product" />
                       </div>
                       <div className="product-list__content col-12 col-sm-10">
                         <div className="product-list__title col-12 col-sm-4">

@@ -47,7 +47,7 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
           <img src={config.apiUrl + 'files/' + img.fileIndex + '.jpg'} className={index === this.state.actualImg ? 'active' : null} alt="" key={index} />
         )}
         {_(this.props.imgs).size() === 0 &&
-          <img src="http://placehold.it/356x387" className="active" alt="" />
+          <img src="https://placehold.it/356x387" className="active" alt="" />
         }
       </div>
     );

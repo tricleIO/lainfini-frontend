@@ -103,7 +103,7 @@ class ProductDetail extends React.Component {
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
-                      <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'http://placehold.it/460x500'} alt="img" className="img-fluid" />
+                      <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'} alt="img" className="img-fluid" />
                      {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
                       </div>*/}
