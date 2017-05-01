@@ -89,7 +89,8 @@ module.exports = (options) => ({
       loaders: [
         'style',
         'css',
-        'sass',
+        'autoprefixer-loader',
+        'sass-loader',
       ],
     }),
   ]),
