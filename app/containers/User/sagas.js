@@ -10,6 +10,7 @@ import formUrlEncoded from 'form-urlencoded';
 import config from 'config';
 
 import request from 'utils/request';
+import localStorage from 'local-storage';
 
 export function* getLogin(action) {
   const data = {
@@ -34,6 +35,7 @@ export function* getLogin(action) {
     });
     yield put(loginUserSuccess());
     yield put(saveToken(token));
+    localStorage('lastUsedEmail', action.email);
   } catch (err) {
     yield put(logout());
     const errorMessage = err.response.status === 400 ? 'You have passed invalid creditals. Please try it again, or create new account.' : '';

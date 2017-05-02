@@ -1,6 +1,8 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form/immutable';
+import { reduxForm, Field, initialize } from 'redux-form/immutable';
 import { Link } from 'react-router';
+import localStorage from 'local-storage';
+import { connect } from 'react-redux';
 
 import OAuthLogins from '../oauthLogins';
 
@@ -8,7 +10,14 @@ class LoginForm extends React.Component {
 
   static propTypes = {
     handleSubmit: React.PropTypes.func,
+    initialize: React.PropTypes.func,
   };
+
+  componentWillMount() {
+    this.props.initialize({
+      email: localStorage('lastUsedEmail'),
+    });
+  }
 
   render() {
     const { handleSubmit } = this.props;
@@ -33,6 +42,12 @@ class LoginForm extends React.Component {
 
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    initialize: (data) => dispatch(initialize(data)),
+  };
+}
+
 export default reduxForm({
   form: 'login',
-})(LoginForm);
+})(connect(null, mapDispatchToProps)(LoginForm));
