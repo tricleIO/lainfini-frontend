@@ -142,6 +142,9 @@ class ShippingAndPaymentForm extends React.Component {
                         <p>
                           Delivery Info: Working days are Monday to Friday, not including holidays.
                         </p>
+                        <p>
+                          Delivery Time: 3-5 Days
+                        </p>
                       </div>
                     </div>
                   </div>
