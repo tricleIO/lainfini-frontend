@@ -19,7 +19,7 @@ export default class ProductSlider extends React.PureComponent { // eslint-disab
   }
 
   componentDidMount() {
-    this.timer = window.setInterval(() => this.findNextImg(), 5000);
+    this.timer = window.setInterval(() => this.findNextImg(), 2000);
   }
 
   componentWillUnmount() {
