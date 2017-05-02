@@ -81,7 +81,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               <Link to="/basket" className="shop-active">{this.props.cart && _(this.props.cart.items).size() > 0 && <i className="cart-state">{_(this.props.cart.items).sumBy('quantity')}</i>}<i className="icon icon-shop"></i></Link>
               {this.props.user.uid && <Link to="/wishlist"><i className="icon icon-wishlist"></i></Link>}
               {!this.props.user.uid && <Link to="/login" ><i className="icon icon-user" /></Link>}
-              {this.props.user.uid && <Link to="/customer" className="logged-in">
+              {this.props.user.uid && <Link to="/catalog" className="logged-in">
                 <img src={gravatar.url(this.props.user.username, { s: 30 })} alt={this.props.user.firstName + ' ' + this.props.user.lastName} />
                 <p>Greetings {this.props.user.firstName}</p>
                 <Link to="/logout"><i className="icon icon-logout"></i></Link>
