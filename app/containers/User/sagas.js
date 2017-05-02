@@ -50,10 +50,7 @@ export function* getLogin(action) {
  * Root saga manages watcher lifecycle
  */
 export function* loginData() {
-  const watcher = yield takeLatest(LOGIN_USER, getLogin);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(LOGIN_USER, getLogin);
 }
 
 export function* getRegister(action) {
@@ -152,10 +149,7 @@ export function* loginWithFacebook() {
 }
 
 export function* loginWithFacebookData() {
-  const watcher = yield takeLatest(LOGIN_FACEBOOK, loginWithFacebook);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(LOGIN_FACEBOOK, loginWithFacebook);
 }
 
 // Bootstrap sagas
