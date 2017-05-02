@@ -1,5 +1,5 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { LOCATION_CHANGE, push } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER, REQUEST_PASSWORD, LOGIN_FACEBOOK } from './constants';
 import { loginUserSuccess, loginUserError, registerUserError } from './actions';
 import { saveToken, logout, addNotification } from 'containers/App/actions';
@@ -115,6 +115,12 @@ export function* requestPassword(action) {
       cors: true,
       body: JSON.stringify(data),
     });
+    yield put(addNotification({
+      title: 'Your password has been resetted!',
+      level: 'success',
+      message: 'Check your email address, we have sent you new password!',
+    }));
+    yield put(push('/login'));
   } catch (err) {
     const errorMessage = 'Your email has not been found in our database';
     yield put(addNotification({
