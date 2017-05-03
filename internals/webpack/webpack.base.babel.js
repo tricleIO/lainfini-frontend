@@ -59,7 +59,7 @@ module.exports = (options) => ({
     }, {
       test: /\.pdf$/,
       exclude: /node_modules/,
-      loader: 'file-loader',
+      loader: 'file-loader?name=[name].[ext]',
     }],
   },
   plugins: options.plugins.concat([
