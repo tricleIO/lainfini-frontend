@@ -56,6 +56,10 @@ module.exports = (options) => ({
       test: /\.scss$/,
       exclude: /node_modules/,
       loader: 'happypack/loader?id=sass',
+    }, {
+      test: /\.pdf$/,
+      exclude: /node_modules/,
+      loader: 'file-loader',
     }],
   },
   plugins: options.plugins.concat([
