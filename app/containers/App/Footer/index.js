@@ -38,7 +38,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="">Press inquries</a>
+                  <a href="mailto:jody@frame-pr.net">Press inquries</a>
                 </li>
               </ul>
             </div>
