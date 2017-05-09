@@ -1,6 +1,8 @@
 import React from 'react';
 import config from 'config';
 
+import orderBy from 'lodash/orderBy';
+
 import Heading from 'components/Heading';
 
 import $ from 'jquery';
@@ -15,17 +17,6 @@ export default class CategoryCard extends React.PureComponent {
     type: React.PropTypes.string,
     files: React.PropTypes.array.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.k1img = require('./img/K_1.png');
-    this.k2img = require('./img/K_2.png');
-    this.k3img = require('./img/K_3.png');
-    this.k4img = require('./img/K_4.png');
-    this.k5img = require('./img/K_5.png');
-    this.k6img = require('./img/K_6.png');
-  }
 
   componentDidMount() {
     this.slideShow = $(this.lookbookSlider).slick({
@@ -68,7 +59,7 @@ export default class CategoryCard extends React.PureComponent {
             </div>
             <div className="col-12 offset-vertical-40 lookbook__wrapper">
               <div className="lookbook__slider" ref={(c) => { this.lookbookSlider = c; }}>
-                {this.props.files.map((file) =>
+                {orderBy(this.props.files, 'sequenceNumber').map((file) =>
                   <div className="lookbook__slider__item">
                     <img data-lazy={config.apiUrl + 'files/' + file.fileIndex + '.jpg?width=500&height=500'} className="img-fluid" alt="lookbook" />
                   </div>
