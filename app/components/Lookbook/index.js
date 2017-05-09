@@ -1,4 +1,5 @@
 import React from 'react';
+import config from 'config';
 
 import Heading from 'components/Heading';
 
@@ -12,6 +13,7 @@ export default class CategoryCard extends React.PureComponent {
 
   static propTypes = {
     type: React.PropTypes.string,
+    files: React.PropTypes.array.isRequired,
   };
 
   constructor(props) {
@@ -66,24 +68,11 @@ export default class CategoryCard extends React.PureComponent {
             </div>
             <div className="col-12 offset-vertical-40 lookbook__wrapper">
               <div className="lookbook__slider" ref={(c) => { this.lookbookSlider = c; }}>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k1img} className="img-fluid" alt="lookbook" />
-                </div>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k2img} className="img-fluid" alt="lookbook" />
-                </div>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k3img} className="img-fluid" alt="lookbook" />
-                </div>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k4img} className="img-fluid" alt="lookbook" />
-                </div>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k5img} className="img-fluid" alt="lookbook" />
-                </div>
-                <div className="lookbook__slider__item">
-                  <img src data-lazy={this.k6img} className="img-fluid" alt="lookbook" />
-                </div>
+                {this.props.files.map((file) =>
+                  <div className="lookbook__slider__item">
+                    <img data-lazy={config.apiUrl + 'files/' + file.fileIndex + '.jpg?width=500&height=500'} className="img-fluid" alt="lookbook" />
+                  </div>
+                )}
               </div>
               <i className="icon icon-arrow-l lookbook__wrapper__arrow" ref={(c) => { this.lookbookSliderArrowLeft = c; }} />
               <i className="icon icon-arrow-r lookbook__wrapper__arrow" ref={(c) => { this.lookbookSliderArrowRight = c; }} />

@@ -30,7 +30,7 @@ export function* productsData() {
 }
 
 export function* getInspiredProducts() {
-  const requestURL = config.apiUrl + 'products/collections/?slug=lets-get-inspired';
+  const requestURL = config.apiUrl + 'files/collections/lets-get-inspired';
 
   try {
     // Call our request helper (see 'utils/request')
