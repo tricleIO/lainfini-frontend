@@ -24,7 +24,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
   constructor(props) {
     super(props);
 
-    this.pdf = require('files/catalog.pdf');
+    this.pdf = require('files/paper-catalog.pdf');
   }
 
   render() {
@@ -52,11 +52,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                 </li>
               </ul>
               <p className="copyright">
-<<<<<<< HEAD
                 2017 &copy; Copyright la infini
-=======
-                2016 Copyright LAINFINI
->>>>>>> footer
               </p>
             </div>
             <div className="col-sm-4 text-sm-right hidden-sm-down">
