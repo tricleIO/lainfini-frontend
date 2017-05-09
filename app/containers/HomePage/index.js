@@ -19,6 +19,7 @@ import {
 
 import {
   loadArrivals,
+  loadLetsGetInspired,
 } from './actions';
 
 import Visual from 'components/Visual';
@@ -43,11 +44,13 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     changeIsHomepage: React.PropTypes.func,
     loadArrivals: React.PropTypes.func,
     products: React.PropTypes.object,
+    loadInspired: React.PropTypes.func,
   };
 
   componentWillMount() {
     this.props.changeIsHomepage(true);
     this.props.loadArrivals();
+    this.props.loadInspired();
   }
 
   componentWillUnmount() {
@@ -73,6 +76,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     changeIsHomepage: (state) => dispatch(changeHomepageState(state)),
     loadArrivals: () => dispatch(loadArrivals()),
+    loadInspired: () => dispatch(loadLetsGetInspired()),
   };
 }
 
