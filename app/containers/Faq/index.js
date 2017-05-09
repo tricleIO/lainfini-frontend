@@ -34,7 +34,7 @@ class Faq extends React.Component {
                   {_(faqs).isArray() && faqs.map((faq) =>
                     <div className="mb-5">
                       <h6>{faq.question}</h6>
-                      <p>{faq.answer}</p>
+                      <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                     </div>
                   )}
                 </div>
