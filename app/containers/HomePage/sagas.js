@@ -1,7 +1,7 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOAD_ARRIVALS } from './constants';
-import { arrivalsLoaded, arrivalsLoadingError } from './actions';
+import { LOAD_ARRIVALS, LOAD_LETS_GET_INSPIRED } from './constants';
+import { arrivalsLoaded, arrivalsLoadingError, letsGetInspiredLoaded, letsGetInspiredLoadingError } from './actions';
 
 import config from 'config';
 
@@ -29,7 +29,30 @@ export function* productsData() {
   yield cancel(watcher);
 }
 
+export function* getInspiredProducts() {
+  const requestURL = config.apiUrl + 'files/collections/lets-get-inspired';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const products = yield call(request, requestURL);
+    yield put(letsGetInspiredLoaded(products));
+  } catch (err) {
+    yield put(letsGetInspiredLoadingError(err.toString()));
+  }
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* inspiredProductsData() {
+  const watcher = yield takeLatest(LOAD_LETS_GET_INSPIRED, getInspiredProducts);
+
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // Bootstrap sagas
 export default [
   productsData,
+  inspiredProductsData,
 ];

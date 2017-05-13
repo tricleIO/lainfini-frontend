@@ -19,6 +19,7 @@ import {
 
 import {
   loadArrivals,
+  loadLetsGetInspired,
 } from './actions';
 
 import Visual from 'components/Visual';
@@ -33,7 +34,7 @@ import messages from './messages';
 
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectProducts } from './selectors';
+import { makeSelectProducts, makeSelectInspired } from './selectors';
 
 const visualBg = require('./img/visual-bg.png');
 
@@ -43,11 +44,14 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     changeIsHomepage: React.PropTypes.func,
     loadArrivals: React.PropTypes.func,
     products: React.PropTypes.object,
+    loadInspired: React.PropTypes.func,
+    inspired: React.PropTypes.object,
   };
 
   componentWillMount() {
     this.props.changeIsHomepage(true);
     this.props.loadArrivals();
+    this.props.loadInspired();
   }
 
   componentWillUnmount() {
@@ -62,7 +66,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           <ArrivalsSlider products={this.props.products} /> }
         <CategoryCard type="h2" />
         <Currator type="h3" />
-        <Lookbook type="h3" />
+        { this.props.inspired.uid && <Lookbook type="h3" files={this.props.inspired.files} /> }
         <SocialNav />
       </div>
     );
@@ -73,11 +77,13 @@ export function mapDispatchToProps(dispatch) {
   return {
     changeIsHomepage: (state) => dispatch(changeHomepageState(state)),
     loadArrivals: () => dispatch(loadArrivals()),
+    loadInspired: () => dispatch(loadLetsGetInspired()),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
   products: makeSelectProducts(),
+  inspired: makeSelectInspired(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

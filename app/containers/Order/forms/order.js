@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form/immutable';
+import { reduxForm, Field, change } from 'redux-form/immutable';
 import uuidV4 from 'uuid/v4';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
@@ -15,7 +15,15 @@ class LoginForm extends React.Component {
     countries: React.PropTypes.array,
     user: React.PropTypes.object,
     initialize: React.PropTypes.func, // eslint-disable-line
+    changeFieldValue: React.PropTypes.func,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.firstNameEdited = false;
+    this.lastNameEdited = false;
+  }
 
   componentWillMount() {
     this.setUpForm();
@@ -61,10 +69,10 @@ class LoginForm extends React.Component {
           <div className="row buy-step offset-vertical-40">
             <div className="col-12">
               <div className="col-12 col-md-6">
-                <Field component={this.renderField} name="firstNameUnlogged" type="text" className="form-control" label="First Name" />
+                <Field component={this.renderField} name="firstNameUnlogged" type="text" className="form-control" onChange={(event, newValue) => { if (!this.firstNameEdited) this.props.changeFieldValue('firstName', newValue); }} label="First Name" />
               </div>
               <div className="col-12 col-md-6">
-                <Field component={this.renderField} name="lastNameUnlogged" type="text" className="form-control" label="Last Name" />
+                <Field component={this.renderField} name="lastNameUnlogged" type="text" className="form-control" onChange={(event, newValue) => { if (!this.lastNameEdited) this.props.changeFieldValue('lastName', newValue); }} label="Last Name" />
               </div>
               <div className="col-12 col-md-12">
                 <Field component={this.renderField} name="emailUnlogged" type="text" className="form-control" label="Email" />
@@ -80,10 +88,10 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <div className="col-12 col-md-6">
-              <Field component={this.renderField} name="firstName" type="text" className="form-control" label="First Name" />
+              <Field component={this.renderField} name="firstName" type="text" className="form-control" onChange={() => { this.firstNameEdited = true; }} label="First Name" />
             </div>
             <div className="col-12 col-md-6">
-              <Field component={this.renderField} name="lastName" type="text" className="form-control" label="Last Name" />
+              <Field component={this.renderField} name="lastName" type="text" className="form-control" onChange={() => { this.lastNameEdited = true; }} label="Last Name" />
             </div>
             <div className="col-12 col-md-6">
               <Field component={this.renderField} name="company" type="text" className="form-control" label="Company" />
@@ -163,4 +171,10 @@ const mapStateToProps = createStructuredSelector({
   user: makeSelectUser(),
 });
 
-export default connect(mapStateToProps)(form);
+function mapDispatchToProps(dispatch) {
+  return {
+    changeFieldValue: (field, value) => dispatch(change('orderStepOne', field, value)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(form);

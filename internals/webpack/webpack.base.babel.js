@@ -56,6 +56,10 @@ module.exports = (options) => ({
       test: /\.scss$/,
       exclude: /node_modules/,
       loader: 'happypack/loader?id=sass',
+    }, {
+      test: /\.pdf$/,
+      exclude: /node_modules/,
+      loader: 'file-loader?name=[name].[ext]',
     }],
   },
   plugins: options.plugins.concat([
@@ -89,7 +93,8 @@ module.exports = (options) => ({
       loaders: [
         'style',
         'css',
-        'sass',
+        'autoprefixer-loader',
+        'sass-loader',
       ],
     }),
   ]),

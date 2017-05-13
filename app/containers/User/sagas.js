@@ -1,5 +1,5 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { LOCATION_CHANGE, push } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER, REQUEST_PASSWORD, LOGIN_FACEBOOK } from './constants';
 import { loginUserSuccess, loginUserError, registerUserError } from './actions';
 import { saveToken, logout, addNotification } from 'containers/App/actions';
@@ -10,6 +10,7 @@ import formUrlEncoded from 'form-urlencoded';
 import config from 'config';
 
 import request from 'utils/request';
+import localStorage from 'local-storage';
 
 export function* getLogin(action) {
   const data = {
@@ -34,6 +35,7 @@ export function* getLogin(action) {
     });
     yield put(loginUserSuccess());
     yield put(saveToken(token));
+    localStorage('lastUsedEmail', action.email);
   } catch (err) {
     yield put(logout());
     const errorMessage = err.response.status === 400 ? 'You have passed invalid creditals. Please try it again, or create new account.' : '';
@@ -50,10 +52,7 @@ export function* getLogin(action) {
  * Root saga manages watcher lifecycle
  */
 export function* loginData() {
-  const watcher = yield takeLatest(LOGIN_USER, getLogin);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(LOGIN_USER, getLogin);
 }
 
 export function* getRegister(action) {
@@ -115,6 +114,12 @@ export function* requestPassword(action) {
       cors: true,
       body: JSON.stringify(data),
     });
+    yield put(addNotification({
+      title: 'Your password has been resetted!',
+      level: 'success',
+      message: 'Check your email address, we have sent you new password!',
+    }));
+    yield put(push('/login'));
   } catch (err) {
     const errorMessage = 'Your email has not been found in our database';
     yield put(addNotification({
@@ -146,10 +151,7 @@ export function* loginWithFacebook() {
 }
 
 export function* loginWithFacebookData() {
-  const watcher = yield takeLatest(LOGIN_FACEBOOK, loginWithFacebook);
-
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  yield takeLatest(LOGIN_FACEBOOK, loginWithFacebook);
 }
 
 // Bootstrap sagas

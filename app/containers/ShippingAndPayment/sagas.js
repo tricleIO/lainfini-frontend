@@ -117,11 +117,13 @@ function* saveOrder(action) {
     if (order.paymentMethod === 'CARD') {
       yield put(push('/order/pay/card'));
     } else if (order.paymentMethod === 'PAYPAL') {
-      yield put(push({ pathname: '/order/pay/paypal',
+      yield put(push({
+        pathname: '/order/pay/paypal',
         state: {
           data,
           user,
-        } }));
+        },
+      }));
     }
   } catch (err) {
     console.log(err);
@@ -243,10 +245,16 @@ function* initBraintreeCard(action) {
                 orderUid: order.uid,
                 paymentMethodNonce: response.creditCards[0].nonce,
               }),
-            }).then((paymentData) => {
+            }, false).then((paymentData) => {
               if (paymentData.referenceCode) {
                 action.dispatch(createCart());
                 action.dispatch(push({ pathname: '/catalog', state: { successfulPayment: true } }));
+              } else {
+                action.dispatch(addNotification({
+                  title: 'Your card is invalid!',
+                  level: 'error',
+                  message: 'Please check your card information and try it again!',
+                }));
               }
               action.dispatch(removeLoading('stripePayment'));
               action.dispatch(setStripeLoader(false));

@@ -21,6 +21,12 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
     children: React.PropTypes.node,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.pdf = require('files/paper-catalog.pdf');
+  }
+
   render() {
     return (
       <footer data-reveal>
@@ -32,12 +38,12 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
                 </li>
                 <li>
-                  <a href="">Press inquries</a>
+                  <a href="mailto:jody@frame-pr.net">Press inquries</a>
                 </li>
               </ul>
             </div>
             <div className="col-12 col-md-4 text-center">
-              <Link to="/" className="logo">lainfini</Link>
+              <Link to="/" className="logo">LAINFINI</Link>
               <ul className="nav-mobile hidden-md-up">
                 <li>
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
@@ -55,7 +61,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
                   <a href="tel:+18004050388">+1 800 405 0388</a>
                 </li>
                 <li>
-                  <a href="">download our brochure</a>
+                  <a href={this.pdf} target="_blank">download our brochure</a>
                 </li>
               </ul>
             </div>

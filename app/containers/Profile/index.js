@@ -144,7 +144,7 @@ class Profile extends React.Component {
                     While training at Atelier du Sartel, Mirka was able to take a peek under the lid of the fashion capital moving her to work at the European level. She achieved several awards, including Top Styl Designer and was nominated for the Czech Grand Design award.<br />
                   </p>
                   <p>
-                    Mirka’s attitude is to create each piece of clothing that allows its owner to combine it with their own wardrobe and all kinds of accessories – shoes, handbags, and jewelry. Her aim is to give a woman freedom in decision-making, certainty with high quality clothing that emphasizes the client’s personality. She is one of the founders of the Atelier LAINFINI project.<br />
+                    Mirka’s attitude is to create each piece of clothing that allows its owner to combine it with their own wardrobe and all kinds of accessories – shoes, handbags, and jewelry. Her aim is to give a woman freedom in decision-making, certainty with high quality clothing that emphasizes the client’s personality. She is one of the founders of the Atelier LAINFINI.<br />
                   </p>
 
                   <h2>selected works</h2>

@@ -7,7 +7,13 @@ const makeSelectProducts = () => createSelector(
   (hpState) => hpState.get('products')
 );
 
+const makeSelectInspired = () => createSelector(
+  selectHomepage,
+  (hpState) => hpState.get('inspiredProducts')
+);
+
 export {
   selectHomepage,
   makeSelectProducts,
+  makeSelectInspired,
 };

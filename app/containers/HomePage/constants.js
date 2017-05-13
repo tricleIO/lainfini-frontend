@@ -1,3 +1,6 @@
 export const LOAD_ARRIVALS = 'Lainfini/HomePage/LOAD_ARRIVALS';
 export const LOAD_ARRIVALS_SUCCESS = 'Lainfini/HomePage/LOAD_ARRIVALS_SUCCESS';
 export const LOAD_ARRIVALS_ERROR = 'Lainfini/HomePage/LOAD_ARRIVALS_ERROR';
+export const LOAD_LETS_GET_INSPIRED = 'Lainfini/HomePage/LOAD_LETS_GET_INSPIRED';
+export const LOAD_LETS_GET_INSPIRED_SUCCESS = 'Lainfini/HomePage/LOAD_LETS_GET_INSPIRED_SUCCESS';
+export const LOAD_LETS_GET_INSPIRED_ERROR = 'Lainfini/HomePage/LOAD_LETS_GET_INSPIRED_ERROR';

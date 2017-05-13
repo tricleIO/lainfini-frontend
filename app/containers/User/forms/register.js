@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 import { makeSelectRegisterError } from '../selectors';
 
+import OAuthLogins from '../oauthLogins';
+
 class RegisterForm extends React.Component {
 
   static propTypes = {
@@ -38,13 +40,7 @@ class RegisterForm extends React.Component {
         <Field component={this.renderField} name="full-name" type="text" className="form-control" placeholder="Full name" />
         <Field component={this.renderField} name="password" type="password" className="form-control" placeholder="Password" />
         <button className="btn btn-block mt-4 mb-4 text-uppercase">Sign Up</button>
-        <p className="text-center">Or sign in with your existing social media account</p>
-        <ul className="social-nav__icons">
-          <li><a href><i className="icon icon-facebook" /></a></li>
-          <li><a href><i className="icon icon-twitter" /></a></li>
-          <li><a href><i className="icon icon-instagram" /></a></li>
-          <li><a href><i className="icon icon-google" /></a></li>
-        </ul>
+        <OAuthLogins />
       </form>
     );
   }

@@ -32,11 +32,11 @@ class SocialNav extends React.PureComponent {
                       <li><Link to="/catalog">Catalog</Link></li>
                       <li><Link to="/faq">FAQ</Link></li>
                       <li><Link to="/terms-of-service">Terms of Service</Link></li>
-                      { this.props.user.uid && <li><Link to="/customer">Customer Service</Link></li> }
+                      { /* this.props.user.uid && <li><Link to="/customer">Customer Service</Link></li> }
                       { this.props.user.uid && <li><Link to="/customer/order-history">Order history</Link></li> }
                       { this.props.user.uid && <li><Link to="/customer/complaints">Complaints</Link></li> }
                       { this.props.user.uid && <li><Link to="/logout">Logout</Link></li> }
-                      { !this.props.user.uid && <li><Link to="/login">Login / Register</Link></li> }
+                      { !this.props.user.uid && <li><Link to="/login">Login / Register</Link></li> */ }
                     </ul>
                   </nav>
                 </div>

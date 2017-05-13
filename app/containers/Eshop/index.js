@@ -72,17 +72,17 @@ class Eshop extends React.Component {
   }
 
   render() {
-    const sizes = _(this.props.products).isArray() ? _(this.props.products).map((obj) => obj.size).uniqBy('uid').value() : [];
-    const materials = _(this.props.products).isArray() ? _(this.props.products).map((obj) => obj.material).uniqBy('uid').value() : [];
+    const sizes = _(this.props.products).isArray() ? _(this.props.products).map('size').uniqBy('uid').filter((obj) => _(obj).isObject()).value() : [];
+    const materials = _(this.props.products).isArray() ? _(this.props.products).map((obj) => obj.material).uniqBy('uid').filter((obj) => _(obj).isObject()).value() : [];
 
     let products = _(this.props.products).isArray() ? this.props.products : [];
 
     if (parseInt(this.props.filterSize, 10) !== -1) {
-      products = _(products).filter((obj) => obj.size.uid === parseInt(this.props.filterSize, 10)).value();
+      products = _(products).filter((obj) => obj.size && obj.size.uid === parseInt(this.props.filterSize, 10)).value();
     }
 
     if (parseInt(this.props.filterMaterial, 10) !== -1) {
-      products = _(products).filter((obj) => obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
+      products = _(products).filter((obj) => obj.material && obj.material.uid === parseInt(this.props.filterMaterial, 10)).value();
     }
 
     return (
@@ -103,7 +103,7 @@ class Eshop extends React.Component {
               <div className="col-12 col-sm-10 offset-sm-1">
                 <div className="filter__heading">
                   <h1 className="filter__title">original handmade scarves</h1>
-                  <div className="row">
+                  {<div className="row">
                     <div className="col-12 col-md-6">
                       <div className="ui-interactive">
                         <Select className="ui-interactive__select" value={this.props.filterSize} onChange={(event, value) => { this.props.selectFilterSize(value); }}>
@@ -128,7 +128,7 @@ class Eshop extends React.Component {
                         </Select>
                       </div>
                     </div>
-                  </div>
+                  </div>}
                 </div>
                 <div className="col-3 mb-3">
                   <hr className="hr-blue" />
@@ -154,7 +154,7 @@ class Eshop extends React.Component {
                 >
                   <div className="product-list__bg">
                     <ProductSlider imgs={product.images} />
-                    <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} className="product-list__small-image" alt={product.name} />
+                    <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'} className="product-list__small-image" alt={product.name} />
                   </div>
                   <div className="product-list__content">
                     <div className="product-list__title">
@@ -169,10 +169,18 @@ class Eshop extends React.Component {
                     </div>
                     <div className="row product-list__info">
                       <div className="col-7">
-                        <div>{product.size.value}</div>
-                        <div>{product.material.name}, {product.material.composition}</div>
-                        <div>{product.technology.name}</div>
-                        <div>{product.design.name}</div>
+                        {product.size &&
+                          <div>{product.size.value}</div>
+                        }
+                        {product.material &&
+                          <div>{product.material.name}, {product.material.composition}</div>
+                        }
+                        {product.technology &&
+                          <div>{product.technology.name}</div>
+                        }
+                        {product.design &&
+                          <div>{product.design.name}</div>
+                        }
                       </div>
                       <div className="col-5 see_more">
                         <Link to={'/basket'} onClick={() => this.addToBasket(product.uid)} className="btn">Add to Basket</Link>

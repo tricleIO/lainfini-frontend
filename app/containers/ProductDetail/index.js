@@ -11,6 +11,8 @@ import ItemCounter from 'components/ItemCounter';
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
 
+import { Link } from 'react-router';
+
 import WishlistHeart from 'components/WishlistHeart';
 
 import { createStructuredSelector } from 'reselect';
@@ -103,8 +105,8 @@ class ProductDetail extends React.Component {
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
-                      <img src={config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg'} alt="img" className="img-fluid" />
-                     {/* <div className="ui-items">
+                      <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'} alt="img" className="img-fluid" />
+                      {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
                       </div>*/}
                     </div>
@@ -141,11 +143,21 @@ class ProductDetail extends React.Component {
                   <div className="row product-detail__table">
                     <div className="col-12">
                       <div className="wsw">
-                        <p>Size: {product.size.value}</p>
-                        <p>Material: {product.material.name}</p>
-                        <p>{product.material.composition}</p>
-                        <p>{product.technology.name}</p>
-                        <p>Designer: {product.design.name}</p>
+                        {product.size &&
+                          <p>Size: {product.size.value}</p>
+                        }
+                        {product.material &&
+                          <p>Material: {product.material.name}</p>
+                        }
+                        {product.material &&
+                          <p>{product.material.composition}</p>
+                        }
+                        {product.technology &&
+                          <p>{product.technology.name}</p>
+                        }
+                        {product.design &&
+                          <p>Designer: {product.design.name}</p>
+                        }
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
@@ -153,6 +165,16 @@ class ProductDetail extends React.Component {
                         <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row offset-vertical-30">
+              <div className="ui-btn-double-type">
+                <div className="col-12 col-sm-6 offset-sm-3 text-center">
+                  <div className="btn__inline offset-vertical-30">
+                    <Link to="/catalog" data-reveal>continue shopping</Link>
                   </div>
                 </div>
               </div>

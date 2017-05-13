@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import { reduxForm, Field, Form } from 'redux-form/immutable';
 import $ from 'jquery';
 import _ from 'lodash';
+import StringMask from 'string-mask';
 
 import { makeSelectOrder, makeSelectStripeLoader } from './selectors';
 
@@ -79,13 +80,25 @@ class PayByStripe extends React.Component {
     this.setState({ cardExpirationDate: targetValue });
   }
 
+  cardOnChange(e) {
+    const numberOnly = e.target.value.replace(/ /g, '');
+    const mask = new StringMask('0000 0000 0000 0000');
+    let maskedValue = mask.apply(numberOnly);
+    if (!_(_(numberOnly).toNumber()).isNaN()) {
+      if (/\s$/.test(maskedValue)) {
+        maskedValue = maskedValue.slice(0, -1);
+      }
+      this.setState({ cardNumber: maskedValue });
+    }
+  }
+
   render() {
     const { order, stripeLoading } = this.props;
 
     return (
       <form className="user-card" ref={(c) => { this.form = c; }}>
         <Helmet title="Order: Pay with card" />
-        { this.props.order &&
+        {this.props.order &&
           <div className="row">
             <div className="col-12 col-sm-12 text-center">
               <div className="order-info">
@@ -143,7 +156,7 @@ class PayByStripe extends React.Component {
                     <div className="form-group">
                       <label htmlFor="card-number">Card Number</label>
                       <div className="content card-number">
-                        <input value={this.state.cardNumber} type="text" name="cardNumber" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (!_(_(e.target.value).toNumber()).isNaN()) this.setState({ cardNumber: e.target.value }); }} maxLength={16} />
+                        <input value={this.state.cardNumber} type="text" name="cardNumber" id="card-number" className="input-cart-number form-control" onChange={(e) => this.cardOnChange(e)} maxLength={20} />
                         {/*
                         <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber1" type="text" id="card-number" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-1').focus(); } this.setState({ cardNumber1: e.target.value }); }} ref={(c) => { this.cardNumber1 = c; }} maxLength={4} />
                         <Field validate={[maxLength4, isNumber]} component="input" name="cardNumber2" type="text" id="card-number-1" className="input-cart-number form-control" onChange={(e) => { if (e.target.value.length >= 4) { $('input#card-number-2').focus(); } this.setState({ cardNumber2: e.target.value }); }} ref={(c) => { this.cardNumber2 = c; }} maxLength={4} />
