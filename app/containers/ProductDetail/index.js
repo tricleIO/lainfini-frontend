@@ -92,6 +92,10 @@ class ProductDetail extends React.Component {
     const { product } = this.props;
     const shareUrl = String(window.location);
 
+    const callToActionStrings = {
+      HURRY_UP: (stock, made) => `good taste: ${made - stock} from ${made} already sold`,
+    };
+
     return (
       <div>
         {product.name &&
@@ -99,9 +103,11 @@ class ProductDetail extends React.Component {
             <Helmet title={product.name} />
             <div className="container">
               <div className="row">
-                <div className="col-12 text-center">
-                  <Heading type="h2" title="good taste: 5 from 8 already sold" line />
-                </div>
+                {product.call &&
+                  <div className="col-12 text-center">
+                    <Heading type="h2" title={callToActionStrings[product.call.name](product.productStock, product.call.made)} line />
+                  </div>
+                }
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
