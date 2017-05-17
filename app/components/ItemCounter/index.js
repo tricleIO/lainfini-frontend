@@ -5,6 +5,7 @@ export default class ItemCounter extends React.Component {
   static propTypes = {
     defaultValue: React.PropTypes.number,
     onChange: React.PropTypes.func,
+    max: React.PropTypes.number,
   };
 
   constructor(props) {
@@ -12,6 +13,7 @@ export default class ItemCounter extends React.Component {
 
     this.state = {
       value: props.defaultValue ? props.defaultValue : 1,
+      max: props.max ? props.max : 255,
     };
     this.onPlusClick = this.onPlusClick.bind(this);
     this.onMinusClick = this.onMinusClick.bind(this);
@@ -27,7 +29,7 @@ export default class ItemCounter extends React.Component {
 
   onPlusClick() {
     const value = this.state.value + 1;
-    if (this.state.value > 0) {
+    if (this.state.value > 0 && value <= this.state.max) {
       this.onChange(value);
       this.setState({
         value,

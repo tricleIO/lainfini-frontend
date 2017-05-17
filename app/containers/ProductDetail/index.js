@@ -128,9 +128,11 @@ class ProductDetail extends React.Component {
                     </div>
                   </div>
                   <div className="row product-detail__iteractive">
-                    <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
-                      <ItemCounter ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
-                    </div>
+                    {product.productAvailability === 'IN_STOCK' &&
+                      <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
+                        <ItemCounter max={product.productStock} ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
+                      </div>
+                    }
                     <div className="col-12 col-md-5 social-nav text-center text-sm-left">
                       <ul className="social-nav__icons">
                         <li>
@@ -167,9 +169,11 @@ class ProductDetail extends React.Component {
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
-                      <div className="btn__inline">
-                        <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
-                      </div>
+                      {product.productAvailability === 'IN_STOCK' &&
+                        <div className="btn__inline">
+                          <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
+                        </div>
+                      }
                     </div>
                   </div>
                 </div>
