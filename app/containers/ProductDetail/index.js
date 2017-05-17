@@ -93,7 +93,9 @@ class ProductDetail extends React.Component {
     const shareUrl = String(window.location);
 
     const callToActionStrings = {
-      HURRY_UP: (stock, made) => `good taste: ${made - stock} from ${made} already sold`,
+      HURRY_UP: (stock, made) => `Hurry up! Only ${made} pieces were made. Make your decision today`,
+      GOOD_TASTE: (stock, made) => `Good Taste: ${made - stock} from ${made} already gone`,
+      // MAKE_YOUR_CALL: (stock, made) => ``,
     };
 
     return (
