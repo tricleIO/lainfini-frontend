@@ -269,7 +269,7 @@ export function* getCurrentCartData() {
 }
 
 export function* updateCartQty(action) {
-  yield put(addLoading('updateCartQty'));
+  // yield put(addLoading('updateCartQty'));
   const token = yield select(makeSelectToken());
   const stateCart = yield select(makeSelectCart());
   const requestURL = config.apiUrl + 'carts/' + stateCart.uid + '/items';
@@ -295,7 +295,7 @@ export function* updateCartQty(action) {
   } catch (err) {
     console.log(err);
   }
-  yield put(removeLoading('updateCartQty'));
+  // yield put(removeLoading('updateCartQty'));
 }
 
 export function* updateCartQtyData() {

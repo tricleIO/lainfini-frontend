@@ -92,6 +92,12 @@ class ProductDetail extends React.Component {
     const { product } = this.props;
     const shareUrl = String(window.location);
 
+    const callToActionStrings = {
+      HURRY_UP: (stock, made) => `Hurry up! Only ${made} pieces were made. Make your call today!`,
+      GOOD_TASTE: (stock, made) => `Good Taste: ${made - stock} from ${made} already gone.`,
+      // MAKE_YOUR_CALL: (stock, made) => ``,
+    };
+
     return (
       <div>
         {product.name &&
@@ -99,9 +105,11 @@ class ProductDetail extends React.Component {
             <Helmet title={product.name} />
             <div className="container">
               <div className="row">
-                <div className="col-12 text-center">
-                  <Heading type="h2" title="good taste: 5 from 8 already sold" line />
-                </div>
+                {product.call &&
+                  <div className="col-12 text-center">
+                    <Heading type="h2" title={callToActionStrings[product.call.name](product.productStock, product.call.made)} line />
+                  </div>
+                }
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
                     <div className="detail-slider__item">
@@ -122,9 +130,11 @@ class ProductDetail extends React.Component {
                     </div>
                   </div>
                   <div className="row product-detail__iteractive">
-                    <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
-                      <ItemCounter ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
-                    </div>
+                    {product.productAvailability === 'IN_STOCK' &&
+                      <div className="col-12 col-md-7 col-xl-5 text-center text-sm-left">
+                        <ItemCounter max={product.productStock} ref={(itemCounter) => { this.itemCounter = itemCounter; }} />
+                      </div>
+                    }
                     <div className="col-12 col-md-5 social-nav text-center text-sm-left">
                       <ul className="social-nav__icons">
                         <li>
@@ -161,9 +171,11 @@ class ProductDetail extends React.Component {
                       </div>
                     </div>
                     <div className="col-12 product-detail__add-cart">
-                      <div className="btn__inline">
-                        <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
-                      </div>
+                      {product.productAvailability === 'IN_STOCK' &&
+                        <div className="btn__inline">
+                          <a onClick={(e) => this.addToCart(e)} className="btn btn-center">add to shopping basket</a>
+                        </div>
+                      }
                     </div>
                   </div>
                 </div>

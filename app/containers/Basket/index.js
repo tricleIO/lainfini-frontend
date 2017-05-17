@@ -57,7 +57,7 @@ class Basket extends React.Component {
                       <div className="product-list__content col-12 col-sm-10">
                         <div className="product-list__title col-12 col-sm-4">
                           <h4>{i.product.name}</h4>
-                          <ItemCounter defaultValue={i.quantity} value={i.quantity} onChange={(qty) => this.updateQty(i.productUid, qty)} />
+                          <ItemCounter defaultValue={i.quantity} value={i.quantity} max={i.product.productStock} onChange={(qty) => this.updateQty(i.productUid, qty)} />
                         </div>
                         <div className="product-list__info col-12 col-sm-4">
                           {i.product.size &&
