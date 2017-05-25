@@ -95,6 +95,8 @@ class ProductDetail extends React.Component {
     const callToActionStrings = {
       HURRY_UP: (stock, made) => `Hurry up! Only ${made} pieces were made. Make your call today!`,
       GOOD_TASTE: (stock, made) => `Good Taste: ${made - stock} from ${made} already gone.`,
+      CONCEPT: () => 'Interested in this one? Unfortunately it\'s just a concept.',
+      SOLD_OUT: (stock, made) => `We are out of stock! Only ${made} pieces were made.`,
       // MAKE_YOUR_CALL: (stock, made) => ``,
     };
 
