@@ -120,7 +120,13 @@ class ProductDetail extends React.Component {
                 }
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
-                    <div className="detail-slider__item" ref={(c) => { this.productImgContainer = c; }}>
+                    <div
+                      className="detail-slider__item"
+                      ref={(c) => { this.productImgContainer = c; }}
+                      style={{
+                        cursor: 'zoom-in',
+                      }}
+                    >
                       <img
                         ref={(c) => { this.productImg = c; }}
                         src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
