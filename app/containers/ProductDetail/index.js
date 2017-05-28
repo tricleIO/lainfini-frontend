@@ -72,6 +72,7 @@ class ProductDetail extends React.Component {
     if (this.productImg) {
       new Drift(this.productImg, {
         paneContainer: this.productImgContainer,
+        zoomFactor: 1.8,
       });
     }
   }
