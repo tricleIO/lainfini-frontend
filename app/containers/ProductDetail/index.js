@@ -47,6 +47,9 @@ class ProductDetail extends React.Component {
     super(props);
 
     this.sentLastViewed = false;
+    this.state = {
+      drift: false,
+    };
   }
 
   componentWillMount() {
@@ -69,11 +72,12 @@ class ProductDetail extends React.Component {
 
   componentDidUpdate() {
     this.viewedDesignsUpdate();
-    if (this.productImg) {
-      new Drift(this.productImg, {
+    if (this.productImg && !this.drift) {
+      this.drift = new Drift(this.productImg, {
         paneContainer: this.productImgContainer,
         zoomFactor: 1.8,
       });
+      this.drift.disable();
     }
   }
 
@@ -88,6 +92,17 @@ class ProductDetail extends React.Component {
       this.props.addLastViewedDesign(this.props.product);
       this.sentLastViewed = true;
     }
+  }
+
+  changeDriftState() {
+    if (this.state.drift) {
+      this.drift.disable();
+    } else {
+      this.drift.enable();
+    }
+    this.setState({
+      drift: !this.state.drift,
+    });
   }
 
   openPopup(url) {
@@ -122,21 +137,29 @@ class ProductDetail extends React.Component {
                   <div className="detail-slider">
                     <div
                       className="detail-slider__item"
-                      ref={(c) => { this.productImgContainer = c; }}
-                      style={{
-                        cursor: 'zoom-in',
-                      }}
                     >
-                      <img
-                        ref={(c) => { this.productImg = c; }}
-                        src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
-                        data-zoom={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
-                        alt="img"
-                        className="img-fluid"
-                      />
+                      <div
+                        ref={(c) => { this.productImgContainer = c; }}
+                        style={{
+                          cursor: this.state.drift ? 'zoom-in' : '',
+                        }}
+                      >
+                        <img
+                          ref={(c) => { this.productImg = c; }}
+                          src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
+                          data-zoom={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
+                          alt="img"
+                          className="img-fluid"
+                        />
+                      </div>
                       {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
                       </div>*/}
+                      <div className="ui-items">
+                        <a className="add_wishlist" onClick={() => this.changeDriftState()} style={{ cursor: 'pointer' }}>
+                          <img src="https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/67-512.png" alt="zoom" style={{ maxHeight: '20px', marginRight: '20px' }} />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
