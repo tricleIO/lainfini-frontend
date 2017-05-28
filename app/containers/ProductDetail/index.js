@@ -6,14 +6,14 @@ import config from 'config';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import Drift from 'drift-zoom';
+
 import Heading from 'components/Heading';
 import ItemCounter from 'components/ItemCounter';
 import SocialNav from 'components/SocialNav';
 import LastView from 'components/LastView';
 
 import { Link } from 'react-router';
-
-import WishlistHeart from 'components/WishlistHeart';
 
 import { createStructuredSelector } from 'reselect';
 
@@ -69,6 +69,11 @@ class ProductDetail extends React.Component {
 
   componentDidUpdate() {
     this.viewedDesignsUpdate();
+    if (this.productImg) {
+      new Drift(this.productImg, {
+        paneContainer: this.productImgContainer,
+      });
+    }
   }
 
   addToCart() {
@@ -114,8 +119,14 @@ class ProductDetail extends React.Component {
                 }
                 <div className="col-12 col-sm-5">
                   <div className="detail-slider">
-                    <div className="detail-slider__item">
-                      <img src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'} alt="img" className="img-fluid" />
+                    <div className="detail-slider__item" ref={(c) => { this.productImgContainer = c; }}>
+                      <img
+                        ref={(c) => { this.productImg = c; }}
+                        src={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
+                        data-zoom={product.mainImage && product.mainImage.fileIndex ? config.apiUrl + 'files/' + product.mainImage.fileIndex + '.jpg' : 'https://placehold.it/460x500'}
+                        alt="img"
+                        className="img-fluid"
+                      />
                       {/* <div className="ui-items">
                         <WishlistHeart uid={product.uid} />
                       </div>*/}
