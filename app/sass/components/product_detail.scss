@@ -1,6 +1,17 @@
 .product-detail {
   padding-bottom: $_80;
   .detail-slider {
+    .detail-slider__controls {
+      position: absolute;
+      margin-top: 20px;
+      margin-left: -45px;
+      div {
+        &.down {
+          margin-top: 20px;
+        }
+        cursor: pointer;
+      }
+    }
     background-color: $color-white;
     //padding: $_50 $_20 $_10 $_20;
     box-shadow: $_12 $_12 $_40 -$_1 rgba(0,0,0,0.3);
