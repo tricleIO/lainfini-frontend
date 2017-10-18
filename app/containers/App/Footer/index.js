@@ -52,9 +52,6 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
             <div className="col-sm-4 text-sm-right hidden-sm-down">
               <ul>
                 <li>
-                  <a href="tel:+18004050388">+1 800 405 0388</a>
-                </li>
-                <li>
                   <a href="">download our brochure</a>
                 </li>
               </ul>
