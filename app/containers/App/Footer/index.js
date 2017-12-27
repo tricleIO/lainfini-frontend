@@ -47,18 +47,18 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
               <ul className="nav-mobile hidden-md-up">
                 <li>
                   <a href="mailto:info@lainfini.com">info@lainfini.com</a>
-                  <a href="tel:+18004050388">+1 800 405 0388</a>
-                  <a href="">more about the brand</a>
+                  {/*<a href="tel:+18004050388">+1 800 405 0388</a>*/}
+                  <a href={this.pdf} target="_blank">download our brochure</a>
                 </li>
               </ul>
               <p className="copyright">
-                2017 &copy; Copyright la infini
+                2017 &copy; Copyright LAINFINI
               </p>
             </div>
             <div className="col-sm-4 text-sm-right hidden-sm-down">
               <ul>
                 <li>
-                  <a href="tel:+18004050388">+1 800 405 0388</a>
+                  {/*<a href="tel:+18004050388">+1 800 405 0388</a>*/}
                 </li>
                 <li>
                   <a href={this.pdf} target="_blank">download our brochure</a>
